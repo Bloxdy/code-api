@@ -50,7 +50,7 @@ Create flying text:
 
 ```ts
 const speed = 100
-api.sendFlyingMiddleMessage(myId, ["secret"], speed)
+api.sendFlyingMiddleMessage(myId, ["Message to display"], speed)
 ```
 
 Send a message to all players:
