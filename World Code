@@ -1,0 +1,5 @@
+/*#World Code Broadcast Player Join*/
+var onPlayerJoin = (playerId) => {
+  var name = api.getEntityName(playerId);
+  api.broadcastMessage(name+" Has Joined The      
+  Game!",{color:Yellow/*Can Be Any Color You Want*/},)
