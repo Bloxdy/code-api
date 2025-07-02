@@ -1,3 +1,7 @@
+# Edits
+1. New functions at the bottom
+2. That would be very cool if you can add the api.setClientOption(myId, "ignoreWorldError", true)
+so it will just ignore and don't show those red messages or the errors just Life saver
 # Code API
 
 You can run javascript when right clicking code blocks and press to code boards.
@@ -1711,4 +1715,88 @@ enum WalkThroughType {
     DEFAULT_WALK_THROUGH = 2,
 }
 
+
+ This API allows to spawn and control projectiles of any type, including custom blocks.
+ rojectiles can be spawned at any position, with any velocity, and can use any block or projectile type as their appearance.
+ This enables advanced mechanics such as building with flying blocks, custom weapons, or visual effects.
+ 
+ Example usage:
+    // Spawn a flying grass block at [10, 20, 30] with velocity [5, 10, 0]
+    const projId = api.spawnProjectile({
+      type: "block", // or "arrow", "Apple", etc.
+      blockName: "Grass Block", // required if type is "block"
+      position: [10, 20, 30],
+      velocity: [5, 10, 0],
+      ownerId: myId, //For tracking (optional)
+      customData: { statue: true } //for your own logic for more flexible coding (Optional)
+    });
+ 
+    // Change velocity of an existing projectile
+    api.setProjectileVelocity(projId, [0, 20, 0]);
+ 
+    // Remove a projectile
+    api.removeProjectile(projId);
+
+
+/**
+ * Spawns a projectile in the world.
+ * @param {Object} opts
+ * @param {"block"|"arrow"|"fireball"|string} opts.type - The type of projectile ("block" for any block, or a projectile type).
+ * @param {string} [opts.blockName] - The block to use if type is "block".
+ * @param {number[]} opts.position - [x, y, z] spawn position.
+ * @param {number[]} opts.velocity - [vx, vy, vz] initial velocity.
+ * @param {PlayerId} [opts.ownerId] - Optional, the player who owns/created the projectile.
+ * @param {Object} [opts.customData] - Optional, any custom data to store with the projectile.
+ * @returns {ProjectileId} - The id of the spawned projectile.
+ */
+spawnProjectile = (opts) => {
+    // Implementation would create a projectile entity, set its type, position, velocity, and appearance.
+    // Returns a unique ProjectileId for further control.
+}
+
+/**
+ * Sets the velocity of a projectile.
+ * @param {ProjectileId} projectileId
+ * @param {number[]} velocity - [vx, vy, vz]
+ * @returns {void}
+ */
+setProjectileVelocity = (projectileId, velocity) => {
+    // Implementation would update the projectile's velocity.
+}
+
+/**
+ * Removes a projectile from the world.
+ * @param {ProjectileId} projectileId
+ * @returns {void}
+ */
+removeProjectile = (projectileId) => {
+    // Implementation would delete the projectile entity.
+}
+
+/**
+ * Gets the position of a projectile.
+ * @param {ProjectileId} projectileId
+ * @returns {number[]} - [x, y, z]
+ */
+getProjectilePosition = (projectileId) => {
+    // Implementation would return the current position.
+}
+
+/**
+ * Gets the velocity of a projectile.
+ * @param {ProjectileId} projectileId
+ * @returns {number[]} - [vx, vy, vz]
+ */
+getProjectileVelocity = (projectileId) => {
+    // Implementation would return the current velocity.
+}
+
+/**
+ * Gets the type and data of a projectile.
+ * @param {ProjectileId} projectileId
+ * @returns {Object} - { type, blockName, ownerId, customData }
+ */
+getProjectileInfo = (projectileId) => {
+    // Implementation would return projectile info.
+}
 ```
