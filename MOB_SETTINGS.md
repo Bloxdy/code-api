@@ -330,4 +330,5 @@ Gorilla: "default"
 Wildcat: "default", "tabby", "grey", "black", "calico", "siamese", "leopard"
 Magma Golem: "default"
 Draugr Huntress: "default", "chainmail"
+Iron Golem: "default", "iron", "grey"
 ```
