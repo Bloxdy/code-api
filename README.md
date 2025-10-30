@@ -87,10 +87,7 @@ Use the function above to make other players look like zombies:
 ```js
 for (const otherId of getOtherIds()) {
     api.setPlayerPose(otherId, "zombie")
-    for (const part of ["head", "body", "legs"]) {
-        /* Notice the skin texture uses a capital Z */
-        api.changePlayerIntoSkin(otherId, part, "Zombie")
-    }
+    api.changePlayerIntoSkin(otherId, "head", "zombie")
 }
 ```
 
@@ -99,10 +96,7 @@ Make all players look like floating wizards:
 ```js
 for (const playerId of api.getPlayerIds()) {
     api.setPlayerPose(playerId, "driving")
-    for (const part of ["head", "body", "legs"]) {
-        /* Notice the skin texture uses a capital W */
-        api.changePlayerIntoSkin(playerId, part, "Wizard")
-    }
+    api.changePlayerIntoSkin(playerId, "head", "wizard")
 }
 ```
 
@@ -423,7 +417,7 @@ setClientOptionToDefault(playerId, option)
 setTargetedPlayerSettingForEveryone(targetedPlayerId, settingName, settingValue, includeNewJoiners)
 
 /**
- * Set a player's other-entity setting for every player in the game.
+ * Set a player's other-entity setting for every lifeform in the game.
  * includeNewJoiners=true means that the player will have the setting applied to new joiners.
  *
  * @param {PlayerId} playerId
@@ -614,8 +608,6 @@ setBlockWalls(pos1, pos2, blockName, hasFloor, hasCeiling)
 getChunk(pos)
 
 /**
- * Use this to get a chunk ndarray you can edit and set in resetChunk.
- *
  * Only use chunk helpers if you REALLY need the performance (i.e. you are iterating over tens of thousands of blocks)
  * ReturnedObject.blockData is a 32x32x32 ndarray of air.
  * (see https://www.npmjs.com/package/ndarray)
@@ -637,7 +629,7 @@ getMetaInfo(blockName)
  * I.e. chunk.blockData.set(x, y, z, api.blockNameToBlockId("Dirt"))
  * or chunk.blockData.get(x, y, z) === api.blockNameToBlockId("Dirt")
  *
- * @param {string} blockName
+ * @param {BlockName} blockName
  * @param {boolean} [allowInvalidBlock] - Don't throw an error if the block name is invalid.
  * @returns {PNull<number>}
  */
@@ -1280,7 +1272,9 @@ createMobHerd()
  *     playSoundOnSpawn: boolean
  *     variation: MobVariation<TMobType>
  *     }>} [opts] - Includes:
- * @returns {PNull<MobId>} - null if the mob could not be spawned, e.g. if there are not enough players in the lobby to support the number of mobs
+ * @returns {PNull<MobId>} - null if the mob could not be spawned.
+ * This can happen when there are too many mobs in the world for the current number
+ * of players in the lobby, or if the area is protected e.g. by spawn area protection.
  */
 attemptSpawnMob(mobType, x, y, z, opts)
 
@@ -1349,6 +1343,15 @@ getMobIds()
  * @returns {void}
  */
 applyImpulse(eId, xImpulse, yImpulse, zImpulse)
+
+/**
+ * Get the velocity of an entity
+ * Will return [0, 0, 0] if the entity doesn't have a physics body
+ *
+ * @param {EntityId} eId
+ * @returns {[number, number, number]}
+ */
+getVelocity(eId)
 
 /**
  * Set the velocity of an entity
@@ -1453,12 +1456,12 @@ removeEffect(lifeformId, name)
 
 /**
  * Change a part of a player's skin
- * @param {PlayerId} playerId
- * @param {CustomisationPart} partType
- * @param {string} selected
+ * @param {PlayerId} playerId - Player to change
+ * @param {CosmeticType} cosmeticType - Type of cosmetic
+ * @param {CosmeticName} cosmeticName - Chosen cosmetic, will be made lowercase automatically
  * @returns {void}
  */
-changePlayerIntoSkin(playerId, partType, selected)
+changePlayerIntoSkin(playerId, cosmeticType, cosmeticName)
 
 /**
  * Remove gamemode-applied skin from a player
@@ -1682,7 +1685,7 @@ type EntityName = {
     }
 }
 
-type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Health" | "HealthShield"
+type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Health" | "HealthShield" | "Cross"
 
 enum ParticleSystemBlendMode {
     // Source color is added to the destination color without alpha affecting the result
@@ -1697,7 +1700,7 @@ enum ParticleSystemBlendMode {
     MultiplyAdd,
 }
 
-type RecipesForItem = 
+type RecipesForItem =
     {
         requires: { items: ItemName[]; amt: number }[]
         produces: number

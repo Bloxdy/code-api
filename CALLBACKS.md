@@ -81,7 +81,7 @@ playerCommand = (playerId, command) => {
 /**
  * Called when a player sends a chat message
  * Return false or null to prevent the broadcast of the message.
- * Return CustomTextStyling to add a prefix to message, doesn't work for world code.
+ * Return a string or CustomTextStyling to add a prefix to message.
  * Return for most flexibility: an object where keys are playerIds -
  * the value for a playerId being false means that player won't receive the message.
  * Otherwise playerId values should be an object with (optional) keys
@@ -568,6 +568,10 @@ onTaskClaimed = (playerId, taskId, isPromoTask, claimedRewards) => {}
 
 /**
  * Called when a chunk is first loaded
+ * API Methods that modify the chunk like setBlock cannot be used here to make
+ * persisted changes, and will introduce client-server desync most cases,
+ * but might have some creative uses if you know what you're doing.
+ * For most use cases, consider using another callback e.g. tick.
  * @param {string} chunkId - The id of the chunk being loaded
  * @param {LoadedChunk} chunk - The chunk being loaded, which can be modified by this callback
  * @param {boolean} wasPersistedChunk - Whether the chunk was persisted

@@ -244,6 +244,12 @@ middleTextUpper = ""
 middleTextLower = ""
 
 /**
+ * Text to display by the crosshair
+ * @type {string | CustomTextStyling}
+ */
+crosshairText = ""
+
+/**
  * Text to display in the right info box
  * @type {string | CustomTextStyling}
  */

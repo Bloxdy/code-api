@@ -18,7 +18,7 @@ These API methods allow you to modify entity settings:
 setTargetedPlayerSettingForEveryone(targetedPlayerId, settingName, settingValue, includeNewJoiners)
 
 /**
- * Set a player's other-entity setting for every player in the game.
+ * Set a player's other-entity setting for every lifeform in the game.
  * includeNewJoiners=true means that the player will have the setting applied to new joiners.
  *
  * @param {PlayerId} playerId
@@ -66,11 +66,23 @@ Here is the full list of available entity settings:
 ```js
 /**
  * Opacity of the entity
- * Fractional values are currently treated as 1 for performance reasons
+ * Fractional values will use dithering
  * 0 opacity will hide the entity but not its name tag
  * @type {number}
  */
 opacity = 1
+
+/**
+ * Rendering order of the entity, higher zIndex renders on top of lower ones.
+ * @type {0 | 1}
+ */
+zIndex = 0
+
+/**
+ * Applies a colour tint to the entity when set, like the red tint when an entity gets hurt.
+ * @type {string}
+ */
+overlayColour = null
 
 /**
  * Whether the entity can attack other entities, ignored if the targeted entity is invincible
