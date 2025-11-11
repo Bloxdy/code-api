@@ -273,7 +273,19 @@ tameInfo = {
                 }
             ]
         }
-    ]
+    ],
+    likedFoods: ["Raw Porkchop", "Raw Beef", "Raw Mutton", "Raw Venison", "Cooked Porkchop", "Steak", "Cooked Mutton", "Cooked Venison", "Banana", "Baked Potato", "Rotton Brain"],
+    neutralFoods: ["Catnip", "Pumpkin Pie", "Bowl of Cranberries", "Watermelon Slice", "Gold Watermelon Slice", "Bread", "Rotton Flesh", "Mushroom Soup", "Plum", "Carrot", "Beetroot", "Raw Potato"],
+    dislikedFoods: ["Apple", "Wheat", "Pear", "Cherry", "Bowl of Rice", "Melon Slice", "Gold Melon Slice", "Chili Pepper", "Cracked Coconut"],
+    guaranteedDrop: ["Caught Fish"],
+    commonDrops: ["Poop", "Wheat Seeds"],
+    levelUpBonuses: {
+        "1": "Renaming",
+        "2": "Special Drops",
+        "3": "Damage +",
+        "4": "Painting",
+        "5": "Poison Claws",
+    },
 }
 
 /**
