@@ -1484,7 +1484,7 @@ scalePlayerMeshNodes(playerId, nodeScales)
  * Attach/detach mesh instances to/from an entity
  * @param {EntityId} eId
  * @param {EntityNamedNode} node - node to attach to
- * @param {PNull<MeshType>} type - if null, detaches mesh from this node
+ * @param {PNull<MeshType>} type - if null, detaches mesh from this node. Supports "Person", "BloxdBlock", null.
  * @param {MeshEntityOpts[MeshType]} [opts]
  * @param {number[]} [offset]
  * @param {number[]} [rotation]
