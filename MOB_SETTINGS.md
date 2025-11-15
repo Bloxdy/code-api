@@ -26,9 +26,10 @@ setDefaultMobSetting(mobType, setting, value)
  * Get the current value of a mob setting for a specific mob.
  * @param {MobId} mobId
  * @param {TMobSetting} setting
+ * @param {boolean} [returnDefaultIfNotOverriden] - If true, return the default setting if not overridden.
  * @returns {MobSettings<MobType>[TMobSetting]}
  */
-getMobSetting(mobId, setting)
+getMobSetting(mobId, setting, returnDefaultIfNotOverriden)
 
 /**
  * Set the current value of a mob setting for a specific mob.
@@ -246,7 +247,8 @@ tameInfo = {
     ],
     probabilityOfTame: 0.32,
     isSaddleable: false,
-    foodItemNames: [
+    supportsFriendship: true,
+    likedFoods: [
         "Raw Porkchop",
         "Raw Beef",
         "Raw Mutton",
@@ -255,7 +257,34 @@ tameInfo = {
         "Steak",
         "Cooked Mutton",
         "Cooked Venison",
-        "Rotten Flesh"
+        "Banana",
+        "Baked Potato",
+        "Rotten Brain"
+    ],
+    neutralFoods: [
+        "Catnip",
+        "Pumpkin Pie",
+        "Bowl of Cranberries",
+        "Watermelon Slice",
+        "Gold Watermelon Slice",
+        "Bread",
+        "Rotten Flesh",
+        "Mushroom Soup",
+        "Plum",
+        "Carrot",
+        "Beetroot",
+        "Raw Potato"
+    ],
+    dislikedFoods: [
+        "Apple",
+        "Wheat",
+        "Pear",
+        "Cherry",
+        "Bowl of Rice",
+        "Melon Slice",
+        "Gold Melon Slice",
+        "Chili Pepper",
+        "Cracked Coconut"
     ],
     foodItemsWithEffects: [
         {
@@ -273,7 +302,19 @@ tameInfo = {
                 }
             ]
         }
-    ]
+    ],
+    guaranteedDrop: "Caught Fish",
+    commonDrops: [
+        "Poop",
+        "Wheat Seeds"
+    ],
+    levelUpBonuses: {
+        1: "Renaming",
+        2: "Special Drops",
+        3: "Damage +",
+        4: "Painting",
+        5: "Poison Claws"
+    }
 }
 
 /**
@@ -289,7 +330,7 @@ ownerDbId = null
 /**
  * @type {number}
  */
-minFollowingRadius = 3
+minFollowingRadius = 5
 
 /**
  * @type {number}
@@ -302,9 +343,31 @@ maxFollowingRadius = 12
 isRideable = false
 
 /**
+ * @type { { amount: number; interval: number; startAfter: number; } }
+ */
+healthRegen = null
+
+/**
+ * @type {number}
+ */
+ridingSpeedMult = 1
+
+/**
  * @type {string}
  */
 metaInfo = ""
+
+/**
+ * @type {MobPetInfo}
+ */
+petInfo = {
+    friendshipPoints: 0,
+    lastFedAt: null,
+    highestFriendshipLevelReached: 0,
+    superlikedFood: null,
+    superlikedFoodKnown: false,
+    bonusesGained: [],
+}
 ```
 
 Some mob types support variations other than just `"default"`:
@@ -312,7 +375,7 @@ Some mob types support variations other than just `"default"`:
 ```js
 Pig: "default"
 Cow: "default", "cream"
-Sheep: "default"
+Sheep: "default", "black", "red", "orange", "pink", "purple", "yellow", "blue", "brown", "cyan", "gray", "green", "lightBlue", "lightGray", "lime", "magenta"
 Horse: "default", "black", "brown", "cream"
 Cave Golem: "default", "iron"
 Draugr Zombie: "default", "longHairChestplate", "longHairClothed", "shortHairClothed"

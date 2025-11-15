@@ -160,8 +160,9 @@ onBlockStand = (playerId, x, y, z, blockName) => {}
  * @param {PlayerId} playerId - The id of the player that is attempting to craft the item
  * @param {string} itemName - The name of the item that is being crafted
  * @param {number} craftingIdx - The index of the used recipe in the item's recipe list
+ * @param {number} craftTimes - The number of times the craft recipe is used at once (e.g. shift held while crafting)
  */
-onPlayerAttemptCraft = (playerId, itemName, craftingIdx) => {}
+onPlayerAttemptCraft = (playerId, itemName, craftingIdx, craftTimes) => {}
 
 /**
  * Called when a player crafts an item
@@ -169,8 +170,9 @@ onPlayerAttemptCraft = (playerId, itemName, craftingIdx) => {}
  * @param {string} itemName - The name of the item that was crafted
  * @param {number} craftingIdx - The index of the used recipe in the item's recipe list
  * @param {RecipesForItem[number]} recipe - The recipe that was used to craft the item
+ * @param {number} craftTimes - The number of times the craft recipe is used at once (e.g. shift held while crafting)
  */
-onPlayerCraft = (playerId, itemName, craftingIdx, recipe) => {}
+onPlayerCraft = (playerId, itemName, craftingIdx, recipe, craftTimes) => {}
 
 /**
  * Called when a player attempts to open a chest

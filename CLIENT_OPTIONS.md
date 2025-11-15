@@ -547,4 +547,60 @@ auraPerLevel = 100
  * @type {number}
  */
 maxAuraLevel = 0
+
+/**
+ * Fog distance which overrides graphic settings. Uses graphic settings if null.
+ * @type {number}
+ */
+fogChunkDistanceOverride = null
+
+/**
+ * RGB string for fog colour override. e.g. #ffffff
+ * @type {string}
+ */
+fogColourOverride = null
+
+/**
+ * Multiplier for horizontal knockback when dealing damage
+ * @type {number}
+ */
+horizontalKnockbackMultiplier = 1
+
+/**
+ * Multiplier for vertical knockback when dealing damage
+ * @type {number}
+ */
+verticalKnockbackMultiplier = 1
+
+/**
+ * Mult for the damage done by "stomping" on a lifeform, i.e.: falling on them wearing Spiked Boots.
+ * @type {number}
+ */
+stompDamageMultiplier = 0
+
+/**
+ * Radius around the player that will be affected by the stomp damage.
+ * @type {number}
+ */
+stompDamageRadius = 0
+
+/**
+ * Mult for the radius within which mobs can detect the player when crouching.
+ * If a player's mult is 2, then mobs will think they are twice as far away.
+ * @type {number}
+ */
+crouchMobDetectionRadiusMultiplier = 2
+
+/**
+ * How much the player bounces off of solid blocks.
+ * A value of 1 is equivalent to every block acting as a mushroom.
+ * @type {number}
+ */
+bounciness = 0
+
+/**
+ * Whether the player can climb walls
+ * @type {boolean}
+ */
+canClimbWalls = false
 ```
