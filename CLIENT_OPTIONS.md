@@ -555,7 +555,7 @@ maxAuraLevel = 0
 fogChunkDistanceOverride = null
 
 /**
- * RGB string for fog colour override. e.g. #ffffff
+ * HEX string for fog colour override. e.g. #ffffff
  * @type {string}
  */
 fogColourOverride = null
