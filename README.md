@@ -20,7 +20,7 @@ Please use [our discord](https://discord.gg/vwMp5y25RX) to report any issues you
 
 ## Notes
 
-- Global variable `myId` stores the player ID of who is running the code.
+- Global variables `myId` and `playerId` store the player ID of who is running the code.
 - Global variable `thisPos` stores the position of the currently executing code block or press to code board.
 - You can use `api.log` or `console.log` for printing and debugging (they do the same thing).
 - You can use `Date.now()` instead of `api.now()` if you prefer, both return the time in milliseconds.
