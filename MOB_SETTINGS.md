@@ -15,6 +15,7 @@ getDefaultMobSetting(mobType, setting)
 
 /**
  * Set the default value for a mob setting.
+ *
  * @param {TMobType} mobType
  * @param {TMobSetting} setting
  * @param {MobSettings<TMobType>[TMobSetting]} value
@@ -24,6 +25,7 @@ setDefaultMobSetting(mobType, setting, value)
 
 /**
  * Get the current value of a mob setting for a specific mob.
+ *
  * @param {MobId} mobId
  * @param {TMobSetting} setting
  * @param {boolean} [returnDefaultIfNotOverriden] - If true, return the default setting if not overridden.
@@ -33,6 +35,7 @@ getMobSetting(mobId, setting, returnDefaultIfNotOverriden)
 
 /**
  * Set the current value of a mob setting for a specific mob.
+ *
  * @param {MobId} mobId
  * @param {TMobSetting} setting
  * @param {MobSettings<MobType>[TMobSetting]} value

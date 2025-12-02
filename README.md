@@ -20,8 +20,9 @@ Please use [our discord](https://discord.gg/vwMp5y25RX) to report any issues you
 
 ## Notes
 
-- Global variable `myId` stores the player ID of who is running the code.
+- Global variables `myId` and `playerId` store the player ID of who is running the code.
 - Global variable `thisPos` stores the position of the currently executing code block or press to code board.
+- `myId`, `playerId`, `thisPos` and `ownerDbId` are all defined on `api`
 - You can use `api.log` or `console.log` for printing and debugging (they do the same thing).
 - You can use `Date.now()` instead of `api.now()` if you prefer, both return the time in milliseconds.
 - Comments like `/* comment */` work, but comments like `// comment` don't work right now.
@@ -107,6 +108,7 @@ Global object `api` has the following methods:
 ```js
 /**
  * Get position of a player / entity.
+ *
  * @param {EntityId} entityId
  * @returns {[number, number, number]}
  */
@@ -114,6 +116,7 @@ getPosition(entityId)
 
 /**
  * Set position of a player / entity.
+ *
  * @param {EntityId} entityId
  * @param {number | number[]} x - Can also be an array, in which case y and z shouldn't be passed
  * @param {number} [y]
@@ -124,6 +127,7 @@ setPosition(entityId, x, y, z)
 
 /**
  * Get all the player ids.
+ *
  * @returns {PlayerId[]}
  */
 getPlayerIds()
@@ -153,6 +157,7 @@ getPlayerPartyWhenJoined(playerId)
 
 /**
  * Get the number of players in the room
+ *
  * @returns {number}
  */
 getNumPlayers()
@@ -171,6 +176,7 @@ getBlockCoordinatesPlayerStandingOn(playerId)
 /**
  * Get the types of block the player is standing on
  * For example, if a player is standing on 4 dirt blocks, this will return ["Dirt", "Dirt", "Dirt", "Dirt"]
+ *
  * @param {PlayerId} playerId
  * @returns {any[]}
  */
@@ -187,6 +193,7 @@ getUnitCoordinatesLifeformWithin(lifeformId)
 
 /**
  * Show the shop tutorial for a player. Will not be shown if they have ever seen the shop tutorial in your game before.
+ *
  * @param {PlayerId} playerId
  * @returns {void}
  */
@@ -194,6 +201,7 @@ showShopTutorial(playerId)
 
 /**
  * Get the current shield of an entity.
+ *
  * @param {EntityId} entityId
  * @returns {number}
  */
@@ -210,6 +218,7 @@ setShieldAmount(lifeformId, newShieldAmount)
 
 /**
  * Get the current health of an entity.
+ *
  * @param {PlayerId} entityId
  * @returns {number}
  */
@@ -300,6 +309,7 @@ attemptApplyDamage({
 
 /**
  * Force respawn a player
+ *
  * @param {PlayerId} playerId
  * @param {number[]} [respawnPos]
  * @returns {void}
@@ -308,6 +318,7 @@ forceRespawn(playerId, respawnPos)
 
 /**
  * Kill a lifeform.
+ *
  * @param {LifeformId} lifeformId
  * @param { LifeformId | { lifeformId: LifeformId; withItem: string } } [whoKilled] - Optional
  * @returns {void}
@@ -343,6 +354,7 @@ isAlive(lifeformId)
  *
  * @param {string | CustomTextStyling} message - The text contained within the message. Can use `Custom Text Styling`.
  * @param { { fontWeight?: number | string; color?: string } } [style] - An optional style argument. Can contain values for fontWeight and color of the message.
+ * style is ignored if message uses custom text styling (i.e. is not a string).
  * @returns {void}
  */
 broadcastMessage(message, style)
@@ -353,6 +365,7 @@ broadcastMessage(message, style)
  * @param {PlayerId} playerId - Id of the player
  * @param {string | CustomTextStyling} message - The text contained within the message. Can use `Custom Text Styling`.
  * @param { { fontWeight?: number | string; color?: string } } [style] - An optional style argument. Can contain values for fontWeight and color of the message.
+ * style is ignored if message uses custom text styling (i.e. is not a string).
  * @returns {void}
  */
 sendMessage(playerId, message, style)
@@ -362,7 +375,8 @@ sendMessage(playerId, message, style)
  *
  * @param {PlayerId} playerId - Id of the player
  * @param {CustomTextStyling} message - The text contained within the message. Can use `Custom Text Styling`.
- * @param {number} distanceFromAction - The distance from the action that has caused this message to be displayed, this value
+ * @param {number} distanceFromAction - The distance from the action that has caused this message to be displayed,
+ * this value will be used to determine how the message flies across the screen.
  * @returns {void}
  */
 sendFlyingMiddleMessage(playerId, message, distanceFromAction)
@@ -461,14 +475,17 @@ getOtherEntitySetting(relevantPlayerId, targetedEntityId, settingName)
 
 /**
  * Play particle effect on all clients, or only on some clients if clientPredictedBy is specified
+ *
  * @param {TempParticleSystemOpts} opts
  * @param {PlayerId} [clientPredictedBy] - Play only on clients where client with playerId clientPredictedBy
+ * is not invisible, transparent, or themselves
  * @returns {void}
  */
 playParticleEffect(opts, clientPredictedBy)
 
 /**
  * Get the in game name of an entity.
+ *
  * @param {EntityId} entityId
  * @returns {string}
  */
@@ -476,6 +493,7 @@ getEntityName(entityId)
 
 /**
  * Given the name of a player, get their id
+ *
  * @param {string} playerName
  * @returns {PNull<PlayerId>}
  */
@@ -506,6 +524,7 @@ kickPlayer(playerId, reason)
 
 /**
  * Check if the block at a specific position is in a loaded chunk.
+ *
  * @param {number} x
  * @param {number} y
  * @param {number} z
@@ -515,6 +534,7 @@ isBlockInLoadedChunk(x, y, z)
 
 /**
  * Get the name of a block.
+ *
  * @param {number | number[]} x - could be an array [x, y, z]. If so, the other params shouldn't be passed.
  * @param {number} [y]
  * @param {number} [z]
@@ -612,6 +632,7 @@ getChunk(pos)
  * ReturnedObject.blockData is a 32x32x32 ndarray of air.
  * (see https://www.npmjs.com/package/ndarray)
  * Each block id is a 16-bit number
+ *
  * @returns {GameChunk}
  */
 getEmptyChunk()
@@ -631,6 +652,7 @@ getMetaInfo(blockName)
  *
  * @param {BlockName} blockName
  * @param {boolean} [allowInvalidBlock] - Don't throw an error if the block name is invalid.
+ * Defaults false. If true and name is invalid, returns null.
  * @returns {PNull<number>}
  */
 blockNameToBlockId(blockName, allowInvalidBlock)
@@ -683,6 +705,7 @@ sendTopRightHelper(playerId, icon, text, opts)
 
 /**
  * Whether the player is on a mobile device or a computer.
+ *
  * @param {PlayerId} playerId
  * @returns {boolean}
  */
@@ -690,6 +713,7 @@ isMobile(playerId)
 
 /**
  * Create a dropped item.
+ *
  * @param {number} x
  * @param {number} y
  * @param {number} z
@@ -774,6 +798,7 @@ setPlayerOpacityForOnePlayer(playerIdWhoViewsOpacityPlayer, playerIdOfOpacityPla
 
 /**
  * Obtain Date.now() value saved at start of current game tick
+ *
  * @returns {number}
  */
 now()
@@ -898,6 +923,7 @@ setWalkThroughType(playerId, blockName, disable)
  * @param {number[]} pos1 - The one corner of the cuboid. Format [x, y, z]
  * @param {number[]} pos2 - The top right corner of the cuboid. Format [x, y, z]
  * @param {WalkThroughType} updateType - The type of update. Whether to make a rect solid, or able to be walked through.
+ * Pass DEFAULT_WALK_THROUGH with a previously passed rect to disable any walkthrough setting for that rect.
  * @returns {void}
  */
 setWalkThroughRect(playerId, pos1, pos2, updateType)
@@ -916,6 +942,7 @@ giveItem(playerId, itemName, itemAmount, attributes)
 
 /**
  * Whether the player has space in their inventory to get new blocks
+ *
  * @param {PlayerId} playerId
  * @returns {boolean}
  */
@@ -993,6 +1020,7 @@ setSelectedInventorySlotI(playerId, newI)
 
 /**
  * Get a player's currently selected inventory slot
+ *
  * @param {PlayerId} playerId
  * @returns {number}
  */
@@ -1149,18 +1177,21 @@ getBlockData(x, y, z)
 
 /**
  * Get the name of the lobby this game is running in.
+ *
  * @returns {PNull<string>}
  */
 getLobbyName()
 
 /**
  * Integer lobby names are public
+ *
  * @returns {boolean} - boolean
  */
 isPublicLobby()
 
 /**
  * Returns if the current lobby the game is running in is special - e.g. a discord guild or dm, or simply a standard lobby
+ *
  * @returns {LobbyType}
  */
 getLobbyType()
@@ -1172,6 +1203,7 @@ getLobbyType()
  * @param {PlayerId} playerId
  * @param {number} toFraction - The fraction of the progress bar you want to be filled up.
  * @param {number} [toDuration] - The time it takes for the bar to reach the given toFraction in ms.
+ * If this is too low and you queue multiple updates, this toFraction could be skipped. Treat 200ms as a minimum.
  * @returns {void}
  */
 progressBarUpdate(playerId, toFraction, toDuration)
@@ -1252,6 +1284,7 @@ getEntityType(entityId)
 
 /**
  * Create a mob herd. A mob herd represents a collection of mobs that move together.
+ *
  * @returns {MobHerdId}
  */
 createMobHerd()
@@ -1260,6 +1293,7 @@ createMobHerd()
  * Try to spawn a mob into the world at a given position. Returns null on failure.
  * WARNING: Either the "onPlayerAttemptSpawnMob" or the "onWorldAttemptSpawnMob" game callback will be called
  * depending on whether "spawnerId" is provided. Calling this function inside those callbacks risks infinite recursion.
+ *
  * @param {TMobType} mobType
  * @param {number} x
  * @param {number} y
@@ -1271,7 +1305,11 @@ createMobHerd()
  *     name: string
  *     playSoundOnSpawn: boolean
  *     variation: MobVariation<TMobType>
- *     }>} [opts] - Includes:
+ *     physicsOpts: Partial<{
+ *         width: number
+ *         height: number
+ *     }>
+ * }>} [opts]
  * @returns {PNull<MobId>} - null if the mob could not be spawned.
  * This can happen when there are too many mobs in the world for the current number
  * of players in the lobby, or if the area is protected e.g. by spawn area protection.
@@ -1281,6 +1319,7 @@ attemptSpawnMob(mobType, x, y, z, opts)
 /**
  * Dispose of a mob's state and remove them from the world without triggering "on death" flows.
  * Always succeeds.
+ *
  * @param {MobId} mobId
  * @returns {void}
  */
@@ -1297,6 +1336,7 @@ getDefaultMobSetting(mobType, setting)
 
 /**
  * Set the default value for a mob setting.
+ *
  * @param {TMobType} mobType
  * @param {TMobSetting} setting
  * @param {MobSettings<TMobType>[TMobSetting]} value
@@ -1306,6 +1346,7 @@ setDefaultMobSetting(mobType, setting, value)
 
 /**
  * Get the current value of a mob setting for a specific mob.
+ *
  * @param {MobId} mobId
  * @param {TMobSetting} setting
  * @param {boolean} [returnDefaultIfNotOverriden] - If true, return the default setting if not overridden.
@@ -1315,6 +1356,7 @@ getMobSetting(mobId, setting, returnDefaultIfNotOverriden)
 
 /**
  * Set the current value of a mob setting for a specific mob.
+ *
  * @param {MobId} mobId
  * @param {TMobSetting} setting
  * @param {MobSettings<MobType>[TMobSetting]} value
@@ -1324,12 +1366,14 @@ setMobSetting(mobId, setting, value)
 
 /**
  * Get the number of mobs in the world.
+ *
  * @returns {number}
  */
 getNumMobs()
 
 /**
  * Get the mob IDs of all mobs in the world.
+ *
  * @returns {MobId[]}
  */
 getMobIds()
@@ -1457,6 +1501,7 @@ removeEffect(lifeformId, name)
 
 /**
  * Change a part of a player's skin
+ *
  * @param {PlayerId} playerId - Player to change
  * @param {CosmeticType} cosmeticType - Type of cosmetic
  * @param {CosmeticName} cosmeticName - Chosen cosmetic, will be made lowercase automatically
@@ -1466,6 +1511,7 @@ changePlayerIntoSkin(playerId, cosmeticType, cosmeticName)
 
 /**
  * Remove gamemode-applied skin from a player
+ *
  * @param {PlayerId} playerId
  * @returns {void}
  */
@@ -1483,26 +1529,30 @@ scalePlayerMeshNodes(playerId, nodeScales)
 
 /**
  * Attach/detach mesh instances to/from an entity
+ *
  * @param {EntityId} eId
  * @param {EntityNamedNode} node - node to attach to
  * @param {PNull<MeshType>} type - if null, detaches mesh from this node
  * @param {MeshEntityOpts[MeshType]} [opts]
- * @param {number[]} [offset]
- * @param {number[]} [rotation]
+ * @param {[number, number, number]} [offset]
+ * @param {[number, number, number]} [rotation]
  * @returns {void}
  */
 updateEntityNodeMeshAttachment(eId, node, type, opts, offset, rotation)
 
 /**
  * Set the pose of the player
+ *
  * @param {PlayerId} playerId
  * @param {PlayerPose} pose
+ * @param {[number, number, number]} [poseOffset]
  * @returns {void}
  */
-setPlayerPose(playerId, pose)
+setPlayerPose(playerId, pose, poseOffset)
 
 /**
  * Set physics state of player (vehicle type and tier)
+ *
  * @param {PlayerId} playerId
  * @param {PlayerPhysicsStateData} physicsState
  * @returns {void}
@@ -1511,6 +1561,7 @@ setPlayerPhysicsState(playerId, physicsState)
 
 /**
  * Get physics state for player
+ *
  * @param {PlayerId} playerId
  * @returns {PlayerPhysicsStateData}
  */
@@ -1518,6 +1569,7 @@ getPlayerPhysicsState(playerId)
 
 /**
  * Add following entity to player
+ *
  * @param {PlayerId} playerId
  * @param {EntityId} eId
  * @param {number[]} [offset]
@@ -1527,6 +1579,7 @@ addFollowingEntityToPlayer(playerId, eId, offset)
 
 /**
  * Remove following entity from player
+ *
  * @param {PlayerId} playerId
  * @param {EntityId} entityEId
  * @returns {void}
@@ -1535,6 +1588,7 @@ removeFollowingEntityFromPlayer(playerId, entityEId)
 
 /**
  * Set camera zoom for a player
+ *
  * @param {PlayerId} playerId
  * @param {number} zoom
  * @returns {void}
@@ -1546,6 +1600,7 @@ setCameraZoom(playerId, zoom)
  * @param {string} soundName - Can also be a prefix. If so, a random sound with that prefix will be played
  * @param {number} volume - 0-1. If it's too quiet and volume is 1, normalise your sound in audacity
  * @param {number} rate - The speed of playback. Also affects pitch. 0.5-4. Lower playback = lower pitch
+ * Good for varying the sound. E.g. item pickup sound has a random rate between 1 and 1.5.
  * @param { {
  *     playerIdOrPos: PlayerId | number[]
  *     maxHearDist?: number
@@ -1557,6 +1612,7 @@ playSound(playerId, soundName, volume, rate, posSettings)
 
 /**
  * See documentation for api.playSound
+ *
  * @param {string} soundName
  * @param {number} volume
  * @param {number} rate
@@ -1572,6 +1628,7 @@ broadcastSound(soundName, volume, rate, posSettings, exceptPlayerId)
 
 /**
  * See documentation for api.playSound
+ *
  * @param {string} soundName
  * @param {number} volume
  * @param {number} rate
@@ -1639,6 +1696,7 @@ isPlayerCrouching(playerId)
 
 /**
  * Get the aura info for a player
+ *
  * @param {PlayerId} playerId
  * @returns { { level: number; totalAura: number; auraPerLevel: number } }
  */
@@ -1646,6 +1704,7 @@ getAuraInfo(playerId)
 
 /**
  * Sets the total aura for a player. Will not go over max level or under 0
+ *
  * @param {PlayerId} playerId
  * @param {number} totalAura
  * @returns {void}
@@ -1654,6 +1713,7 @@ setTotalAura(playerId, totalAura)
 
 /**
  * Set the aura level for a player - shortcut for setTotalAura(level * auraPerLevel)
+ *
  * @param {PlayerId} playerId
  * @param {number} level
  * @returns {void}
@@ -1662,11 +1722,20 @@ setAuraLevel(playerId, level)
 
 /**
  * Add (or remove if negative) aura to a player. Will not go over max level or under 0
+ *
  * @param {PlayerId} playerId
  * @param {number} auraDiff
  * @returns {number} - The actual change in aura
  */
 applyAuraChange(playerId, auraDiff)
+
+/**
+ * Set a default value to be returned by your callback code if it throws an error.
+ *
+ * @param {string} callbackName
+ * @param {any} defaultValue
+ */
+api.setCallbackValueFallback(callbackName, defaultValue)
 ```
 
 ## Glossary of Referenced Types
@@ -1686,7 +1755,7 @@ type EntityName = {
     }
 }
 
-type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Blindness" | "Pickpocketer" | "Lifesteal" | "Bounciness" | "Air Walk" | "Wall Climbing" | "Thorns" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Self Yield" | "Friends" | "Riding Speed" | "Feed Aura" | "Double Poop" | "Mob Slayer" | "Rainbow Wool" | "Pack Leader" | "Max Health" | "Poison Claws" | "Mob Yield" | "Antlers Bonus" | "Health" | "HealthShield" | "Cross" | "Friendship" | "Dotted Friendship" | "Hunger" | "Empty Hunger" | "Pixelated Heart" | "Question Mark"
+type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Blindness" | "Pickpocketer" | "Lifesteal" | "Bounciness" | "Air Walk" | "Wall Climbing" | "Thorns" | "Draugr Knight Head" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Self Yield" | "Friends" | "Riding Speed" | "Feed Aura" | "Double Poop" | "Mob Slayer" | "Rainbow Wool" | "Pack Leader" | "Max Health" | "Poison Claws" | "Mob Yield" | "Antlers Bonus" | "Health" | "HealthShield" | "Cross" | "Friendship" | "Dotted Friendship" | "Hunger" | "Empty Hunger" | "Pixelated Heart" | "Question Mark"
 
 enum ParticleSystemBlendMode {
     // Source color is added to the destination color without alpha affecting the result
@@ -1784,7 +1853,7 @@ type EarthSkyBox = {
     type: "earth"
     inclination?: number
     turbidity?: number
-    infiniteDistance?: number
+    infiniteDistance?: boolean
     luminance?: number
     yCameraOffset?: number
     azimuth?: number

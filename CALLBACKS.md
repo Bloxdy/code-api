@@ -26,6 +26,8 @@ To use a callback, just assign a function to it in the world code!
 tick = () => {}			 or			 function tick() {}
 ```
 
+You can use `api.setCallbackValueFallback("callbackName", defaultValue)` to set a default value to be returned by your callback code if it throws an error.
+
 ```js
 /**
  * Called every tick, 20 times per second
@@ -491,7 +493,7 @@ onPlayerKilledOtherPlayer = (attackingPlayer, killedPlayer, damageDealt, withIte
 onMobKilledPlayer = (attackingMob, killedPlayer, damageDealt, withItem) => {}
 
 /**
- * Called when a mob kills a player
+ * Called when a player kills a mob
  * Return "preventDrop" to prevent the mob from dropping items
  * @param {PlayerId} playerId - The id of the player killed
  * @param {MobId} mobId - The id of the mob that killed the player
