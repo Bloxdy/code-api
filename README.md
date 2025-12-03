@@ -25,7 +25,7 @@ Please use [our discord](https://discord.gg/vwMp5y25RX) to report any issues you
 - `myId`, `playerId`, `thisPos` and `ownerDbId` are all defined on `api`
 - You can use `api.log` or `console.log` for printing and debugging (they do the same thing).
 - You can use `Date.now()` instead of `api.now()` if you prefer, both return the time in milliseconds.
-- Comments like `/* comment */` work, but comments like `// comment` don't work right now.
+- Disable your code  `/* comment */` and  `// comment`.
 
 ## Examples
 
