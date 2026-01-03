@@ -1,9 +1,8 @@
-# Mob Settings
+﻿# Mob Settings
 
 These impact the behaviour of mobs, what they look like, and how they sound. These can either be set on a per-mob basis or the default can be set for all mobs of a particular type.
 
 ## API Methods to Get/Set Mob Settings
-These API methods allow you to modify mob settings:
 
 ```js
 /**
@@ -19,6 +18,7 @@ getDefaultMobSetting(mobType, setting)
 ```js
 /**
  * Set the default value for a mob setting.
+ * 
  * @param {TMobType} mobType
  * @param {TMobSetting} setting
  * @param {MobSettings<TMobType>[TMobSetting]} value
@@ -30,16 +30,19 @@ setDefaultMobSetting(mobType, setting, value)
 ```js
 /**
  * Get the current value of a mob setting for a specific mob.
+ *
  * @param {MobId} mobId
  * @param {TMobSetting} setting
+ * @param {boolean} [returnDefaultIfNotOverriden] - If true, return the default setting if not overridden.
  * @returns {MobSettings<MobType>[TMobSetting]}
  */
-getMobSetting(mobId, setting)
+getMobSetting(mobId, setting, returnDefaultIfNotOverriden)
 ```
 
 ```js
 /**
  * Set the current value of a mob setting for a specific mob.
+ *
  * @param {MobId} mobId
  * @param {TMobSetting} setting
  * @param {MobSettings<MobType>[TMobSetting]} value
@@ -48,8 +51,7 @@ getMobSetting(mobId, setting)
 setMobSetting(mobId, setting, value)
 ```
 
-### Settings and Values for them
-Here is the full list of available mob settings:
+### Mob Settings and their Values
 
 ```js
 /**
@@ -327,7 +329,8 @@ tameInfo = {
     ],
     probabilityOfTame: 0.32,
     isSaddleable: false,
-    foodItemNames: [
+    supportsFriendship: true,
+    likedFoods: [
         "Raw Porkchop",
         "Raw Beef",
         "Raw Mutton",
@@ -336,7 +339,34 @@ tameInfo = {
         "Steak",
         "Cooked Mutton",
         "Cooked Venison",
-        "Rotten Flesh"
+        "Banana",
+        "Baked Potato",
+        "Rotten Brain"
+    ],
+    neutralFoods: [
+        "Catnip",
+        "Pumpkin Pie",
+        "Bowl of Cranberries",
+        "Watermelon Slice",
+        "Gold Watermelon Slice",
+        "Bread",
+        "Rotten Flesh",
+        "Mushroom Soup",
+        "Plum",
+        "Carrot",
+        "Beetroot",
+        "Raw Potato"
+    ],
+    dislikedFoods: [
+        "Apple",
+        "Wheat",
+        "Pear",
+        "Cherry",
+        "Bowl of Rice",
+        "Melon Slice",
+        "Gold Melon Slice",
+        "Chili Pepper",
+        "Cracked Coconut"
     ],
     foodItemsWithEffects: [
         {
@@ -354,7 +384,19 @@ tameInfo = {
                 }
             ]
         }
-    ]
+    ],
+    guaranteedDrop: "Caught Fish",
+    commonDrops: [
+        "Poop",
+        "Wheat Seeds"
+    ],
+    levelUpBonuses: {
+        1: "Renaming",
+        2: "Special Drops",
+        3: "Damage +",
+        4: "Painting",
+        5: "Poison Claws"
+    }
 }
 ```
 
@@ -376,7 +418,7 @@ ownerDbId = null
 /**
  * @type {number}
  */
-minFollowingRadius = 3
+minFollowingRadius = 5
 ```
 
 ```js
@@ -395,55 +437,79 @@ isRideable = false
 
 ```js
 /**
+ * @type { { amount: number; interval: number; startAfter: number; } }
+ */
+healthRegen = null
+```
+
+```js
+/**
+ * @type {number}
+ */
+ridingSpeedMult = 1
+```
+
+```js
+/**
  * @type {string}
  */
 metaInfo = ""
 ```
 
-## Mob Types and Variations
-> [!NOTE]
-> From the offical documentation:
-
-Some mob types support variations other than just `"default"`:
-
 ```js
-Pig: "default"
-Cow: "default", "cream"
-Sheep: "default"
-Horse: "default", "black", "brown", "cream"
-Cave Golem: "default", "iron"
-Draugr Zombie: "default", "longHairChestplate", "longHairClothed", "shortHairClothed"
-Draugr Skeleton: "default"
-Frost Golem: "default"
-Frost Zombie: "default", "longHairChestplate", "shortHairClothed"
-Frost Skeleton: "default"
-Draugr Knight: "default"
-Wolf: "default", "white", "brown", "grey", "spectral"
-Bear: "default"
-Deer: "default"
-Stag: "default"
-Gold Watermelon Stag: "default"
-Gorilla: "default"
-Wildcat: "default", "tabby", "grey", "black", "calico", "siamese", "leopard"
-Magma Golem: "default"
-Draugr Huntress: "default", "chainmail"
-Spirit Golem: "default"
-Spirit Wolf: "default"
-Spirit Bear: "default"
-Spirit Stag: "default"
-Spirit Gorilla: "default"
+/**
+ * @type {MobPetInfo}
+ */
+petInfo = {
+    friendshipPoints: 0,
+    lastFedAt: null,
+    highestFriendshipLevelReached: 0,
+    superlikedFood: null,
+    superlikedFoodKnown: false,
+    bonusesGained: [],
+}
 ```
 
-> [!WARNING]
-> This is not from the offical documentation, this was put together by NlGBOB.
-> Also this has not been updated with the spirt mobs.
+## Mob Types and Variations
 
+Some mob types support variations other than just `"default"`.
 ```json
 {
-  "Sheep": ["default"],
-  "Stag": ["default"],
-  "Wildcat": [
+  "Pig": ["default"],
+  "Cow": ["default", "cream"],
+  "Sheep": [
     "default",
+    "black",
+    "red",
+    "orange",
+    "pink",
+    "purple",
+    "yellow",
+    "blue",
+    "brown",
+    "cyan",
+    "gray",
+    "green",
+    "lightBlue",
+    "lightGray",
+    "lime",
+    "magenta"
+  ],
+  "Horse": ["default", "black", "brown", "cream"],
+  "Cave Golem": ["default", "iron"],
+  "Draugr Zombie": ["default", "longHairChestplate", "longHairClothed", "shortHairClothed"],
+  "Draugr Skeleton": ["default"],
+  "Frost Golem": ["default"],
+  "Frost Zombie": ["default", "longHairChestplate", "shortHairClothed"],
+  "Frost Skeleton": ["default"],
+  "Draugr Knight": ["default"],
+  "Wolf": ["default", "white", "brown", "grey", "spectral"],
+  "Bear": ["default"],
+  "Deer": ["default"],
+  "Stag": ["default"],
+  "Gold Watermelon Stag": ["default"],
+  "Gorilla": ["default"],
+  "Wildcat": ["default",
     "tabby",
     "grey",
     "black",
@@ -451,29 +517,79 @@ Spirit Gorilla: "default"
     "siamese",
     "leopard"
   ],
-  "Wolf": [
-    "default",
-    "white",
-    "brown",
-    "grey",
-    "spectral"
-  ],
-  "Bear": ["default"],
-  "Cave Golem": ["default", "iron"],
-  "Cow": ["default", "cream"],
-  "Deer": ["default"],
-  "Draugr Huntress": ["default", "chainmail"],
-  "Draugr Knight": ["default"],
-  "Draugr Skeleton": ["default"],
-  "Draugr Zombie": ["default", "longHairChestplate", "longHairClothed", "shortHairClothed"],
-  "Frost Golem": ["default"],
-  "Frost Skeleton": ["default"],
-  "Frost Zombie": ["default", "longHairChestplate", "shortHairClothed"],
-  "Gold Watermelon Stag": ["default"],
-  "Gorilla": ["default"],
-  "Horse": ["default", "black", "brown", "cream"],
-  "Iron Golem": ["default"],
   "Magma Golem": ["default"],
-  "Pig": ["default"]
+  "Draugr Huntress": ["default", "chainmail"],
+  "Spirit Golem": ["default"],
+  "Spirit Wolf": ["default"],
+  "Spirit Bear": ["default"],
+  "Spirit Stag": ["default"],
+  "Spirit Gorilla": ["default"]
 }
+```
+
+## Extra Information
+
+Quick helper to get all current values of mob settings for a specific mob.
+```js
+const mobSettingNames = [
+  "variation",
+  "name",
+  "maxHealth",
+  "initialHealth",
+  "idleSound",
+  "attackSound",
+  "secondaryAttackSound",
+  "hurtSound",
+  "onDeathItemDrops",
+  "onDeathParticleTexture",
+  "onDeathAura",
+  "baseWalkingSpeed",
+  "baseRunningSpeed",
+  "walkingSpeedMultiplier",
+  "runningSpeedMultiplier",
+  "jumpCount",
+  "baseJumpImpulseXZ",
+  "baseJumpImpulseY",
+  "jumpMultiplier",
+  "runAwayRadius",
+  "chaseRadius",
+  "territoryRadius",
+  "hostilityRadius",
+  "stoppingRadius",
+  "attackInterval",
+  "attackRadius",
+  "secondaryAttackRadius",
+  "attackDamage",
+  "secondaryAttackDamage",
+  "attackImpulse",
+  "secondaryAttackImpulse",
+  "heldItemName",
+  "attackItemName",
+  "secondaryAttackItemName",
+  "attackEffectName",
+  "attackEffectDuration",
+  "tameInfo",
+  "onTamedHealthMultiplier",
+  "ownerDbId",
+  "minFollowingRadius",
+  "maxFollowingRadius",
+  "isRideable",
+  "healthRegen",
+  "ridingSpeedMult",
+  "metaInfo",
+  "petInfo",
+];
+
+getMobFullSettings = (mobId) => {
+  if (!api.checkValid(mobId)) {
+    return null;
+  }
+  const out = {};
+  let name;
+  for (let i = 0, n = mobSettingNames.length; i < n; i++) {
+    name = mobSettingNames[i];
+    out[name] = api.getMobSetting(mobId, name);
+  }
+  return out;
+};
 ```

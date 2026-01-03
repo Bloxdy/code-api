@@ -1,8 +1,8 @@
-# Client Options
+﻿# Client Options
 
-A player's "Client Options" impact what they are capable of doing in the world. For example you can give them a double jump by setting the player's `airJumpCount` to `1`. Alternatively their health bar can be increased by setting their `maxHealth` to `200`. These API methods allow you to modify the client options:
+A player's "Client Options" impact what they are capable of doing in the world. For example you can give them a double jump by setting the player's `airJumpCount` to `1`. Alternatively their health bar can be increased by setting their `maxHealth` to `200`.
 
-## API functions for modifying Client Options
+## API Methods
 ```js
 /**
  * Modify a client option at runtime and send to the client if it changed
@@ -48,13 +48,12 @@ setClientOptions(playerId, optionsObj)
 setClientOptionToDefault(playerId, option)
 ```
 
-## Options list
-Here is the full list of available client options:
+## Client Options and their Values
 > [!NOTE]
-> This list has been reorganized compared to the Official documentation, but all the Client Options are here.
+> This list has been reorganized compared to the official documentation.
 
 
-### Can Options
+### "`can`" options
 ```js
 /**
  * Whether the player can change blocks
@@ -127,7 +126,7 @@ canPickBlocks = true
 canClimbWalls = false
 ```
 
-### Can't Options
+### "`can't`" options
 ```js
 /**
  * Error message for when the player fails to change a block
@@ -152,7 +151,7 @@ cantBreakError = null
 cantBuildError = null
 ```
 
-### Use Options
+### "`use`" options
 ```js
 /**
  * Whether to allow the player to use the inventory
@@ -170,7 +169,7 @@ useInventory = true
 useFullInventory = true
 ```
 
-### Show Options
+### "`show`" options
 ```js
 /**
  * Whether to show the player in unloaded chunks
@@ -211,7 +210,7 @@ numClosestPlayersVisible = null
 showProgressBar = false
 ```
 
-### Speed Options
+### `"speed"` options
 ```js
 /**
  * Speed multiplier for the player.
@@ -242,7 +241,7 @@ crouchingSpeed = 2
 flySpeedMultiplier = 1.5
 ```
 
-### Jump Options
+### "`jump`" options
 ```js
 /**
  * Amount of jump power the player has
@@ -268,7 +267,7 @@ airJumpCount = 0
 bounciness = 0
 ```
 
-### Bunnyhop Options
+### "`bunnyhop`" options
 ```js
 /**
  * Maximum multiplier for jump height when bunnyhopping
@@ -277,7 +276,7 @@ bounciness = 0
 bunnyhopMaxMultiplier = 1.3
 ```
 
-### Music Options
+### "`music`" options
 ```js
 /**
  * The music track to play in the background
@@ -292,7 +291,7 @@ music = null
 musicVolumeLevel = 0.6
 ```
 
-### Camera Options
+### "`camera`" options
 ```js
 /**
  * RGBA array [r, g, b, a] for camera screen tint effect. Values fall between 0 and 1.
@@ -325,7 +324,7 @@ zoomOutDistance = 3
 maxPlayerZoom = 15
 ```
 
-### Fog Options
+### "`fog`" options
 ```js
 /**
  * Fog distance which overrides graphic settings. Uses graphic settings if null.
@@ -342,7 +341,7 @@ fogChunkDistanceOverride = null
 fogColourOverride = null
 ```
 
-### Leaderboard Options
+### "`leaderboard`" options
 ```js
 /**
  * Columns of the lobby leaderboard
@@ -359,7 +358,7 @@ lobbyLeaderboardInfo = {
     }
 ```
 
-### Text Options
+### "`text`" options
 ```js
 /**
  * Large text to display in the middle of the screen
@@ -418,7 +417,7 @@ crosshairText = ""
 inventoryItemsMoveable = true
 ```
 
-### Health and Shield Options
+### "`health`" and "`shield`" options
 ```js
 /**
  * Whether the player is invincible
@@ -483,7 +482,7 @@ healthRegenInterval = 4000
 healthRegenStartAfter = 5000
 ```
 
-### Effect Options
+### "`effect`" options
 ```js
 /**
  * Duration of the +damage effect from plum
@@ -540,7 +539,7 @@ splashPotionEffectDuration = 8000
 arrowPotionEffectDuration = 6000
 ```
 
-### Respawn Options
+### "`respawn`" options
 ```js
 /**
  * After dying the player can respawn after this many seconds
@@ -581,7 +580,7 @@ respawnButtonText = "general:respawn"
 killstreakDuration = 200000000
 ```
 
-### Damage Options
+### "`damage`" options
 ```js
 /**
  * Damage multiplier for all types of damage
@@ -621,7 +620,7 @@ dealingDamageDefaultMultiplier = 1
  */
 receivingDamageMultiplier = 1
 ```
-#### Fall Damage Options
+
 ```js
 /**
  * Whether to deal damage to the player when they fall
@@ -629,7 +628,7 @@ receivingDamageMultiplier = 1
  */
 fallDamage = false
 ```
-#### Stomp Damage Options
+
 ```js
 /**
  * Mult for the damage done by "stomping" on a lifeform, i.e.: falling on them wearing Spiked Boots.
@@ -637,6 +636,7 @@ fallDamage = false
  */
 stompDamageMultiplier = 0
 ```
+
 ```js
 /**
  * Radius around the player that will be affected by the stomp damage.
@@ -645,7 +645,7 @@ stompDamageMultiplier = 0
 stompDamageRadius = 0
 ```
 
-### Knockback Options
+### "`knockback`" options
 ```js
 /**
  * Multiplier for horizontal knockback when dealing damage
@@ -662,7 +662,7 @@ horizontalKnockbackMultiplier = 1
 verticalKnockbackMultiplier = 1
 ```
 
-### Kart Options
+### "`kart`" options
 ```js
 /**
  * Speed multiplier for karts
@@ -703,7 +703,7 @@ kartGroundHeight = 4
 kartApproachMaxSpeedScalar = 1
 ```
 
-### Friction Options
+### "`friction`" options
 ```js
 /**
  * Amount of friction to apply to airborne players.
@@ -752,17 +752,7 @@ airAccScale = 1
 airMomentumConservation = false
 ```
 
-### canEditCode Options
-```js
-/**
- * Normally only the world owner can edit code blocks and lobby code, and you can use this option to override that.
- * Remember as owner of the world you are responsible for any code anyone writes that could break Bloxd rules.
- * @type {boolean}
- */
-canEditCode = false
-```
-
-### Aura Options
+### "`aura`" options
 ```js
 /**
  * How much Aura XP is required per level.
@@ -779,7 +769,7 @@ auraPerLevel = 100
 maxAuraLevel = 0
 ```
 
-### Misc
+### "`misc`" options
 ```js
 /**
  * Mult for the radius within which mobs can detect the player when crouching.
@@ -866,73 +856,73 @@ type CustomTextStyling = (string | EntityName | TranslatedText | StyledIcon | St
 ```
 
 ```js
-type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Health" | "HealthShield"
+type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Blindness" | "Pickpocketer" | "Lifesteal" | "Bounciness" | "Air Walk" | "Wall Climbing" | "Thorns" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Self Yield" | "Friends" | "Riding Speed" | "Feed Aura" | "Double Poop" | "Mob Slayer" | "Rainbow Wool" | "Pack Leader" | "Max Health" | "Poison Claws" | "Mob Yield" | "Antlers Bonus" | "Health" | "HealthShield" | "Cross" | "Friendship" | "Dotted Friendship" | "Hunger" | "Empty Hunger" | "Pixelated Heart" | "Question Mark"
 ```
 
 ```js
 type StyledIcon = {
-    icon: string
-    style?: {
-        color?: string
-        colour?: string
-        fontSize?: string
-        opacity?: number
-    }
+	icon: string
+	style?: {
+		color?: string
+		colour?: string
+		fontSize?: string
+		opacity?: number
+	}
 }
 ```
 
 ```js
 type StyledText = {
-    str: string | EntityName | TranslatedText
-    style?: {
-        color?: string
-        colour?: string
-        fontWeight?: string
-        fontSize?: string
-        fontStyle?: string
-        opacity?: number
-    }
-    clickableUrl?: string
+	str: string | EntityName | TranslatedText
+	style?: {
+	  color?: string
+	  colour?: string
+	  fontWeight?: string
+	  fontSize?: string
+	  fontStyle?: string
+	  opacity?: number
+	}
+	clickableUrl?: string
 }
 ```
 
 ```js
 type TranslatedText = {
-    translationKey: string
-    params?: Record<string, string | number | boolean | EntityName>
+	translationKey: string
+	params?: Record<string, string | number | boolean | EntityName>
 }
 ```
 
 ```js
 type EarthSkyBox = {
-    type: "earth"
-    inclination?: number
-    turbidity?: number
-    infiniteDistance?: number
-    luminance?: number
-    yCameraOffset?: number
-    azimuth?: number
-    // Not part of sky model by default; heavily tint to a vertex color
-    vertexTint?: [number, number, number]
+	type: "earth"
+	inclination?: number
+	turbidity?: number
+	infiniteDistance?: number
+	luminance?: number
+	yCameraOffset?: number
+	azimuth?: number
+	// Not part of sky model by default; heavily tint to a vertex color
+	vertexTint?: [number, number, number]
 }
 ```
 
 ```js
 enum WalkThroughType {
-    CANT_WALK_THROUGH = 0,
-    CAN_WALK_THROUGH = 1,
-    DEFAULT_WALK_THROUGH = 2,
+	CANT_WALK_THROUGH = 0,
+	CAN_WALK_THROUGH = 1,
+	DEFAULT_WALK_THROUGH = 2,
 }
 ```
 
 ```js
 SkyBoxOptions = [
-        default,
-        earth,
-        interstellar,
-        space_lightblue,
-        space_blue,
-        space_red,
-        underwater
+	default,
+	earth,
+	interstellar,
+	space_lightblue,
+	space_blue,
+	space_red,
+	underwater
 ]
 ```

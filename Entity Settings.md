@@ -2,7 +2,8 @@
 
 An "Entity Setting" impacts how a player sees or interacts with another player or entity.
 E.g. Player 1 could have an otherEntitySetting for entity 2 as opacity set to 0.5. This means player 1 sees entity 2 as partly see-through. Player1 is the relevant player, player2 is the targeted player.
-These API methods allow you to modify entity settings:
+
+## API Methods
 
 ```js
 /**
@@ -20,7 +21,7 @@ setTargetedPlayerSettingForEveryone(targetedPlayerId, settingName, settingValue,
 
 ```js
 /**
- * Set a player's other-entity setting for every player in the game.
+ * Set a player's other-entity setting for every lifeform in the game.
  * includeNewJoiners=true means that the player will have the setting applied to new joiners.
  *
  * @param {PlayerId} playerId
@@ -69,19 +70,18 @@ setOtherEntitySettings(relevantPlayerId, targetedEntityId, settingsObject)
 getOtherEntitySetting(relevantPlayerId, targetedEntityId, settingName)
 ```
 
-Here is the full list of available entity settings:
-> [!TIP]
-> If you are having issues with Bloxd.io not reconizing these settings, then try placing them in quotes `''`. Example: ``` api.setEveryoneSettingForPlayer(myId, 'canAttack', false, true)```. Sometimes you may also need to do the same for the answer if it's not a `boolean` value.
+## Entity Settings and their Values
 
 ```js
 /**
  * Opacity of the entity
- * Fractional values are currently treated as 1 for performance reasons
- * 0 opacity will hide the entity and its name tag
+ * Fractional values will use dithering
+ * 0 opacity will hide the entity but not its name tag
  * @type {number}
  */
 opacity = 1
 ```
+
 ```js
 /**
  * Rendering order of the entity, higher zIndex renders on top of lower ones.
@@ -89,6 +89,7 @@ opacity = 1
  */
 zIndex = 0
 ```
+
 ```js
 /**
  * Applies a colour tint to the entity when set, like the red tint when an entity gets hurt.
@@ -96,6 +97,7 @@ zIndex = 0
  */
 overlayColour = null
 ```
+
 ```js
 /**
  * Whether the entity can attack other entities, ignored if the targeted entity is invincible
@@ -183,6 +185,7 @@ nameColour = "default"
 ```
 
 ## Extra Information
+
 ```js
 type EntityMeshScalingMap = { [key in "TorsoNode" | "HeadMesh" | "ArmRightMesh" | "ArmLeftMesh" | "LegLeftMesh" | "LegRightMesh"]?: number[] }
 ```
