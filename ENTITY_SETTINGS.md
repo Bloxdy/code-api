@@ -145,8 +145,8 @@ nameTagInfo = null
 hasPriorityNametag = false
 
 /**
- * The colour of the player's name.
- * @type {string}
+ * The colour of the entity's name.
+ * @type {"default" | "yellow" | "lime" | "green" | "aqua" | "cyan" | "blue" | "purple" | "pink" | "red" | "orange"}
  */
 nameColour = "default"
 ```

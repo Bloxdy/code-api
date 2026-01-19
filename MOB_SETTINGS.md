@@ -225,6 +225,16 @@ attackItemName = null
 secondaryAttackItemName = null
 
 /**
+ * @type {boolean}
+ */
+swingArmOnAttack = true
+
+/**
+ * @type {boolean}
+ */
+swingArmOnSecondaryAttack = true
+
+/**
  * @type {string}
  */
 attackEffectName = null
@@ -233,6 +243,19 @@ attackEffectName = null
  * @type {number}
  */
 attackEffectDuration = 0
+
+/**
+ * @type { { cooldown: number; range: number; sound: string; delay: number; minDestinationRadius: number; maxDestinationRadius: number; swingArm: boolean; particleOpts: TempMobParticleOpts; } }
+ */
+warpTargetSpecialAttackInfo = null
+
+/**
+ * @type { { range: number; particleOpts: {
+ *     colorGradients: ColorGradient[];
+ *     texture: string;
+ * }; } }
+ */
+combatTetherInfo = null
 
 /**
  * @type {MobTameInfo}
@@ -401,4 +424,5 @@ Spirit Wolf: "default"
 Spirit Bear: "default"
 Spirit Stag: "default"
 Spirit Gorilla: "default"
+Draugr Warper: "default"
 ```

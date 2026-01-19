@@ -251,7 +251,7 @@ setHealth(entityId, newHealth, whoDidDamage, increaseMaxHealthIfNeeded)
  * @param {LifeformId} hittingEId
  * @param {LifeformId} hitEId
  * @param {number[]} dirFacing
- * @param {PNull<PlayerBodyPart>} [bodyPartHit]
+ * @param {PNull<LifeformBodyPart>} [bodyPartHit]
  * @param { {
  *     damage?: PNull<number>
  *     heldItemName?: PNull<string>
@@ -719,12 +719,13 @@ isMobile(playerId)
  * @param {number} z
  * @param {string} itemName - Name of the item. Valid names can be found in blockMetadata.ts and itemMetadata.ts
  * @param {PNull<number>} [amount] - The amount of the item to include in the drop - so when the player picks up the item drop, they get this many of the item.
- * @param {boolean} [mergeItems] - Whether to merge the item into an nearby item of same type, if one exists. Defaults to false.
+ * @param {boolean} [mergeItems] - Whether to merge the item into a nearby item of same type, if one exists. Defaults to false.
  * @param {ItemAttributes} [attributes] - Attributes of the item being dropped
  * @param {number} [timeTillDespawn] - Time till the item automatically despawns in milliseconds. Max of 5 mins.
+ * @param {PNull<LifeformId>} [dropperId] - Who dropped the item.
  * @returns {PNull<EntityId>} - the id you can pass to setCantPickUpItem, or null if the item drop limit was reached
  */
-createItemDrop(x, y, z, itemName, amount, mergeItems, attributes, timeTillDespawn)
+createItemDrop(x, y, z, itemName, amount, mergeItems, attributes, timeTillDespawn, dropperId)
 
 /**
  * Prevent a player from picking up an item. itemId returned by createItemDrop
@@ -1573,9 +1574,10 @@ getPlayerPhysicsState(playerId)
  * @param {PlayerId} playerId
  * @param {EntityId} eId
  * @param {number[]} [offset]
+ * @param {boolean} [followsPlayerRotation]
  * @returns {void}
  */
-addFollowingEntityToPlayer(playerId, eId, offset)
+addFollowingEntityToPlayer(playerId, eId, offset, followsPlayerRotation)
 
 /**
  * Remove following entity from player
@@ -1735,7 +1737,7 @@ applyAuraChange(playerId, auraDiff)
  * @param {string} callbackName
  * @param {any} defaultValue
  */
-api.setCallbackValueFallback(callbackName, defaultValue)
+setCallbackValueFallback(callbackName, defaultValue)
 ```
 
 ## Glossary of Referenced Types
@@ -1745,7 +1747,9 @@ These 'types' can't be referenced by your code, but they help explain some of th
 ```js
 type CustomTextStyling = (string | EntityName | TranslatedText | StyledIcon | StyledText)[]
 
-type EntityMeshScalingMap = { [key in "TorsoNode" | "HeadMesh" | "ArmRightMesh" | "ArmLeftMesh" | "LegLeftMesh" | "LegRightMesh"]?: number[] }
+type EntityMeshScalingMap = {
+    [key in "TorsoNode" | "HeadMesh" | "ArmRightMesh" | "ArmLeftMesh" | "LegLeftMesh" | "LegRightMesh"]?: number[]
+}
 
 type EntityName = {
     entityName: string
@@ -1755,7 +1759,7 @@ type EntityName = {
     }
 }
 
-type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Blindness" | "Pickpocketer" | "Lifesteal" | "Bounciness" | "Air Walk" | "Wall Climbing" | "Thorns" | "Draugr Knight Head" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Self Yield" | "Friends" | "Riding Speed" | "Feed Aura" | "Double Poop" | "Mob Slayer" | "Rainbow Wool" | "Pack Leader" | "Max Health" | "Poison Claws" | "Mob Yield" | "Antlers Bonus" | "Health" | "HealthShield" | "Cross" | "Friendship" | "Dotted Friendship" | "Hunger" | "Empty Hunger" | "Pixelated Heart" | "Question Mark"
+type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Blindness" | "Pickpocketer" | "Lifesteal" | "Bounciness" | "Air Walk" | "Wall Climbing" | "Thorns" | "Poopy" | "Draugr Knight Head" | "Draugr Warper Head" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Self Yield" | "Friends" | "Riding Speed" | "Feed Aura" | "Double Poop" | "Mob Slayer" | "Rainbow Wool" | "Pack Leader" | "Max Health" | "Poison Claws" | "Mob Yield" | "Antlers Bonus" | "Health" | "HealthShield" | "Cross" | "Friendship" | "Dotted Friendship" | "Hunger" | "Empty Hunger" | "Pixelated Heart" | "Question Mark"
 
 enum ParticleSystemBlendMode {
     // Source color is added to the destination color without alpha affecting the result

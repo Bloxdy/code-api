@@ -274,7 +274,7 @@ showProgressBar = false
 showKillfeed = true
 
 /**
- * Allows player to select a channel that is passed as argument to onPlayerChat. See SharedTypes.ts for expected format
+ * Allows player to select a channel that is passed as argument to onPlayerChat. See engineGameplayTypes.ts for expected format
  * @type { { channelName: string; elementContent: string | CustomTextStyling; elementBgColor: string; }[] }
  */
 chatChannels = null
@@ -528,13 +528,6 @@ airMomentumConservation = false
  * @type {boolean}
  */
 fallDamage = false
-
-/**
- * Normally only the world owner can edit code blocks and lobby code, and you can use this option to override that.
- * Remember as owner of the world you are responsible for any code anyone writes that could break Bloxd rules.
- * @type {boolean}
- */
-canEditCode = false
 
 /**
  * How much Aura XP is required per level.

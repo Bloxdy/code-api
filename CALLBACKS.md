@@ -88,6 +88,7 @@ playerCommand = (playerId, command) => {
  * the value for a playerId being false means that player won't receive the message.
  * Otherwise playerId values should be an object with (optional) keys
  * prefixContent and chatContent to modify the prefix and the chat.
+ * World code is not permitted to specify chatContent, it will be ignored.
  * @param {PlayerId} playerId - The id of the player that sent the message
  * @param {string} chatMessage - The message that the player sent
  * @param {string} [channelName] - The name of the channel that the message was sent in
@@ -340,8 +341,9 @@ onWorldChangeBlock = (x, y, z, fromBlock, toBlock, initiatorDbId, extraInfo) => 
  * Called when a mesh entity is created
  * @param {EntityId} eId - The id of the mesh entity
  * @param {string} type - The type of mesh entity
+ * @param {EntityId | null} initiatorId - The id of the entity that created the mesh entity, if any
  */
-onCreateBloxdMeshEntity = (eId, type) => {}
+onCreateBloxdMeshEntity = (eId, type, initiatorId) => {}
 
 /**
  * Called when a entity collides with another entity
@@ -426,7 +428,7 @@ onPlayerAttack = (playerId) => {}
  * @param {PlayerId} damagedPlayer - The id of the player being damaged
  * @param {number} damageDealt - The amount of damage dealt
  * @param {string} withItem - The item used to attack
- * @param {PlayerBodyPart} bodyPartHit - The body part hit
+ * @param {LifeformBodyPart} bodyPartHit - The body part hit
  * @param {PlayerDbId} damagerDbId - The database id of the player attacking
  */
 onPlayerDamagingOtherPlayer = (attackingPlayer, damagedPlayer, damageDealt, withItem, bodyPartHit, damagerDbId) => {}
@@ -439,8 +441,9 @@ onPlayerDamagingOtherPlayer = (attackingPlayer, damagedPlayer, damageDealt, with
  * @param {MobId} mobId - The id of the mob being damaged
  * @param {number} damageDealt - The amount of damage dealt
  * @param {string} withItem - The item used to attack
+ * @param {PlayerDbId} damagerDbId - The database id of the player attacking
  */
-onPlayerDamagingMob = (playerId, mobId, damageDealt, withItem) => {}
+onPlayerDamagingMob = (playerId, mobId, damageDealt, withItem, damagerDbId) => {}
 
 /**
  * Called when a mob is damaging a player
