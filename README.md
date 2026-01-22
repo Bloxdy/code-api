@@ -1533,7 +1533,7 @@ scalePlayerMeshNodes(playerId, nodeScales)
  *
  * @param {EntityId} eId
  * @param {EntityNamedNode} node - node to attach to
- * @param {PNull<MeshType>} type - if null, detaches mesh from this node
+ * @param {PNull<MeshType>} type - if null, detaches mesh from this node. Supports "Person", "BloxdBlock", null.
  * @param {MeshEntityOpts[MeshType]} [opts]
  * @param {[number, number, number]} [offset]
  * @param {[number, number, number]} [rotation]
