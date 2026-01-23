@@ -596,4 +596,17 @@ bounciness = 0
  * @type {boolean}
  */
 canClimbWalls = false
+
+/**
+ * Distance in blocks over which we reduce the opacity of entities as they approach the camera.
+ * @type {number}
+ */
+proximityFadeDistance = 0.625
+
+/**
+ * Minimum opacity multiplier reachable when fading entities based on camera proximity.
+ * The player's own model is always able to fade to 0, and entities being ridden stay fully opaque (as if this value was 1).
+ * @type {number}
+ */
+proximityFadeMinOpacity = 0.5
 ```

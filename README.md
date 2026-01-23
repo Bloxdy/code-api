@@ -151,7 +151,7 @@ playerIsLoggedIn(playerId)
  * as the playerIds if available, of the party leader and members.
  *
  * @param {PlayerId} playerId
- * @returns {PNull<{ playerDbIds: PlayerDbId[] }>}
+ * @returns {PNull<{ partyCode: string; playerDbIds: PlayerDbId[] }>}
  */
 getPlayerPartyWhenJoined(playerId)
 
@@ -1556,9 +1556,10 @@ setPlayerPose(playerId, pose, poseOffset)
  *
  * @param {PlayerId} playerId
  * @param {PlayerPhysicsStateData} physicsState
+ * @param {[number, number, number]} [positionOffset] - Optional offset to adjust the player's collision box
  * @returns {void}
  */
-setPlayerPhysicsState(playerId, physicsState)
+setPlayerPhysicsState(playerId, physicsState, positionOffset)
 
 /**
  * Get physics state for player
