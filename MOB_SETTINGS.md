@@ -210,6 +210,16 @@ attackImpulse = 0
 secondaryAttackImpulse = 0
 
 /**
+ * @type { { burstAttackIntervals: readonly number[]; } }
+ */
+burstAttackInfo = null
+
+/**
+ * @type { { burstAttackIntervals: readonly number[]; } }
+ */
+secondaryBurstAttackInfo = null
+
+/**
  * @type {string}
  */
 heldItemName = null
@@ -256,6 +266,11 @@ warpTargetSpecialAttackInfo = null
  * }; } }
  */
 combatTetherInfo = null
+
+/**
+ * @type { { probability: number; impulse: number; minAngle: number; maxAngle: number; } }
+ */
+evadeInfo = null
 
 /**
  * @type {MobTameInfo}
