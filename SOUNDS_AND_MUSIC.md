@@ -1,8 +1,32 @@
-# Sound Names
+# Sounds and Songs
 
-- These are the strings you can give to functions that take a `soundName` as input
-- If you want a random similar sound then you can remove the number from the sound name of your choice
-- If a sound isn't working then there might be an error in your console explaining why
+This document lists all available sound effects and songs that can be used in game modes.
+
+---
+
+## Sound Effects
+
+Sound effects are short audio clips (e.g., footsteps, hits, ambient sounds). Use the `playSound`, or `broadcastSound` API methods.
+
+### API Usage
+
+```ts
+// Play a sound for a specific player
+api.playSound(playerId, soundName, volume, rate, posSettings?)
+
+// Broadcast a sound to all players (or all except one)
+api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
+```
+
+**Parameters:**
+- `soundName`: One of the sound names listed below
+- `volume`: 0.0 to 1.0
+- `rate`: Playback rate (1.0 = normal speed, 0.5 = half speed, 2.0 = double speed)
+- `posSettings` (optional): `{ playerIdOrPos: PlayerId | number[], maxHearDist?: number, refDistance?: number }`
+
+**Tip:** If you want a random similar sound, remove the number suffix from the sound name (e.g., use `"grass"` instead of `"grass1"`).
+
+### Available Sounds (324 total)
 
 `bass`
 `bassattack`
@@ -328,3 +352,70 @@
 `ZombieHurt2`
 `ZombieHurt3`
 `ZombieHurt4`
+
+---
+
+## Music
+
+Music tracks are longer audio for background ambiance. Use the `setClientOption` API method with the `"music"` option.
+
+### API Usage
+
+```ts
+// Play a song for a specific player
+api.setClientOption(playerId, "music", "Adigold - Dreamless Sleep")
+
+// Stop the current song
+api.setClientOption(playerId, "music", null)
+```
+
+**Note:** Unlike sound effects, songs are played via client options, not the `playSound` API. Only one song plays at a time per player; setting a new song replaces the current one.
+
+### Available Songs (44 total)
+
+| Song Name | Duration |
+|-----------|----------|
+| `Adigold - A Place To Be Free` | 2:11 |
+| `Adigold - Butterfly Effect` | 1:24 |
+| `Adigold - Dreamless Sleep` | 1:58 |
+| `Adigold - Frozen Pulse` | 1:39 |
+| `Adigold - Frozen Skies` | 2:45 |
+| `Adigold - Healing Thoughts` | 1:59 |
+| `Adigold - Here Forever` | 2:43 |
+| `Adigold - Just a Little Hope` | 1:48 |
+| `Adigold - Just Like Heaven` | 1:22 |
+| `Adigold - Memories Remain` | 2:06 |
+| `Adigold - Place To Be` | 2:36 |
+| `Adigold - The Riverside` | 2:28 |
+| `Adigold - The Wonder` | 2:09 |
+| `Adigold - Vetrar (Cut B)` | 1:30 |
+| `Awkward Comedy Quirky` | 0:29 |
+| `battle-ship-111902` | 1:26 |
+| `cdk-Silence-Await` | 3:18 |
+| `corsairs-studiokolomna-main-version-23542-02-33` | 2:34 |
+| `ghost-Reverie-small-theme` | 0:41 |
+| `happy` | 3:01 |
+| `Heroic-Demise-New` | 5:02 |
+| `I-am-the-Sea-The-Room-4` | 3:21 |
+| `Juhani Junkala [Retro Game Music Pack] Ending` | 0:44 |
+| `Juhani Junkala [Retro Game Music Pack] Level 1` | 1:14 |
+| `Juhani Junkala [Retro Game Music Pack] Level 2` | 1:12 |
+| `Juhani Junkala [Retro Game Music Pack] Level 3` | 1:21 |
+| `Juhani Junkala [Retro Game Music Pack] Title Screen` | 0:11 |
+| `LonePeakMusic-Highway-1` | 2:27 |
+| `Mojo Productions - Pirates` | 1:54 |
+| `Mojo Productions - Sneaky Jazz` | 1:43 |
+| `Mojo Productions - The Sneaky` | 1:50 |
+| `Mojo Productions - The Sneaky Jazz` | 2:20 |
+| `progress` | 2:34 |
+| `raise-the-sails-152124` | 1:44 |
+| `ramblinglibrarian-I-Have-Often-T` | 3:42 |
+| `Slow-Motion-Bensound` | 3:27 |
+| `snowflake-Ethereal-Space` | 1:16 |
+| `the-epic-adventure-131399` | 2:01 |
+| `TownTheme` | 1:37 |
+| `The Suspense Ambient` | 1:59 |
+| `Epic1` | 2:16 |
+| `Epic2` | 2:23 |
+| `Emotional Epic` | 1:52 |
+| `Enemy Marked` | 1:29 |
