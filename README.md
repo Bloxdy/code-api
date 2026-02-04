@@ -842,7 +842,7 @@ setCanChangeBlock(playerId, x, y, z)
 setCantChangeBlock(playerId, x, y, z)
 
 /**
- * Lets a player Change a block type. Valid names are those contained within blockMetadata.ts and 'Air'
+ * Lets a player change a block type. Valid names are those contained within blockMetadata.ts and 'Air'
  * Less priority than cant change block pos/can change block rect
  *
  * @param {PlayerId} playerId
@@ -852,7 +852,7 @@ setCantChangeBlock(playerId, x, y, z)
 setCanChangeBlockType(playerId, blockName)
 
 /**
- * Stops a player from Changeing a block type. Valid names are those contained within blockMetadata.ts and 'Air'
+ * Stops a player from changing a block type. Valid names are those contained within blockMetadata.ts and 'Air'
  * Less priority than can change block pos/can change block rect
  *
  * @param {PlayerId} playerId
