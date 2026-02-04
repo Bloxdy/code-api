@@ -647,6 +647,8 @@ Draugr Knight Spawn Orb
 Draugr Huntress Spawn Orb
 Magma Golem Spawn Orb
 Draugr Warper Spawn Orb
+Frost Wraith Spawn Orb
+Draugr Reaver Spawn Orb
 Mob Catcher
 Caught Mob Pig Default
 Caught Mob Cow Default
@@ -710,6 +712,8 @@ Caught Mob Draugr_Huntress Default
 Caught Mob Draugr_Huntress Chainmail
 Caught Mob Magma_Golem Default
 Caught Mob Draugr_Warper Default
+Caught Mob Frost_Wraith Default
+Caught Mob Draugr_Reaver Default
 Timed Spike Bomb
 Timed Spike Bomb|meta|charging2
 Timed Spike Bomb|meta|charging3
@@ -855,3 +859,27 @@ Porridge
 Poop
 Fertiliser
 Medkit
+Wood Spear
+Stone Spear
+Iron Spear
+Gold Spear
+Diamond Spear
+Moonstone Spear
+Wood Dagger
+Stone Dagger
+Iron Dagger
+Gold Dagger
+Diamond Dagger
+Moonstone Dagger
+Wood Club
+Stone Club
+Iron Club
+Gold Club
+Diamond Club
+Moonstone Club
+Wood Mace
+Stone Mace
+Iron Mace
+Gold Mace
+Diamond Mace
+Moonstone Mace

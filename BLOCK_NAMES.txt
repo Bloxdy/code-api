@@ -1,4 +1,4 @@
-# Block Names (941 blocks)
+# Block Names (943 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -967,3 +967,5 @@ Small Red Pod
 _Small Red Pod Mid
 _Small Red Pod Top
 INTERNAL_MESH_Gold Trophy
+Frost Wraith Spawner Block
+Draugr Reaver Spawner Block

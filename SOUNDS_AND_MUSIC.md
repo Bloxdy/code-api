@@ -26,7 +26,7 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 **Tip:** If you want a random similar sound, remove the number suffix from the sound name (e.g., use `"grass"` instead of `"grass1"`).
 
-### Available Sounds (324 total)
+### Available Sounds (337 total)
 
 `bass`
 `bassattack`
@@ -161,6 +161,10 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `lowDrum1`
 `lowDrum2`
 `lowDrum3`
+`magicAccent1`
+`magicAccent2`
+`magicAccent3`
+`magicAccent4`
 `metalDoorKnock`
 `ominousBellHit`
 `pickUp`
@@ -188,6 +192,12 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `pistol_shot_04`
 `pistol_shot_05`
 `pulseFromTheDark`
+`reaverAttack1`
+`reaverAttack2`
+`reaverAttack3`
+`reaverGrunt1`
+`reaverGrunt2`
+`reaverGrunt3`
 `reel`
 `rifle_cock_01`
 `rifle_cock_02`
@@ -343,6 +353,9 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `wood2`
 `wood3`
 `wood4`
+`wraithGrunt1`
+`wraithGrunt2`
+`wraithHurt`
 `zapAccent1`
 `zapAccent2`
 `ZombieGrunt1`

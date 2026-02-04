@@ -69,6 +69,34 @@ speedMultiplier = 1
 crouchingSpeed = 2
 
 /**
+ * Walking speed for the player.
+ * STRONGLY recommend using `speedMultiplier` unless you have a specific use case for this, walkingSpeed doesn't make UX sense on mobile.
+ * (Walking speed ignored for mobile players, mobile player speed is determined by joystick input and the max of runningSpeed & walkingSpeed).
+ *
+ * Players are used to the default bloxd movement behaviour and speed,
+ * and may be put off from your game if different muscle memory is required.
+ * We suggest applying speed or slowness effects instead, using api.applyEffect.
+ *
+ * The only use case for walkingSpeed/runningSpeed over speedMultiplier or speed effects is to disable running or to inverse walking/running (so you run by default and e.g. hold shift to go slower).
+ * @type {number}
+ */
+walkingSpeed = 4
+
+/**
+ * Running speed for the player.
+ * STRONGLY recommend using `speedMultiplier` unless you have a specific use case for this, runningSpeed doesn't make UX sense on mobile.
+ * (Walking speed is ignored for mobile players, mobile player speed is determined by joystick input and the max of runningSpeed & walkingSpeed).
+ *
+ * Players are used to the default bloxd movement behaviour and speed,
+ * and may be put off from your game if different muscle memory is required.
+ * We suggest applying speed or slowness effects instead, using api.applyEffect.
+ *
+ * The only use case for walkingSpeed/runningSpeed over speedMultiplier or speed effects is to disable running or to inverse walking/running (so you run by default and e.g. hold shift to go slower).
+ * @type {number}
+ */
+runningSpeed = 7
+
+/**
  * Amount of jump power the player has
  * @type {number}
  */
@@ -103,6 +131,18 @@ musicVolumeLevel = 0.6
  * @type {string | EarthSkyBox}
  */
 skyBox = "default"
+
+/**
+ * Minimum size of region around player where chunks are loaded.
+ * Format [horizontalMinChunkRadius, verticalMinChunkRadius].
+ * Each value should be between 2 and 4.
+ *
+ * We recommend leaving this at the default of [2, 2] unless you have a specific reason to change it.
+ * (e.g. you need players to see the bottom of a dropper)
+ * This is because higher values can be laggier on low-end devices.
+ * @type {[number, number]}
+ */
+minChunkAddDist = [2, 2]
 
 /**
  * Whether to show the player in unloaded chunks
@@ -415,7 +455,7 @@ cameraTint = null
  * After dying the player can respawn after this many seconds
  * @type {number}
  */
-secsToRespawn = 3
+secsToRespawn = 5
 
 /**
  * When player is dead, also show a play again button to matchmake player into a new lobby. Mostly useful for sessionBased games

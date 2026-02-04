@@ -440,4 +440,6 @@ Spirit Bear: "default"
 Spirit Stag: "default"
 Spirit Gorilla: "default"
 Draugr Warper: "default"
+Frost Wraith: "default"
+Draugr Reaver: "default"
 ```
