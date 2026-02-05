@@ -9,7 +9,7 @@ api.sendMessage(playerId, [{ icon: "fa-solid fa-star", style: { color: "gold" } 
 
 > **Prefer Bloxd-native icons:** For the best visual consistency with Bloxd's theme, use **item names** (see ITEM_NAMES.txt), **block names** (see BLOCK_NAMES.txt), or **ingame icons** (below) wherever possible. These are designed specifically for Bloxd and will look more cohesive. Only fall back to Font Awesome icons when no Bloxd-native option fits your use case.
 
-## Ingame Icons (88 icons)
+## Ingame Icons (89 icons)
 
 See the `IngameIconName` type in the Glossary.
 
@@ -57,6 +57,7 @@ Poopy
 Draugr Knight Head
 Draugr Warper Head
 Magma Golem Head
+Mystery Fish
 Damage Enchantment
 Critical Damage Enchantment
 Attack Speed Enchantment
@@ -106,7 +107,7 @@ Trader Piggy
 
 ---
 
-## Font Awesome Icons (163 icons)
+## Font Awesome Icons (166 icons)
 
 Use with `fa-solid`, `fa-regular`, or `fa-duotone` prefix. Only use these when no Bloxd-native icon fits.
 
@@ -141,6 +142,7 @@ fa-solid fa-coins
 fa-solid fa-comment-dots
 fa-solid fa-commenting
 fa-solid fa-compress
+fa-solid fa-computer-mouse
 fa-solid fa-cookie
 fa-solid fa-copy
 fa-solid fa-crosshairs
@@ -182,6 +184,7 @@ fa-solid fa-gear
 fa-solid fa-gem
 fa-solid fa-globe
 fa-solid fa-hammer
+fa-solid fa-hand-back-point-up
 fa-solid fa-hand-fist
 fa-solid fa-hand-holding-medical
 fa-solid fa-hand-point-left
@@ -206,6 +209,7 @@ fa-solid fa-map-marker-check
 fa-solid fa-map-marker-times
 fa-solid fa-map-marker-xmark
 fa-solid fa-minus-square
+fa-solid fa-mouse
 fa-solid fa-music
 fa-solid fa-navicon
 fa-solid fa-palette

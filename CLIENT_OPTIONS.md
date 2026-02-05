@@ -649,4 +649,30 @@ proximityFadeDistance = 0.625
  * @type {number}
  */
 proximityFadeMinOpacity = 0.5
+
+/**
+ * Force the camera to look in a specific direction [x, y, z]. Set to null to allow free camera movement.
+ * @type {[number, number, number]}
+ */
+forcedCameraDirection = null
+
+/**
+ * Duration in ms to animate/transition to the forced camera direction (when you change forcedCameraDirection). 0 = instant.
+ * Useful for smooth camera movements.
+ * @type {number}
+ */
+forcedCameraDirectionTransitionMs = 0
+
+/**
+ * Roll angle of the camera in radians. Useful for disorientation effects, death effects, etc.
+ * @type {number}
+ */
+cameraRoll = 0
+
+/**
+ * Duration in ms to animate/transition to the camera roll angle (when you change cameraRoll). 0 = instant.
+ * Useful for smooth camera roll transitions.
+ * @type {number}
+ */
+cameraRollTransitionMs = 0
 ```
