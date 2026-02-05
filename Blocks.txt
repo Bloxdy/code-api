@@ -1,0 +1,971 @@
+# Block Names (943 blocks)
+#
+# Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
+# Some blocks also have meta variants, indicated by codes in brackets.
+#
+# ROOT BLOCK: Use the block name exactly as listed (e.g. "Maple Door", "Wheat", "Stone")
+#
+# META VARIANTS: If a block has codes in brackets, you can append suffixes to get variants:
+#   R  = rotation    -> BlockName|meta|rot1 through |meta|rot4
+#   O  = open/closed -> BlockName|meta|rot1|open or |closed (combine with R)
+#   H  = halfblockPlacement -> BlockName|meta|rot1|top or |bot or |side (combine with R)
+#   G  = growing     -> BlockName|Growing
+#   TB = treeBase    -> BlockName|TreeBase|<WoodType> (e.g. Maple Log|TreeBase|Maple)
+#   TC = treeCanopy  -> BlockName|TreeCanopy
+#   B  = books       -> BlockName|meta|rot1|books1 through |books6 (combine with R)
+#   FG = freshlyGrown -> BlockName|FreshlyGrown (harvestable crop state)
+#   RT = roots       -> BlockName|Roots (flower with roots for world gen)
+#   LV = lava        -> BlockName|Lava (lava-growing variant)
+#   TP = top         -> BlockName|Top (top half of tall plants)
+#   GR = grassRoots  -> BlockName|GrassRoots (dirt with grass roots)
+#   BK = breaking    -> BlockName|Breaking (breaking animation state)
+#   FL = flashing    -> BlockName|Flashing (flashing animation state)
+#
+# Examples:
+#   Stone           -> Just use "Stone" (no brackets = no variants, root block only)
+#   Maple Door [O,R] -> Root: "Maple Door", Variants: "Maple Door|meta|rot2|open", etc.
+#   Wheat [FG]       -> Root: "Wheat", Variant: "Wheat|FreshlyGrown"
+#
+Dirt [GR]
+Messy Dirt
+Grass Block
+Sand
+Clay
+Gravel
+Snow
+Maple Log [TB]
+Pine Log [TB]
+Plum Log [TB]
+Cedar Log [TB]
+Aspen Log [TB]
+Jungle Log [TB]
+Maple Wood Planks
+Aspen Wood Planks
+Plum Wood Planks
+Jungle Wood Planks
+Pine Wood Planks
+Cedar Wood Planks
+Barkless Maple Log [TB]
+Barkless Aspen Log [TB]
+Barkless Plum Log [TB]
+Barkless Jungle Log [TB]
+Barkless Pine Log [TB]
+Barkless Cedar Log [TB]
+free_placeholder2
+Stone
+Messy Stone
+free_placeholder
+Smooth Stone
+Diorite
+Smooth Diorite
+Andesite
+Smooth Andesite
+Granite
+Smooth Granite
+Sandstone
+Yellowstone
+Coal Ore
+Iron Ore
+Gold Ore
+Lapis Lazuli Ore
+Emerald Ore
+Diamond Ore
+Block of Coal
+Block of Iron
+Block of Gold
+Block of Lapis Lazuli
+Block of Emerald
+White Wool
+Orange Wool
+Magenta Wool
+Light Blue Wool
+Yellow Wool
+Lime Wool
+Pink Wool
+Gray Wool
+Light Gray Wool
+Cyan Wool
+Purple Wool
+Blue Wool
+Brown Wool
+Green Wool
+Red Wool
+Black Wool
+Baked Clay
+White Baked Clay
+Orange Baked Clay
+Magenta Baked Clay
+Light Blue Baked Clay
+Yellow Baked Clay
+Lime Baked Clay
+Pink Baked Clay
+Gray Baked Clay
+Light Gray Baked Clay
+Cyan Baked Clay
+Purple Baked Clay
+Blue Baked Clay
+Brown Baked Clay
+Green Baked Clay
+Red Baked Clay
+Black Baked Clay
+Gray Concrete
+Light Gray Concrete
+Black Concrete
+Blue Concrete
+Brown Concrete
+Cyan Concrete
+Light Blue Concrete
+Lime Concrete
+Magenta Concrete
+Orange Concrete
+Pink Concrete
+Purple Concrete
+Red Concrete
+White Concrete
+Green Concrete
+Yellow Concrete
+Pine Leaves [TC]
+Aspen Leaves [TC]
+Maple Leaves [TC]
+Jungle Leaves [TC]
+Pumpkin_placeholder
+Watermelon
+Glass
+Black Glass
+Blue Glass
+Brown Glass
+Cyan Glass
+Gray Glass
+Light Gray Glass
+Green Glass
+Light Blue Glass
+Lime Glass
+Magenta Glass
+Orange Glass
+Pink Glass
+Purple Glass
+Red Glass
+White Glass
+Yellow Glass
+UNUSED BLOCK TYPE
+Dim Lamp On
+Dim Lamp Off
+Water
+Invisible Solid
+Bricks
+Stone Bricks
+Dark Red Brick
+Dark Red Stone
+Block of Quartz
+Chiseled Block of Quartz
+Engraved Stone
+Mossy Stone Bricks
+Cracked Stone Bricks
+Smooth Sandstone
+Engraved Sandstone
+Ice
+Obsidian
+Hay Bale
+Sponge
+Beacon
+temp
+Golden Decoration
+Moonstone Explosive
+Bedrock
+Smooth Double Stone Slab
+Cactus [G]
+Grass
+Dandelion [RT]
+Poppy [RT]
+Red Tulip [RT]
+Pink Tulip [RT]
+White Tulip [RT]
+Orange Tulip [RT]
+Daisy [RT]
+Bluebell [RT]
+Forget-me-not [RT]
+Allium [RT]
+Azure Bluet [RT]
+Lily of the Valley [RT]
+Shadow Rose [RT]
+Furnace [R]
+Workbench [R]
+Block of Diamond
+Maple Door [O,R]
+_Maple Door Top [O,R]
+Maple Trapdoor [O,R]
+Aspen Sapling
+Maple Sapling
+Jungle Sapling
+Plum Sapling
+Pine Sapling
+Cedar Sapling
+Chest [R]
+Protector
+Fat Cactus [G]
+Dry Fat Cactus
+Maple Ladder [R]
+Vines [G,R]
+Iron Ladder [R]
+White Planks
+Orange Planks
+Magenta Planks
+Light Blue Planks
+Yellow Planks
+Lime Planks
+Pink Planks
+Gray Planks
+Light Gray Planks
+Cyan Planks
+Purple Planks
+Blue Planks
+Brown Planks
+Green Planks
+Red Planks
+Black Planks
+Artisan Bench
+White Ceramic [R]
+Orange Ceramic [R]
+Magenta Ceramic [R]
+Light Blue Ceramic [R]
+Yellow Ceramic [R]
+Lime Ceramic [R]
+Pink Ceramic [R]
+Gray Ceramic [R]
+Light Gray Ceramic [R]
+Cyan Ceramic [R]
+Purple Ceramic [R]
+Blue Ceramic [R]
+Brown Ceramic [R]
+Green Ceramic [R]
+Red Ceramic [R]
+Black Ceramic [R]
+Wheat Seeds
+Wheat_stage1
+Wheat_stage2
+Wheat_stage3
+Wheat_stage4
+Wheat_stage5
+Wheat [FG]
+Tilled Soil
+Bread Block
+ReservedBread BlockRotation1
+ReservedBread BlockRotation2
+ReservedBread BlockRotation3
+Mossy Messy Stone
+White Bed [R]
+_White Bed Head [R]
+Orange Bed [R]
+_Orange Bed Head [R]
+Magenta Bed [R]
+_Magenta Bed Head [R]
+Light Blue Bed [R]
+_Light Blue Bed Head [R]
+Yellow Bed [R]
+_Yellow Bed Head [R]
+Lime Bed [R]
+_Lime Bed Head [R]
+Pink Bed [R]
+_Pink Bed Head [R]
+Gray Bed [R]
+_Gray Bed Head [R]
+Light Gray Bed [R]
+_Light Gray Bed Head [R]
+Cyan Bed [R]
+_Cyan Bed Head [R]
+Purple Bed [R]
+_Purple Bed Head [R]
+Blue Bed [R]
+_Blue Bed Head [R]
+Brown Bed [R]
+_Brown Bed Head [R]
+Green Bed [R]
+_Green Bed Head [R]
+Red Bed [R]
+_Red Bed Head [R]
+Black Bed [R]
+_Black Bed Head [R]
+Apple Block
+Moonstone Ore
+Moonstone Chest [R]
+Block of Moonstone
+Magma
+Useless Soil
+Marked Sandstone
+Red Sandstone
+Smooth Red Sandstone
+Engraved Red Sandstone
+Marked Red Sandstone
+Green Stone
+Green Bricks
+Dark Green Bricks
+Sandstone Bricks
+Engraved Diorite
+Diorite Bricks
+Engraved Andesite
+Andesite Bricks
+Engraved Granite
+Granite Bricks
+Ice Bricks
+Placeholder Packed Ice
+Placeholder Blue Ice
+Plum Leaves [TC]
+Cedar Leaves [TC]
+Palm Leaves [TC]
+Palm Log [TB]
+Palm Wood Planks
+Palm Sapling
+Pine Door [O,R]
+_Pine Door Top [O,R]
+Plum Door [O,R]
+_Plum Door Top [O,R]
+Cedar Door [O,R]
+_Cedar Door Top [O,R]
+Aspen Door [O,R]
+_Aspen Door Top [O,R]
+Jungle Door [O,R]
+_Jungle Door Top [O,R]
+Palm Door [O,R]
+_Palm Door Top [O,R]
+Pine Trapdoor [O,R]
+Plum Trapdoor [O,R]
+Cedar Trapdoor [O,R]
+Aspen Trapdoor [O,R]
+Jungle Trapdoor [O,R]
+Palm Trapdoor [O,R]
+Red Sand
+Red Sandstone Bricks
+Rocky Dirt
+Autumn Maple Leaves [TC]
+Fallen Maple Leaves [H,R]
+Maple Slab [H,R]
+Pine Slab [H,R]
+Plum Slab [H,R]
+Cedar Slab [H,R]
+Aspen Slab [H,R]
+Jungle Slab [H,R]
+Palm Slab [H,R]
+Dirt Slab [H,R]
+Grass Slab [H,R]
+Messy Stone Slab [H,R]
+Stone Slab [H,R]
+Smooth Stone Slab [H,R]
+Engraved Stone Slab [H,R]
+Stone Bricks Slab [H,R]
+Mossy Stone Slab [H,R]
+Mossy Stone Bricks Slab [H,R]
+Andesite Slab [H,R]
+Smooth Andesite Slab [H,R]
+Engraved Andesite Slab [H,R]
+Andesite Bricks Slab [H,R]
+Diorite Slab [H,R]
+Smooth Diorite Slab [H,R]
+Engraved Diorite Slab [H,R]
+Diorite Bricks Slab [H,R]
+Granite Slab [H,R]
+Smooth Granite Slab [H,R]
+Engraved Granite Slab [H,R]
+Granite Bricks Slab [H,R]
+Sandstone Slab [H,R]
+Smooth Sandstone Slab [H,R]
+Engraved Sandstone Slab [H,R]
+Marked Sandstone Slab [H,R]
+Sandstone Bricks Slab [H,R]
+Red Sandstone Slab [H,R]
+Smooth Red Sandstone Slab [H,R]
+Engraved Red Sandstone Slab [H,R]
+Marked Red Sandstone Slab [H,R]
+Red Sandstone Bricks Slab [H,R]
+Bricks Slab [H,R]
+Ice Bricks Slab [H,R]
+Plum Block
+Coconut Block
+Pear Log [TB]
+Pear Wood Planks
+Pear Leaves [TC]
+Pear Door [O,R]
+_Pear Door Top [O,R]
+Pear Trapdoor [O,R]
+Pear Sapling
+Pear Slab [H,R]
+Pear Block
+Compressed Messy Stone
+Extra Compressed Messy Stone
+Super Compressed Messy Stone
+Hyper Compressed Messy Stone
+Ultra Compressed Messy Stone
+Mega Compressed Messy Stone
+Board [R]
+Net
+Cobweb
+Brown Mushroom Block
+Red Mushroom Block
+Mushroom Stem
+Fireball Block
+Iceball Block
+Watermelon Seeds [G]
+Attached Watermelon Stem [R]
+Pumpkin Seeds [G]
+Attached Pumpkin Stem [R]
+Pumpkin
+Carved Pumpkin [R]
+Jack o'Lantern [R]
+Melon Seeds [G]
+Attached Melon Stem [R]
+Melon
+Iron Watermelon
+Patterned Black Glass
+Patterned Blue Glass
+Patterned Brown Glass
+Patterned Cyan Glass
+Patterned Gray Glass
+Patterned Light Gray Glass
+Patterned Green Glass
+Patterned Light Blue Glass
+Patterned Lime Glass
+Patterned Magenta Glass
+Patterned Orange Glass
+Patterned Pink Glass
+Patterned Purple Glass
+Patterned Red Glass
+Patterned White Glass
+Patterned Yellow Glass
+Potion Table [R]
+Pine Ladder [R]
+Plum Ladder [R]
+Cedar Ladder [R]
+Aspen Ladder [R]
+Jungle Ladder [R]
+Palm Ladder [R]
+Pear Ladder [R]
+Black Carpet
+Blue Carpet
+Brown Carpet
+Cyan Carpet
+Gray Carpet
+Light Gray Carpet
+Green Carpet
+Light Blue Carpet
+Lime Carpet
+Magenta Carpet
+Orange Carpet
+Pink Carpet
+Purple Carpet
+Red Carpet
+White Carpet
+Yellow Carpet
+Bookshelf [B,R]
+Empty Bookshelf [B,R]
+Mailbox [R]
+Rice [FG]
+Rice_stage1
+Rice_stage2
+Rice_stage3
+Rice_stage4
+Rice_stage5
+Cranberries
+Cranberries_stage1
+Cranberries_stage2
+Red Mushroom
+Brown Mushroom
+Cotton Seeds
+Cotton_stage1
+Cotton_stage2
+Cotton_stage3
+Tribe Protector
+Tall Grass [TP]
+Faction Protector
+Barkless Palm Log [TB]
+Barkless Pear Log [TB]
+Mystery Block
+Rocket
+Super Rocket
+Yellow Concrete Slab [H,R]
+White Concrete Slab [H,R]
+Red Concrete Slab [H,R]
+Purple Concrete Slab [H,R]
+Pink Concrete Slab [H,R]
+Orange Concrete Slab [H,R]
+Magenta Concrete Slab [H,R]
+Lime Concrete Slab [H,R]
+Light Gray Concrete Slab [H,R]
+Light Blue Concrete Slab [H,R]
+Green Concrete Slab [H,R]
+Gray Concrete Slab [H,R]
+Cyan Concrete Slab [H,R]
+Brown Concrete Slab [H,R]
+Blue Concrete Slab [H,R]
+Black Concrete Slab [H,R]
+Grenade
+Cherry Log [TB]
+Barkless Cherry Log [TB]
+Cherry Wood Planks
+Cherry Leaves [TC]
+Fallen Cherry Leaves [H,R]
+Cherry Door [O,R]
+_Cherry Door Top [O,R]
+Cherry Trapdoor [O,R]
+Cherry Sapling
+Cherry Slab [H,R]
+Cherry Ladder [R]
+Cherry Block
+Bouncy Bomb Block
+Obby Rocket
+Wood Spikes
+Stone Spikes
+Iron Spikes
+Gold Spikes
+Diamond Spikes
+Kill Spikes
+Corn Block
+Corn Seeds [FG,G]
+Corn Seeds_stage1
+Corn Plant_stage1
+Corn Plant_stage2
+Corn Plant_stage3
+Corn Plant_stage4
+Corn Plant_stage5
+Corn Plant [FG]
+Loot Chest [R]
+Melting Ice [BK]
+Yellow Paintball Explosive
+White Paintball Explosive
+Red Paintball Explosive
+Purple Paintball Explosive
+Pink Paintball Explosive
+Orange Paintball Explosive
+Magenta Paintball Explosive
+Lime Paintball Explosive
+Light Gray Paintball Explosive
+Light Blue Paintball Explosive
+Green Paintball Explosive
+Gray Paintball Explosive
+Cyan Paintball Explosive
+Brown Paintball Explosive
+Blue Paintball Explosive
+Black Paintball Explosive
+Yellow Quick Paintball Explosive
+White Quick Paintball Explosive
+Red Quick Paintball Explosive
+Purple Quick Paintball Explosive
+Pink Quick Paintball Explosive
+Orange Quick Paintball Explosive
+Magenta Quick Paintball Explosive
+Lime Quick Paintball Explosive
+Light Gray Quick Paintball Explosive
+Light Blue Quick Paintball Explosive
+Green Quick Paintball Explosive
+Gray Quick Paintball Explosive
+Cyan Quick Paintball Explosive
+Brown Quick Paintball Explosive
+Blue Quick Paintball Explosive
+Black Quick Paintball Explosive
+Yellow Seeking Paintball Explosive
+White Seeking Paintball Explosive
+Red Seeking Paintball Explosive
+Purple Seeking Paintball Explosive
+Pink Seeking Paintball Explosive
+Orange Seeking Paintball Explosive
+Magenta Seeking Paintball Explosive
+Lime Seeking Paintball Explosive
+Light Gray Seeking Paintball Explosive
+Light Blue Seeking Paintball Explosive
+Green Seeking Paintball Explosive
+Gray Seeking Paintball Explosive
+Cyan Seeking Paintball Explosive
+Brown Seeking Paintball Explosive
+Blue Seeking Paintball Explosive
+Black Seeking Paintball Explosive
+Yellow Sticky Paintball Explosive
+White Sticky Paintball Explosive
+Red Sticky Paintball Explosive
+Purple Sticky Paintball Explosive
+Pink Sticky Paintball Explosive
+Orange Sticky Paintball Explosive
+Magenta Sticky Paintball Explosive
+Lime Sticky Paintball Explosive
+Light Gray Sticky Paintball Explosive
+Light Blue Sticky Paintball Explosive
+Green Sticky Paintball Explosive
+Gray Sticky Paintball Explosive
+Cyan Sticky Paintball Explosive
+Brown Sticky Paintball Explosive
+Blue Sticky Paintball Explosive
+Black Sticky Paintball Explosive
+White Strongbed [R]
+_White Strongbed Head [R]
+Orange Strongbed [R]
+_Orange Strongbed Head [R]
+Magenta Strongbed [R]
+_Magenta Strongbed Head [R]
+Light Blue Strongbed [R]
+_Light Blue Strongbed Head [R]
+Yellow Strongbed [R]
+_Yellow Strongbed Head [R]
+Lime Strongbed [R]
+_Lime Strongbed Head [R]
+Pink Strongbed [R]
+_Pink Strongbed Head [R]
+Gray Strongbed [R]
+_Gray Strongbed Head [R]
+Light Gray Strongbed [R]
+_Light Gray Strongbed Head [R]
+Cyan Strongbed [R]
+_Cyan Strongbed Head [R]
+Purple Strongbed [R]
+_Purple Strongbed Head [R]
+Blue Strongbed [R]
+_Blue Strongbed Head [R]
+Brown Strongbed [R]
+_Brown Strongbed Head [R]
+Green Strongbed [R]
+_Green Strongbed Head [R]
+Red Strongbed [R]
+_Red Strongbed Head [R]
+Black Strongbed [R]
+_Black Strongbed Head [R]
+Timed Spike Bomb Block [FL]
+Lava
+Fat Brown Mushroom
+Fat Red Mushroom
+Chili Pepper Block
+Chili Pepper Seeds [LV]
+Chili Pepper Plant_stage1 [LV]
+Chili Pepper Plant_stage2 [LV]
+Chili Pepper Plant_stage3 [LV]
+Chili Pepper Plant_stage4 [LV]
+Chili Pepper Plant [FG,LV]
+Chili Pepper Plant_stage5 [LV]
+Code Block
+Toxin Ball Block
+Spawn Block (Yellow) [R]
+Spawn Block (White) [R]
+Spawn Block (Red) [R]
+Spawn Block (Purple) [R]
+Spawn Block (Pink) [R]
+Spawn Block (Orange) [R]
+Spawn Block (Magenta) [R]
+Spawn Block (Lime) [R]
+Spawn Block (Light Gray) [R]
+Spawn Block (Light Blue) [R]
+Spawn Block (Green) [R]
+Spawn Block (Gray) [R]
+Spawn Block (Cyan) [R]
+Spawn Block (Brown) [R]
+Spawn Block (Blue) [R]
+Spawn Block (Black) [R]
+Checkpoint Block [R]
+Custom Lobby Block [R]
+Generator Spawn Block (Red)
+Generator Spawn Block (Blue)
+Generator Spawn Block (Lime)
+Generator Spawn Block (Yellow)
+Generator Spawn Block (Cyan)
+Generator Spawn Block (White)
+Generator Spawn Block (Pink)
+Generator Spawn Block (Gray)
+Trader Shop Spawn Block [R]
+Wizard Shop Spawn Block [R]
+Generator Spawn Block (Diamond)
+Generator Spawn Block (Moonstone)
+Generator Spawn Block (Ore)
+Goal Block (Red)
+Goal Block (Blue)
+Finish Block
+Drop Location Block
+Obby Death Block
+Obby Absorb Block
+Obby Absorb Death Block
+Bone Block
+Pig Spawner Block
+Cow Spawner Block
+Sheep Spawner Block
+Cave Golem Spawner Block
+Draugr Zombie Spawner Block
+Draugr Skeleton Spawner Block
+Empty Spawner Block
+Frost Golem Spawner Block
+Frost Zombie Spawner Block
+Frost Skeleton Spawner Block
+Snowy Messy Stone
+Snowy Stone Slab [H,R]
+Draugr Knight Spawner Block
+Packed Snow
+Carved Messy Stone
+Spectral Grass
+Spectral Log [TB]
+Barkless Spectral Log [TB]
+Spectral Wood Planks
+Spectral Leaves [TC]
+Spectral Door [O,R]
+_Spectral Door Top [O,R]
+Spectral Trapdoor [O,R]
+Spectral Sapling
+Spectral Slab [H,R]
+Spectral Ladder [R]
+Wood Enchanting Table [R]
+Stone Enchanting Table [R]
+Iron Enchanting Table [R]
+Gold Enchanting Table [R]
+Diamond Enchanting Table [R]
+Pine Grass Block
+Pine Grass Slab [H,R]
+Pine Grass
+Pine Fern
+Fallen Pine Cone
+Pine Cone Block
+Wolf Spawner Block
+Bear Spawner Block
+Deer Spawner Block
+Stag Spawner Block
+Bone Antlers [R]
+Gold Antlers [R]
+Gold Watermelon Stag Spawner Block
+Salvaging Table [R]
+Chalk
+Yellow Chalk
+White Chalk
+Red Chalk
+Purple Chalk
+Pink Chalk
+Orange Chalk
+Magenta Chalk
+Lime Chalk
+Light Gray Chalk
+Light Blue Chalk
+Green Chalk
+Gray Chalk
+Cyan Chalk
+Brown Chalk
+Blue Chalk
+Black Chalk
+Yellow Chalk Bricks
+White Chalk Bricks
+Red Chalk Bricks
+Purple Chalk Bricks
+Pink Chalk Bricks
+Orange Chalk Bricks
+Magenta Chalk Bricks
+Lime Chalk Bricks
+Light Gray Chalk Bricks
+Light Blue Chalk Bricks
+Green Chalk Bricks
+Gray Chalk Bricks
+Cyan Chalk Bricks
+Brown Chalk Bricks
+Blue Chalk Bricks
+Black Chalk Bricks
+Yellow Chalk Slab [H,R]
+White Chalk Slab [H,R]
+Red Chalk Slab [H,R]
+Purple Chalk Slab [H,R]
+Pink Chalk Slab [H,R]
+Orange Chalk Slab [H,R]
+Magenta Chalk Slab [H,R]
+Lime Chalk Slab [H,R]
+Light Gray Chalk Slab [H,R]
+Light Blue Chalk Slab [H,R]
+Green Chalk Slab [H,R]
+Gray Chalk Slab [H,R]
+Cyan Chalk Slab [H,R]
+Brown Chalk Slab [H,R]
+Blue Chalk Slab [H,R]
+Black Chalk Slab [H,R]
+Yellow Chalk Bricks Slab [H,R]
+White Chalk Bricks Slab [H,R]
+Red Chalk Bricks Slab [H,R]
+Purple Chalk Bricks Slab [H,R]
+Pink Chalk Bricks Slab [H,R]
+Orange Chalk Bricks Slab [H,R]
+Magenta Chalk Bricks Slab [H,R]
+Lime Chalk Bricks Slab [H,R]
+Light Gray Chalk Bricks Slab [H,R]
+Light Blue Chalk Bricks Slab [H,R]
+Green Chalk Bricks Slab [H,R]
+Gray Chalk Bricks Slab [H,R]
+Cyan Chalk Bricks Slab [H,R]
+Brown Chalk Bricks Slab [H,R]
+Blue Chalk Bricks Slab [H,R]
+Black Chalk Bricks Slab [H,R]
+Leaf Bed [R]
+_Leaf Bed Head [R]
+Jungle Grass Block
+Jungle Grass Slab [H,R]
+Jungle Tall Grass [TP]
+Catnip
+Mango Log [TB]
+Barkless Mango Log [TB]
+Mango Wood Planks
+Mango Leaves [TC]
+Mango Door [O,R]
+_Mango Door Top [O,R]
+Mango Trapdoor [O,R]
+Mango Sapling
+Mango Slab [H,R]
+Mango Ladder [R]
+Mango Block
+Banana Block
+Banana Seeds [G]
+Attached Banana Stem [R]
+Dangling Rope
+Dangling Vine
+Gorilla Spawner Block
+Wildcat Spawner Block
+Fruity Maple Leaves
+Pine Cone Leaves
+Fruity Plum Leaves
+Fruity Palm Leaves
+Fruity Pear Leaves
+Fruity Cherry Leaves
+Fruity Mango Leaves
+Draugr Huntress Spawner Block
+Magma Golem Spawner Block
+Black Portal
+Blue Portal
+Brown Portal
+Cyan Portal
+Gray Portal
+Green Portal
+Grey Portal
+Light Blue Portal
+Light Gray Portal
+Lime Portal
+Magenta Portal
+Orange Portal
+Pink Portal
+Purple Portal
+Red Portal
+White Portal
+Yellow Portal
+Leather Block
+Horse Spawner Block
+Tomato Plant [FG,TP]
+Tomato Plant_stage1
+Carrot Plant [FG]
+Carrot Plant_stage1
+Potato Plant [FG]
+Potato Plant_stage1
+Strawberry Bush
+Strawberry Bush_stage1
+Strawberry Bush_stage2
+Sugar Cane Plant [FG,TP]
+Sugar Cane Plant_stage1
+Lettuce Plant [FG]
+Lettuce Plant_stage1
+Coffee Plant [FG]
+Coffee Plant_stage1
+Cauliflower Plant [FG]
+Cauliflower Plant_stage1
+Parsnip Plant [FG]
+Parsnip Plant_stage1
+Blueberry Bush
+Blueberry Bush_stage1
+Blueberry Bush_stage2
+Red Cabbage Plant [FG]
+Red Cabbage Plant_stage1
+Beetroot Plant [FG]
+Beetroot Plant_stage1
+Autumn Aspen Leaves [TC]
+Autumn Fern
+Iron Chest [R]
+Crate
+Carrot Block
+Carrot Seeds
+Potato Block
+Potato Seeds
+Beetroot Block
+Beetroot Seeds
+White Banner [H,R]
+_White Banner Flag [H,R]
+Orange Banner [H,R]
+_Orange Banner Flag [H,R]
+Magenta Banner [H,R]
+_Magenta Banner Flag [H,R]
+Light Blue Banner [H,R]
+_Light Blue Banner Flag [H,R]
+Yellow Banner [H,R]
+_Yellow Banner Flag [H,R]
+Lime Banner [H,R]
+_Lime Banner Flag [H,R]
+Pink Banner [H,R]
+_Pink Banner Flag [H,R]
+Gray Banner [H,R]
+_Gray Banner Flag [H,R]
+Light Gray Banner [H,R]
+_Light Gray Banner Flag [H,R]
+Cyan Banner [H,R]
+_Cyan Banner Flag [H,R]
+Purple Banner [H,R]
+_Purple Banner Flag [H,R]
+Blue Banner [H,R]
+_Blue Banner Flag [H,R]
+Brown Banner [H,R]
+_Brown Banner Flag [H,R]
+Green Banner [H,R]
+_Green Banner Flag [H,R]
+Red Banner [H,R]
+_Red Banner Flag [H,R]
+Black Banner [H,R]
+_Black Banner Flag [H,R]
+Draugr Banner [H,R]
+_Draugr Banner Flag [H,R]
+Spirit Golem Spawner Block
+Spirit Wolf Spawner Block
+Spirit Bear Spawner Block
+Spirit Stag Spawner Block
+Spirit Gorilla Spawner Block
+Fertilised Soil
+_Grant Wool Top Left [R]
+_Grant Wool Top Right [R]
+Grant Wool [R]
+_Grant Wool Bottom Right [R]
+_Stampede Top Left [R]
+_Stampede Top Right [R]
+Stampede [R]
+_Stampede Bottom Right [R]
+_Unforgotten Pig Top Left [R]
+_Unforgotten Pig Top Right [R]
+Unforgotten Pig [R]
+_Unforgotten Pig Bottom Right [R]
+_Sunbathed Gallope Top Left [R]
+_Sunbathed Gallope Top Right [R]
+Sunbathed Gallope [R]
+_Sunbathed Gallope Bottom Right [R]
+_Dreaming Canine Top Left [R]
+_Dreaming Canine Top Right [R]
+Dreaming Canine [R]
+_Dreaming Canine Bottom Right [R]
+_A Doe Through The Green Top Left [R]
+_A Doe Through The Green Top Right [R]
+A Doe Through The Green [R]
+_A Doe Through The Green Bottom Right [R]
+_Whiskers Top Left [R]
+_Whiskers Top Right [R]
+Whiskers [R]
+_Whiskers Bottom Right [R]
+Hollow Crate
+Draugr Warper Spawner Block
+Radar [R]
+_Radar Back [R]
+_Radar Dish [R]
+Inactive Radar [R]
+_Inactive Radar Back [R]
+_Inactive Radar Dish [R]
+Active Radar [R]
+_Active Radar Back [R]
+_Active Radar Dish [R]
+Lucky Block
+Ultra Lucky Block
+Gold Trophy [R]
+Small Magenta Pod
+_Small Magenta Pod Mid
+_Small Magenta Pod Top
+Small Light Gray Pod
+_Small Light Gray Pod Mid
+_Small Light Gray Pod Top
+Small Red Pod
+_Small Red Pod Mid
+_Small Red Pod Top
+INTERNAL_MESH_Gold Trophy
+Frost Wraith Spawner Block
+Draugr Reaver Spawner Block
