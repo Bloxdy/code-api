@@ -883,3 +883,9 @@ Iron Mace
 Gold Mace
 Diamond Mace
 Moonstone Mace
+Wood Whip
+Stone Whip
+Iron Whip
+Gold Whip
+Diamond Whip
+Moonstone Whip

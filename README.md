@@ -724,9 +724,10 @@ isMobile(playerId)
  * @param {ItemAttributes} [attributes] - Attributes of the item being dropped
  * @param {number} [timeTillDespawn] - Time till the item automatically despawns in milliseconds. Max of 5 mins.
  * @param {PNull<LifeformId>} [dropperId] - Who dropped the item.
+ * @param {ItemDropOptions} [options] - Additional options, such as doPhysics and size.
  * @returns {PNull<EntityId>} - the id you can pass to setCantPickUpItem, or null if the item drop limit was reached
  */
-createItemDrop(x, y, z, itemName, amount, mergeItems, attributes, timeTillDespawn, dropperId)
+createItemDrop(x, y, z, itemName, amount, mergeItems, attributes, timeTillDespawn, dropperId, options)
 
 /**
  * Prevent a player from picking up an item. itemId returned by createItemDrop

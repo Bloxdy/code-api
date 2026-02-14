@@ -1,4 +1,4 @@
-# Block Names (943 blocks)
+# Block Names (998 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -969,3 +969,58 @@ _Small Red Pod Top
 INTERNAL_MESH_Gold Trophy
 Frost Wraith Spawner Block
 Draugr Reaver Spawner Block
+Small White Pod
+_Small White Pod Mid
+_Small White Pod Top
+Small Orange Pod
+_Small Orange Pod Mid
+_Small Orange Pod Top
+Small Light Blue Pod
+_Small Light Blue Pod Mid
+_Small Light Blue Pod Top
+Small Yellow Pod
+_Small Yellow Pod Mid
+_Small Yellow Pod Top
+Small Lime Pod
+_Small Lime Pod Mid
+_Small Lime Pod Top
+Small Pink Pod
+_Small Pink Pod Mid
+_Small Pink Pod Top
+Small Gray Pod
+_Small Gray Pod Mid
+_Small Gray Pod Top
+Small Cyan Pod
+_Small Cyan Pod Mid
+_Small Cyan Pod Top
+Small Purple Pod
+_Small Purple Pod Mid
+_Small Purple Pod Top
+Small Blue Pod
+_Small Blue Pod Mid
+_Small Blue Pod Top
+Small Brown Pod
+_Small Brown Pod Mid
+_Small Brown Pod Top
+Small Green Pod
+_Small Green Pod Mid
+_Small Green Pod Top
+Small Black Pod
+_Small Black Pod Mid
+_Small Black Pod Top
+Skull Banner [H,R]
+_Skull Banner Flag [H,R]
+Rainbow Banner [H,R]
+_Rainbow Banner Flag [H,R]
+Duo Blocchino Statue
+Bebek Bebek Bebek Statue
+Bobino Musculino Statue
+Bobzilla Statue
+Brra Brra Pachim Statue
+Capitano Explovissimo Statue
+Cappuccino Ninjino Statue
+Chimpanzano Bananano Statue
+Il Wizardini Del Porko Statue
+Lucchia Blocchi Statue
+Monsieur Bedwar Statue
+Twirlina Cappucina Statue
