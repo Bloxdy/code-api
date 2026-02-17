@@ -1232,6 +1232,46 @@ initiateMiddleScreenBar(playerId, duration, chargeExpiresAutomatically, horizont
 removeMiddleScreenBar(playerId)
 
 /**
+ * Show a hitmarker on the player's screen (the X-shaped crosshair flash indicating a successful hit).
+ * Useful for custom weapons or things that need visual hit feedback.
+ *
+ * @param {PlayerId} playerId - The player to show the hitmarker to
+ * @param {boolean} [isCrit] - If true, shows an enhanced critical-hit hitmarker with a longer, more dramatic animation
+ * @param {PNull<number[]>} [directionVector] - Optional [x, y, z] direction vector. When provided, the hitmarker appears
+ * at the projected screen position of that direction rather than at the centre of the screen.
+ * Same flow as mobile melee attacks where the tap point differs from screen centre.
+ * @returns {void}
+ */
+sendHitmarker(playerId, isCrit, directionVector)
+
+/**
+ * Show a directional arrow indicator on the player's screen pointing toward a world position.
+ * When the position is off-screen the indicator is a rotating chevron at the screen edge.
+ * When the position is on-screen it becomes a small marker dot.
+ *
+ * The arrow persists until explicitly cleared via `clearDirectionArrow`.
+ * Calling again with the same `id` updates the existing arrow in-place.
+ *
+ * @param {PlayerId} playerId - The player to show the arrow to
+ * @param {string} id - Unique identifier for this arrow (allows multiple concurrent arrows)
+ * @param {number[]} position - [x, y, z] world position the arrow should point toward
+ * @param {PNull<string | CustomTextStyling>} [text] - Optional label rendered below the indicator. Supports CustomTextStyling for rich text with icons/colours.
+ * @param {boolean} [showDistance] - If true, displays the distance (in blocks) from the player to the arrow position.
+ * @param {PNull<TextStyle>} [style] - Optional style object (same format as CustomTextStyling's StyledText `style`). Controls chevron/marker colour, label typography, and opacity.
+ * @returns {void}
+ */
+setDirectionArrow(playerId, id, position, text, showDistance, style)
+
+/**
+ * Clear a directional arrow from the player's screen.
+ *
+ * @param {PlayerId} playerId - The player to clear the arrow for
+ * @param {PNull<string>} [id] - The arrow identifier to clear. If null, clears all arrows for this player.
+ * @returns {void}
+ */
+clearDirectionArrow(playerId, id)
+
+/**
  * Edit the crafting recipes for a player
  *
  * @param {PlayerId} playerId
@@ -1461,6 +1501,25 @@ setItemAmount(itemId, newAmount)
  * @returns {void}
  */
 setMaxPlayers(softMaxPlayers, maxPlayers)
+
+/**
+ * Create and register the UI for the requested quicktime event (QTE) to the screen.
+ * Handle the result via the onPlayerFinishQTE engine callback.
+ *
+ * @param {PlayerId} playerId
+ * @param {QTEClientParameters<T>} qteParameters - includes type and parameters
+ * @returns {QTERequestId} - an id that can be passed to deleteQTE
+ */
+addQTE(playerId, qteParameters)
+
+/**
+ * Delete a quicktime event from the screen
+ *
+ * @param {PlayerId} playerId
+ * @param {QTERequestId} id - Returned from the addQTE request you want to cancel
+ * @returns {void}
+ */
+deleteQTE(playerId, id)
 
 /**
  * Show a message over the shop in the same place that a shop item's onBoughtMessage is shown.
@@ -1816,14 +1875,7 @@ type StyledIcon = {
 
 type StyledText = {
     str: string | EntityName | TranslatedText
-    style?: {
-        color?: string
-        colour?: string
-        fontWeight?: string
-        fontSize?: string
-        fontStyle?: string
-        opacity?: number
-    }
+    style?: TextStyle
     clickableUrl?: string
 }
 

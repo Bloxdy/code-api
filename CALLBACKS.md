@@ -20,7 +20,8 @@ onMobKilledPlayer onPlayerKilledMob onMobKilledOtherMob onPlayerPotionEffect
 onPlayerDamagingMeshEntity onPlayerBreakMeshEntity onPlayerUsedThrowable
 onPlayerThrowableHitTerrain onTouchscreenActionButton onTaskClaimed
 onChunkLoaded onPlayerRequestChunk onItemDropCreated
-onPlayerStartChargingItem onPlayerFinishChargingItem doPeriodicSave
+onPlayerStartChargingItem onPlayerFinishChargingItem onPlayerFinishQTE
+doPeriodicSave
 
 To use a callback, just assign a function to it in the world code!
 tick = () => {}			 or			 function tick() {}
@@ -627,6 +628,13 @@ onPlayerStartChargingItem = (playerId: PlayerId, itemName: string) => {}
  * @param {number} duration - The duration of the charge
  */
 onPlayerFinishChargingItem = (playerId: PlayerId, used: boolean, itemName: string, duration: number) => {}
+
+/**
+ * @param {PlayerId} playerId
+ * @param {QTERequestId} qteId
+ * @param {boolean} result
+ */
+onPlayerFinishQTE = (playerId: PlayerId, qteId: QTERequestId, result: boolean) => {}
 
 /**
  * Called every so often.
