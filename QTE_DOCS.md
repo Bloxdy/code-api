@@ -89,7 +89,7 @@ A mover travels along a bar, periodically changing direction. The player holds c
 ```ts
 type GravityBarQteParams = {
     progressStartValue?: number // Starting progress value (0-100). default: 30
-    catchZoneSize: number // Size of the player's catch zone as a fraction of the bar (0-1). default: 0.25
+    catchZoneSize: number // Size of the player's catch zone as a fraction of the bar (0-1). default: 0.3
     moverSpeed: number // Speed at which the mover travels along the bar. default: 3
     moverErraticness: number // How erratically the mover changes direction (higher = more unpredictable). default: 0.8
     gravity: number // Downward pull on the catch zone when the player isn't holding click. default: 1
@@ -109,7 +109,7 @@ api.addQTE(playerId, {
     type: "gravityBar",
     parameters: {
         progressStartValue: 30,
-        catchZoneSize: 0.25,
+        catchZoneSize: 0.3,
         moverSpeed: 3,
         moverErraticness: 0.8,
         gravity: 1,
@@ -131,11 +131,11 @@ api.addQTE(playerId, {
 const qteId = api.addQTE(playerId, {
     type: "progressBar",
     parameters: {
-        progressDecreasePerTick: 0.1,
-        progressPerClick: 2,
-        canFail: true,
-        description: [{ str: "Mash click!", style: { color: "#ffcc00" } }],
-        clickIcon: "cursor",
+        progressDecreasePerTick: 0.075,
+        progressPerClick: 7,
+        canFail: false,
+        description: [{ str: "Click repeatedly to complete!" }],
+        clickIcon: "fa-solid fa-computer-mouse",
     },
 })
 ```
