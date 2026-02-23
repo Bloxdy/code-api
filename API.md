@@ -837,6 +837,102 @@ sendOverShopInfo(playerId, info)
 openShop(playerId, toggle, forceCategory)
 ```
 
+```
+/**
+ * Creates a new shop item
+ * 
+ * @param {string} category
+ * @param {string} item
+ * @param {shopItem} opts
+ * @return {void}
+ */
+createShopItem(category, item, opts)
+```
+
+```js
+/**
+ * updates a shop item
+ * 
+ * @param {string} category
+ * @param {string} item
+ * @param {shopItem} opts
+ * @return {void}
+ */
+api.updateShopItem(category, item, opts)
+```
+
+```js
+/**
+ * updates a shop item
+ * 
+ * @param {string} category
+ * @param {string} item
+ * @return {void}
+ */
+api.deleteShopItem(category, item)
+```
+
+```js
+/**
+ * configures a shop catagory
+ * 
+ * @param {string} category
+ * @param {Partial<CategoryOptions>} opts
+ * @return {void}
+ */
+api.configureShopCategory(category, opts)
+```
+
+```js
+/**
+ * Creates a new shop item for player
+ * 
+ * @param {PlayerId} playerId
+ * @param {string} category
+ * @param {string} item
+ * @param {shopItem} opts
+ * @return {void}
+ */
+createShopItemForPlayer(playerId, category, item, opts)
+```
+
+```js
+/**
+ * updates a shop item for player
+ * 
+ * @param {PlayerId} playerId
+ * @param {string} category
+ * @param {string} item
+ * @param {shopItem} opts
+ * @return {void}
+ */
+api.updateShopItemForPlayer(playerId, category, item, opts)
+```
+
+```js
+/**
+ * resets shop item for player
+ * 
+ * @param {PlayerId} playerId
+ * @param {string} category
+ * @param {string} item
+ * @return {void}
+ */
+api.resetShopItemForPlayer(playerId, category, item)
+```
+
+```js
+/**
+ * configures a shop catagory for player
+ * 
+ * @param {PlayerId} playerId
+ * @param {string} category
+ * @param {Partial<CategoryOptions>} opts
+ * @return {void}
+ */
+api.configureShopCategoryForPlayer(playerId, shopCategory, opts)
+```
+
 ```js
 /**
  * Change a part of a player's skin
@@ -2064,7 +2160,7 @@ type WorldBlockChangedInfo = {
 ```
 
 ```js
-SkyBoxOptions = [
+type SkyBoxOptions = [
         default,
         earth,
         interstellar,
@@ -2073,6 +2169,40 @@ SkyBoxOptions = [
         space_red,
         underwater
 ]
+```
+
+```js
+type shopItem = {
+  image: string
+  cost: number (optional)
+  currency: string (optional)
+  amount: number (optional)
+  imageColour: string (optional)
+  canBuy: boolean (optional)
+  isSelected: boolean (optional)
+  buyButtonText: string | CustomTextStyling (optional)
+  customTitle: string | CustomTextStyling (optional)
+  description: string | CustomTextStyling (optional)
+  onBoughtMessage: string | CustomTextStyling (optional)
+  redDot: boolean (optional)
+  forceRemoveRedDot: boolean (optional)
+  badge: { text: string | CustomTextStyling; type: "new" | "lucky" } (optional)
+  userInput: ShopItemUserInput (optional)
+  sell: boolean (optional)
+  sortPriority: number (optional)
+  hidden: boolean (optional)
+}
+```
+
+```js
+type CategoryOptions = {
+  autoSelectCategory: boolean
+  customTitle: string
+  redDot: boolean
+  forceRemoveRedDot: boolean
+  sortPriority: number
+  description: string | CustomTextStyling
+}
 ```
 
 ## Enchants
