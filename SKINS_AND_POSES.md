@@ -44,7 +44,7 @@ The following skin parts can be customised: `head`, `body`, `legs`, `shoes`, `ey
 
 ---
 
-## NPC Skins (8 skins)
+## NPC Skins (9 skins)
 
 These are special full-body skins typically used for NPCs. Apply them via the `head` part:
 
@@ -53,6 +53,7 @@ api.changePlayerIntoSkin(playerId, "head", "wizard")
 ```
 
 ```
+chef
 farmer
 piggy_banker
 portal_mage

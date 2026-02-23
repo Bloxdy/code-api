@@ -402,6 +402,100 @@ setClientOption(playerId, option, value)
 getClientOption(playerId, option)
 
 /**
+ * Create a new shop item under the given category.
+ * Will create a new category if it does not exist.
+ * If the shop item already exists then it will be replaced.
+ * If any per-player overrides exist under the same categoryKey and itemKey then they will be deleted.
+ *
+ * @param {ShopCategoryKey} categoryKey - The key of the category to create the item in
+ * @param {ShopItemKey} itemKey - The unique key for the item
+ * @param {ShopItem} item - The shop item to create (will be mutated)
+ * @returns {void}
+ */
+createShopItem(categoryKey, itemKey, item)
+
+/**
+ * Update selected properties of an existing shop item.
+ * For example, { canBuy: true } to allow players to purchase the item.
+ * Throws an error if the item does not exist.
+ *
+ * @param {ShopCategoryKey} categoryKey - The key of the category containing the item
+ * @param {ShopItemKey} itemKey - The unique key for the item
+ * @param {Partial<ShopItem>} changes - Partial shop item properties to update
+ * @returns {void}
+ */
+updateShopItem(categoryKey, itemKey, changes)
+
+/**
+ * Delete an existing shop item.
+ * Throws an error if the item does not exist.
+ * Will also delete all per-player overrides for the shop item.
+ *
+ * @param {ShopCategoryKey} categoryKey - The key of the category containing the item
+ * @param {ShopItemKey} itemKey - The unique key for the item
+ * @returns {void}
+ */
+deleteShopItem(categoryKey, itemKey)
+
+/**
+ * Set properties of a shop category.
+ *
+ * @param {ShopCategoryKey} categoryKey - The key of the category to configure
+ * @param {ShopCategoryConfig} config - Category configuration properties
+ * @returns {void}
+ */
+configureShopCategory(categoryKey, config)
+
+/**
+ * Create a new shop item for a specific player.
+ * Will create a new category if it does not exist.
+ * Will replace any overrides this player already has for the same item.
+ *
+ * @param {PlayerId} playerId - The player to create the item for
+ * @param {ShopCategoryKey} categoryKey - The key of the category to create the item in
+ * @param {ShopItemKey} itemKey - The unique key for the item
+ * @param {ShopItem} item - The shop item to create (will be mutated)
+ * @returns {void}
+ */
+createShopItemForPlayer(playerId, categoryKey, itemKey, item)
+
+/**
+ * Update selected properties of an existing shop item for a specific player.
+ * For example, { canBuy: true } to allow this player to purchase the item.
+ * Throws an error if the item does not exist.
+ *
+ * @param {PlayerId} playerId - The player to update the item for
+ * @param {ShopCategoryKey} categoryKey - The key of the category containing the item
+ * @param {ShopItemKey} itemKey - The unique key for the item
+ * @param {Partial<ShopItem>} changes - Partial shop item properties to update
+ * @returns {void}
+ */
+updateShopItemForPlayer(playerId, categoryKey, itemKey, changes)
+
+/**
+ * Delete a specific player's overrides for a shop item.
+ * Like other methods, it doesn't matter whether the overrides were created
+ * using createShopItemForPlayer or by using updateShopItemForPlayer instead.
+ * This method does nothing if the overrides don't exist or are defined internally by the engine.
+ *
+ * @param {PlayerId} playerId - The player to reset the item for
+ * @param {ShopCategoryKey} categoryKey - The key of the category containing the item
+ * @param {ShopItemKey} itemKey - The unique key for the item
+ * @returns {void}
+ */
+resetShopItemForPlayer(playerId, categoryKey, itemKey)
+
+/**
+ * Configure a shop category for a specific player.
+ *
+ * @param {PlayerId} playerId - The player to configure the category for
+ * @param {ShopCategoryKey} categoryKey - The key of the category to configure
+ * @param {ShopCategoryConfig} config - Category configuration properties
+ * @returns {void}
+ */
+configureShopCategoryForPlayer(playerId, categoryKey, config)
+
+/**
  * Modify client options at runtime
  *
  * @param {PlayerId} playerId
@@ -854,7 +948,7 @@ setCantChangeBlock(playerId, x, y, z)
 setCanChangeBlockType(playerId, blockName)
 
 /**
- * Stops a player from Changeing a block type. Valid names are those contained within blockMetadata.ts and 'Air'
+ * Stops a player from changing a block type. Valid names are those contained within blockMetadata.ts and 'Air'
  * Less priority than can change block pos/can change block rect
  *
  * @param {PlayerId} playerId
@@ -1537,10 +1631,11 @@ sendOverShopInfo(playerId, info)
  *
  * @param {PlayerId} playerId
  * @param {boolean} [toggle] - Whether to close the shop if it's already open
- * @param {string} [forceCategory] - If set, will change the shop to this category
+ * @param {PNull<ShopCategoryKey>} [forceCategoryKey] - If set, will change the shop to this category
+ * @param {boolean} [onlyIfNonEmpty] - If true, will only open the shop if the category (or shop, if no category is provided) is non-empty
  * @returns {void}
  */
-openShop(playerId, toggle, forceCategory)
+openShop(playerId, toggle, forceCategoryKey, onlyIfNonEmpty)
 
 /**
  * Apply an effect to a lifeform.

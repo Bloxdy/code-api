@@ -21,7 +21,7 @@ onPlayerDamagingMeshEntity onPlayerBreakMeshEntity onPlayerUsedThrowable
 onPlayerThrowableHitTerrain onTouchscreenActionButton onTaskClaimed
 onChunkLoaded onPlayerRequestChunk onItemDropCreated
 onPlayerStartChargingItem onPlayerFinishChargingItem onPlayerFinishQTE
-doPeriodicSave
+onPlayerBoughtShopItem doPeriodicSave
 
 To use a callback, just assign a function to it in the world code!
 tick = () => {}			 or			 function tick() {}
@@ -635,6 +635,16 @@ onPlayerFinishChargingItem = (playerId: PlayerId, used: boolean, itemName: strin
  * @param {boolean} result
  */
 onPlayerFinishQTE = (playerId: PlayerId, qteId: QTERequestId, result: boolean) => {}
+
+/**
+ * Called after a player successfully buys a shop item
+ * @param {PlayerId} playerId - The id of the player that bought the item
+ * @param {ShopCategoryKey} categoryKey - The shop category key
+ * @param {ShopItemKey} itemKey - The shop item key
+ * @param {BoughtShopItem} item - The resolved shop item (with per-player overrides applied, internal properties stripped)
+ * @param {string} [userInput] - The user input provided, if the item has a userInput config
+ */
+onPlayerBoughtShopItem = (playerId: PlayerId, categoryKey: ShopCategoryKey, itemKey: ShopItemKey, item: BoughtShopItem, userInput?: string) => {}
 
 /**
  * Called every so often.

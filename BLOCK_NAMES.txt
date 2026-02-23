@@ -1,4 +1,4 @@
-# Block Names (998 blocks)
+# Block Names (1006 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -1024,3 +1024,11 @@ Il Wizardini Del Porko Statue
 Lucchia Blocchi Statue
 Monsieur Bedwar Statue
 Twirlina Cappucina Statue
+Weapon Lucky Block
+Boiling Pot
+Chopping Board
+Frying Pan
+Hob Boiling
+Hob Frying
+Kitchen Worktop
+Slicing Board

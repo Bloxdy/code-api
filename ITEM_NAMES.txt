@@ -714,6 +714,15 @@ Caught Mob Magma_Golem Default
 Caught Mob Draugr_Warper Default
 Caught Mob Frost_Wraith Default
 Caught Mob Draugr_Reaver Default
+Caught Mob NPC Default
+Caught Mob NPC Customer_1
+Caught Mob NPC Customer_2
+Caught Mob NPC Customer_3
+Caught Mob NPC Customer_4
+Caught Mob NPC Customer_5
+Caught Mob NPC Customer_6
+Caught Mob NPC Customer_7
+Caught Mob NPC Customer_8
 Timed Spike Bomb
 Timed Spike Bomb|meta|charging2
 Timed Spike Bomb|meta|charging3
@@ -871,6 +880,12 @@ Iron Dagger
 Gold Dagger
 Diamond Dagger
 Moonstone Dagger
+Wood Boomerang
+Stone Boomerang
+Iron Boomerang
+Gold Boomerang
+Diamond Boomerang
+Moonstone Boomerang
 Wood Club
 Stone Club
 Iron Club
@@ -889,3 +904,19 @@ Iron Whip
 Gold Whip
 Diamond Whip
 Moonstone Whip
+Beef Stew
+Chicken
+Coleslaw
+Egg
+Fish N Chips
+Fried Rice
+Lettuce
+Omelette
+Onion
+Red Cabbage
+Roast Dinner
+Salad
+Stuffed Pepper
+Sushi
+Tomato
+Vegetable Soup
