@@ -859,7 +859,7 @@ createShopItem(category, item, opts)
  * @param {shopItem} opts
  * @return {void}
  */
-api.updateShopItem(category, item, opts)
+updateShopItem(category, item, opts)
 ```
 
 ```js
@@ -870,7 +870,7 @@ api.updateShopItem(category, item, opts)
  * @param {string} item
  * @return {void}
  */
-api.deleteShopItem(category, item)
+deleteShopItem(category, item)
 ```
 
 ```js
@@ -881,7 +881,7 @@ api.deleteShopItem(category, item)
  * @param {Partial<CategoryOptions>} opts
  * @return {void}
  */
-api.configureShopCategory(category, opts)
+configureShopCategory(category, opts)
 ```
 
 ```js
@@ -907,7 +907,7 @@ createShopItemForPlayer(playerId, category, item, opts)
  * @param {shopItem} opts
  * @return {void}
  */
-api.updateShopItemForPlayer(playerId, category, item, opts)
+updateShopItemForPlayer(playerId, category, item, opts)
 ```
 
 ```js
@@ -919,7 +919,7 @@ api.updateShopItemForPlayer(playerId, category, item, opts)
  * @param {string} item
  * @return {void}
  */
-api.resetShopItemForPlayer(playerId, category, item)
+resetShopItemForPlayer(playerId, category, item)
 ```
 
 ```js
@@ -931,7 +931,7 @@ api.resetShopItemForPlayer(playerId, category, item)
  * @param {Partial<CategoryOptions>} opts
  * @return {void}
  */
-api.configureShopCategoryForPlayer(playerId, shopCategory, opts)
+configureShopCategoryForPlayer(playerId, shopCategory, opts)
 ```
 
 ```js
@@ -1141,7 +1141,7 @@ applyAuraChange(playerId, auraDiff)
  * @param {string} callbackName
  * @param {any} defaultValue
  */
-api.setCallbackValueFallback(callbackName, defaultValue)
+setCallbackValueFallback(callbackName, defaultValue)
 ```
 
 ### Mob functions
