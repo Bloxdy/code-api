@@ -7,8 +7,8 @@ QTEs are interactive prompts shown to a player that require a response (clicking
 - **`progressBar`**: Click rapidly to fill a progress bar before it drains to zero.
 - **`timedClick`**: Click within a time window to succeed.
 - **`gravityBar`**: Hold click to keep a catch zone aligned with a moving target.
-- **`precisionBar`**: Click when the marker is within the success zone.
-- **`rhythmClick`**: (no description)
+- **`precisionBar`**: Click when the marker is within the success zone to succeed.
+- **`rhythmClick`**: Click when a shrinking outer circle aligns with a fixed inner circle.
 
 ## `progressBar`
 
@@ -127,7 +127,7 @@ api.addQTE(playerId, {
 
 ## `precisionBar`
 
-The marker will bounce back and forth until the player clicks.
+A marker oscillates back and forth along a bar. A highlighted success zone sits in the centre. The player has one click — if the marker is inside the success zone, the QTE succeeds; otherwise it fails. The marker keeps bouncing indefinitely until the player clicks.
 
 ### Parameters
 
@@ -136,7 +136,7 @@ type PrecisionBarQteParams = {
     speed: number // Speed of the marker in full bar-widths per second (e.g. 1.0 = one full sweep per second). default: 0.5
     successZoneSize: number // Fraction of the bar that counts as the success zone, centred in the middle (0–1, e.g. 0.15 = 15%). default: 0.15
     label: CustomTextStyling // Rich text shown as the QTE prompt. default: [{ str: "Click when the marker is within the green zone." }]
-    icon?: string // Icon displayed on the marker. default: null (no icon)
+    icon?: string // Icon displayed on the marker. default: null
     scale?: number // Scale multiplier for the icon. default: 1
     rotation?: number // Rotation in degrees for the icon. default: 0
 }
@@ -151,7 +151,7 @@ api.addQTE(playerId, {
         speed: 0.5,
         successZoneSize: 0.15,
         label: [{ str: "Click when the marker is within the green zone." }],
-        icon: null (no icon),
+        icon: null,
         scale: 1,
         rotation: 0,
     },
@@ -160,17 +160,35 @@ api.addQTE(playerId, {
 
 ## `rhythmClick`
 
+An outer circle shrinks toward a fixed inner circle. The player must click when the two overlap. Each successful click counts toward `requiredSuccesses`. Missing the window (clicking too early/late or letting the circle pass without clicking) counts as a miss. If `maxMisses` is set and exceeded, the QTE fails; otherwise missed attempts simply reset the circle for another try.
+
 ### Parameters
 
 ```ts
 type RhythmClickQteParams = {
-    requiredSuccesses: number
-    shrinkDurationMs: number // Duration in ms for the outer circle to shrink from max to centre
-    toleranceFraction: number // Fraction of the inner circle radius that counts as a successful overlap (0–1, e.g. 0.15 = ±15%)
-    maxMisses?: number // Max misses allowed before failing. If omitted, unlimited misses are permitted.
-    label: CustomTextStyling
-    icon?: string
+    requiredSuccesses: number // Number of successful clicks needed to complete the QTE. default: 5
+    shrinkDurationMs: number // Duration in milliseconds for the outer circle to shrink from max size to centre. default: 1200
+    toleranceFraction: number // Fraction of the inner circle radius that counts as a successful overlap (0–1, e.g. 0.15 = ±15%). default: 0.15
+    maxMisses?: number // Max misses allowed before failing. If omitted, unlimited misses are permitted. default: null (unlimited)
+    label: CustomTextStyling // Rich text shown as the QTE prompt. default: [{ str: "Click when the circles align!" }]
+    icon?: string // Icon displayed in the centre of the circles. default: null
 }
+```
+
+### Sensible Defaults
+
+```ts
+api.addQTE(playerId, {
+    type: "rhythmClick",
+    parameters: {
+        requiredSuccesses: 5,
+        shrinkDurationMs: 1200,
+        toleranceFraction: 0.15,
+        maxMisses: null (unlimited),
+        label: [{ str: "Click when the circles align!" }],
+        icon: null,
+    },
+})
 ```
 
 ## Usage
