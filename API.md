@@ -837,7 +837,7 @@ sendOverShopInfo(playerId, info)
 openShop(playerId, toggle, forceCategory)
 ```
 
-```
+```js
 /**
  * Creates a new shop item
  * 
