@@ -715,14 +715,14 @@ Caught Mob Draugr_Warper Default
 Caught Mob Frost_Wraith Default
 Caught Mob Draugr_Reaver Default
 Caught Mob NPC Default
-Caught Mob NPC Customer_1
-Caught Mob NPC Customer_2
-Caught Mob NPC Customer_3
-Caught Mob NPC Customer_4
-Caught Mob NPC Customer_5
-Caught Mob NPC Customer_6
-Caught Mob NPC Customer_7
-Caught Mob NPC Customer_8
+Caught Mob NPC Emma
+Caught Mob NPC Leo
+Caught Mob NPC Isabel
+Caught Mob NPC Sanjay
+Caught Mob NPC Imara
+Caught Mob NPC Enoch
+Caught Mob NPC Sara
+Caught Mob NPC Carmen
 Timed Spike Bomb
 Timed Spike Bomb|meta|charging2
 Timed Spike Bomb|meta|charging3

@@ -442,5 +442,5 @@ Spirit Gorilla: "default"
 Draugr Warper: "default"
 Frost Wraith: "default"
 Draugr Reaver: "default"
-NPC: "default", "customer_1", "customer_2", "customer_3", "customer_4", "customer_5", "customer_6", "customer_7", "customer_8"
+NPC: "default", "emma", "leo", "isabel", "sanjay", "imara", "enoch", "sara", "carmen"
 ```

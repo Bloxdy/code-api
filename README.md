@@ -1689,6 +1689,15 @@ changePlayerIntoSkin(playerId, cosmeticType, cosmeticName)
 removeAppliedSkin(playerId)
 
 /**
+ * Get a single equipped cosmetic for a player.
+ *
+ * @param {PlayerId} playerId
+ * @param {CosmeticType} cosmeticType - Type of cosmetic
+ * @returns {CosmeticName}
+ */
+getPlayerCosmetic(playerId, cosmeticType)
+
+/**
  * Scale node of a player's mesh by 3d vector.
  * State from prior calls to this api is lost so if you want to have multiple nodes scaled, pass in all the scales at once.
  *
@@ -2032,4 +2041,41 @@ type EarthSkyBox = {
     // Not part of sky model by default; heavily tint to a vertex color
     vertexTint?: [number, number, number]
 }
+
+type ShopItem = {
+    image: string
+    cost?: number
+    currency?: string
+    amount?: number // Display amount shown on the shop tile image (0 and 1 are not displayed)
+    imageColour?: string
+    canBuy?: boolean
+    isSelected?: boolean
+    buyButtonText?: string | CustomTextStyling
+    customTitle?: string | CustomTextStyling
+    description?: string | CustomTextStyling
+    onBoughtMessage?: string | CustomTextStyling
+    redDot?: boolean
+    forceRemoveRedDot?: boolean
+    badge?: { text: string | CustomTextStyling; type: "new" | "lucky" }
+    userInput?: ShopItemUserInput
+    sell?: boolean // Optional, defaults to false. If true, the sign of "cost" is flipped. So a "cost" of -25 would give the player 25 currency AND be displayed as "25" (instead of -25)
+    sortPriority?: number // Descending, bigger number means closer to the top
+    hidden?: boolean
+}
+
+type ShopItemUserInput =
+    | { type: "text"; placeholderText?: string; wordCharsOnly?: boolean } // Defaults to false. If true, only allows \w character (alphanumeric and _)
+    | { type: "number"; placeholderText?: string }
+    | { type: "dropdown"; dropdownOptions: readonly (string | { option: string; cost: number })[]; shouldResetSelectionOnOptionsChange?: boolean } // Defaults to false. If true, the selection will reset to the first option when dropdownOptions changes
+    | { type: "player"; excludedPlayers?: PlayerId[] } // Defaults to excluding the current player
+    | { type: "color" }
+
+type ShopCategoryConfig = Partial<{
+    autoSelectCategory: boolean
+    customTitle: string // Supports translation keys and ordinary text
+    redDot: boolean
+    forceRemoveRedDot: boolean
+    sortPriority: number
+    description: string | CustomTextStyling
+}>
 ```
