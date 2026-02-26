@@ -136,7 +136,7 @@ type PrecisionBarQteParams = {
     speed: number // Speed of the marker in full bar-widths per second (e.g. 1.0 = one full sweep per second). default: 0.5
     successZoneSize: number // Fraction of the bar that counts as the success zone, centred in the middle (0–1, e.g. 0.15 = 15%). default: 0.15
     label: CustomTextStyling // Rich text shown as the QTE prompt. default: [{ str: "Click when the marker is within the green zone." }]
-    icon?: string // Icon displayed on the marker. default: null
+    icon?: string // Icon displayed on the marker. default: ""
     scale?: number // Scale multiplier for the icon. default: 1
     rotation?: number // Rotation in degrees for the icon. default: 0
 }
@@ -151,7 +151,7 @@ api.addQTE(playerId, {
         speed: 0.5,
         successZoneSize: 0.15,
         label: [{ str: "Click when the marker is within the green zone." }],
-        icon: null,
+        icon: "",
         scale: 1,
         rotation: 0,
     },
@@ -169,9 +169,9 @@ type RhythmClickQteParams = {
     requiredSuccesses: number // Number of successful clicks needed to complete the QTE. default: 5
     shrinkDurationMs: number // Duration in milliseconds for the outer circle to shrink from max size to centre. default: 1200
     toleranceFraction: number // Fraction of the inner circle radius that counts as a successful overlap (0–1, e.g. 0.15 = ±15%). default: 0.15
-    maxMisses?: number // Max misses allowed before failing. If omitted, unlimited misses are permitted. default: null (unlimited)
+    maxMisses?: number // Max misses allowed before failing. If omitted, unlimited misses are permitted. default: 3
     label: CustomTextStyling // Rich text shown as the QTE prompt. default: [{ str: "Click when the circles align!" }]
-    icon?: string // Icon displayed in the centre of the circles. default: null
+    icon?: string // Icon displayed in the centre of the circles. default: ""
 }
 ```
 
@@ -184,9 +184,9 @@ api.addQTE(playerId, {
         requiredSuccesses: 5,
         shrinkDurationMs: 1200,
         toleranceFraction: 0.15,
-        maxMisses: null (unlimited),
+        maxMisses: 3,
         label: [{ str: "Click when the circles align!" }],
-        icon: null,
+        icon: "",
     },
 })
 ```
