@@ -1616,6 +1616,14 @@ addQTE(playerId, qteParameters)
 deleteQTE(playerId, id)
 
 /**
+ * Returns whether the player has any qteRequests
+ *
+ * @param {PlayerId} playerId
+ * @returns {boolean}
+ */
+hasActiveQTE(playerId)
+
+/**
  * Show a message over the shop in the same place that a shop item's onBoughtMessage is shown.
  * Displays for a couple seconds before disappearing
  * Use case is to show a dynamic message when player buys an item

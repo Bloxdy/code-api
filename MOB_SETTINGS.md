@@ -255,22 +255,55 @@ attackEffectName = null
 attackEffectDuration = 0
 
 /**
- * @type { { cooldown: number; range: number; sound: string; delay: number; minDestinationRadius: number; maxDestinationRadius: number; swingArm: boolean; particleOpts: TempMobParticleOpts; } }
+ * @type {MobWarpTargetSpecialAttackInfo}
  */
-warpTargetSpecialAttackInfo = null
+warpTargetSpecialAttackInfo = {
+        cooldown: 20_000,
+        range: 32,
+        sound: "warperPhase",
+        delay: 1_000,
+        minDestinationRadius: 5,
+        maxDestinationRadius: 7,
+        swingArm: false,
+        particleOpts: {
+            duration: 2_000,
+            texture: "soul_0",
+            colorGradients: [
+                {
+                    timeFraction: 0,
+                    minColor: [70, 215, 230, 1],
+                    maxColor: [75, 225, 240, 1],
+                },
+            ],
+        },
+    }
 
 /**
- * @type { { range: number; particleOpts: {
- *     colorGradients: ColorGradient[];
- *     texture: string;
- * }; } }
+ * @type {MobCombatTetherCombatInfo}
  */
-combatTetherInfo = null
+combatTetherInfo = {
+        range: 11,
+        particleOpts: {
+            texture: "soul_0",
+            colorGradients: [
+                {
+                    timeFraction: 0,
+                    minColor: [245, 35, 25, 1],
+                    maxColor: [255, 45, 35, 1],
+                },
+            ],
+        },
+    }
 
 /**
- * @type { { probability: number; impulse: number; minAngle: number; maxAngle: number; } }
+ * @type {MobEvadeInfo}
  */
-evadeInfo = null
+evadeInfo = {
+        probability: 0.6,
+        minAngle: Math.PI * 0.35,
+        maxAngle: Math.PI * 0.6,
+        impulse: 8,
+    }
 
 /**
  * @type {MobTameInfo}
@@ -364,6 +397,18 @@ tameInfo = {
 onTamedHealthMultiplier = 4.0
 
 /**
+ * @type {MobPetInfo}
+ */
+petInfo = {
+    friendshipPoints: 0,
+    lastFedAt: null,
+    highestFriendshipLevelReached: 0,
+    superlikedFood: null,
+    superlikedFoodKnown: false,
+    bonusesGained: [],
+}
+
+/**
  * @type {string}
  */
 ownerDbId = null
@@ -397,18 +442,6 @@ ridingSpeedMult = 1
  * @type {string}
  */
 metaInfo = ""
-
-/**
- * @type {MobPetInfo}
- */
-petInfo = {
-    friendshipPoints: 0,
-    lastFedAt: null,
-    highestFriendshipLevelReached: 0,
-    superlikedFood: null,
-    superlikedFoodKnown: false,
-    bonusesGained: [],
-}
 ```
 
 Some mob types support variations other than just `"default"`:

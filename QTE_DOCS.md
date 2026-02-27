@@ -24,8 +24,8 @@ type ProgressBarQteParams = {
     canFail: boolean // If true, the QTE fails when progress reaches 0; otherwise progress clamps at 0. default: false
     description: CustomTextStyling // Rich text shown as the QTE prompt. default: [{ str: "Click repeatedly to complete!" }]
     clickIcon: string // Icon displayed on the click target. default: "fa-solid fa-computer-mouse"
-    scale?: number // Scale multiplier for the click icon. default: 1
-    rotation?: number // Rotation in degrees for the click icon. default: 15
+    scale?: number // Scale multiplier for the click icon (must be > 0). default: 1
+    rotation?: number // Rotation in degrees for the click icon (must be ≥ 0). default: 15
 }
 ```
 
@@ -59,8 +59,8 @@ type TimedClickQteParams = {
     icon: string // Icon displayed on the click target. default: "fa-solid fa-computer-mouse"
     label: CustomTextStyling // Rich text shown as the QTE prompt. default: [{ str: "Click to complete the QTE!" }]
     showTimer: boolean // Whether to display a countdown timer. default: true
-    scale?: number // Scale multiplier for the icon. default: 1
-    rotation?: number // Rotation in degrees for the icon. default: 15
+    scale?: number // Scale multiplier for the icon (must be > 0). default: 1
+    rotation?: number // Rotation in degrees for the icon (must be ≥ 0). default: 15
     breatheCenter?: boolean // If true, the icon pulses with a breathing animation anchored to the centre. default: false
 }
 ```
@@ -91,8 +91,8 @@ A mover travels along a bar, periodically changing direction. The player holds c
 ```ts
 type GravityBarQteParams = {
     progressStartValue?: number // Starting progress value (0-100). default: 30
-    catchZoneSize: number // Size of the player's catch zone as a fraction of the bar (0-1). default: 0.25
-    moverSpeed: number // Speed at which the mover travels along the bar. default: 3
+    catchZoneSize: number // Size of the player's catch zone as a fraction of the bar (must be > 0, 0-1). default: 0.25
+    moverSpeed: number // Speed at which the mover travels along the bar (must be > 0). default: 3
     moverErraticness: number // How erratically the mover changes direction (higher = more unpredictable). default: 0.8
     gravity: number // Downward pull on the catch zone when the player isn't holding click. default: 1
     riseSpeed: number // Upward force on the catch zone while the player holds click. default: 1.5
@@ -133,12 +133,12 @@ A marker oscillates back and forth along a bar. A highlighted success zone sits 
 
 ```ts
 type PrecisionBarQteParams = {
-    speed: number // Speed of the marker in full bar-widths per second (e.g. 1.0 = one full sweep per second). default: 0.5
-    successZoneSize: number // Fraction of the bar that counts as the success zone, centred in the middle (0–1, e.g. 0.15 = 15%). default: 0.15
+    speed: number // Speed of the marker in full bar-widths per second (must be > 0, e.g. 1.0 = one full sweep per second). default: 0.5
+    successZoneSize: number // Fraction of the bar that counts as the success zone, centred in the middle (must be > 0, 0-1, e.g. 0.15 = 15%). default: 0.15
     label: CustomTextStyling // Rich text shown as the QTE prompt. default: [{ str: "Click when the marker is within the green zone." }]
     icon?: string // Icon displayed on the marker. default: ""
-    scale?: number // Scale multiplier for the icon. default: 1
-    rotation?: number // Rotation in degrees for the icon. default: 0
+    scale?: number // Scale multiplier for the icon (must be > 0). default: 1
+    rotation?: number // Rotation in degrees for the icon (must be ≥ 0). default: 0
 }
 ```
 
@@ -166,10 +166,10 @@ An outer circle shrinks toward a fixed inner circle. The player must click when 
 
 ```ts
 type RhythmClickQteParams = {
-    requiredSuccesses: number // Number of successful clicks needed to complete the QTE. default: 5
-    shrinkDurationMs: number // Duration in milliseconds for the outer circle to shrink from max size to centre. default: 1200
-    toleranceFraction: number // Fraction of the inner circle radius that counts as a successful overlap (0–1, e.g. 0.15 = ±15%). default: 0.15
-    maxMisses?: number // Max misses allowed before failing. If omitted, unlimited misses are permitted. default: 3
+    requiredSuccesses: number // Number of successful clicks needed to complete the QTE (must be a positive integer). default: 5
+    shrinkDurationMs: number // Duration in milliseconds for the outer circle to shrink from max size to centre (must be > 0). default: 1200
+    toleranceFraction: number // Fraction of the inner circle radius that counts as a successful overlap (must be > 0, 0-1, e.g. 0.15 = ±15%). default: 0.15
+    maxMisses?: number // Max misses allowed before failing. If omitted, unlimited misses are permitted (must be a non-negative integer). default: 3
     label: CustomTextStyling // Rich text shown as the QTE prompt. default: [{ str: "Click when the circles align!" }]
     icon?: string // Icon displayed in the centre of the circles. default: ""
 }
