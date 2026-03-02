@@ -1435,24 +1435,14 @@ createMobHerd()
  * @param {number} x
  * @param {number} y
  * @param {number} z
- * @param {Partial<{
- *     mobHerdId: MobHerdId
- *     spawnerId: PlayerId
- *     mobDbId: MobDbId
- *     name: string
- *     playSoundOnSpawn: boolean
- *     variation: MobVariation<TMobType>
- *     physicsOpts: Partial<{
- *         width: number
- *         height: number
- *     }>
- * }>} [opts] - Includes:
+ * @param {MobSpawnOpts<TMobType>} [opts] - Includes:
  * - mobHerdId The ID of this mob's herd. (A mob herd represents a collection of mobs that move together.)
  * - spawnerId The ID of the player who tried to spawn this mob.
  * - mobDbId A persistent ID for the mob. This can be useful when loading mob data from the database. If the DB ID is already taken, null will be returned.
  * - name If set, gives the mob a name that will be displayed as a nametag above their head.
  * - playSoundOnSpawn
  * - variation
+ * - physicsOpts { width: number; height: number; collidesEntities: boolean }
  * @returns {PNull<MobId>} - null if the mob could not be spawned.
  * This can happen when there are too many mobs in the world for the current number
  * of players in the lobby, or if the area is protected e.g. by spawn area protection.
@@ -1492,10 +1482,10 @@ setDefaultMobSetting(mobType, setting, value)
  *
  * @param {MobId} mobId
  * @param {TMobSetting} setting
- * @param {boolean} [returnDefaultIfNotOverriden] - If true, return the default setting if not overridden.
+ * @param {boolean} [returnDefaultIfNotOverridden] - If true, return the default setting if not overridden.
  * @returns {MobSettings<MobType>[TMobSetting]}
  */
-getMobSetting(mobId, setting, returnDefaultIfNotOverriden)
+getMobSetting(mobId, setting, returnDefaultIfNotOverridden)
 
 /**
  * Set the current value of a mob setting for a specific mob.
@@ -1520,6 +1510,25 @@ getNumMobs()
  * @returns {MobId[]}
  */
 getMobIds()
+
+/**
+ * Gets the current AI state for the given mob.
+ *
+ * @param {MobId} mobId
+ * @returns { { state: MobAiState; params: MobAiStateParams<MobAiState> } }
+ */
+getMobAiState(mobId)
+
+/**
+ * Sets the current AI state for the given mob.
+ * Some AI states will require context such as the ID of the lifeform being chased.
+ *
+ * @param {MobId} mobId
+ * @param {TState} state
+ * @param {MobAiStateParams<TState>} params
+ * @returns {void}
+ */
+setMobAiState(mobId, state, params)
 
 /**
  * Apply an impulse to an entity
@@ -2064,7 +2073,7 @@ type ShopItem = {
     onBoughtMessage?: string | CustomTextStyling
     redDot?: boolean
     forceRemoveRedDot?: boolean
-    badge?: { text: string | CustomTextStyling; type: "new" | "lucky" }
+    badge?: { text: string | CustomTextStyling; type: ShopItemBadgeType }
     userInput?: ShopItemUserInput
     sell?: boolean // Optional, defaults to false. If true, the sign of "cost" is flipped. So a "cost" of -25 would give the player 25 currency AND be displayed as "25" (instead of -25)
     sortPriority?: number // Descending, bigger number means closer to the top
@@ -2085,5 +2094,19 @@ type ShopCategoryConfig = Partial<{
     forceRemoveRedDot: boolean
     sortPriority: number
     description: string | CustomTextStyling
+}>
+
+type MobSpawnOpts<TMobType extends MobType> = Partial<{
+    mobHerdId: MobHerdId
+    spawnerId: PlayerId
+    mobDbId: MobDbId
+    name: string
+    playSoundOnSpawn: boolean
+    variation: MobVariation<TMobType>
+    physicsOpts: Partial<{
+        width: number
+        height: number
+        collidesEntities: boolean
+    }>
 }>
 ```

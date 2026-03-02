@@ -28,10 +28,10 @@ setDefaultMobSetting(mobType, setting, value)
  *
  * @param {MobId} mobId
  * @param {TMobSetting} setting
- * @param {boolean} [returnDefaultIfNotOverriden] - If true, return the default setting if not overridden.
+ * @param {boolean} [returnDefaultIfNotOverridden] - If true, return the default setting if not overridden.
  * @returns {MobSettings<MobType>[TMobSetting]}
  */
-getMobSetting(mobId, setting, returnDefaultIfNotOverriden)
+getMobSetting(mobId, setting, returnDefaultIfNotOverridden)
 
 /**
  * Set the current value of a mob setting for a specific mob.
@@ -477,3 +477,44 @@ Frost Wraith: "default"
 Draugr Reaver: "default"
 NPC: "default", "emma", "leo", "isabel", "sanjay", "imara", "enoch", "sara", "carmen"
 ```
+
+## Mob AI
+
+A mob's AI state determines its behaviour, e.g.: whether it is stood still, walking in a straight line, chasing someone, running towards a coordinate, etc. These API methods allow you to modify a mob's AI state:
+
+```js
+/**
+ * Gets the current AI state for the given mob.
+ *
+ * @param {MobId} mobId
+ * @returns { { state: MobAiState; params: MobAiStateParams<MobAiState> } }
+ */
+getMobAiState(mobId)
+
+/**
+ * Sets the current AI state for the given mob.
+ * Some AI states will require context such as the ID of the lifeform being chased.
+ *
+ * @param {MobId} mobId
+ * @param {TState} state
+ * @param {MobAiStateParams<TState>} params
+ * @returns {void}
+ */
+setMobAiState(mobId, state, params)
+```
+
+Here is the full list of available mob AI states and their parameters:
+
+| State | Description | Parameters |
+|-------|-------------|------------|
+| `idleBeforeTurning` | The mob is stood still (idle) and is about to turn. | `null` |
+| `turning` | The mob has chosen a new direction at random and is turning to face it. | `null` |
+| `idleBeforeWalking` | The mob is stood still (idle) and is about to walk. | `null` |
+| `walking` | The mob is walking in the direction it is facing. | `null` |
+| `runningAway` | The mob is running away from the target lifeform. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
+| `chasing` | The mob is chasing the target lifeform. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
+| `following` | The mob is following the target lifeform.<br>It will stop if it is within the `minFollowingDistance` (mob setting) of the target,<br>and teleport to the target if it is outside the `maxFollowingDistance` (mob setting) of the target. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
+| `watching` | The mob is stood still looking at the target. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
+| `walkingToPosition` | The mob is walking towards the position.<br>It will stop if it is within the `stoppingRadius` (mob setting) of the position. | <pre lang="ts"><code>{ pos: Pos }</code></pre> |
+| `runningToPosition` | The mob is running towards the position.<br>It will stop if it is within the `stoppingRadius` (mob setting) of the position. | <pre lang="ts"><code>{ pos: Pos }</code></pre> |
+
