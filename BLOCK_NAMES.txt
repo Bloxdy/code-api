@@ -1,4 +1,4 @@
-# Block Names (1016 blocks)
+# Block Names (1032 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -1042,3 +1042,19 @@ Diamond Trophy [R]
 INTERNAL_MESH_Diamond Trophy
 Moonstone Trophy [R]
 INTERNAL_MESH_Moonstone Trophy
+Black Wave
+Blue Wave
+Brown Wave
+Cyan Wave
+Green Wave
+Grey Wave
+Light Blue Wave
+Light Grey Wave
+Lime Wave
+Magenta Wave
+Orange Wave
+Pink Wave
+Purple Wave
+Red Wave
+White Wave
+Yellow Wave

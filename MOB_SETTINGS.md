@@ -507,6 +507,8 @@ Here is the full list of available mob AI states and their parameters:
 
 | State | Description | Parameters |
 |-------|-------------|------------|
+| `idle` | The mob is stood still, but it still has awareness of its environment.<br>For example: if the mob is hostile, it will still chase and attack nearby players. | `null` |
+| `disabled` | The mob is stood still, and it has no awareness of its environment.<br>It will not even react if provoked. | `null` |
 | `idleBeforeTurning` | The mob is stood still (idle) and is about to turn. | `null` |
 | `turning` | The mob has chosen a new direction at random and is turning to face it. | `null` |
 | `idleBeforeWalking` | The mob is stood still (idle) and is about to walk. | `null` |
