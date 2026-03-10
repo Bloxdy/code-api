@@ -35,7 +35,7 @@ Code Block to make the player jump:
 f = api.setVelocity(myId, 0, 9, 0)
 ```
 
-Push the player
+Push the player:
 
 ```js
 api.applyImpulse(myId, 9, 0, 9)
