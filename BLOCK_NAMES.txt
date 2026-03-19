@@ -1,4 +1,4 @@
-# Block Names (1032 blocks)
+# Block Names (1089 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -1058,3 +1058,60 @@ Purple Wave
 Red Wave
 White Wave
 Yellow Wave
+White Directional Arrow [R]
+Orange Directional Arrow [R]
+Magenta Directional Arrow [R]
+Light Blue Directional Arrow [R]
+Yellow Directional Arrow [R]
+Lime Directional Arrow [R]
+Pink Directional Arrow [R]
+Grey Directional Arrow [R]
+Light Grey Directional Arrow [R]
+Cyan Directional Arrow [R]
+Purple Directional Arrow [R]
+Blue Directional Arrow [R]
+Brown Directional Arrow [R]
+Green Directional Arrow [R]
+Red Directional Arrow [R]
+Black Directional Arrow [R]
+Bin
+Vending Machine [R]
+_Vending Machine Top [R]
+Job Application Statue
+John Beef Statue
+67 Statue
+Coloured Wheel
+UFO
+Torch [H,R]
+Yellow Torch [H,R]
+White Torch [H,R]
+Red Torch [H,R]
+Purple Torch [H,R]
+Pink Torch [H,R]
+Orange Torch [H,R]
+Magenta Torch [H,R]
+Lime Torch [H,R]
+Light Gray Torch [H,R]
+Light Blue Torch [H,R]
+Green Torch [H,R]
+Gray Torch [H,R]
+Cyan Torch [H,R]
+Brown Torch [H,R]
+Blue Torch [H,R]
+Black Torch [H,R]
+Yellow Neon
+White Neon
+Red Neon
+Purple Neon
+Pink Neon
+Orange Neon
+Magenta Neon
+Lime Neon
+Light Gray Neon
+Light Blue Neon
+Green Neon
+Gray Neon
+Cyan Neon
+Brown Neon
+Blue Neon
+Black Neon

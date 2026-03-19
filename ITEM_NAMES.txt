@@ -840,6 +840,52 @@ Tarpon
 Threadfin Bream
 Tri-Pointed Needlefish
 Game Dev Fish
+Armoured Searobin
+Ash Lionfish
+Barefrost Toothfish
+Blackfin Icefish
+Basalt Pipefish
+Brimstone Spikefish
+Cinder Leviathan
+Crowned Flame Angelfish
+Deepwater Lanternfish
+Driftice Capelin
+Ember Chub
+Embermark Wrasse
+Eviota Vader
+Frost Herring
+Frost Wolf Eel
+Frostpaint Notie
+Frozen Grenadier
+Giant Trevally
+Glacial Lanternfish
+Glacial Silverfish
+Heatwarp Flounder
+Hatchetfish
+Ice Spined Notothenia
+Iceshelf Skate
+Icy Sculpin
+Lavaflow Trout
+Lavawake Slopefish
+Magma Sardinella
+Magma Trout
+Marbled Moray Cod
+Molten Lotella Cod
+Northern Wolffish
+Paleice Rockcod
+Permafrost Halibut
+Pithead
+Polarflash Electron
+Pyroclast Eel
+Pyroscale Grouper
+Red Pyreside
+Rimesnouted Lancetfish
+Scorched Sunfish
+Scored Dace
+Silver Dragonfish
+Snow Haddock
+Volcanic Catfish
+Volcanic Semperi
 Rusty Rod
 Lucky Rod
 Sturdy Rod
@@ -851,6 +897,11 @@ Speed Rod
 Carbon Rod
 Deep Sea Rod
 Master Rod
+Obsidian Rod
+Molten Magma Rod
+Frost Rod
+Black Ice Rod
+Mythic Rod
 Acorn
 Acorn Jelly
 Cow's Milk

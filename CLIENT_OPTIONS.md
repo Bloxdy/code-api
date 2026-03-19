@@ -638,6 +638,12 @@ bounciness = 0
 canClimbWalls = false
 
 /**
+ * Whether the player can crouch
+ * @type {boolean}
+ */
+canCrouch = true
+
+/**
  * Distance in blocks over which we reduce the opacity of entities as they approach the camera.
  * @type {number}
  */
@@ -675,4 +681,16 @@ cameraRoll = 0
  * @type {number}
  */
 cameraRollTransitionMs = 0
+
+/**
+ * When null, just use the player's graphics setting. When set, forces lighting on (true) or off (false).
+ * @type {boolean}
+ */
+lightingOverride = null
+
+/**
+ * Sky light colour override - hex string e.g. #ffffff
+ * @type {string}
+ */
+skyLightColourOverride = null
 ```

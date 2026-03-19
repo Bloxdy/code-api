@@ -40,7 +40,7 @@ riding
 
 ## Skin Parts
 
-The following skin parts can be customised: `head`, `body`, `legs`, `shoes`, `eyebrows`, `eyes`, `skin`
+The following skin parts can be customised: `hat`, `head`, `body`, `legs`, `shoes`, `eyebrows`, `eyes`, `skin`
 
 ---
 
@@ -65,6 +65,10 @@ zombie
 ```
 
 ---
+
+## Hat (1 skins)
+
+`hat_none`
 
 ## Head (46 skins)
 

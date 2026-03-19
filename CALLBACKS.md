@@ -21,7 +21,7 @@ onPlayerDamagingMeshEntity onPlayerBreakMeshEntity onPlayerUsedThrowable
 onPlayerThrowableHitTerrain onTouchscreenActionButton onTaskClaimed
 onChunkLoaded onPlayerRequestChunk onItemDropCreated
 onPlayerStartChargingItem onPlayerFinishChargingItem onPlayerFinishQTE
-onPlayerBoughtShopItem doPeriodicSave
+onPlayerToggledShopMenu onPlayerBoughtShopItem doPeriodicSave
 
 To use a callback, just assign a function to it in the world code!
 tick = () => {}			 or			 function tick() {}
@@ -89,6 +89,7 @@ playerCommand = (playerId: string, command: string) => {
  * the value for a playerId being false means that player won't receive the message.
  * Otherwise playerId values should be an object with (optional) keys
  * prefixContent and chatContent to modify the prefix and the chat.
+ * CustomTextStyling[] prefixContent is expected, e.g. [["prefix"]] or [[{ str: "prefix" }]].
  * World code is not permitted to specify chatContent, it will be ignored.
  * @param {PlayerId} playerId - The id of the player that sent the message
  * @param {string} chatMessage - The message that the player sent
@@ -635,6 +636,13 @@ onPlayerFinishChargingItem = (playerId: PlayerId, used: boolean, itemName: strin
  * @param {boolean} result
  */
 onPlayerFinishQTE = (playerId: PlayerId, qteId: QTERequestId, result: boolean) => {}
+
+/**
+ * Called when a player opens or closes the shop menu
+ * @param {PlayerId} playerId - The id of the player whose shop menu changed
+ * @param {boolean} isOpen - Whether the shop menu is now open
+ */
+onPlayerToggledShopMenu = (playerId: PlayerId, isOpen: boolean) => {}
 
 /**
  * Called after a player successfully buys a shop item

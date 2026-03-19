@@ -9,6 +9,7 @@ These are the strings you can give to functions that take a particle effect `tex
 `generic_2`
 `glint`
 `heart`
+`scary_face`
 `soul_0`
 `square_particle`
 `z-particle`

@@ -4,7 +4,7 @@ You can run javascript when right clicking code blocks and press to code boards.
 This is only available to owners of worlds lobbies.
 The javascript can interact with the Bloxd.io game api.
 
-Please use [our discord](https://discord.gg/vwMp5y25RX) to report any issues you come across or features you'd like to see added.
+Please use [our discord](https://discord.gg/playbloxd) to report any issues you come across or features you'd like to see added.
 
 ## Code Blocks
 
@@ -1562,6 +1562,7 @@ getVelocity(eId)
 setVelocity(eId, x, y, z)
 
 /**
+ * @deprecated use setEntityRotation
  * Set the heading for a server-auth entity.
  *
  * @param {EntityId} entityId
@@ -1571,12 +1572,32 @@ setVelocity(eId, x, y, z)
 setEntityHeading(entityId, newHeading)
 
 /**
+ * @deprecated use getEntityRotation
  * Get the heading for a server-auth entity.
  *
  * @param {EntityId} entityId
  * @returns {number}
  */
 getEntityHeading(entityId)
+
+/**
+ * Get the rotation for a server-auth entity.
+ *
+ * @param {EntityId} entityId
+ * @returns {[number, number, number]}
+ */
+getEntityRotation(entityId)
+
+/**
+ * Set the rotation for a server-auth entity.
+ *
+ * @param {EntityId} entityId
+ * @param {number} xRotation
+ * @param {number} yRotation
+ * @param {number} zRotation
+ * @returns {void}
+ */
+setEntityRotation(entityId, xRotation, yRotation, zRotation)
 
 /**
  * Set the amount of an item in an item entity
@@ -2081,11 +2102,16 @@ type ShopItem = {
 }
 
 type ShopItemUserInput =
-    | { type: "text"; placeholderText?: string; wordCharsOnly?: boolean } // Defaults to false. If true, only allows \w character (alphanumeric and _)
-    | { type: "number"; placeholderText?: string }
-    | { type: "dropdown"; dropdownOptions: readonly (string | { option: string; cost: number })[]; shouldResetSelectionOnOptionsChange?: boolean } // Defaults to false. If true, the selection will reset to the first option when dropdownOptions changes
+    | { type: "text"; placeholderText?: string; wordCharsOnly?: boolean; initialValue?: string } // wordCharsOnly defaults to false. If true, only allows \w character (alphanumeric and _). initialValue always takes precedence as the text input value when set.
+    | { type: "number"; placeholderText?: string; initialValue?: string }
+    | {
+            type: "dropdown"
+            dropdownOptions: readonly (string | { option: string; cost: number })[]
+            shouldResetSelectionOnOptionsChange?: boolean // Defaults to false. If true, the selection will reset to the first option when dropdownOptions changes.
+            initialValue?: string
+      }
     | { type: "player"; excludedPlayers?: PlayerId[] } // Defaults to excluding the current player
-    | { type: "color" }
+    | { type: "color"; initialValue?: string }
 
 type ShopCategoryConfig = Partial<{
     autoSelectCategory: boolean
