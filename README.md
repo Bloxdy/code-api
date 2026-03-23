@@ -1155,6 +1155,27 @@ getInventoryFreeSlotCount(playerId)
 canOpenStandardChest(playerId, chestX, chestY, chestZ)
 
 /**
+ * Open a standard chest for a player.
+ * If there is no chest, or the player cannot open it, do nothing.
+ *
+ * @param {PlayerId} playerId
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @returns {void}
+ */
+openChestForPlayer(playerId, x, y, z)
+
+/**
+ * Close a chest for a player.
+ * If the player does not have a chest open, do nothing.
+ *
+ * @param {PlayerId} playerId
+ * @returns {void}
+ */
+closeChestForPlayer(playerId)
+
+/**
  * Give a standard chest an item and a certain amount of that item.
  * Returns the amount of item added to the chest.
  *
