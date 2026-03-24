@@ -11,7 +11,7 @@ api.sendMessage(playerId, [{ icon: "fa-solid fa-star", style: { color: "gold" } 
 
 ## Ingame Icons (89 icons)
 
-See the `IngameIconName` type in the Glossary.
+See the `IngameIconName` type in the Glossary. 
 
 ```
 Damage
