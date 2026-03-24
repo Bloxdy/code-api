@@ -18,6 +18,7 @@ getDefaultMobSetting(mobType, setting)
 
 ```js
 /**
+ *
  * Set the default value for a mob setting.
  * @param {TMobType} mobType
  * @param {TMobSetting} setting
@@ -29,16 +30,19 @@ setDefaultMobSetting(mobType, setting, value)
 
 ```js
 /**
+ *
  * Get the current value of a mob setting for a specific mob.
  * @param {MobId} mobId
  * @param {TMobSetting} setting
+ * @param {boolean} [returnDefaultIfNotOverridden] - If true, return the default setting if not overridden.
  * @returns {MobSettings<MobType>[TMobSetting]}
  */
-getMobSetting(mobId, setting)
+getMobSetting(mobId, setting, returnDefaultIfNotOverridden)
 ```
 
 ```js
 /**
+ *
  * Set the current value of a mob setting for a specific mob.
  * @param {MobId} mobId
  * @param {TMobSetting} setting
@@ -277,6 +281,20 @@ secondaryAttackImpulse = 0
 
 ```js
 /**
+ * @type { { burstAttackIntervals: readonly number[]; } }
+ */
+burstAttackInfo = null
+```
+
+```js
+/**
+ * @type { { burstAttackIntervals: readonly number[]; } }
+ */
+secondaryBurstAttackInfo = null
+```
+
+```js
+/**
  * @type {string}
  */
 heldItemName = null
@@ -298,6 +316,20 @@ secondaryAttackItemName = null
 
 ```js
 /**
+ * @type {boolean}
+ */
+swingArmOnAttack = true
+```
+
+```js
+/**
+ * @type {boolean}
+ */
+swingArmOnSecondaryAttack = true
+```
+
+```js
+/**
  * @type {string}
  */
 attackEffectName = null
@@ -308,6 +340,63 @@ attackEffectName = null
  * @type {number}
  */
 attackEffectDuration = 0
+```
+
+```js
+/**
+ * @type {MobWarpTargetSpecialAttackInfo}
+ */
+warpTargetSpecialAttackInfo = {
+        cooldown: 20_000,
+        range: 32,
+        sound: "warperPhase",
+        delay: 1_000,
+        minDestinationRadius: 5,
+        maxDestinationRadius: 7,
+        swingArm: false,
+        particleOpts: {
+            duration: 2_000,
+            texture: "soul_0",
+            colorGradients: [
+                {
+                    timeFraction: 0,
+                    minColor: [70, 215, 230, 1],
+                    maxColor: [75, 225, 240, 1],
+                },
+            ],
+        },
+    }
+```
+
+```js
+/**
+ * @type {MobCombatTetherCombatInfo}
+ */
+combatTetherInfo = {
+        range: 11,
+        particleOpts: {
+            texture: "soul_0",
+            colorGradients: [
+                {
+                    timeFraction: 0,
+                    minColor: [245, 35, 25, 1],
+                    maxColor: [255, 45, 35, 1],
+                },
+            ],
+        },
+    }
+```
+
+```js
+/**
+ * @type {MobEvadeInfo}
+ */
+evadeInfo = {
+        probability: 0.6,
+        minAngle: Math.PI * 0.35,
+        maxAngle: Math.PI * 0.6,
+        impulse: 8,
+    }
 ```
 
 ```js
@@ -327,7 +416,8 @@ tameInfo = {
     ],
     probabilityOfTame: 0.32,
     isSaddleable: false,
-    foodItemNames: [
+    supportsFriendship: true,
+    likedFoods: [
         "Raw Porkchop",
         "Raw Beef",
         "Raw Mutton",
@@ -336,7 +426,34 @@ tameInfo = {
         "Steak",
         "Cooked Mutton",
         "Cooked Venison",
-        "Rotten Flesh"
+        "Banana",
+        "Baked Potato",
+        "Rotten Brain"
+    ],
+    neutralFoods: [
+        "Catnip",
+        "Pumpkin Pie",
+        "Bowl of Cranberries",
+        "Watermelon Slice",
+        "Gold Watermelon Slice",
+        "Bread",
+        "Rotten Flesh",
+        "Mushroom Soup",
+        "Plum",
+        "Carrot",
+        "Beetroot",
+        "Raw Potato"
+    ],
+    dislikedFoods: [
+        "Apple",
+        "Wheat",
+        "Pear",
+        "Cherry",
+        "Bowl of Rice",
+        "Melon Slice",
+        "Gold Melon Slice",
+        "Chili Pepper",
+        "Cracked Coconut"
     ],
     foodItemsWithEffects: [
         {
@@ -354,7 +471,19 @@ tameInfo = {
                 }
             ]
         }
-    ]
+    ],
+    guaranteedDrop: "Caught Fish",
+    commonDrops: [
+        "Poop",
+        "Wheat Seeds"
+    ],
+    levelUpBonuses: {
+        1: "Renaming",
+        2: "Special Drops",
+        3: "Damage +",
+        4: "Painting",
+        5: "Poison Claws"
+    }
 }
 ```
 
@@ -363,6 +492,20 @@ tameInfo = {
  * @type {number}
  */
 onTamedHealthMultiplier = 4.0
+```
+
+```js
+/**
+ * @type {MobPetInfo}
+ */
+petInfo = {
+    friendshipPoints: 0,
+    lastFedAt: null,
+    highestFriendshipLevelReached: 0,
+    superlikedFood: null,
+    superlikedFoodKnown: false,
+    bonusesGained: [],
+}
 ```
 
 ```js
@@ -376,7 +519,7 @@ ownerDbId = null
 /**
  * @type {number}
  */
-minFollowingRadius = 3
+minFollowingRadius = 5
 ```
 
 ```js
@@ -384,6 +527,27 @@ minFollowingRadius = 3
  * @type {number}
  */
 maxFollowingRadius = 12
+```
+
+```js
+/**
+ * @type {boolean}
+ */
+isRideable = false
+```
+
+```js
+/**
+ * @type { { amount: number; interval: number; startAfter: number; } }
+ */
+healthRegen = null
+```
+
+```js
+/**
+ * @type {number}
+ */
+ridingSpeedMult = 1
 ```
 
 ```js
@@ -404,12 +568,13 @@ metaInfo = ""
 > [!NOTE]
 > From the offical documentation:
 
+
 Some mob types support variations other than just `"default"`:
 
 ```js
 Pig: "default"
 Cow: "default", "cream"
-Sheep: "default"
+Sheep: "default", "black", "red", "orange", "pink", "purple", "yellow", "blue", "brown", "cyan", "gray", "green", "lightBlue", "lightGray", "lime", "magenta"
 Horse: "default", "black", "brown", "cream"
 Cave Golem: "default", "iron"
 Draugr Zombie: "default", "longHairChestplate", "longHairClothed", "shortHairClothed"
@@ -432,7 +597,53 @@ Spirit Wolf: "default"
 Spirit Bear: "default"
 Spirit Stag: "default"
 Spirit Gorilla: "default"
+Draugr Warper: "default"
+Frost Wraith: "default"
+Draugr Reaver: "default"
+NPC: "default", "emma", "leo", "isabel", "sanjay", "imara", "enoch", "sara", "carmen"
 ```
+
+## Mob AI
+
+A mob's AI state determines its behaviour, e.g.: whether it is stood still, walking in a straight line, chasing someone, running towards a coordinate, etc. These API methods allow you to modify a mob's AI state:
+
+```js
+/**
+ * Gets the current AI state for the given mob.
+ *
+ * @param {MobId} mobId
+ * @returns { { state: MobAiState; params: MobAiStateParams<MobAiState> } }
+ */
+getMobAiState(mobId)
+
+/**
+ * Sets the current AI state for the given mob.
+ * Some AI states will require context such as the ID of the lifeform being chased.
+ *
+ * @param {MobId} mobId
+ * @param {TState} state
+ * @param {MobAiStateParams<TState>} params
+ * @returns {void}
+ */
+setMobAiState(mobId, state, params)
+```
+
+Here is the full list of available mob AI states and their parameters:
+
+| State | Description | Parameters |
+|-------|-------------|------------|
+| `idle` | The mob is stood still, but it still has awareness of its environment.<br>For example: if the mob is hostile, it will still chase and attack nearby players. | `null` |
+| `disabled` | The mob is stood still, and it has no awareness of its environment.<br>It will not even react if provoked. | `null` |
+| `idleBeforeTurning` | The mob is stood still (idle) and is about to turn. | `null` |
+| `turning` | The mob has chosen a new direction at random and is turning to face it. | `null` |
+| `idleBeforeWalking` | The mob is stood still (idle) and is about to walk. | `null` |
+| `walking` | The mob is walking in the direction it is facing. | `null` |
+| `runningAway` | The mob is running away from the target lifeform. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
+| `chasing` | The mob is chasing the target lifeform. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
+| `following` | The mob is following the target lifeform.<br>It will stop if it is within the `minFollowingDistance` (mob setting) of the target,<br>and teleport to the target if it is outside the `maxFollowingDistance` (mob setting) of the target. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
+| `watching` | The mob is stood still looking at the target. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
+| `walkingToPosition` | The mob is walking towards the position.<br>It will stop if it is within the `stoppingRadius` (mob setting) of the position. | <pre lang="ts"><code>{ pos: Pos }</code></pre> |
+| `runningToPosition` | The mob is running towards the position.<br>It will stop if it is within the `stoppingRadius` (mob setting) of the position. | <pre lang="ts"><code>{ pos: Pos }</code></pre> |
 
 > [!WARNING]
 > This is not from the offical documentation, this was put together by NlGBOB.
