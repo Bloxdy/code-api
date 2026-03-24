@@ -33,7 +33,7 @@ You can use `api.setCallbackValueFallback("callbackName", defaultValue)` to set 
 > [!NOTE]
 > Below is all the callbacks that you can use in Bloxd.io, there are headers above each.
 
-### Tick
+### tick
 ```js
 /**
  * Called every tick, 20 times per second
