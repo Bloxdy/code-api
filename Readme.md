@@ -12,7 +12,7 @@ You can run JavaScript when right clicking code blocks and press to code boards.
 Editing, by default, is only available to owners and co-owners of worlds lobbies.
 The JavaScript can interact with the Bloxd.io game api.
 
-Please use [Bloxd.io's official discord server](https://discord.gg/vwMp5y25RX) to report any issues you come across or features you'd like to see added.
+Please use [Bloxd.io's official discord server](https://discord.gg/playbloxd) to report any issues you come across or features you'd like to see added.
 Please create a pull request if you notice incorrect, or missing information in this version of the documenation.
 
 ## Code Blocks
@@ -37,8 +37,9 @@ Please create a pull request if you notice incorrect, or missing information in 
 
 ## Notes
 
-- Global variable `myId` stores the player ID of who is running the code, it can not be used in World code.
+- Global variables `myId` and `playerId` store the player ID of who is running the code, it can not be used in World code.
 - Global variable `thisPos` stores the position of the currently executing code block or press to code board, it can not be used in World code.
+- `myId`, `playerId`, `thisPos` and `ownerDbId` are all defined on `api`
 - You can use `api.log` or `console.log` for printing and debugging (they do the same thing).
 - You can use `Date.now()` or `api.now()`, both return the time in milliseconds.
 - Comments like `/* comment */` and `// comment` work.
