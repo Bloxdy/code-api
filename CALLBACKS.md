@@ -21,7 +21,7 @@ onPlayerDamagingMeshEntity onPlayerBreakMeshEntity onPlayerUsedThrowable
 onPlayerThrowableHitTerrain onTouchscreenActionButton onTaskClaimed
 onChunkLoaded onPlayerRequestChunk onItemDropCreated
 onPlayerStartChargingItem onPlayerFinishChargingItem onPlayerFinishQTE
-onPlayerToggledShopMenu onPlayerBoughtShopItem doPeriodicSave
+onPlayerBoughtShopItem doPeriodicSave
 
 To use a callback, just assign a function to it in the world code!
 tick = () => {}			 or			 function tick() {}
@@ -636,13 +636,6 @@ onPlayerFinishChargingItem = (playerId: PlayerId, used: boolean, itemName: strin
  * @param {boolean} result
  */
 onPlayerFinishQTE = (playerId: PlayerId, qteId: QTERequestId, result: boolean) => {}
-
-/**
- * Called when a player opens or closes the shop menu
- * @param {PlayerId} playerId - The id of the player whose shop menu changed
- * @param {boolean} isOpen - Whether the shop menu is now open
- */
-onPlayerToggledShopMenu = (playerId: PlayerId, isOpen: boolean) => {}
 
 /**
  * Called after a player successfully buys a shop item

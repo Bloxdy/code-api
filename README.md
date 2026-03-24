@@ -1155,8 +1155,9 @@ getInventoryFreeSlotCount(playerId)
 canOpenStandardChest(playerId, chestX, chestY, chestZ)
 
 /**
- * Open a standard chest for a player.
+ * Open a chest for a player.
  * If there is no chest, or the player cannot open it, do nothing.
+ * WARNING: This may call "onPlayerAttemptOpenChest" to determine if the player has permission to open it. Using this function inside that callback risks infinite recursion.
  *
  * @param {PlayerId} playerId
  * @param {number} x
@@ -1550,6 +1551,64 @@ getMobAiState(mobId)
  * @returns {void}
  */
 setMobAiState(mobId, state, params)
+
+/**
+ * Try to create a throwable entity.
+ * Similar to creating a mesh entity and uses the same rate limiting.
+ * However, this uses the predefined throwables system and physics used by throwable items with the game
+ * Each throwable item has its own behaviour already, including default velocity, damage and gravity multipliers.
+ *
+ * @param {EntityId} throwerEId
+ * @param {ThrowableItem} itemName - Must be an Item that is usually throwable in-engine
+ * @param {[number, number, number]} position - Starting position
+ * @param {[number, number, number]} direction
+ * @param {number} [velocityMult] - Multiplier for the default velocity of the throwable item
+ * @param {number} [damageMult] - Multiplier for the default damage of the throwable item
+ * @param {number} [gravityMult] - Multiplier for the default gravity of the throwable item
+ * @param {ItemAttributes} [attributes] - item attributes (currently used only for the "Boomerag" item)
+ * @returns {string} - null if throwable creation failed, otherwise the entity ID.
+ */
+attemptCreateThrowable(throwerEId, itemName, position, direction, velocityMult, damageMult, gravityMult, attributes)
+
+/**
+ * Delete a throwable entity before it automatically removes itself.
+ *
+ * @param {EntityId} eId
+ * @returns {boolean} - true if the entity was deleted, false if it was not a throwable entity
+ */
+deleteThrowable(eId)
+
+/**
+ * Try to create a mesh entity. This creates an entity whose mesh position is synced with clients.
+ * Set entity position using setPosition
+ * There is a limit to the number of mesh entities and throwables that can be created, with an even smaller limit for mesh entities with physics.
+ *
+ * @param {MeshType} type
+ * @param {MeshEntityOpts[MeshType]} opts
+ * @param {string} [name] - The default name for the nametag
+ * @param {MeshEntityPhysicsOpts} [physicsOptions] - Physics Options
+ * @param {EntityId} [initiatorId] - The entity that initiated the creation of the mesh entity.
+ * @returns {EntityId | null} - null if the entity creation failed, otherwise the entity ID.
+ */
+attemptCreateMeshEntity(type, opts, name, physicsOptions, initiatorId)
+
+/**
+ * Update a mesh entity. If used on a non-mesh entity, will do nothing.
+ *
+ * @param {EntityId} eId
+ * @param {MeshType} type
+ * @param {MeshEntityOpts[MeshType]} opts
+ * @returns {void}
+ */
+updateMeshEntity(eId, type, opts)
+
+/**
+ * Delete a mesh entity
+ *
+ * @param {EntityId} eId
+ * @returns {boolean}
+ */
+deleteMeshEntity(eId)
 
 /**
  * Apply an impulse to an entity
@@ -2156,4 +2215,45 @@ type MobSpawnOpts<TMobType extends MobType> = Partial<{
         collidesEntities: boolean
     }>
 }>
+
+type MeshEntityOpts = {
+    Box: CommonMeshEntityOpts & {
+        width: number
+        height: number
+        depth: number
+        diffuseColor?: number[]
+        emissiveColor?: number[]
+        backFaceCulling?: boolean // Default true
+        texture?: string // Can be a blockname. Wraps every one block
+        faceUV?: number[][]
+    }
+    BloxdBlock: CommonMeshEntityOpts & {
+        blockName: BlockNameOrId
+        size: number | [number, number, number]
+    }
+    Person: CommonMeshEntityOpts & {
+        size?: number
+        textures?: Partial<Cosmetics>
+        pose?: PlayerPose
+    }
+    ParticleEmitter: MeshParticleSystemOpts
+}
+
+type CommonMeshEntityOpts = {
+    hideDist?: number
+    meshOffset?: number[]
+    autoRotate?: boolean
+    lineToEId?: EntityId // EntityId to connect to using a line
+}
+
+type MeshEntityPhysicsOpts = {
+    doPhysics: boolean
+    onCollideTerrain?: () => void // Unsupported for custom code
+    collidesEntities?: boolean
+    collideBits?: number // bitmask category of this entity
+    collideMask?: number // bitmask category of entities this entity collides with
+    heightExpandAmt?: number // expand hitbox height by this amount
+    widthExpandAmt?: number // expand hitbox width by this amount
+    vehicleOpts?: MeshEntityVehicleOpts // Unsupported for custom code
+}
 ```
