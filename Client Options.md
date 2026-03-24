@@ -243,6 +243,7 @@ crouchingSpeed = 2
 ```
 
 ```js
+/**
  * Walking speed for the player.
  * STRONGLY recommend using `speedMultiplier` unless you have a specific use case for this, walkingSpeed doesn't make UX sense on mobile.
  * (Walking speed ignored for mobile players, mobile player speed is determined by joystick input and the max of runningSpeed & walkingSpeed).
