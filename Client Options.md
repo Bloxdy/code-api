@@ -127,6 +127,14 @@ canPickBlocks = true
 canClimbWalls = false
 ```
 
+```js
+/**
+ * Whether the player can crouch
+ * @type {boolean}
+ */
+canCrouch = true
+```
+
 ### Can't Options
 ```js
 /**
@@ -235,6 +243,37 @@ crouchingSpeed = 2
 ```
 
 ```js
+ * Walking speed for the player.
+ * STRONGLY recommend using `speedMultiplier` unless you have a specific use case for this, walkingSpeed doesn't make UX sense on mobile.
+ * (Walking speed ignored for mobile players, mobile player speed is determined by joystick input and the max of runningSpeed & walkingSpeed).
+ *
+ * Players are used to the default bloxd movement behaviour and speed,
+ * and may be put off from your game if different muscle memory is required.
+ * We suggest applying speed or slowness effects instead, using api.applyEffect.
+ *
+ * The only use case for walkingSpeed/runningSpeed over speedMultiplier or speed effects is to disable running or to inverse walking/running (so you run by default and e.g. hold shift to go slower).
+ * @type {number}
+ */
+walkingSpeed = 4
+```
+
+```js
+/**
+ * Running speed for the player.
+ * STRONGLY recommend using `speedMultiplier` unless you have a specific use case for this, runningSpeed doesn't make UX sense on mobile.
+ * (Walking speed is ignored for mobile players, mobile player speed is determined by joystick input and the max of runningSpeed & walkingSpeed).
+ *
+ * Players are used to the default bloxd movement behaviour and speed,
+ * and may be put off from your game if different muscle memory is required.
+ * We suggest applying speed or slowness effects instead, using api.applyEffect.
+ *
+ * The only use case for walkingSpeed/runningSpeed over speedMultiplier or speed effects is to disable running or to inverse walking/running (so you run by default and e.g. hold shift to go slower).
+ * @type {number}
+ */
+runningSpeed = 7
+```
+
+```js
 /**
  * Multiplier for the flying speed in creative mode
  * @type {number}
@@ -325,6 +364,48 @@ zoomOutDistance = 3
 maxPlayerZoom = 15
 ```
 
+```js
+/**
+ * Duration in ms to animate/transition to the forced camera direction (when you change forcedCameraDirection). 0 = instant.
+ * Useful for smooth camera movements.
+ * @type {number}
+ */
+forcedCameraDirectionTransitionMs = 0
+```
+
+```js
+/**
+ * Roll angle of the camera in radians. Useful for disorientation effects, death effects, etc.
+ * @type {number}
+ */
+cameraRoll = 0
+```
+
+```js
+/**
+ * Duration in ms to animate/transition to the camera roll angle (when you change cameraRoll). 0 = instant.
+ * Useful for smooth camera roll transitions.
+ * @type {number}
+ */
+cameraRollTransitionMs = 0
+```
+
+```js
+/**
+ * When null, just use the player's graphics setting. When set, forces lighting on (true) or off (false).
+ * @type {boolean}
+ */
+lightingOverride = null
+```
+
+```js
+/**
+ * Sky light colour override - hex string e.g. #ffffff
+ * @type {string}
+ */
+skyLightColourOverride = null
+```
+
 ### Fog Options
 ```js
 /**
@@ -390,6 +471,14 @@ middleTextUpper = ""
  * @type {string | CustomTextStyling}
  */
 middleTextLower = ""
+```
+
+```js
+/**
+ * Text to display by the crosshair
+ * @type {string | CustomTextStyling}
+ */
+crosshairText = ""
 ```
 
 ```js
@@ -556,13 +645,21 @@ splashPotionEffectDuration = 8000
 arrowPotionEffectDuration = 6000
 ```
 
+```js
+/**
+ * RGBA array [r, g, b, a] for camera screen tint effect. Values fall between 0 and 1.
+ * @type {[number, number, number, number]}
+ */
+cameraTint = null
+```
+
 ### Respawn Options
 ```js
 /**
  * After dying the player can respawn after this many seconds
  * @type {number}
  */
-secsToRespawn = 3
+secsToRespawn = 5
 ```
 
 ```js
@@ -804,13 +901,15 @@ maxAuraLevel = 0
  */
 crouchMobDetectionRadiusMultiplier = 2
 ```
+
 ```js
 /**
- * Allows player to select a channel that is passed as argument to onPlayerChat. See SharedTypes.ts for expected format
+ * Allows player to select a channel that is passed as argument to onPlayerChat. See engineGameplayType.ts for expected format
  * @type { { channelName: string; elementContent: string | CustomTextStyling; elementBgColor: string; }[] }
  */
 chatChannels = null
 ```
+
 
 ```js
 /**
@@ -850,6 +949,20 @@ compassTarget = [0, 0, 0]
  * @type {string | EarthSkyBox}
  */
 skyBox = "default"
+```
+
+```js
+/**
+ * Minimum size of region around player where chunks are loaded.
+ * Format [horizontalMinChunkRadius, verticalMinChunkRadius].
+ * Each value should be between 2 and 4.
+ *
+ * We recommend leaving this at the default of [2, 2] unless you have a specific reason to change it.
+ * (e.g. you need players to see the bottom of a dropper)
+ * This is because higher values can be laggier on low-end devices.
+ * @type {[number, number]}
+ */
+minChunkAddDist = [2, 2]
 ```
 
 ```js
