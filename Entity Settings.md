@@ -20,7 +20,7 @@ setTargetedPlayerSettingForEveryone(targetedPlayerId, settingName, settingValue,
 
 ```js
 /**
- * Set a player's other-entity setting for every player in the game.
+ * Set a player's other-entity setting for every lifeform in the game.
  * includeNewJoiners=true means that the player will have the setting applied to new joiners.
  *
  * @param {PlayerId} playerId
@@ -76,12 +76,13 @@ Here is the full list of available entity settings:
 ```js
 /**
  * Opacity of the entity
- * Fractional values are currently treated as 1 for performance reasons
+ * Set a player's other-entity setting for every lifeform in the game.
  * 0 opacity will hide the entity and its name tag
  * @type {number}
  */
 opacity = 1
 ```
+
 ```js
 /**
  * Rendering order of the entity, higher zIndex renders on top of lower ones.
@@ -89,6 +90,7 @@ opacity = 1
  */
 zIndex = 0
 ```
+
 ```js
 /**
  * Applies a colour tint to the entity when set, like the red tint when an entity gets hurt.
@@ -96,6 +98,7 @@ zIndex = 0
  */
 overlayColour = null
 ```
+
 ```js
 /**
  * Whether the entity can attack other entities, ignored if the targeted entity is invincible
@@ -176,8 +179,8 @@ hasPriorityNametag = false
 
 ```js
 /**
- * The colour of the player's name.
- * @type {string}
+ * The colour of the entity's name.
+ * @type {"default" | "yellow" | "lime" | "green" | "aqua" | "cyan" | "blue" | "purple" | "pink" | "red" | "orange"}
  */
 nameColour = "default"
 ```
