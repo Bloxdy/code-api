@@ -29,7 +29,7 @@ tick = () => {}			 or			 function tick() {}
 > [!WARNING]
 > Callback `onPlayerToggledShopMenu` has been removed.
 > 
-> Please check your codes for this callback
+> Please check your codes for this Callback
 
 You can use `api.setCallbackValueFallback("callbackName", defaultValue)` to set a default value to be returned by your callback code if it throws an error.
 
@@ -773,9 +773,9 @@ onPlayerFinishQTE = (playerId: PlayerId, qteId: QTERequestId, result: boolean) =
 ```
 ### onPlayerToggledShopMenu
 > [!NOTE]
-> This callback is no longer available
+> This Callback is no longer available.
 > 
-> keeping here as notice for users
+> Keeping here as notice for users.
 ```js
 /**
  * Called when a player opens or closes the shop menu
