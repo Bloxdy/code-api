@@ -134,7 +134,7 @@ Create a Bloxd block mesh:
 
 ```ts
 const blockId = api.attemptCreateMeshEntity("BloxdBlock", {
-    blockName: "Diamond Block",
+    blockName: "Block of Diamond",
     size: 1,
 })
 ```
