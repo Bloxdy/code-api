@@ -772,6 +772,10 @@ onPlayerFinishChargingItem = (playerId: PlayerId, used: boolean, itemName: strin
 onPlayerFinishQTE = (playerId: PlayerId, qteId: QTERequestId, result: boolean) => {}
 ```
 ### onPlayerToggledShopMenu
+> [!NOTE]
+> This callback is no longer available
+> 
+> keeping here as notice for users
 ```js
 /**
  * Called when a player opens or closes the shop menu
