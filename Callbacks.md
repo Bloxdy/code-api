@@ -21,11 +21,15 @@ onPlayerDamagingMeshEntity onPlayerBreakMeshEntity onPlayerUsedThrowable
 onPlayerThrowableHitTerrain onTouchscreenActionButton onTaskClaimed
 onChunkLoaded onPlayerRequestChunk onItemDropCreated
 onPlayerStartChargingItem onPlayerFinishChargingItem onPlayerFinishQTE
-onPlayerToggledShopMenu onPlayerBoughtShopItem doPeriodicSave
+onPlayerBoughtShopItem doPeriodicSave
 
 To use a callback, just assign a function to it in the world code!
 tick = () => {}			 or			 function tick() {}
 ```
+> [!WARNING]
+> Callback `onPlayerToggledShopMenu` has been removed.
+> 
+> Please check your codes for this callback
 
 You can use `api.setCallbackValueFallback("callbackName", defaultValue)` to set a default value to be returned by your callback code if it throws an error.
 
