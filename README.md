@@ -812,7 +812,7 @@ isMobile(playerId)
  * @param {number} x
  * @param {number} y
  * @param {number} z
- * @param {string} itemName - Name of the item. Valid names can be found in blockMetadata.ts and itemMetadata.ts
+ * @param {ItemName} itemName - Name of the item. Valid names can be found in blockMetadata.ts and itemMetadata.ts
  * @param {PNull<number>} [amount] - The amount of the item to include in the drop - so when the player picks up the item drop, they get this many of the item.
  * @param {boolean} [mergeItems] - Whether to merge the item into a nearby item of same type, if one exists. Defaults to false.
  * @param {ItemAttributes} [attributes] - Attributes of the item being dropped
@@ -857,7 +857,7 @@ getInitialItemMetadata(itemName)
  * If null is passed for lifeformId, this is simply its entry in blockMetadata etc.
  *
  * @param {PNull<LifeformId>} lifeformId
- * @param {string} itemName
+ * @param {ItemName} itemName
  * @param {K} stat
  * @returns {AnyMetadataItem[K]}
  */
@@ -1030,7 +1030,7 @@ setWalkThroughRect(playerId, pos1, pos2, updateType)
  * Returns the amount of item added to the users inventory.
  *
  * @param {PlayerId} playerId
- * @param {string} itemName
+ * @param {ItemName} itemName
  * @param {number} [itemAmount]
  * @param {ItemAttributes} [attributes] - An optional object for certain types of item. For guns this can contain the shotsLeft field which is the amount of ammo the gun currently has.
  * @returns {number}
@@ -1050,7 +1050,7 @@ inventoryIsFull(playerId)
  *
  * @param {PlayerId} playerId
  * @param {number} itemSlotIndex - 0-indexed
- * @param {string} itemName - Can be 'Air', in which case itemAmount will be ignored and the slot will be cleared.
+ * @param {ItemName} itemName - Can be 'Air', in which case itemAmount will be ignored and the slot will be cleared.
  * @param {PNull<number>} [itemAmount] - -1 for infinity. Should not be set, or null, for items that are not stackable.
  * @param {ItemAttributes} [attributes] - An optional object for certain types of item. For guns this can contain the shotsLeft field which is the amount of ammo the gun currently has.
  * @param {boolean} [tellClient] - whether to tell client about it - results in desync between client and server if client doesnt locally perform the same action
@@ -1062,7 +1062,7 @@ setItemSlot(playerId, itemSlotIndex, itemName, itemAmount, attributes, tellClien
  * Remove an amount of item from a player's inventory
  *
  * @param {PlayerId} playerId
- * @param {string} itemName
+ * @param {ItemName} itemName
  * @param {number} amount
  * @returns {void}
  */
@@ -1083,7 +1083,7 @@ getItemSlot(playerId, itemSlotIndex)
  * Whether a player has an item
  *
  * @param {PlayerId} playerId
- * @param {string} itemName
+ * @param {ItemName} itemName
  * @returns {boolean} - bool
  */
 hasItem(playerId, itemName)
@@ -1093,7 +1093,7 @@ hasItem(playerId, itemName)
  * Returns 0 if the player has none, and a negative number if infinite.
  *
  * @param {PlayerId} playerId
- * @param {string} itemName
+ * @param {ItemName} itemName
  * @returns {number} - number
  */
 getInventoryItemAmount(playerId, itemName)
@@ -1181,7 +1181,7 @@ closeChestForPlayer(playerId)
  * Returns the amount of item added to the chest.
  *
  * @param {number[]} chestPos
- * @param {string} itemName
+ * @param {ItemName} itemName
  * @param {number} [itemAmount]
  * @param {PlayerId} [playerId] - The player who is interacting with the chest.
  * @param {ItemAttributes} [attributes] - An optional object for certain types of item. For guns this can contain the shotsLeft field which is the amount of ammo the gun currently has.
@@ -1203,7 +1203,7 @@ getStandardChestFreeSlotCount(chestPos)
  * Returns 0 if the standard chest has none, and a negative number if infinite.
  *
  * @param {number[]} chestPos
- * @param {string} itemName
+ * @param {ItemName} itemName
  * @returns {number} - number
  */
 getStandardChestItemAmount(chestPos, itemName)
@@ -1228,7 +1228,7 @@ getStandardChestItems(chestPos)
 /**
  * @param {number[]} chestPos
  * @param {number} idx - 0-indexed
- * @param {string} itemName - Can be 'Air', in which case itemAmount will be ignored and the slot will be cleared.
+ * @param {ItemName} itemName - Can be 'Air', in which case itemAmount will be ignored and the slot will be cleared.
  * @param {number} [itemAmount] - -1 for infinity. Should not be set, or null, for items that are not stackable.
  * @param {PlayerId} [playerId] - The player who is interacting with the chest.
  * @param {ItemAttributes} [attributes] - An optional object for certain types of item. For guns this can contain the shotsLeft field which is the amount of ammo the gun currently has.
@@ -1262,7 +1262,7 @@ getMoonstoneChestItems(playerId)
  *
  * @param {PlayerId} playerId
  * @param {number} idx - 0-indexed
- * @param {string} itemName - Can be 'Air', in which case itemAmount will be ignored and the slot will be cleared.
+ * @param {ItemName} itemName - Can be 'Air', in which case itemAmount will be ignored and the slot will be cleared.
  * @param {number} [itemAmount] - -1 for infinity. Should not be set, or null, for items that are not stackable.
  * @param {ItemAttributes} [metadata] - An optional object for certain types of item. For guns this can contain the shotsLeft field which is the amount of ammo the gun currently has.
  * @returns {void}
