@@ -1297,7 +1297,7 @@ getBlockData(x, y, z)
 /**
  * Get the name of the lobby this game is running in.
  *
- * @returns {PNull<string>}
+ * @returns {string}
  */
 getLobbyName()
 
@@ -1789,7 +1789,8 @@ getEffects(lifeformId)
 removeEffect(lifeformId, name)
 
 /**
- * Change a part of a player's skin
+ * Change a part of a player's skin.
+ * UGC code is restricted to cosmetics from packs with ugcSelectable; internal code can use any cosmetics.
  *
  * @param {PlayerId} playerId - Player to change
  * @param {CosmeticType} cosmeticType - Type of cosmetic
