@@ -27,6 +27,15 @@ Please use [our discord](https://discord.gg/playbloxd) to report any issues you 
 - You can use `Date.now()` instead of `api.now()` if you prefer, both return the time in milliseconds.
 - Comments like `/* comment */` work, but comments like `// comment` don't work right now.
 
+## Annotation
+- @param {type} indicates a parameter in the function, while type indicates the type such as PlayerId, number, boolean, string, or any.
+- @returns {content} indicates what the function returns when it is called.
+- The presense of a | between two parameter types indicates that the player can either use one or the other.
+- Information after a - indicates a note that applies to a specific block.
+- Additional types:
+    - [number, number, number] is an array of 3 numbers, like coordinates
+    - number[] is an array that only includes numbers, and can include any amount
+
 ## Examples
 
 Code Block to make the player jump:
