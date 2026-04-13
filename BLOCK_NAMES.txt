@@ -1,4 +1,4 @@
-# Block Names (1094 blocks)
+# Block Names (1115 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -1120,3 +1120,24 @@ Weak Jump Pad
 Jump Pad
 Strong Jump Pad
 Super Jump Pad
+Invisible Yellow Light
+Invisible White Light
+Invisible Red Light
+Invisible Purple Light
+Invisible Pink Light
+Invisible Orange Light
+Invisible Magenta Light
+Invisible Lime Light
+Invisible Light Gray Light
+Invisible Light Blue Light
+Invisible Green Light
+Invisible Gray Light
+Invisible Cyan Light
+Invisible Brown Light
+Invisible Blue Light
+Invisible Black Light
+Invisible Sky Light
+Gun Lucky Block
+Ghost Chest
+Ghost Lucky Block
+Ghost Mystery Block

@@ -689,8 +689,20 @@ cameraRollTransitionMs = 0
 lightingOverride = null
 
 /**
- * Sky light colour override - hex string e.g. #ffffff
+ * Sky light colour override - hex string e.g. #ffffff.
  * @type {string}
  */
 skyLightColourOverride = null
+
+/**
+ * Held item light colour override - hex colour string e.g. #ffffff. Applied regardless of any held item.
+ * @type {string}
+ */
+heldLightColourOverride = null
+
+/**
+ * When true, hides world and chunk coordinates regardless of the player's setting.
+ * @type {boolean}
+ */
+hideCoordinates = false
 ```
