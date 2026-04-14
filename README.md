@@ -35,7 +35,7 @@ Code Block to make the player jump:
 f = api.setVelocity(myId, 0, 9, 0)
 ```
 
-Push the player
+Push the player:
 
 ```js
 api.applyImpulse(myId, 9, 0, 9)
@@ -2289,9 +2289,11 @@ type MeshEntityPhysicsOpts = {
  */
 export type AnimationSchema = {
     animationDurationMs: number
-    loop?: boolean
+    loop?: LoopModeSchema
     nodeAnimations?: NodeSkeletonAnimationSchema
 }
+
+type LoopModeSchema = boolean | "hold-on-last-frame"
 
 type NodeSkeletonAnimationSchema = Record<NodeName, NodeAnimationSchema>
 
@@ -2339,9 +2341,11 @@ export type LerpModeSchema = "linear" | "catmull-rom-spline"
  */
 export type BlockbenchAnimationSchema = {
     animation_length: number // The duration of the animation in seconds.
-    loop?: boolean
+    loop?: BlockbenchLoopModeSchema
     bones?: BlockbenchBonesAnimationSchema
 }
+
+type BlockbenchLoopModeSchema = boolean | "hold_on_last_frame"
 
 type BlockbenchBonesAnimationSchema = Record<NodeName, BlockbenchBoneAnimationSchema>
 
