@@ -447,6 +447,7 @@ metaInfo = ""
 Some mob types support variations other than just `"default"`:
 
 ```js
+67: "default"
 Pig: "default"
 Cow: "default", "cream"
 Sheep: "default", "black", "red", "orange", "pink", "purple", "yellow", "blue", "brown", "cyan", "gray", "green", "lightBlue", "lightGray", "lime", "magenta"
@@ -476,6 +477,8 @@ Draugr Warper: "default"
 Frost Wraith: "default"
 Draugr Reaver: "default"
 NPC: "default", "emma", "leo", "isabel", "sanjay", "imara", "enoch", "sara", "carmen"
+Bobino Musculino: "default"
+Capitan Explosivo: "default"
 ```
 
 ## Mob AI

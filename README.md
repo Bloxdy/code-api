@@ -875,6 +875,19 @@ getInitialItemMetadata(itemName)
 getItemStat(lifeformId, itemName, stat)
 
 /**
+ * Set a stat attribute for a block or item
+ *
+ * NOTE: Only a subset of stats are customisable this way.
+ *
+ * @param {PlayerId} playerId
+ * @param {ItemName} itemName
+ * @param {K} stat
+ * @param {AnyMetadataItem[K]} value
+ * @returns {void}
+ */
+setItemStat(playerId, itemName, stat, value)
+
+/**
  * Set the direction the player is looking.
  *
  * @param {PlayerId} playerId
@@ -2338,6 +2351,7 @@ export type LerpModeSchema = "linear" | "catmull-rom-spline"
  * - Blockbench animations do not use time fractions. Instead, they use absolute time.
  * - The unit of time is seconds, not milliseconds.
  * - The angular unit is degrees, not radians.
+ * - The x-axis is mirrored.
  */
 export type BlockbenchAnimationSchema = {
     animation_length: number // The duration of the animation in seconds.
@@ -2353,7 +2367,7 @@ type BlockbenchBoneAnimationSchema = {
     rotation?: BlockbenchAnimationTimelineSchema // Blockbench rotations are in degrees.
 }
 
-type BlockbenchAnimationTimelineSchema = Record<TimestampString, BlockbenchAnimationFrameSchema>
+type BlockbenchAnimationTimelineSchema = Point | Record<TimestampString, BlockbenchAnimationFrameSchema>
 
 /**
  * "pre" and "post" points exist to allow for discontinuities.
