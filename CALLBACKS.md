@@ -9,7 +9,7 @@ onPlayerPickedUpItem onPlayerSelectInventorySlot onBlockStand
 onPlayerAttemptCraft onPlayerCraft onPlayerAttemptOpenChest
 onPlayerOpenedChest onPlayerMoveItemOutOfInventory onPlayerMoveInvenItem
 onPlayerMoveItemIntoIdxs onPlayerSwapInvenSlots onPlayerMoveInvenItemWithAmt
-onPlayerAttemptAltAction onPlayerAltAction onPlayerClick
+onPlayerAttemptAltAction onPlayerAltAction onPlayerClick onPlayerClickUp
 onClientOptionUpdated onMobSettingUpdated onInventoryUpdated onChestUpdated
 onWorldChangeBlock onCreateBloxdMeshEntity onEntityCollision
 onPlayerAttemptSpawnMob onWorldAttemptSpawnMob onPlayerSpawnMob
@@ -295,6 +295,20 @@ onPlayerAltAction = (playerId: PlayerId, x: number, y: number, z: number, block:
  * @param {EntityId | null} targetEId
  */
 onPlayerClick = (playerId: PlayerId, wasAltClick: boolean, x: number, y: number, z: number, block: BlockName, targetEId: EntityId | null) => {}
+
+/**
+ * Called when a player releases a click (mouse-up on desktop, touch-end on mobile).
+ * Fires for both primary and secondary click releases.
+ * Keep in mind wasAltClick will always be false for touchscreen players.
+ * @param {PlayerId} playerId - The id of the player releasing click
+ * @param {boolean} wasAltClick - Whether the released click was an alt click (e.g. right click
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @param {BlockName} block
+ * @param {EntityId | null} targetEId
+ */
+onPlayerClickUp = (playerId: PlayerId, wasAltClick: boolean, x: number, y: number, z: number, block: BlockName, targetEId: EntityId | null) => {}
 
 /**
  * Called when a client option is updated

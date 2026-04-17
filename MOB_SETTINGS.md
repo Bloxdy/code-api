@@ -478,7 +478,7 @@ Frost Wraith: "default"
 Draugr Reaver: "default"
 NPC: "default", "emma", "leo", "isabel", "sanjay", "imara", "enoch", "sara", "carmen"
 Bobino Musculino: "default"
-Capitan Explosivo: "default"
+Capitano Explovissimo: "default"
 ```
 
 ## Mob AI

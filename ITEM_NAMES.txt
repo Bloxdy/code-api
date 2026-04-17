@@ -388,8 +388,16 @@ Double Barrel
 Double Barrel|RequiresAmmo
 AWP
 AWP|RequiresAmmo
+Deagle
+Deagle|RequiresAmmo
+Striker-12
+Striker-12|RequiresAmmo
+VSR
+VSR|RequiresAmmo
 Minigun
 Minigun|RequiresAmmo
+FMR
+FMR|RequiresAmmo
 Gold Coin
 Updraft
 Snowdash
@@ -725,7 +733,7 @@ Caught Mob NPC Sara
 Caught Mob NPC Carmen
 Caught Mob 67 Default
 Caught Mob Bobino_Musculino Default
-Caught Mob Capitan_Explosivo Default
+Caught Mob Capitano_Explovissimo Default
 Timed Spike Bomb
 Timed Spike Bomb|meta|charging2
 Timed Spike Bomb|meta|charging3
