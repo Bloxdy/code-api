@@ -26,7 +26,7 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 **Tip:** If you want a random similar sound, remove the number suffix from the sound name (e.g., use `"grass"` instead of `"grass1"`).
 
-### Available Sounds (337 total)
+### Available Sounds (340 total)
 
 `bass`
 `bassattack`
@@ -77,6 +77,8 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `cowMoo1`
 `cowMoo2`
 `cowMoo3`
+`crowdAmbience`
+`crowdCheer`
 `deerGrunt1`
 `deerHurt1`
 `dogBark1`
@@ -199,6 +201,7 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `reaverGrunt2`
 `reaverGrunt3`
 `reel`
+`refereeWhistle`
 `rifle_cock_01`
 `rifle_cock_02`
 `rifle_magazine_load_01`
