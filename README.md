@@ -2059,6 +2059,74 @@ setAuraLevel(playerId, level)
 applyAuraChange(playerId, auraDiff)
 
 /**
+ * Gets a database value that is saved per lobby.
+ *
+ * @param {string} key
+ * @returns {PNull<UgcDbValue>}
+ */
+getLobbyDbValue(key)
+
+/**
+ * Sets a database value that is saved per lobby. This persists between sessions.
+ *
+ * @param {string} key
+ * @param {UgcDbValue} value
+ * @returns {void}
+ */
+setLobbyDbValue(key, value)
+
+/**
+ * Deletes a database value that is saved per lobby.
+ *
+ * @param {string} key
+ * @returns {void}
+ */
+deleteLobbyDbValue(key)
+
+/**
+ * Deletes all database values that are saved per lobby.
+ *
+ * @returns {void}
+ */
+deleteAllLobbyDbValues()
+
+/**
+ * Gets a database value that is saved per player.
+ *
+ * @param {PlayerId} playerId
+ * @param {string} key
+ * @returns {PNull<UgcDbValue>}
+ */
+getPlayerDbValue(playerId, key)
+
+/**
+ * Sets a database value that is saved per player. This persists between sessions and between lobbies for custom games.
+ *
+ * @param {PlayerId} playerId
+ * @param {string} key
+ * @param {UgcDbValue} value
+ * @returns {void}
+ */
+setPlayerDbValue(playerId, key, value)
+
+/**
+ * Deletes a database value that is saved per player.
+ *
+ * @param {PlayerId} playerId
+ * @param {string} key
+ * @returns {void}
+ */
+deletePlayerDbValue(playerId, key)
+
+/**
+ * Deletes all database values that are saved per player.
+ *
+ * @param {PlayerId} playerId
+ * @returns {void}
+ */
+deleteAllPlayerDbValues(playerId)
+
+/**
  * Set a default value to be returned by your callback code if it throws an error.
  *
  * @param {string} callbackName
