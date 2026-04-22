@@ -2062,7 +2062,7 @@ applyAuraChange(playerId, auraDiff)
  * Gets a database value that is saved per lobby.
  *
  * @param {string} key
- * @returns {PNull<UgcDbValue>}
+ * @returns {PNull<string | number>}
  */
 getLobbyDbValue(key)
 
@@ -2070,7 +2070,7 @@ getLobbyDbValue(key)
  * Sets a database value that is saved per lobby. This persists between sessions.
  *
  * @param {string} key
- * @param {UgcDbValue} value
+ * @param {string | number} value
  * @returns {void}
  */
 setLobbyDbValue(key, value)
@@ -2095,7 +2095,7 @@ deleteAllLobbyDbValues()
  *
  * @param {PlayerId} playerId
  * @param {string} key
- * @returns {PNull<UgcDbValue>}
+ * @returns {PNull<string | number>}
  */
 getPlayerDbValue(playerId, key)
 
@@ -2104,7 +2104,7 @@ getPlayerDbValue(playerId, key)
  *
  * @param {PlayerId} playerId
  * @param {string} key
- * @param {UgcDbValue} value
+ * @param {string | number} value
  * @returns {void}
  */
 setPlayerDbValue(playerId, key, value)
