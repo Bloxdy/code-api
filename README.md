@@ -1731,6 +1731,21 @@ setItemAmount(itemId, newAmount)
 setMaxPlayers(softMaxPlayers, maxPlayers)
 
 /**
+ * Tell a player to disconnect from the current lobby and join a new one.
+ *
+ * To connect to a specific variation, format is `gamename_variation`.
+ * For Custom Games, this will be `classic_playerSchematic|XXXXXXXXXX`.
+ *
+ * NOTE: Players won't disconnect immediately (they may play an ad before being redirected).
+ *
+ * @param {PlayerId} playerId
+ * @param {string} [game] - Defaults to the current game.
+ * @param {string} [lobbyName] - Defaults to "Quick Play"
+ * @returns {void}
+ */
+matchmakePlayer(playerId, game, lobbyName)
+
+/**
  * Create and register the UI for the requested quicktime event (QTE) to the screen.
  * Handle the result via the onPlayerFinishQTE engine callback.
  *
