@@ -107,7 +107,7 @@ Trader Piggy
 
 ---
 
-## Font Awesome Icons (169 icons)
+## Font Awesome Icons (171 icons)
 
 Use with `fa-solid`, `fa-regular`, or `fa-duotone` prefix. Only use these when no Bloxd-native icon fits.
 
@@ -193,7 +193,9 @@ fa-solid fa-hat-witch
 fa-solid fa-heart
 fa-solid fa-heart-music-camera-bolt
 fa-solid fa-history
+fa-solid fa-hourglass-clock
 fa-solid fa-icons
+fa-solid fa-image
 fa-solid fa-info-circle
 fa-solid fa-joystick
 fa-solid fa-layer-group

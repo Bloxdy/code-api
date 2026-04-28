@@ -181,6 +181,10 @@ Obby RPG
 Super RPG
 Grenade Launcher
 Iceball
+67 Base Projectile
+67 Boosted Projectile
+Capitano Grenade
+Scatter Pellet
 Wood Bow
 Wood Bow|meta|charging2
 Wood Bow|meta|charging3

@@ -46,264 +46,525 @@ setMobSetting(mobId, setting, value)
 
 Here is the full list of available mob settings:
 
-```js
-/**
- * @type {"default"}
- */
-variation = "default"
 
-/**
- * @type {string}
- */
-name = ""
+## attackDamage
 
-/**
- * @type {number}
- */
-maxHealth = 75
+**Type:** `number`
 
-/**
- * @type {number}
- */
-initialHealth = 75
+**Example:** `0`
 
-/**
- * @type {string}
- */
-idleSound = "pigOink"
+ 
 
-/**
- * @type {string}
- */
-attackSound = null
 
-/**
- * @type {string}
- */
-secondaryAttackSound = null
 
-/**
- * @type {string}
- */
-hurtSound = "pigHurt"
+## attackEffectDuration
 
-/**
- * @type { { itemName: string; probabilityOfDrop: number; dropMinAmount: number; dropMaxAmount: number; applyBurstImpulseToDrop?: boolean; }[] }
- */
-onDeathItemDrops = [
-    {
-        itemName: "Raw Porkchop",
-        probabilityOfDrop: 1,
-        dropMinAmount: 1,
-        dropMaxAmount: 3,
-    },
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## attackEffectName
+
+**Type:** `string`
+
+**Example:** `null`
+
+ 
+
+
+
+## attackImpulse
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## attackInterval
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## attackItemName
+
+**Type:** `string`
+
+**Example:** `null`
+
+ 
+
+
+
+## attackRadius
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## attackSound
+
+**Type:** `string`
+
+**Example:** `null`
+
+ 
+
+
+
+## baseJumpImpulseXZ
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## baseJumpImpulseY
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## baseRunningSpeed
+
+**Type:** `number`
+
+**Example:** `4.55 * 0.85`
+
+ 
+
+
+
+## baseWalkingSpeed
+
+**Type:** `number`
+
+**Example:** `3.5`
+
+ 
+
+
+
+## burstAttackInfo
+
+**Type:** ` { burstAttackIntervals: readonly number[]; } `
+
+**Example:** `null`
+
+ 
+
+
+
+## chaseRadius
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## combatTetherInfo
+
+**Type:** `MobCombatTetherCombatInfo`
+
+**Example:** ```ts
+{
+	range: 11,
+	particleOpts: {
+		texture: "soul_0",
+		colorGradients: [
+			{
+				timeFraction: 0,
+				minColor: [245, 35, 25, 1],
+				maxColor: [255, 45, 35, 1],
+			},
+		],
+	},
+}
+```
+
+ 
+
+
+
+## evadeInfo
+
+**Type:** `MobEvadeInfo`
+
+**Example:** ```ts
+{
+	probability: 0.6,
+	minAngle: Math.PI * 0.35,
+	maxAngle: Math.PI * 0.6,
+	impulse: 8,
+}
+```
+
+ 
+
+
+
+## healthRegen
+
+**Type:** ` { amount: number; interval: number; startAfter: number; } `
+
+**Example:** `null`
+
+ 
+
+
+
+## heldItemName
+
+**Type:** `string`
+
+**Example:** `null`
+
+ 
+
+
+
+## hostilityRadius
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## hurtSound
+
+**Type:** `string`
+
+**Example:** `"pigHurt"`
+
+ 
+
+
+
+## idleSound
+
+**Type:** `string`
+
+**Example:** `"pigOink"`
+
+ 
+
+
+
+## initialHealth
+
+**Type:** `number`
+
+**Example:** `75`
+
+ 
+
+
+
+## isRideable
+
+**Type:** `boolean`
+
+**Example:** `false`
+
+ 
+
+
+
+## jumpCount
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## jumpMultiplier
+
+**Type:** `number`
+
+**Example:** `1`
+
+ 
+
+
+
+## maxFollowingRadius
+
+**Type:** `number`
+
+**Example:** `12`
+
+ 
+
+
+
+## maxHealth
+
+**Type:** `number`
+
+**Example:** `75`
+
+ 
+
+
+
+## metaInfo
+
+**Type:** `string`
+
+**Example:** `""`
+
+ 
+
+
+
+## minFollowingRadius
+
+**Type:** `number`
+
+**Example:** `5`
+
+ 
+
+
+
+## name
+
+**Type:** `string`
+
+**Example:** `""`
+
+ 
+
+
+
+## onDeathAura
+
+**Type:** `number`
+
+**Example:** `20`
+
+ 
+
+
+
+## onDeathItemDrops
+
+**Type:** ` { itemName: string; probabilityOfDrop: number; dropMinAmount: number; dropMaxAmount: number; applyBurstImpulseToDrop?: boolean; }[] `
+
+**Example:** ```ts
+[
+	{
+		itemName: "Raw Porkchop",
+		probabilityOfDrop: 1,
+		dropMinAmount: 1,
+		dropMaxAmount: 3,
+	},
 ]
+```
 
-/**
- * @type {string}
- */
-onDeathParticleTexture = "critical_hit"
+ 
 
-/**
- * @type {number}
- */
-onDeathAura = 20
 
-/**
- * @type {number}
- */
-baseWalkingSpeed = 3.5
 
-/**
- * @type {number}
- */
-baseRunningSpeed = 4.55 * 0.85
+## onDeathParticleTexture
 
-/**
- * @type {number}
- */
-walkingSpeedMultiplier = 1
+**Type:** `string`
 
-/**
- * @type {number}
- */
-runningSpeedMultiplier = 1
+**Example:** `"critical_hit"`
 
-/**
- * @type {number}
- */
-jumpCount = 0
+ 
 
-/**
- * @type {number}
- */
-baseJumpImpulseXZ = 0
 
-/**
- * @type {number}
- */
-baseJumpImpulseY = 0
 
-/**
- * @type {number}
- */
-jumpMultiplier = 1
+## onTamedHealthMultiplier
 
-/**
- * @type {number}
- */
-runAwayRadius = 0
+**Type:** `number`
 
-/**
- * @type {number}
- */
-chaseRadius = 0
+**Example:** `4.0`
 
-/**
- * @type {number}
- */
-territoryRadius = 0
+ 
 
-/**
- * @type {number}
- */
-hostilityRadius = 0
 
-/**
- * @type {number}
- */
-stoppingRadius = 0.5
 
-/**
- * @type {number}
- */
-attackInterval = 0
+## ownerDbId
 
-/**
- * @type {number}
- */
-attackRadius = 0
+**Type:** `string`
 
-/**
- * @type {number}
- */
-secondaryAttackRadius = 0
+**Example:** `null`
 
-/**
- * @type {number}
- */
-attackDamage = 0
+ 
 
-/**
- * @type {number}
- */
-secondaryAttackDamage = 0
 
-/**
- * @type {number}
- */
-attackImpulse = 0
 
-/**
- * @type {number}
- */
-secondaryAttackImpulse = 0
+## petInfo
 
-/**
- * @type { { burstAttackIntervals: readonly number[]; } }
- */
-burstAttackInfo = null
+**Type:** `MobPetInfo`
 
-/**
- * @type { { burstAttackIntervals: readonly number[]; } }
- */
-secondaryBurstAttackInfo = null
+**Example:** ```ts
+{
+friendshipPoints: 0,
+lastFedAt: null,
+highestFriendshipLevelReached: 0,
+superlikedFood: null,
+superlikedFoodKnown: false,
+bonusesGained: [],
+	}
+```
 
-/**
- * @type {string}
- */
-heldItemName = null
+ 
 
-/**
- * @type {string}
- */
-attackItemName = null
 
-/**
- * @type {string}
- */
-secondaryAttackItemName = null
 
-/**
- * @type {boolean}
- */
-swingArmOnAttack = true
+## ridingSpeedMult
 
-/**
- * @type {boolean}
- */
-swingArmOnSecondaryAttack = true
+**Type:** `number`
 
-/**
- * @type {string}
- */
-attackEffectName = null
+**Example:** `1`
 
-/**
- * @type {number}
- */
-attackEffectDuration = 0
+ 
 
-/**
- * @type {MobWarpTargetSpecialAttackInfo}
- */
-warpTargetSpecialAttackInfo = {
-        cooldown: 20_000,
-        range: 32,
-        sound: "warperPhase",
-        delay: 1_000,
-        minDestinationRadius: 5,
-        maxDestinationRadius: 7,
-        swingArm: false,
-        particleOpts: {
-            duration: 2_000,
-            texture: "soul_0",
-            colorGradients: [
-                {
-                    timeFraction: 0,
-                    minColor: [70, 215, 230, 1],
-                    maxColor: [75, 225, 240, 1],
-                },
-            ],
-        },
-    }
 
-/**
- * @type {MobCombatTetherCombatInfo}
- */
-combatTetherInfo = {
-        range: 11,
-        particleOpts: {
-            texture: "soul_0",
-            colorGradients: [
-                {
-                    timeFraction: 0,
-                    minColor: [245, 35, 25, 1],
-                    maxColor: [255, 45, 35, 1],
-                },
-            ],
-        },
-    }
 
-/**
- * @type {MobEvadeInfo}
- */
-evadeInfo = {
-        probability: 0.6,
-        minAngle: Math.PI * 0.35,
-        maxAngle: Math.PI * 0.6,
-        impulse: 8,
-    }
+## runAwayRadius
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## runningSpeedMultiplier
+
+**Type:** `number`
+
+**Example:** `1`
+
+ 
+
+
+
+## secondaryAttackDamage
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## secondaryAttackImpulse
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## secondaryAttackItemName
+
+**Type:** `string`
+
+**Example:** `null`
+
+ 
+
+
+
+## secondaryAttackRadius
+
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## secondaryAttackSound
+
+**Type:** `string`
+
+**Example:** `null`
+
+ 
+
+
+
+## secondaryBurstAttackInfo
+
+**Type:** ` { burstAttackIntervals: readonly number[]; } `
+
+**Example:** `null`
+
+ 
+
+
+
+## stoppingRadius
+
+**Type:** `number`
+
+**Example:** `0.5`
+
+ 
+
+
+
+## swingArmOnAttack
+
+**Type:** `boolean`
+
+**Example:** `true`
+
+ 
+
+
+
+## swingArmOnSecondaryAttack
+
+**Type:** `boolean`
+
+**Example:** `true`
+
+ 
+
+
 
 /**
  * @type {MobTameInfo}
@@ -391,58 +652,69 @@ tameInfo = {
     }
 }
 
-/**
- * @type {number}
- */
-onTamedHealthMultiplier = 4.0
+## territoryRadius
 
-/**
- * @type {MobPetInfo}
- */
-petInfo = {
-    friendshipPoints: 0,
-    lastFedAt: null,
-    highestFriendshipLevelReached: 0,
-    superlikedFood: null,
-    superlikedFoodKnown: false,
-    bonusesGained: [],
+**Type:** `number`
+
+**Example:** `0`
+
+ 
+
+
+
+## variation
+
+**Type:** `"default"`
+
+**Example:** `"default"`
+
+ 
+
+
+
+## walkingSpeedMultiplier
+
+**Type:** `number`
+
+**Example:** `1`
+
+ 
+
+
+
+## warpTargetSpecialAttackInfo
+
+**Type:** `MobWarpTargetSpecialAttackInfo`
+
+**Example:** ```ts
+{
+	cooldown: 20_000,
+	range: 32,
+	sound: "warperPhase",
+	delay: 1_000,
+	minDestinationRadius: 5,
+	maxDestinationRadius: 7,
+	swingArm: false,
+	particleOpts: {
+		duration: 2_000,
+		texture: "soul_0",
+		colorGradients: [
+			{
+				timeFraction: 0,
+				minColor: [70, 215, 230, 1],
+				maxColor: [75, 225, 240, 1],
+			},
+		],
+	},
 }
-
-/**
- * @type {string}
- */
-ownerDbId = null
-
-/**
- * @type {number}
- */
-minFollowingRadius = 5
-
-/**
- * @type {number}
- */
-maxFollowingRadius = 12
-
-/**
- * @type {boolean}
- */
-isRideable = false
-
-/**
- * @type { { amount: number; interval: number; startAfter: number; } }
- */
-healthRegen = null
-
-/**
- * @type {number}
- */
-ridingSpeedMult = 1
-
-/**
- * @type {string}
- */
-metaInfo = ""
 ```
+
+ 
+
+
+
+
+## Mob Variations
 
 Some mob types support variations other than just `"default"`:
 
@@ -516,10 +788,10 @@ Here is the full list of available mob AI states and their parameters:
 | `turning` | The mob has chosen a new direction at random and is turning to face it. | `null` |
 | `idleBeforeWalking` | The mob is stood still (idle) and is about to walk. | `null` |
 | `walking` | The mob is walking in the direction it is facing. | `null` |
-| `runningAway` | The mob is running away from the target lifeform. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
-| `chasing` | The mob is chasing the target lifeform. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
-| `following` | The mob is following the target lifeform.<br>It will stop if it is within the `minFollowingDistance` (mob setting) of the target,<br>and teleport to the target if it is outside the `maxFollowingDistance` (mob setting) of the target. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
-| `watching` | The mob is stood still looking at the target. | <pre lang="ts"><code>{ targetId: LifeformId }</code></pre> |
-| `walkingToPosition` | The mob is walking towards the position.<br>It will stop if it is within the `stoppingRadius` (mob setting) of the position. | <pre lang="ts"><code>{ pos: Pos }</code></pre> |
-| `runningToPosition` | The mob is running towards the position.<br>It will stop if it is within the `stoppingRadius` (mob setting) of the position. | <pre lang="ts"><code>{ pos: Pos }</code></pre> |
+| `runningAway` | The mob is running away from the target lifeform. | `{ targetId: LifeformId }` |
+| `chasing` | The mob is chasing the target lifeform. | `{ targetId: LifeformId }` |
+| `following` | The mob is following the target lifeform.<br>It will stop if it is within the `minFollowingDistance` (mob setting) of the target,<br>and teleport to the target if it is outside the `maxFollowingDistance` (mob setting) of the target. | `{ targetId: LifeformId }` |
+| `watching` | The mob is stood still looking at the target. | `{ targetId: LifeformId }` |
+| `walkingToPosition` | The mob is walking towards the position.<br>It will stop if it is within the `stoppingRadius` (mob setting) of the position. | `{ pos: Pos }` |
+| `runningToPosition` | The mob is running towards the position.<br>It will stop if it is within the `stoppingRadius` (mob setting) of the position. | `{ pos: Pos }` |
 

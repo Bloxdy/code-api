@@ -43,666 +43,1527 @@ setClientOptionToDefault(playerId, option)
 
 Here is the full list of available client options:
 
-```js
-/**
- * Whether the player can change blocks
- * @type {boolean}
- */
-canChange = true
-
-/**
- * Speed multiplier for the player.
- * Players are used to the default bloxd movement behaviour and speed,
- * and may be put off from your game if different muscle memory is required.
- * We suggest applying speed or slowness effects instead, using api.applyEffect.
- * @type {number}
- */
-speedMultiplier = 1
-
-/**
- * Speed multiplier for the player when crouching.
- * Players are used to the default bloxd movement behaviour and speed,
- * and may be put off from your game if different muscle memory is required.
- * We suggest applying speed or slowness effects instead, using api.applyEffect.
- * @type {number}
- */
-crouchingSpeed = 2
-
-/**
- * Walking speed for the player.
- * STRONGLY recommend using `speedMultiplier` unless you have a specific use case for this, walkingSpeed doesn't make UX sense on mobile.
- * (Walking speed ignored for mobile players, mobile player speed is determined by joystick input and the max of runningSpeed & walkingSpeed).
- *
- * Players are used to the default bloxd movement behaviour and speed,
- * and may be put off from your game if different muscle memory is required.
- * We suggest applying speed or slowness effects instead, using api.applyEffect.
- *
- * The only use case for walkingSpeed/runningSpeed over speedMultiplier or speed effects is to disable running or to inverse walking/running (so you run by default and e.g. hold shift to go slower).
- * @type {number}
- */
-walkingSpeed = 4
-
-/**
- * Running speed for the player.
- * STRONGLY recommend using `speedMultiplier` unless you have a specific use case for this, runningSpeed doesn't make UX sense on mobile.
- * (Walking speed is ignored for mobile players, mobile player speed is determined by joystick input and the max of runningSpeed & walkingSpeed).
- *
- * Players are used to the default bloxd movement behaviour and speed,
- * and may be put off from your game if different muscle memory is required.
- * We suggest applying speed or slowness effects instead, using api.applyEffect.
- *
- * The only use case for walkingSpeed/runningSpeed over speedMultiplier or speed effects is to disable running or to inverse walking/running (so you run by default and e.g. hold shift to go slower).
- * @type {number}
- */
-runningSpeed = 7
-
-/**
- * Amount of jump power the player has
- * @type {number}
- */
-jumpAmount = 8
-
-/**
- * Amount of air jumps the player has
- * @type {number}
- */
-airJumpCount = 0
-
-/**
- * Maximum multiplier for jump height when bunnyhopping
- * @type {number}
- */
-bunnyhopMaxMultiplier = 1.3
-
-/**
- * The music track to play in the background
- * @type {Song}
- */
-music = null
-
-/**
- * Volume level for the music
- * @type {number}
- */
-musicVolumeLevel = 0.6
-
-/**
- * Not recommended to use anything other than "default" as client FPS can drop while loading the skybox
- * @type {string | EarthSkyBox}
- */
-skyBox = "default"
-
-/**
- * Minimum size of region around player where chunks are loaded.
- * Format [horizontalMinChunkRadius, verticalMinChunkRadius].
- * Each value should be between 2 and 4.
- *
- * We recommend leaving this at the default of [2, 2] unless you have a specific reason to change it.
- * (e.g. you need players to see the bottom of a dropper)
- * This is because higher values can be laggier on low-end devices.
- * @type {[number, number]}
- */
-minChunkAddDist = [2, 2]
-
-/**
- * Whether to show the player in unloaded chunks
- * @type {boolean}
- */
-showPlayersInUnloadedChunks = false
-
-/**
- * Whether to allow the player to use the inventory
- * Disabling this will also disable the hotbar
- * @type {boolean}
- */
-useInventory = true
-
-/**
- * For now just enables the UI of the full inventory
- * @type {boolean}
- */
-useFullInventory = true
-
-/**
- * Whether to allow the player to craft items
- * useFullInventory must be true for this to work
- * @type {boolean}
- */
-canCraft = true
-
-/**
- * Whether to allow the player to pick up items
- * @type {boolean}
- */
-canPickUpItems = true
-
-/**
- * Default camera zoom level for the player
- * @type {number}
- */
-playerZoom = 0
-
-/**
- * Distance to zoom the camera out to
- * @type {number}
- */
-zoomOutDistance = 3
-
-/**
- * Maximum camera zoom level for the player
- * @type {number}
- */
-maxPlayerZoom = 15
-
-/**
- * Columns of the lobby leaderboard
- * @type {LobbyLeaderboardInfo}
- */
-lobbyLeaderboardInfo = {
-        name: {
-            displayName: "Name",
-            sortPriority: 0,
-        },
-    }
-
-/**
- * Whether the player can customise their character
- * @type {boolean}
- */
-canCustomiseChar = true
-
-/**
- * The default block the player can change blocks to, used if canChange is true but useInventory is false
- * @type {string}
- */
-defaultBlock = "Block of Gold"
-
-/**
- * Error message for when the player fails to change a block
- * @type {string | CustomTextStyling}
- */
-cantChangeError = "You cannot modify this block"
-
-/**
- * Error message for when the player fails to break a block
- * @type {string | CustomTextStyling}
- */
-cantBreakError = null
-
-/**
- * Error message for when the player fails to place a block
- * @type {string | CustomTextStyling}
- */
-cantBuildError = null
-
-/**
- * The contents of the action button. Supports custom text styling. onTouchscreenActionButton will be called when button pressed.
- * @type {string | CustomTextStyling}
- */
-touchscreenActionButton = null
-
-/**
- * Whether a player can place fluid when canChange is false
- * @type {boolean}
- */
-strictFluidBuckets = true
-
-/**
- * Whether the player can use the zoom key
- * @type {boolean}
- */
-canUseZoomKey = true
-
-/**
- * Whether the player can use the alt action key (right click on PC)
- * @type {boolean}
- */
-canAltAction = true
-
-/**
- * Whether the player can see name tags through walls
- * @type {boolean}
- */
-canSeeNametagsThroughWalls = true
-
-/**
- * Whether to show basic movement controls
- * @type {boolean}
- */
-showBasicMovementControls = true
-
-/**
- * Large text to display in the middle of the screen
- * @type {string | CustomTextStyling}
- */
-middleTextUpper = ""
-
-/**
- * Small text to display in the middle of the screen
- * @type {string | CustomTextStyling}
- */
-middleTextLower = ""
-
-/**
- * Text to display by the crosshair
- * @type {string | CustomTextStyling}
- */
-crosshairText = ""
-
-/**
- * Text to display in the right info box
- * @type {string | CustomTextStyling}
- */
-RightInfoText = ""
-
-/**
- * If set, clients will only be able to see the closest x players (good for client perf in games with many players)
- * @type {number}
- */
-numClosestPlayersVisible = null
-
-/**
- * Whether to show the progress bar
- * @type {boolean}
- */
-showProgressBar = false
-
-/**
- * Whether to show the killfeed
- * @type {boolean}
- */
-showKillfeed = true
-
-/**
- * Allows player to select a channel that is passed as argument to onPlayerChat. See engineGameplayTypes.ts for expected format
- * @type { { channelName: string; elementContent: string | CustomTextStyling; elementBgColor: string; }[] }
- */
-chatChannels = null
-
-/**
- * Whether the player is in creative mode
- * @type {boolean}
- */
-creative = false
-
-/**
- * Multiplier for the flying speed in creative mode
- * @type {number}
- */
-flySpeedMultiplier = 1.5
-
-/**
- * Whether the player can pick blocks (middle mouse click on PC), ignored if creative is false
- * @type {boolean}
- */
-canPickBlocks = true
-
-/**
- * The target the compass will point towards
- * @type {string | number | number[]}
- */
-compassTarget = [0, 0, 0]
-
-/**
- * Multiplier for the time to break any block
- * @type {number}
- */
-ttbMultiplier = 1
-
-/**
- * Whether the player can move items in their inventory, only applicable if useInventory is true
- * @type {boolean}
- */
-inventoryItemsMoveable = true
-
-/**
- * Whether the player is invincible
- * @type {boolean}
- */
-invincible = false
-
-/**
- * Maximum shield the player can have
- * @type {number}
- */
-maxShield = 100
-
-/**
- * Shield upon joining or respawning
- * @type {number}
- */
-initialShield = 0
-
-/**
- * Maximum health the player can have
- * @type {number}
- */
-maxHealth = 100
-
-/**
- * Health upon joining or respawning. Can be null for the player to not have health
- * @type {number}
- */
-initialHealth = 100
-
-/**
- * Fraction of max health that regens each regen tick
- * @type {number}
- */
-healthRegenAmount = 0.05
-
-/**
- * How often health regen is ticked
- * @type {number}
- */
-healthRegenInterval = 4000
-
-/**
- * How long after a player receives damage to start regen again
- * @type {number}
- */
-healthRegenStartAfter = 5000
-
-/**
- * Duration of the +damage effect from plum
- * @type {number}
- */
-effectDamageDuration = 8000
-
-/**
- * Duration of +speed effect from cracked coconut
- * @type {number}
- */
-effectSpeedDuration = 8000
-
-/**
- * Duration of +damage reduction effect from pear
- * @type {number}
- */
-effectDamageReductionDuration = 13000
-
-/**
- * Duration of +health regen effect from cherry
- * @type {number}
- */
-effectHealthRegenDuration = 5000
-
-/**
- * Duration of potion effects
- * @type {number}
- */
-potionEffectDuration = 12000
-
-/**
- * Duration of splash potion effects
- * @type {number}
- */
-splashPotionEffectDuration = 8000
-
-/**
- * Duration of arrow potion effects
- * @type {number}
- */
-arrowPotionEffectDuration = 6000
-
-/**
- * RGBA array [r, g, b, a] for camera screen tint effect. Values fall between 0 and 1.
- * @type {[number, number, number, number]}
- */
-cameraTint = null
-
-/**
- * After dying the player can respawn after this many seconds
- * @type {number}
- */
-secsToRespawn = 5
-
-/**
- * When player is dead, also show a play again button to matchmake player into a new lobby. Mostly useful for sessionBased games
- * @type {boolean}
- */
-usePlayAgainButton = false
-
-/**
- * If true, player will respawn automatically after secsToRespawn seconds
- * @type {boolean}
- */
-autoRespawn = false
-
-/**
- * Text to show on respawn button. (E.g. "Spectate")
- * @type {string}
- */
-respawnButtonText = "general:respawn"
-
-/**
- * Duration before a killstreak expires. (defaults to never expiring)
- * @type {number}
- */
-killstreakDuration = 200000000
-
-/**
- * Damage multiplier for all types of damage
- * @type {number}
- */
-dealingDamageMultiplier = 1
-
-/**
- * Damage multiplier for when the player hits a head. Only applies to guns
- * @type {number}
- */
-dealingDamageHeadMultiplier = 1.75
-
-/**
- * Damage multiplier for when the player hits a leg. Only applies to guns
- * @type {number}
- */
-dealingDamageLegMultiplier = 1
-
-/**
- * Mult for when the player hits neither a leg or a head. Only applies to guns
- * @type {number}
- */
-dealingDamageDefaultMultiplier = 1
-
-/**
- * Damage multiplier for all types of incoming damage
- * @type {number}
- */
-receivingDamageMultiplier = 1
-
-/**
- * Scale factor to use for dropped item meshes
- * @type {number}
- */
-droppedItemScale = 1
-
-/**
- * Amount that player camera is affected by movement based fov
- * @type {number}
- */
-movementBasedFovScale = 1
-
-/**
- * Amount of friction to apply to airborne players.
- * Only change if absolutely necessary i.e. Rocket Obby uses 0.
- * Players are used to the default bloxd movement behaviour and speed,
- * and may be put off from your game if different muscle memory is required.
- * We suggest applying speed or slowness effects instead, using api.applyEffect.
- * @type {number}
- */
-airFrictionScale = 1
-
-/**
- * Amount of friction to apply to grounded players.
- * Only change if absolutely necessary i.e. Rocket Obby uses 3.
- * Players are used to the default bloxd movement behaviour and speed,
- * and may be put off from your game if different muscle memory is required.
- * We suggest applying speed or slowness effects instead, using api.applyEffect.
- * @type {number}
- */
-groundFrictionScale = 1
-
-/**
- * Amount of acceleration to apply to airborne players.
- * Only change if absolutely necessary i.e. Rocket Obby uses 0.25.
- * Players are used to the default bloxd movement behaviour and speed,
- * and may be put off from your game if different muscle memory is required.
- * We suggest applying speed or slowness effects instead, using api.applyEffect.
- * @type {number}
- */
-airAccScale = 1
-
-/**
- * Whether to allow the player to strafe and conserve momentum while airborne.
- * Only change if absolutely necessary i.e. only Rocket Obby uses true.
- * Players are used to the default bloxd movement behaviour and speed,
- * and may be put off from your game if different muscle memory is required.
- * We suggest applying speed or slowness effects instead, using api.applyEffect.
- * @type {boolean}
- */
-airMomentumConservation = false
-
-/**
- * Whether to deal damage to the player when they fall
- * @type {boolean}
- */
-fallDamage = false
-
-/**
- * How much Aura XP is required per level.
- * @type {number}
- */
-auraPerLevel = 100
-
-/**
- * The maximum Aura Level attainable - Set to 0 to disable Aura XP
- * @type {number}
- */
-maxAuraLevel = 0
-
-/**
- * Fog distance which overrides graphic settings. Uses graphic settings if null.
- * @type {number}
- */
-fogChunkDistanceOverride = null
-
-/**
- * RGB string for fog colour override. e.g. #ffffff
- * @type {string}
- */
-fogColourOverride = null
-
-/**
- * Multiplier for horizontal knockback when dealing damage
- * @type {number}
- */
-horizontalKnockbackMultiplier = 1
-
-/**
- * Multiplier for vertical knockback when dealing damage
- * @type {number}
- */
-verticalKnockbackMultiplier = 1
-
-/**
- * Mult for the damage done by "stomping" on a lifeform, i.e.: falling on them wearing Spiked Boots.
- * @type {number}
- */
-stompDamageMultiplier = 0
-
-/**
- * Radius around the player that will be affected by the stomp damage.
- * @type {number}
- */
-stompDamageRadius = 0
-
-/**
- * Mult for the radius within which mobs can detect the player when crouching.
- * If a player's mult is 2, then mobs will think they are twice as far away.
- * @type {number}
- */
-crouchMobDetectionRadiusMultiplier = 2
-
-/**
- * How much the player bounces off of solid blocks.
- * A value of 1 is equivalent to every block acting as a mushroom.
- * @type {number}
- */
-bounciness = 0
-
-/**
- * Whether the player can climb walls
- * @type {boolean}
- */
-canClimbWalls = false
-
-/**
- * Whether the player can crouch
- * @type {boolean}
- */
-canCrouch = true
-
-/**
- * Distance in blocks over which we reduce the opacity of entities as they approach the camera.
- * @type {number}
- */
-proximityFadeDistance = 0.625
-
-/**
- * Minimum opacity multiplier reachable when fading entities based on camera proximity.
- * The player's own model is always able to fade to 0, and entities being ridden stay fully opaque (as if this value was 1).
- * @type {number}
- */
-proximityFadeMinOpacity = 0.5
-
-/**
- * Force the camera to look in a specific direction [x, y, z]. Set to null to allow free camera movement.
- * @type {[number, number, number]}
- */
-forcedCameraDirection = null
-
-/**
- * Duration in ms to animate/transition to the forced camera direction (when you change forcedCameraDirection). 0 = instant.
- * Useful for smooth camera movements.
- * @type {number}
- */
-forcedCameraDirectionTransitionMs = 0
-
-/**
- * Roll angle of the camera in radians. Useful for disorientation effects, death effects, etc.
- * @type {number}
- */
-cameraRoll = 0
-
-/**
- * Duration in ms to animate/transition to the camera roll angle (when you change cameraRoll). 0 = instant.
- * Useful for smooth camera roll transitions.
- * @type {number}
- */
-cameraRollTransitionMs = 0
-
-/**
- * When null, just use the player's graphics setting. When set, forces lighting on (true) or off (false).
- * @type {boolean}
- */
-lightingOverride = null
-
-/**
- * Sky light colour override - hex string e.g. #ffffff.
- * @type {string}
- */
-skyLightColourOverride = null
-
-/**
- * Held item light colour override - hex colour string e.g. #ffffff. Applied regardless of any held item.
- * @type {string}
- */
-heldLightColourOverride = null
-
-/**
- * When true, hides world and chunk coordinates regardless of the player's setting.
- * @type {boolean}
- */
-hideCoordinates = false
+
+## airAccScale
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Amount of acceleration to apply to airborne players.
+
+ Only change if absolutely necessary i.e. Rocket Obby uses 0.25.
+
+ Players are used to the default bloxd movement behaviour and speed,
+
+ and may be put off from your game if different muscle memory is required.
+
+ We suggest applying speed or slowness effects instead, using api.applyEffect.
+
+ 
+
+
+
+## airFrictionScale
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Amount of friction to apply to airborne players.
+
+ Only change if absolutely necessary i.e. Rocket Obby uses 0.
+
+ Players are used to the default bloxd movement behaviour and speed,
+
+ and may be put off from your game if different muscle memory is required.
+
+ We suggest applying speed or slowness effects instead, using api.applyEffect.
+
+ 
+
+
+
+## airJumpCount
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+Amount of air jumps the player has
+
+ 
+
+
+
+## airMomentumConservation
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+Whether to allow the player to strafe and conserve momentum while airborne.
+
+ Only change if absolutely necessary i.e. only Rocket Obby uses true.
+
+ Players are used to the default bloxd movement behaviour and speed,
+
+ and may be put off from your game if different muscle memory is required.
+
+ We suggest applying speed or slowness effects instead, using api.applyEffect.
+
+ 
+
+
+
+## arrowPotionEffectDuration
+
+**Type:** `number`
+
+**Default:** `6000`
+
+ 
+
+Duration of arrow potion effects
+
+ 
+
+
+
+## auraPerLevel
+
+**Type:** `number`
+
+**Default:** `100`
+
+ 
+
+How much Aura XP is required per level.
+
+ 
+
+
+
+## autoRespawn
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+If true, player will respawn automatically after secsToRespawn seconds
+
+ 
+
+
+
+## bounciness
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+How much the player bounces off of solid blocks.
+
+ A value of 1 is equivalent to every block acting as a mushroom.
+
+ 
+
+
+
+## bunnyhopMaxMultiplier
+
+**Type:** `number`
+
+**Default:** `1.3`
+
+ 
+
+Maximum multiplier for jump height when bunnyhopping
+
+ 
+
+
+
+## cameraRoll
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+Roll angle of the camera in radians. Useful for disorientation effects, death effects, etc.
+
+ 
+
+
+
+## cameraRollTransitionMs
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+Duration in ms to animate/transition to the camera roll angle (when you change cameraRoll). 0 = instant.
+
+ Useful for smooth camera roll transitions.
+
+ 
+
+
+
+## cameraTint
+
+**Type:** `[number, number, number, number]`
+
+**Default:** `null`
+
+ 
+
+RGBA array [r, g, b, a] for camera screen tint effect. Values fall between 0 and 1.
+
+ 
+
+
+
+## canAltAction
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether the player can use the alt action key (right click on PC)
+
+ 
+
+
+
+## canChange
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether the player can change blocks
+
+ 
+
+
+
+## canClimbWalls
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+Whether the player can climb walls
+
+ 
+
+
+
+## canCraft
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether to allow the player to craft items
+
+ useFullInventory must be true for this to work
+
+ 
+
+
+
+## canCrouch
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether the player can crouch
+
+ 
+
+
+
+## canCustomiseChar
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether the player can customise their character
+
+ 
+
+
+
+## canPickBlocks
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether the player can pick blocks (middle mouse click on PC), ignored if creative is false
+
+ 
+
+
+
+## canPickUpItems
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether to allow the player to pick up items
+
+ 
+
+
+
+## canSeeNametagsThroughWalls
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether the player can see name tags through walls
+
+ 
+
+
+
+## cantBreakError
+
+**Type:** `string | CustomTextStyling`
+
+**Default:** `null`
+
+ 
+
+Error message for when the player fails to break a block
+
+ 
+
+
+
+## cantBuildError
+
+**Type:** `string | CustomTextStyling`
+
+**Default:** `null`
+
+ 
+
+Error message for when the player fails to place a block
+
+ 
+
+
+
+## cantChangeError
+
+**Type:** `string | CustomTextStyling`
+
+**Default:** `"You cannot modify this block"`
+
+ 
+
+Error message for when the player fails to change a block
+
+ 
+
+
+
+## canUseZoomKey
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether the player can use the zoom key
+
+ 
+
+
+
+## chatChannels
+
+**Type:** ` { channelName: string; elementContent: string | CustomTextStyling; elementBgColor: string; }[] `
+
+**Default:** `null`
+
+ 
+
+Allows player to select a channel that is passed as argument to onPlayerChat. See engineGameplayTypes.ts for expected format
+
+ 
+
+
+
+## compassTarget
+
+**Type:** `string | number | number[]`
+
+**Default:** `[0, 0, 0]`
+
+ 
+
+The target the compass will point towards
+
+ 
+
+
+
+## creative
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+Whether the player is in creative mode
+
+ 
+
+
+
+## crosshairText
+
+**Type:** `string | CustomTextStyling`
+
+**Default:** `""`
+
+ 
+
+Text to display by the crosshair
+
+ 
+
+
+
+## crouchingSpeed
+
+**Type:** `number`
+
+**Default:** `2`
+
+ 
+
+Speed multiplier for the player when crouching.
+
+ Players are used to the default bloxd movement behaviour and speed,
+
+ and may be put off from your game if different muscle memory is required.
+
+ We suggest applying speed or slowness effects instead, using api.applyEffect.
+
+ 
+
+
+
+## crouchMobDetectionRadiusMultiplier
+
+**Type:** `number`
+
+**Default:** `2`
+
+ 
+
+Mult for the radius within which mobs can detect the player when crouching.
+
+ If a player's mult is 2, then mobs will think they are twice as far away.
+
+ 
+
+
+
+## dealingDamageDefaultMultiplier
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Mult for when the player hits neither a leg or a head. Only applies to guns
+
+ 
+
+
+
+## dealingDamageHeadMultiplier
+
+**Type:** `number`
+
+**Default:** `1.75`
+
+ 
+
+Damage multiplier for when the player hits a head. Only applies to guns
+
+ 
+
+
+
+## dealingDamageLegMultiplier
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Damage multiplier for when the player hits a leg. Only applies to guns
+
+ 
+
+
+
+## dealingDamageMultiplier
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Damage multiplier for all types of damage
+
+ 
+
+
+
+## defaultBlock
+
+**Type:** `string`
+
+**Default:** `"Block of Gold"`
+
+ 
+
+The default block the player can change blocks to, used if canChange is true but useInventory is false
+
+ 
+
+
+
+## droppedItemScale
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Scale factor to use for dropped item meshes
+
+ 
+
+
+
+## effectDamageDuration
+
+**Type:** `number`
+
+**Default:** `8000`
+
+ 
+
+Duration of the +damage effect from plum
+
+ 
+
+
+
+## effectDamageReductionDuration
+
+**Type:** `number`
+
+**Default:** `13000`
+
+ 
+
+Duration of +damage reduction effect from pear
+
+ 
+
+
+
+## effectHealthRegenDuration
+
+**Type:** `number`
+
+**Default:** `5000`
+
+ 
+
+Duration of +health regen effect from cherry
+
+ 
+
+
+
+## effectSpeedDuration
+
+**Type:** `number`
+
+**Default:** `8000`
+
+ 
+
+Duration of +speed effect from cracked coconut
+
+ 
+
+
+
+## fallDamage
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+Whether to deal damage to the player when they fall
+
+ 
+
+
+
+## flySpeedMultiplier
+
+**Type:** `number`
+
+**Default:** `1.5`
+
+ 
+
+Multiplier for the flying speed in creative mode
+
+ 
+
+
+
+## fogChunkDistanceOverride
+
+**Type:** `number`
+
+**Default:** `null`
+
+ 
+
+Fog distance which overrides graphic settings. Uses graphic settings if null.
+
+ 
+
+
+
+## fogColourOverride
+
+**Type:** `string`
+
+**Default:** `null`
+
+ 
+
+RGB string for fog colour override. e.g. #ffffff
+
+ 
+
+
+
+## forcedCameraDirection
+
+**Type:** `[number, number, number]`
+
+**Default:** `null`
+
+ 
+
+Force the camera to look in a specific direction [x, y, z]. Set to null to allow free camera movement.
+
+ 
+
+
+
+## forcedCameraDirectionTransitionMs
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+Duration in ms to animate/transition to the forced camera direction (when you change forcedCameraDirection). 0 = instant.
+
+ Useful for smooth camera movements.
+
+ 
+
+
+
+## groundFrictionScale
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Amount of friction to apply to grounded players.
+
+ Only change if absolutely necessary i.e. Rocket Obby uses 3.
+
+ Players are used to the default bloxd movement behaviour and speed,
+
+ and may be put off from your game if different muscle memory is required.
+
+ We suggest applying speed or slowness effects instead, using api.applyEffect.
+
+ 
+
+
+
+## healthRegenAmount
+
+**Type:** `number`
+
+**Default:** `0.05`
+
+ 
+
+Fraction of max health that regens each regen tick
+
+ 
+
+
+
+## healthRegenInterval
+
+**Type:** `number`
+
+**Default:** `4000`
+
+ 
+
+How often health regen is ticked
+
+ 
+
+
+
+## healthRegenStartAfter
+
+**Type:** `number`
+
+**Default:** `5000`
+
+ 
+
+How long after a player receives damage to start regen again
+
+ 
+
+
+
+## heldLightColourOverride
+
+**Type:** `string`
+
+**Default:** `null`
+
+ 
+
+Held item light colour override - hex colour string e.g. #ffffff. Applied regardless of any held item.
+
+ 
+
+
+
+## hideCoordinates
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+When true, hides world and chunk coordinates regardless of the player's setting.
+
+ 
+
+
+
+## horizontalKnockbackMultiplier
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Multiplier for horizontal knockback when dealing damage
+
+ 
+
+
+
+## initialHealth
+
+**Type:** `number`
+
+**Default:** `100`
+
+ 
+
+Health upon joining or respawning. Can be null for the player to not have health
+
+ 
+
+
+
+## initialShield
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+Shield upon joining or respawning
+
+ 
+
+
+
+## inventoryItemsMoveable
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether the player can move items in their inventory, only applicable if useInventory is true
+
+ 
+
+
+
+## invincible
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+Whether the player is invincible
+
+ 
+
+
+
+## jumpAmount
+
+**Type:** `number`
+
+**Default:** `8`
+
+ 
+
+Amount of jump power the player has
+
+ 
+
+
+
+## killstreakDuration
+
+**Type:** `number`
+
+**Default:** `200000000`
+
+ 
+
+Duration before a killstreak expires. (defaults to never expiring)
+
+ 
+
+
+
+## lightingOverride
+
+**Type:** `boolean`
+
+**Default:** `null`
+
+ 
+
+When null, just use the player's graphics setting. When set, forces lighting on (true) or off (false).
+
+ 
+
+
+
+## lobbyLeaderboardInfo
+
+**Type:** `LobbyLeaderboardInfo`
+
+**Default:** ```ts
+{
+	name: {
+		displayName: "Name",
+		sortPriority: 0,
+	},
+}
 ```
+
+ 
+
+Columns of the lobby leaderboard
+
+ 
+
+
+
+## maxAuraLevel
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+The maximum Aura Level attainable - Set to 0 to disable Aura XP
+
+ 
+
+
+
+## maxHealth
+
+**Type:** `number`
+
+**Default:** `100`
+
+ 
+
+Maximum health the player can have
+
+ 
+
+
+
+## maxPlayerZoom
+
+**Type:** `number`
+
+**Default:** `15`
+
+ 
+
+Maximum camera zoom level for the player
+
+ 
+
+
+
+## maxShield
+
+**Type:** `number`
+
+**Default:** `100`
+
+ 
+
+Maximum shield the player can have
+
+ 
+
+
+
+## middleTextLower
+
+**Type:** `string | CustomTextStyling`
+
+**Default:** `""`
+
+ 
+
+Small text to display in the middle of the screen
+
+ 
+
+
+
+## middleTextUpper
+
+**Type:** `string | CustomTextStyling`
+
+**Default:** `""`
+
+ 
+
+Large text to display in the middle of the screen
+
+ 
+
+
+
+## minChunkAddDist
+
+**Type:** `[number, number]`
+
+**Default:** `[2, 2]`
+
+ 
+
+Minimum size of region around player where chunks are loaded.
+
+ Format [horizontalMinChunkRadius, verticalMinChunkRadius].
+
+ Each value should be between 2 and 4.
+
+ 
+
+ We recommend leaving this at the default of [2, 2] unless you have a specific reason to change it.
+
+ (e.g. you need players to see the bottom of a dropper)
+
+ This is because higher values can be laggier on low-end devices.
+
+ 
+
+
+
+## movementBasedFovScale
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Amount that player camera is affected by movement based fov
+
+ 
+
+
+
+## music
+
+**Type:** `Song`
+
+**Default:** `null`
+
+ 
+
+The music track to play in the background
+
+ 
+
+
+
+## musicVolumeLevel
+
+**Type:** `number`
+
+**Default:** `0.6`
+
+ 
+
+Volume level for the music
+
+ 
+
+
+
+## numClosestPlayersVisible
+
+**Type:** `number`
+
+**Default:** `null`
+
+ 
+
+If set, clients will only be able to see the closest x players (good for client perf in games with many players)
+
+ 
+
+
+
+## playerZoom
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+Default camera zoom level for the player
+
+ 
+
+
+
+## potionEffectDuration
+
+**Type:** `number`
+
+**Default:** `12000`
+
+ 
+
+Duration of potion effects
+
+ 
+
+
+
+## proximityFadeDistance
+
+**Type:** `number`
+
+**Default:** `0.625`
+
+ 
+
+Distance in blocks over which we reduce the opacity of entities as they approach the camera.
+
+ 
+
+
+
+## proximityFadeMinOpacity
+
+**Type:** `number`
+
+**Default:** `0.5`
+
+ 
+
+Minimum opacity multiplier reachable when fading entities based on camera proximity.
+
+ The player's own model is always able to fade to 0, and entities being ridden stay fully opaque (as if this value was 1).
+
+ 
+
+
+
+## receivingDamageMultiplier
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Damage multiplier for all types of incoming damage
+
+ 
+
+
+
+## respawnButtonText
+
+**Type:** `string`
+
+**Default:** `"general:respawn"`
+
+ 
+
+Text to show on respawn button. (E.g. "Spectate")
+
+ 
+
+
+
+## RightInfoText
+
+**Type:** `string | CustomTextStyling`
+
+**Default:** `""`
+
+ 
+
+Text to display in the right info box
+
+ 
+
+
+
+## runningSpeed
+
+**Type:** `number`
+
+**Default:** `7`
+
+ 
+
+Running speed for the player.
+
+ STRONGLY recommend using `speedMultiplier` unless you have a specific use case for this, runningSpeed doesn't make UX sense on mobile.
+
+ (Walking speed is ignored for mobile players, mobile player speed is determined by joystick input and the max of runningSpeed & walkingSpeed).
+
+ 
+
+ Players are used to the default bloxd movement behaviour and speed,
+
+ and may be put off from your game if different muscle memory is required.
+
+ We suggest applying speed or slowness effects instead, using api.applyEffect.
+
+ 
+
+ The only use case for walkingSpeed/runningSpeed over speedMultiplier or speed effects is to disable running or to inverse walking/running (so you run by default and e.g. hold shift to go slower).
+
+ 
+
+
+
+## secsToRespawn
+
+**Type:** `number`
+
+**Default:** `5`
+
+ 
+
+After dying the player can respawn after this many seconds
+
+ 
+
+
+
+## showBasicMovementControls
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether to show basic movement controls
+
+ 
+
+
+
+## showKillfeed
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether to show the killfeed
+
+ 
+
+
+
+## showPlayersInUnloadedChunks
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+Whether to show the player in unloaded chunks
+
+ 
+
+
+
+## showProgressBar
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+Whether to show the progress bar
+
+ 
+
+
+
+## skyBox
+
+**Type:** `string | EarthSkyBox`
+
+**Default:** `"default"`
+
+ 
+
+Not recommended to use anything other than "default" as client FPS can drop while loading the skybox
+
+ 
+
+
+
+## skyLightColourOverride
+
+**Type:** `string`
+
+**Default:** `null`
+
+ 
+
+Sky light colour override - hex string e.g. #ffffff.
+
+ 
+
+
+
+## speedMultiplier
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Speed multiplier for the player.
+
+ Players are used to the default bloxd movement behaviour and speed,
+
+ and may be put off from your game if different muscle memory is required.
+
+ We suggest applying speed or slowness effects instead, using api.applyEffect.
+
+ 
+
+
+
+## splashPotionEffectDuration
+
+**Type:** `number`
+
+**Default:** `8000`
+
+ 
+
+Duration of splash potion effects
+
+ 
+
+
+
+## stompDamageMultiplier
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+Mult for the damage done by "stomping" on a lifeform, i.e.: falling on them wearing Spiked Boots.
+
+ 
+
+
+
+## stompDamageRadius
+
+**Type:** `number`
+
+**Default:** `0`
+
+ 
+
+Radius around the player that will be affected by the stomp damage.
+
+ 
+
+
+
+## strictFluidBuckets
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether a player can place fluid when canChange is false
+
+ 
+
+
+
+## touchscreenActionButton
+
+**Type:** `string | CustomTextStyling`
+
+**Default:** `null`
+
+ 
+
+The contents of the action button. Supports custom text styling. onTouchscreenActionButton will be called when button pressed.
+
+ 
+
+
+
+## ttbMultiplier
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Multiplier for the time to break any block
+
+ 
+
+
+
+## useFullInventory
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+For now just enables the UI of the full inventory
+
+ 
+
+
+
+## useInventory
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+ 
+
+Whether to allow the player to use the inventory
+
+ Disabling this will also disable the hotbar
+
+ 
+
+
+
+## usePlayAgainButton
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+ 
+
+When player is dead, also show a play again button to matchmake player into a new lobby. Mostly useful for sessionBased games
+
+ 
+
+
+
+## verticalKnockbackMultiplier
+
+**Type:** `number`
+
+**Default:** `1`
+
+ 
+
+Multiplier for vertical knockback when dealing damage
+
+ 
+
+
+
+## walkingSpeed
+
+**Type:** `number`
+
+**Default:** `4`
+
+ 
+
+Walking speed for the player.
+
+ STRONGLY recommend using `speedMultiplier` unless you have a specific use case for this, walkingSpeed doesn't make UX sense on mobile.
+
+ (Walking speed ignored for mobile players, mobile player speed is determined by joystick input and the max of runningSpeed & walkingSpeed).
+
+ 
+
+ Players are used to the default bloxd movement behaviour and speed,
+
+ and may be put off from your game if different muscle memory is required.
+
+ We suggest applying speed or slowness effects instead, using api.applyEffect.
+
+ 
+
+ The only use case for walkingSpeed/runningSpeed over speedMultiplier or speed effects is to disable running or to inverse walking/running (so you run by default and e.g. hold shift to go slower).
+
+ 
+
+
+
+## zoomOutDistance
+
+**Type:** `number`
+
+**Default:** `3`
+
+ 
+
+Distance to zoom the camera out to
+
+ 
+
+
+
