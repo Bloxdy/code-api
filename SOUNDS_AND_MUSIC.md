@@ -26,7 +26,7 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 **Tip:** If you want a random similar sound, remove the number suffix from the sound name (e.g., use `"grass"` instead of `"grass1"`).
 
-### Available Sounds (340 total)
+### Available Sounds (346 total)
 
 #### crowd
 `crowdAmbience`
@@ -417,6 +417,12 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `cowMoo3`
 
+`croneAttack1`
+
+`croneHurt1`
+
+`croneIdle1`
+
 `deerGrunt1`
 
 `deerHurt1`
@@ -516,6 +522,10 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `stagGrunt1`
 
 `stagHurt1`
+
+`stalkerAttack1`
+
+`stalkerIdle1`
 
 `warperGrunt1`
 
@@ -764,6 +774,12 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `step_wood6`
 
 `sweep6`
+
+
+ 
+
+#### survivalFactory
+`rocketEngineLoop`
 
 
 ---

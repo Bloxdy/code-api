@@ -208,6 +208,38 @@ whether the attack damaged the lifeform
 
  
 
+## attemptCreateAudioEntity
+Create an invisible audio entity at a world position that loops a sound to
+
+nearby players (e.g. a jukebox or fireplace).
+
+
+
+Audio entities count against the same budget as physics-less mesh entities; returns null
+
+if that budget is exhausted.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| x | `number` |  |
+| y | `number` |  |
+| z | `number` |  |
+| soundName | `string` | The sound to loop. |
+| volume | `number` |  |
+| options | ` { refDistance?: number maxHearDist?: number rate?: number } ` | : number, maxHearDist: number, rate: number} refDistance: higher means the sound decreases less in volume with distance. Defaults to 3. Hitting is 4. Guns are 10 maxHearDist: sound is not played if player is further than this. Defaults to 30 rate: The speed of playback. Also affects pitch. 0.5-4. Lower playback = lower pitch. Good for varying the sound. E.g. item pickup sound has a random rate between 1 and 1.5. |
+
+
+
+### Returns:
+`PNull<EntityId>`
+
+ 
+
+the audio entity ID, or null if the entity budget is exhausted
+
+ 
+
 ## attemptCreateMeshEntity
 Try to create a mesh entity. This creates an entity whose mesh position is synced with clients.
 
@@ -644,6 +676,26 @@ NOTE: Does nothing if the source chunk is not loaded.
 
  
 
+## createEnchantmentAttributesForItem
+Create enchantment attributes for an item at a given enchantment level. Same behaviour as if that level of enchant was selected for the item in an enchanting table.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| itemName | `ItemName` |  |
+| enchantmentLevel | `number` |  |
+
+
+
+### Returns:
+`EnchantmentAttributes`
+
+ 
+
+
+
+ 
+
 ## createItemDrop
 Create a dropped item.
 
@@ -654,7 +706,7 @@ Create a dropped item.
 | y | `number` |  |
 | z | `number` |  |
 | itemName | `ItemName` | Name of the item. Any item name, including blocks and 'Air' |
-| amount | `PNull<number>` | The amount of the item to include in the drop - so when the player picks up the item drop, they get this many of the item. |
+| amount | `PNull<number>` | The amount of the item in the drop. Defaults to 1 when omitted. Use 0 for a collect-only trigger that does not add to inventory (fires onPlayerPickedUpItem with itemAmount 0). |
 | mergeItems | `boolean` | Whether to merge the item into a nearby item of same type, if one exists. Defaults to false. |
 | attributes | `ItemAttributes` | Attributes of the item being dropped |
 | timeTillDespawn | `number` | Time till the item automatically despawns in milliseconds. Max of 5 mins. |
@@ -748,6 +800,20 @@ Deletes all database values that are saved per player.
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
+
+
+
+
+
+ 
+
+## deleteAudioEntity
+Delete an audio entity by its entity ID (returned by attemptCreateAudioEntity).
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| eId | `EntityId` |  |
 
 
 
@@ -1164,6 +1230,27 @@ Returns the current value of a client option
 
  
 
+## getCraftingRecipesForPlayer
+Read a player's current crafting recipe set, keyed by output item name. Includes any
+
+per-player overrides set via `editItemCraftingRecipes` / `removeItemCraftingRecipes`.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+
+
+
+### Returns:
+`Record<string, RecipesForItem>`
+
+ 
+
+
+
+ 
+
 ## getCurrentKillstreak
 Gets the player's current killstreak
 
@@ -1555,6 +1642,25 @@ If null is passed for lifeformId, this is simply its entry in blockMetadata etc.
 
  
 
+## getLifeformScale
+Get the scale of a lifeform.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| lifeformId | `LifeformId` |  |
+
+
+
+### Returns:
+`number`
+
+ 
+
+
+
+ 
+
 ## getLobbyDbValue
 Gets a database value that is saved per lobby.
 
@@ -1862,6 +1968,25 @@ The camPos has the same limitations described in getPlayerTargetInfo
 
  
 
+## getPlayerGamemode
+Get the gamemode of a player.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The ID of the player to get the gamemode of. |
+
+
+
+### Returns:
+`WorldGamemode`
+
+ 
+
+The gamemode of the player.
+
+ 
+
 ## getPlayerId
 Given the name of a player, get their id
 
@@ -1944,7 +2069,7 @@ Get physics state for player
 
 
 ### Returns:
-`PlayerPhysicsStateData`
+`PlayerPhysicsState<PhysicsType>`
 
  
 
@@ -2001,6 +2126,25 @@ Get position of a player / entity.
  
 
 
+
+ 
+
+## getQueuedStatus
+Get the status of a queued command.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| id | `QueuedCommandId` | The ID of the queued command to get the status of. |
+
+
+
+### Returns:
+`QueuedStatusString`
+
+ 
+
+NOT_IN_QUEUE, WAITING_TO_RUN, or CURRENTLY_RUNNING.
 
  
 
@@ -2167,10 +2311,6 @@ Will return [0, 0, 0] if the entity doesn't have a physics body
  
 
 ## giveItem
-
-
-
-
 Inventory stuff
 
 Give a player an item and a certain amount of that item.
@@ -2390,6 +2530,43 @@ Whether the player is on a mobile device or a computer.
 | playerId | `PlayerId` |  |
 
 
+
+### Returns:
+`boolean`
+
+ 
+
+
+
+ 
+
+## isNearInterrupt
+Returns true if your code is about to be interrupted for exceeding its time budget.
+
+Use this to break up long-running code into smaller chunks.
+
+
+
+
+
+### Example:
+
+```js
+// Resume from where we stopped last time (or 0 on the first run)
+let savedLoopCounter = 0
+
+// ...
+
+for (let i = savedLoopCounter; i < 1000; i++) {
+	if (api.isNearInterrupt()) {
+		// Out of time - remember our progress and stop before getting killed
+		savedLoopCounter = i
+		break
+	}
+
+	someExpensiveFunction()
+}
+```
 
 ### Returns:
 `boolean`
@@ -2675,6 +2852,87 @@ Can be queued.
 
  
 
+## queueCrosshairText
+Schedule text to be displayed in the crosshair.
+
+This text will be removed after the duration.
+
+Stacking queued texts will schedule them to be displayed one after the other.
+
+NOTE: Overriding the crosshairText client option may cause queued texts to be displayed incorrectly.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The ID of the player to display the text to. |
+| text | `string \| CustomTextStyling` | The text to display. |
+| duration | `number` | The duration of the text in milliseconds. |
+
+
+
+### Returns:
+`QueuedCommandId`
+
+ 
+
+The ID of the queued command.
+
+ 
+
+## queueMiddleTextLower
+Schedule small text to be displayed in the middle of the screen (middleTextLower).
+
+This text will be removed after the duration.
+
+Stacking queued texts will schedule them to be displayed one after the other.
+
+NOTE: Overriding the middleTextLower client option may cause queued texts to be displayed incorrectly.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The ID of the player to display the text to. |
+| text | `string \| CustomTextStyling` | The text to display. |
+| duration | `number` | The duration of the text in milliseconds. |
+
+
+
+### Returns:
+`QueuedCommandId`
+
+ 
+
+The ID of the queued command.
+
+ 
+
+## queueMiddleTextUpper
+Schedule large text to be displayed in the middle of the screen (middleTextUpper).
+
+This text will be removed after the duration.
+
+Stacking queued texts will schedule them to be displayed one after the other.
+
+NOTE: Overriding the middleTextUpper client option may cause queued texts to be displayed incorrectly.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The ID of the player to display the text to. |
+| text | `string \| CustomTextStyling` | The text to display. |
+| duration | `number` | The duration of the text in milliseconds. |
+
+
+
+### Returns:
+`QueuedCommandId`
+
+ 
+
+The ID of the queued command.
+
+ 
+
 ## raycastForBlock
 Raycast for a block in the world.
 
@@ -2734,6 +2992,20 @@ Remove following entity from player
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
 | entityEId | `EntityId` |  |
+
+
+
+
+
+ 
+
+## removeFromQueue
+Remove a queued command from the queue.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| id | `QueuedCommandId` | The ID of the queued command to remove. |
 
 
 
@@ -3109,13 +3381,15 @@ Create walls by providing two opposite corners of the cuboid
 ## setCallbackValueFallback
 Set a default value to be returned by your callback code if it throws an error.
 
-
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| callbackName | string | The name of the callback to set the default value for |
-| defaultValue | any | The default value to return if the callback throws an error |
-        
+| cbName | `UserCallbacks` | The name of the callback to set the default value for. |
+| value | `any` | The default value to return. |
+
+
+
+
 
  
 
@@ -3501,6 +3775,21 @@ NOTE: Only a subset of stats are customisable this way.
 
  
 
+## setLifeformScale
+Set the visual + physical scale of a lifeform. A scale of 1 is the default size,
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| lifeformId | `LifeformId` |  |
+| scale | `number` | Must be a finite positive number. |
+
+
+
+
+
+ 
+
 ## setLobbyDbValue
 Sets a database value that is saved per lobby. This persists between sessions.
 
@@ -3666,6 +3955,21 @@ Sets a database value that is saved per player. This persists between sessions a
 
  
 
+## setPlayerGamemode
+Set the gamemode of a player. This is persistent across lobbies for custom games.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The ID of the player to set the gamemode of. |
+| gamemode | `WorldGamemode` | The gamemode to set the player to. |
+
+
+
+
+
+ 
+
 ## setPlayerOpacity
 Set a player's opacity
 
@@ -3702,13 +4006,19 @@ A simple helper that calls setOtherEntitySetting
  
 
 ## setPlayerPhysicsState
-Set physics state of player (vehicle type and tier)
+Set physics state of player (vehicle type and tier).
+
+
+
+For types that have tiers (e.g. BOAT, GLIDER, CAR), a `tier` of `null` defaults to the first
+
+tier (0). Types without tiers (e.g. DEFAULT) must be given a `null` tier.
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
-| physicsState | `PlayerPhysicsStateData` |  |
+| physicsState | `PlayerPhysicsState<PhysicsType>` |  |
 | positionOffset | `[number, number, number]` | Optional offset to adjust the player's collision box |
 
 
@@ -3889,6 +4199,22 @@ Allow a player to walk through a type of block. For blocks that are normally sol
 
  
 
+## shakePlayerCamera
+Shake a player's camera.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| intensity | `number` | Shake "power" (0..1); the client clamps the accumulated power to 1. |
+| durationMs | `number` | How long the shake lasts, in milliseconds. |
+
+
+
+
+
+ 
+
 ## showShopTutorial
 Show the shop tutorial for a player. Will not be shown if they have ever seen the shop tutorial in your game before.
 
@@ -3896,6 +4222,23 @@ Show the shop tutorial for a player. Will not be shown if they have ever seen th
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
+
+
+
+
+
+ 
+
+## updateAudioEntity
+Update an audio entity's config (sound, volume, falloff, rate). Only the provided fields
+
+change.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| eId | `EntityId` |  |
+| opts | `Partial<AudioEntityOpts>` | Any subset of soundName, volume, refDistance, maxHearDist, rate. |
 
 
 

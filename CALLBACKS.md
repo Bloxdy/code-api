@@ -6,22 +6,24 @@ Players can use World Code in custom worlds get functions they've written to run
 tick onClose onPlayerJoin onPlayerLeave onPlayerJump onRespawnRequest
 playerCommand onPlayerChat onPlayerChangeBlock onPlayerDropItem
 onPlayerPickedUpItem onPlayerSelectInventorySlot onBlockStand
-onPlayerAttemptCraft onPlayerCraft onPlayerAttemptOpenChest
-onPlayerOpenedChest onPlayerMoveItemOutOfInventory onPlayerMoveInvenItem
-onPlayerMoveItemIntoIdxs onPlayerSwapInvenSlots onPlayerMoveInvenItemWithAmt
-onPlayerAttemptAltAction onPlayerAltAction onPlayerClick onPlayerClickUp
-onClientOptionUpdated onMobSettingUpdated onInventoryUpdated onChestUpdated
-onWorldChangeBlock onCreateBloxdMeshEntity onEntityCollision
-onPlayerAttemptSpawnMob onWorldAttemptSpawnMob onPlayerSpawnMob
-onWorldSpawnMob onWorldAttemptDespawnMob onMobDespawned onPlayerAttack
-onPlayerDamagingOtherPlayer onPlayerDamagingMob onMobDamagingPlayer
-onMobDamagingOtherMob onAttemptKillPlayer onPlayerKilledOtherPlayer
-onMobKilledPlayer onPlayerKilledMob onMobKilledOtherMob onPlayerPotionEffect
-onPlayerDamagingMeshEntity onPlayerBreakMeshEntity onPlayerUsedThrowable
-onPlayerThrowableHitTerrain onTouchscreenActionButton onTaskClaimed
-onChunkLoaded onPlayerRequestChunk onItemDropCreated
-onPlayerStartChargingItem onPlayerFinishChargingItem onPlayerFinishQTE
-onPlayerToggledShopMenu onPlayerBoughtShopItem doPeriodicSave
+onBlockStandStart onBlockStandStop onPlayerAttemptCraft onPlayerCraft
+onPlayerAttemptOpenChest onPlayerOpenedChest onPlayerMoveItemOutOfInventory
+onPlayerMoveInvenItem onPlayerMoveItemIntoIdxs onPlayerSwapInvenSlots
+onPlayerMoveInvenItemWithAmt onPlayerAttemptAltAction onPlayerAltAction
+onPlayerClick onPlayerClickUp onClientOptionUpdated onMobSettingUpdated
+onInventoryUpdated onChestUpdated onWorldChangeBlock onCreateBloxdMeshEntity
+onEntityCollision onPlayerAttemptSpawnMob onWorldAttemptSpawnMob
+onPlayerSpawnMob onWorldSpawnMob onWorldAttemptDespawnMob onMobDespawned
+onPlayerAttack onPlayerDamagingOtherPlayer onPlayerDamagingMob
+onMobDamagingPlayer onMobDamagingOtherMob onAttemptKillPlayer
+onPlayerKilledOtherPlayer onMobKilledPlayer onPlayerKilledMob
+onMobKilledOtherMob onPlayerPotionEffect onPlayerDamagingMeshEntity
+onPlayerBreakMeshEntity onPlayerUsedThrowable onPlayerThrowableHitTerrain
+onTouchscreenActionButton onTaskClaimed onChunkLoaded onPlayerRequestChunk
+onItemDropCreated onPlayerStartChargingItem onPlayerFinishChargingItem
+onPlayerFinishQTE onPlayerToggledShopMenu onPlayerPlayedEmote
+onPlayerEnteredVehicle onPlayerExitedVehicle onPlayerBoughtShopItem
+doPeriodicSave
 
 To use a callback, just assign a function to it in the world code!
 tick = () => {}			 or			 function tick() {}
@@ -87,6 +89,44 @@ Called when a player stands on a block
 | y | `number` | The y coordinate of the block that was stood on |
 | z | `number` | The z coordinate of the block that was stood on |
 | blockName | `BlockName` | The name of the block that was stood on |
+
+
+    
+
+ 
+
+
+
+## onBlockStandStart
+Called when a player enters a block. Only called once per block until the player leaves the block.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player that entered the block |
+| x | `number` | The x coordinate of the block that was entered |
+| y | `number` | The y coordinate of the block that was entered |
+| z | `number` | The z coordinate of the block that was entered |
+| blockName | `BlockName` | The name of the block that was entered |
+
+
+    
+
+ 
+
+
+
+## onBlockStandStop
+Called when a player leaves a block.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player that left the block |
+| x | `number` | The x coordinate of the block that was left |
+| y | `number` | The y coordinate of the block that was left |
+| z | `number` | The z coordinate of the block that was left |
+| blockName | `BlockName` | The name of the block that was left |
 
 
     
@@ -612,7 +652,7 @@ Return an array to set the dropped item position.
 
 
 ### Returns:
-`void \| [number, number, number] \| "preventChange" \| "preventDrop"`
+`void \| "preventChange" \| "preventDrop" \| [number, number, number]`
 
  
 
@@ -847,6 +887,40 @@ Return "allowButNoDroppedItemCreated" to allow discarding items without dropping
  
 
 
+
+
+    
+
+ 
+
+
+
+## onPlayerEnteredVehicle
+Called when a player enters a vehicle
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player that entered the vehicle |
+| vehicleType | `MeshEntityVehicleType` | The type of the vehicle |
+| vehicleEId | `EntityId` | The id of the vehicle |
+
+
+    
+
+ 
+
+
+
+## onPlayerExitedVehicle
+Called when a player exits a vehicle
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player that exited the vehicle |
+| vehicleType | `MeshEntityVehicleType` | The type of the vehicle |
+| vehicleEId | `EntityId` | The id of the vehicle |
 
 
     
@@ -1141,6 +1215,23 @@ Called when a player picks up an item
 | playerId | `PlayerId` | The id of the player that picked up the item |
 | itemName | `string` | The name of the item that was picked up |
 | itemAmount | `number` | The amount of the item that was picked up |
+| itemEntityId | `EntityId` | The entityId of the item that was picked up |
+
+
+    
+
+ 
+
+
+
+## onPlayerPlayedEmote
+/** Called after a player plays an emote from the emote wheel. */
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| emoteId | `string` |  |
 
 
     

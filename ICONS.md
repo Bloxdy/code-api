@@ -107,7 +107,7 @@ Trader Piggy
 
 ---
 
-## Font Awesome Icons (178 icons)
+## Font Awesome Icons (196 icons)
 
 Use with `fa-solid`, `fa-regular`, or `fa-duotone` prefix. Only use these when no Bloxd-native icon fits.
 
@@ -127,15 +127,21 @@ fa-solid fa-arrows-up-down-left-right
 fa-solid fa-award
 fa-solid fa-backpack
 fa-solid fa-bars
+fa-solid fa-bee
 fa-solid fa-block-question
 fa-solid fa-bolt
 fa-solid fa-boot
+fa-solid fa-calendar
 fa-solid fa-caret-up
 fa-solid fa-cart-shopping
 fa-solid fa-check
+fa-solid fa-chess-knight
 fa-solid fa-chess-rook
+fa-solid fa-child-reaching
+fa-solid fa-circle-check
 fa-solid fa-circle-info
 fa-solid fa-circle-plus
+fa-solid fa-circle-xmark
 fa-solid fa-clock-rotate-left
 fa-solid fa-cog
 fa-solid fa-coins
@@ -196,7 +202,9 @@ fa-solid fa-hat-witch
 fa-solid fa-heart
 fa-solid fa-heart-music-camera-bolt
 fa-solid fa-history
+fa-solid fa-hourglass
 fa-solid fa-hourglass-clock
+fa-solid fa-hourglass-empty
 fa-solid fa-icons
 fa-solid fa-image
 fa-solid fa-image-slash
@@ -215,11 +223,14 @@ fa-solid fa-male
 fa-solid fa-map-marker-check
 fa-solid fa-map-marker-times
 fa-solid fa-map-marker-xmark
+fa-solid fa-minus
 fa-solid fa-minus-square
 fa-solid fa-mouse
 fa-solid fa-music
+fa-solid fa-music-slash
 fa-solid fa-navicon
 fa-solid fa-palette
+fa-solid fa-pants
 fa-solid fa-party-horn
 fa-solid fa-paste
 fa-solid fa-pen
@@ -231,6 +242,7 @@ fa-solid fa-person-arrow-up-from-line
 fa-solid fa-person-falling-burst
 fa-solid fa-person-military-pointing
 fa-solid fa-planet-ringed
+fa-solid fa-play
 fa-solid fa-plus
 fa-solid fa-plus-circle
 fa-solid fa-power-off
@@ -248,6 +260,7 @@ fa-solid fa-shield-alt
 fa-solid fa-shield-blank
 fa-solid fa-shield-halved
 fa-solid fa-shirt
+fa-solid fa-shoe
 fa-solid fa-shopping-cart
 fa-solid fa-sign-out-alt
 fa-solid fa-smile
@@ -256,6 +269,7 @@ fa-solid fa-square-dashed
 fa-solid fa-square-minus
 fa-solid fa-star
 fa-solid fa-store
+fa-solid fa-subtract
 fa-solid fa-swords
 fa-solid fa-sync
 fa-solid fa-t-shirt
@@ -287,22 +301,25 @@ fa-solid fa-volume-low
 fa-solid fa-volume-medium
 fa-solid fa-volume-slash
 fa-solid fa-warning
+fa-solid fa-wifi
+fa-solid fa-wifi-3
+fa-solid fa-wifi-strong
 fa-solid fa-wrench
 fa-solid fa-x
+fa-solid fa-xmark
 fa-solid fa-zap
 ```
 
-## Custom Kit Icons (2 icons)
-
-```
-fa-solid fa-kit fa-pants
-fa-solid fa-kit fa-shoe
-```
-
-## Brand Icons (3 icons)
+## Brand Icons (9 icons)
 
 ```
 fa-solid fa-brands fa-apple
 fa-solid fa-brands fa-discord
+fa-solid fa-brands fa-google-play
+fa-solid fa-brands fa-instagram
+fa-solid fa-brands fa-reddit-alien
+fa-solid fa-brands fa-tiktok
+fa-solid fa-brands fa-windows
+fa-solid fa-brands fa-x-twitter
 fa-solid fa-brands fa-youtube
 ```

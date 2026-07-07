@@ -1,3 +1,5 @@
+# Item Names (1044 items)
+
 Wood Pickaxe
 Stone Pickaxe
 Iron Pickaxe
@@ -28,6 +30,8 @@ Stone Hoe
 Iron Hoe
 Gold Hoe
 Diamond Hoe
+Flashlight
+Mining Helmet
 Wood Helmet
 Iron Helmet
 Gold Helmet
@@ -143,6 +147,7 @@ Gold Fragment
 Diamond
 Diamond Fragment
 Moonstone
+Lunite
 Moonstone Fragment
 Bowl
 Partially Full Bowl of Cranberries
@@ -151,6 +156,7 @@ Nearly Full Bowl of Cranberries
 Bowl of Cranberries
 Mushroom Soup
 Cotton
+Gold Crop
 Bucket
 Water Bucket
 Lava Bucket
@@ -158,6 +164,8 @@ Boat
 INTERNAL_MESH_Boat
 Obsidian Boat
 INTERNAL_MESH_Obsidian Boat
+Speedboat
+INTERNAL_MESH_Speedboat
 Wood Hang Glider
 INTERNAL_MESH_Wood Hang Glider
 Iron Hang Glider
@@ -166,7 +174,12 @@ Gold Hang Glider
 INTERNAL_MESH_Gold Hang Glider
 Diamond Hang Glider
 INTERNAL_MESH_Diamond Hang Glider
+Hovercraft
+INTERNAL_MESH_Hovercraft
+Red Kart
 INTERNAL_MESH_Kart
+Off Roader
+INTERNAL_MESH_Off Roader
 Snowball
 Snowball Launcher
 Pebble
@@ -174,6 +187,9 @@ Reinforced Pebble
 Bullet
 Ball
 Reinforced Ball
+Frag Grenade
+Mining Grenade
+Smoke Grenade
 Moonstone Orb
 Fireball
 Bouncy Bomb
@@ -244,6 +260,7 @@ Compass|meta|dir9
 Compass|meta|dir10
 Compass|meta|dir11
 Compass|meta|dir12
+Chunk Map
 Bread
 Bowl of Rice
 Apple
@@ -649,6 +666,7 @@ Cow Spawn Orb
 Sheep Spawn Orb
 Horse Spawn Orb
 Deer Spawn Orb
+Slime Spawn Orb
 Wolf Spawn Orb
 Wildcat Spawn Orb
 Spirit Golem Spawn Orb
@@ -672,6 +690,8 @@ Magma Golem Spawn Orb
 Draugr Warper Spawn Orb
 Frost Wraith Spawn Orb
 Draugr Reaver Spawn Orb
+Stalker Spawn Orb
+Crone Spawn Orb
 Mob Catcher
 Caught Mob Pig Default
 Caught Mob Cow Default
@@ -697,6 +717,7 @@ Caught Mob Horse Black
 Caught Mob Horse Brown
 Caught Mob Horse Cream
 Caught Mob Deer Default
+Caught Mob Slime Default
 Caught Mob Wolf Default
 Caught Mob Wolf White
 Caught Mob Wolf Brown
@@ -737,6 +758,11 @@ Caught Mob Magma_Golem Default
 Caught Mob Draugr_Warper Default
 Caught Mob Frost_Wraith Default
 Caught Mob Draugr_Reaver Default
+Caught Mob Stalker Default
+Caught Mob Stalker Crimson
+Caught Mob Stalker Frost
+Caught Mob Stalker Void
+Caught Mob Crone Default
 Caught Mob NPC Default
 Caught Mob NPC Emma
 Caught Mob NPC Leo
@@ -997,3 +1023,24 @@ Stuffed Pepper
 Sushi
 Tomato
 Vegetable Soup
+Common Lottery Ticket
+Uncommon Lottery Ticket
+Rare Lottery Ticket
+Epic Lottery Ticket
+Legendary Lottery Ticket
+Wood Clock
+Wood Clock|meta|midnight
+Wood Clock|meta|late_night
+Wood Clock|meta|sunrise
+Wood Clock|meta|early_day
+Wood Clock|meta|late_day
+Wood Clock|meta|sunset
+Wood Clock|meta|early_night
+Gold Clock
+Gold Clock|meta|midnight
+Gold Clock|meta|late_night
+Gold Clock|meta|sunrise
+Gold Clock|meta|early_day
+Gold Clock|meta|late_day
+Gold Clock|meta|sunset
+Gold Clock|meta|early_night

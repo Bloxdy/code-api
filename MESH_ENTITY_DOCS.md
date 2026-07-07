@@ -36,6 +36,7 @@ type BoxOpts = {
     backFaceCulling?: boolean // Default true
     texture?: string // Can be a blockname. Wraps every one block
     faceUV?: number[][]
+    animateTexture?: boolean // If true, `texture` must be an animated block name (e.g. "Lava", "Red Portal") and the Box cycles through its frames.
 }
 ```
 
@@ -348,6 +349,7 @@ type MeshEntityOpts = {
         backFaceCulling?: boolean // Default true
         texture?: string // Can be a blockname. Wraps every one block
         faceUV?: number[][]
+        animateTexture?: boolean // If true, `texture` must be an animated block name (e.g. "Lava", "Red Portal") and the Box cycles through its frames.
     }
     BloxdBlock: CommonMeshEntityOpts & {
         blockName: BlockNameOrId
@@ -384,7 +386,6 @@ type MeshEntityPhysicsOpts = {
     collideMask?: number // bitmask category of entities this entity collides with
     heightExpandAmt?: number // expand hitbox height by this amount
     widthExpandAmt?: number // expand hitbox width by this amount
-    vehicleOpts?: MeshEntityVehicleOpts // Unsupported for custom code
 }
 ```
 

@@ -106,7 +106,7 @@ for (const playerId of api.getPlayerIds()) {
 These 'types' can't be referenced by your code, but they help explain some of the parameters in the API.
 
 ```ts
-type CustomTextStyling = (string | EntityName | TranslatedText | StyledIcon | StyledText)[]
+type CustomTextStyling = (string | EntityName | TranslatedText | StyledIcon | StyledText | ProgressBar)[]
 
 type EntityMeshScalingMap = {
     [key in "TorsoNode" | "HeadMesh" | "ArmRightMesh" | "ArmLeftMesh" | "LegLeftMesh" | "LegRightMesh"]?: number[]
@@ -158,7 +158,6 @@ type StyledIcon = {
 type StyledText = {
     str: string | EntityName | TranslatedText
     style?: TextStyle
-    clickableUrl?: string
 }
 
 type TempParticleSystemOpts = {
@@ -214,10 +213,27 @@ type EarthSkyBox = {
     turbidity?: number
     infiniteDistance?: boolean
     luminance?: number
+    // Sky appearance (light intensity); higher = more saturated sky.
+    rayleigh?: number
+    // Mie scattering coefficient in [0, 0.1]; affects mieDirectionalG impact.
+    mieCoefficient?: number
+    // Amount of haze particles per Mie scattering theory.
+    mieDirectionalG?: number
+    // Distance of the sun from the active scene camera.
+    distance?: number
+    // When `useSunPosition` is true, this overrides `inclination` + `azimuth`.
+    sunPosition?: Vec3
+    useSunPosition?: boolean
+    xCameraOffset?: number
     yCameraOffset?: number
+    zCameraOffset?: number
+    // Direction the sky considers "up"; defaults to [0, 1, 0].
+    up?: Vec3
+    // Dither the sky to reduce visible banding.
+    dithering?: boolean
     azimuth?: number
     // Not part of sky model by default; heavily tint to a vertex color
-    vertexTint?: [number, number, number]
+    vertexTint?: Vec3
 }
 
 type ShopItem = {
@@ -236,6 +252,11 @@ type ShopItem = {
     forceRemoveRedDot?: boolean
     badge?: { text: string | CustomTextStyling; type: ShopItemBadgeType }
     userInput?: ShopItemUserInput
+    enchant?: {
+        tier: EnchantmentTier
+        enchantments: Partial<Record<EnchantmentPerk, number>>
+        enchantmentData?: Record<string, { icon?: string; description?: string }>
+    }
     sell?: boolean // Optional, defaults to false. If true, the sign of "cost" is flipped. So a "cost" of -25 would give the player 25 currency AND be displayed as "25" (instead of -25)
     sortPriority?: number // Descending, bigger number means closer to the top
     hidden?: boolean
@@ -249,6 +270,7 @@ type ShopItemUserInput =
             dropdownOptions: (string | { option: string; cost: number })[]
             shouldResetSelectionOnOptionsChange?: boolean // Defaults to false. If true, the selection will reset to the first option when dropdownOptions changes.
             initialValue?: string
+            autoSubmit?: boolean // Defaults to false. If true, the dropdown will automatically submit when the user selects an option.
       }
     | { type: "player"; excludedPlayers?: PlayerId[] } // Defaults to excluding the current player
     | { type: "color"; initialValue?: string }
@@ -286,6 +308,7 @@ type MeshEntityOpts = {
         backFaceCulling?: boolean // Default true
         texture?: string // Can be a blockname. Wraps every one block
         faceUV?: number[][]
+        animateTexture?: boolean // If true, `texture` must be an animated block name (e.g. "Lava", "Red Portal") and the Box cycles through its frames.
     }
     BloxdBlock: CommonMeshEntityOpts & {
         blockName: BlockNameOrId
@@ -314,7 +337,6 @@ type MeshEntityPhysicsOpts = {
     collideMask?: number // bitmask category of entities this entity collides with
     heightExpandAmt?: number // expand hitbox height by this amount
     widthExpandAmt?: number // expand hitbox width by this amount
-    vehicleOpts?: MeshEntityVehicleOpts // Unsupported for custom code
 }
 
 /**

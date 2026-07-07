@@ -1,4 +1,4 @@
-# Block Names (1120 blocks)
+# Block Names (1179 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -1146,3 +1146,62 @@ Pet Lucky Block
 Glowing Mushroom [H,R]
 Crystal [H,R]
 Slime Trail [R]
+Overgrown Grass Block
+Overgrown Pine Grass Block
+Overgrown Jungle Grass Block
+Smoke Block
+Pipe
+Auto Miner [R]
+_Auto Miner Drill Front [R]
+_Auto Miner Drill Back [R]
+_Auto Miner Foot Front [R]
+_Auto Miner Body [R]
+Auto Crafter
+Rocket Ship
+_Rocket Ship Southwest L2
+_Rocket Ship Southwest L3
+_Rocket Ship Southwest L4
+_Rocket Ship Southwest L5
+_Rocket Ship Southeast L1
+_Rocket Ship Southeast L2
+_Rocket Ship Southeast L3
+_Rocket Ship Southeast L4
+_Rocket Ship Southeast L5
+_Rocket Ship Northwest L1
+_Rocket Ship Northwest L2
+_Rocket Ship Northwest L3
+_Rocket Ship Northwest L4
+_Rocket Ship Northwest L5
+_Rocket Ship Northeast L1
+_Rocket Ship Northeast L2
+_Rocket Ship Northeast L3
+_Rocket Ship Northeast L4
+_Rocket Ship Northeast L5
+Rocket Ship S2
+Rocket Ship S3
+Rocket Ship S4
+Rocket Ship S5
+INTERNAL_MESH_Rocket Ship Full
+Extractor Pipe
+Splitter Pipe
+Solar Panel [R]
+_Solar Panel SE [R]
+_Solar Panel NW [R]
+_Solar Panel NE [R]
+Wire
+Filter Pipe
+Merger Pipe
+Auto Harvester
+Stalker Spawner Block
+Lunite Ore
+Block of Lunite
+Lunite Auto Miner [R]
+_Lunite Auto Miner Drill Front [R]
+_Lunite Auto Miner Drill Back [R]
+_Lunite Auto Miner Foot Front [R]
+_Lunite Auto Miner Body [R]
+Lunite Auto Crafter
+Lunite Auto Harvester
+Bowling Alley Floor
+Crone Spawner Block
+Slime Spawner Block

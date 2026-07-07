@@ -47,13 +47,33 @@ setMobSetting(mobId, setting, value)
 Here is the full list of available mob settings:
 
 
+## armour
+
+**Type:** `Partial<Record<ArmourPart, {itemName: string, enchantmentTier?: "Tier 1" | "Tier 2" | "Tier 3" | "Tier 4" | "Tier 5" }>>`
+
+**Example:**
+```ts
+{
+  "Helmet": {
+    itemName: "Diamond Helmet",
+    enchantmentTier: "Tier 5",
+  },
+  "Boots": {
+    itemName: "Iron Boots",
+  },
+}
+```
+
+
+
+
 ## attackDamage
 
 **Type:** `number`
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -63,7 +83,7 @@ Here is the full list of available mob settings:
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -73,7 +93,7 @@ Here is the full list of available mob settings:
 
 **Example:** `null`
 
- 
+
 
 
 
@@ -83,7 +103,7 @@ Here is the full list of available mob settings:
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -93,7 +113,7 @@ Here is the full list of available mob settings:
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -103,7 +123,7 @@ Here is the full list of available mob settings:
 
 **Example:** `null`
 
- 
+
 
 
 
@@ -113,7 +133,7 @@ Here is the full list of available mob settings:
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -123,7 +143,7 @@ Here is the full list of available mob settings:
 
 **Example:** `null`
 
- 
+
 
 
 
@@ -133,7 +153,7 @@ Here is the full list of available mob settings:
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -143,7 +163,7 @@ Here is the full list of available mob settings:
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -153,7 +173,7 @@ Here is the full list of available mob settings:
 
 **Example:** `4.55 * 0.85`
 
- 
+
 
 
 
@@ -163,7 +183,7 @@ Here is the full list of available mob settings:
 
 **Example:** `3.5`
 
- 
+
 
 
 
@@ -173,7 +193,17 @@ Here is the full list of available mob settings:
 
 **Example:** `null`
 
- 
+
+
+
+
+## chargeSpecialAttackInfo
+
+**Type:** `MobChargeSpecialAttackInfo`
+
+**Example:** `{ chargeSpeedMult: 1.5 }`
+
+
 
 
 
@@ -183,7 +213,7 @@ Here is the full list of available mob settings:
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -208,7 +238,7 @@ Here is the full list of available mob settings:
 }
 ```
 
- 
+
 
 
 
@@ -226,7 +256,7 @@ Here is the full list of available mob settings:
 }
 ```
 
- 
+
 
 
 
@@ -236,7 +266,17 @@ Here is the full list of available mob settings:
 
 **Example:** `null`
 
- 
+
+
+
+
+## heldItemEnchantmentTier
+
+**Type:** `"Tier 1" | "Tier 2" | "Tier 3" | "Tier 4" | "Tier 5"`
+
+**Example:** `null`
+
+
 
 
 
@@ -246,7 +286,7 @@ Here is the full list of available mob settings:
 
 **Example:** `null`
 
- 
+
 
 
 
@@ -256,7 +296,7 @@ Here is the full list of available mob settings:
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -266,7 +306,7 @@ Here is the full list of available mob settings:
 
 **Example:** `"pigHurt"`
 
- 
+
 
 
 
@@ -276,7 +316,7 @@ Here is the full list of available mob settings:
 
 **Example:** `"pigOink"`
 
- 
+
 
 
 
@@ -286,7 +326,17 @@ Here is the full list of available mob settings:
 
 **Example:** `75`
 
- 
+
+
+
+
+## isReceivingDamageCooldownGlobal
+
+**Type:** `boolean`
+
+**Example:** `true`
+
+
 
 
 
@@ -296,7 +346,7 @@ Here is the full list of available mob settings:
 
 **Example:** `false`
 
- 
+
 
 
 
@@ -306,7 +356,7 @@ Here is the full list of available mob settings:
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -316,7 +366,17 @@ Here is the full list of available mob settings:
 
 **Example:** `1`
 
- 
+
+
+
+
+## knockbackReceivedMultiplier
+
+**Type:** `number`
+
+**Example:** `1`
+
+
 
 
 
@@ -326,7 +386,7 @@ Here is the full list of available mob settings:
 
 **Example:** `12`
 
- 
+
 
 
 
@@ -336,7 +396,7 @@ Here is the full list of available mob settings:
 
 **Example:** `75`
 
- 
+
 
 
 
@@ -346,7 +406,7 @@ Here is the full list of available mob settings:
 
 **Example:** `""`
 
- 
+
 
 
 
@@ -356,7 +416,7 @@ Here is the full list of available mob settings:
 
 **Example:** `5`
 
- 
+
 
 
 
@@ -366,7 +426,7 @@ Here is the full list of available mob settings:
 
 **Example:** `""`
 
- 
+
 
 
 
@@ -376,7 +436,7 @@ Here is the full list of available mob settings:
 
 **Example:** `20`
 
- 
+
 
 
 
@@ -396,7 +456,7 @@ Here is the full list of available mob settings:
 ]
 ```
 
- 
+
 
 
 
@@ -406,7 +466,7 @@ Here is the full list of available mob settings:
 
 **Example:** `"critical_hit"`
 
- 
+
 
 
 
@@ -416,7 +476,7 @@ Here is the full list of available mob settings:
 
 **Example:** `4.0`
 
- 
+
 
 
 
@@ -426,7 +486,7 @@ Here is the full list of available mob settings:
 
 **Example:** `null`
 
- 
+
 
 
 
@@ -446,7 +506,7 @@ bonusesGained: [],
 	}
 ```
 
- 
+
 
 
 
@@ -456,7 +516,7 @@ bonusesGained: [],
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -466,7 +526,7 @@ bonusesGained: [],
 
 **Example:** `1`
 
- 
+
 
 
 
@@ -476,7 +536,7 @@ bonusesGained: [],
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -486,7 +546,7 @@ bonusesGained: [],
 
 **Example:** `1`
 
- 
+
 
 
 
@@ -496,7 +556,7 @@ bonusesGained: [],
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -506,7 +566,7 @@ bonusesGained: [],
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -516,7 +576,7 @@ bonusesGained: [],
 
 **Example:** `null`
 
- 
+
 
 
 
@@ -526,7 +586,7 @@ bonusesGained: [],
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -536,7 +596,7 @@ bonusesGained: [],
 
 **Example:** `null`
 
- 
+
 
 
 
@@ -546,7 +606,7 @@ bonusesGained: [],
 
 **Example:** `null`
 
- 
+
 
 
 
@@ -556,7 +616,7 @@ bonusesGained: [],
 
 **Example:** `0.5`
 
- 
+
 
 
 
@@ -566,7 +626,7 @@ bonusesGained: [],
 
 **Example:** `true`
 
- 
+
 
 
 
@@ -576,7 +636,7 @@ bonusesGained: [],
 
 **Example:** `true`
 
- 
+
 
 
 
@@ -584,7 +644,8 @@ bonusesGained: [],
 
 **Type:** `PNull<MobTameInfo>`
 
-**Example:** ```ts
+**Example:**
+```ts
 {
   "tameItemName": [
     "Apple"
@@ -647,7 +708,7 @@ bonusesGained: [],
 
 Taming configuration for this mob type. Includes tame items, probability, saddle support, food preferences, drops, and level-up bonuses. See `mobTameInfoDefaults` for per-mob defaults. `null` for non-tameable mobs.
 
- 
+
 
 
 ## territoryRadius
@@ -656,7 +717,7 @@ Taming configuration for this mob type. Includes tame items, probability, saddle
 
 **Example:** `0`
 
- 
+
 
 
 
@@ -666,7 +727,7 @@ Taming configuration for this mob type. Includes tame items, probability, saddle
 
 **Example:** `"default"`
 
- 
+
 
 
 
@@ -676,7 +737,7 @@ Taming configuration for this mob type. Includes tame items, probability, saddle
 
 **Example:** `1`
 
- 
+
 
 
 
@@ -708,7 +769,7 @@ Taming configuration for this mob type. Includes tame items, probability, saddle
 }
 ```
 
- 
+
 
 
 
@@ -723,6 +784,7 @@ Pig: "default"
 Cow: "default", "cream"
 Sheep: "default", "black", "red", "orange", "pink", "purple", "yellow", "blue", "brown", "cyan", "gray", "green", "lightBlue", "lightGray", "lime", "magenta"
 Horse: "default", "black", "brown", "cream"
+Slime: "default"
 Cave Golem: "default", "iron"
 Draugr Zombie: "default", "longHairChestplate", "longHairClothed", "shortHairClothed"
 Draugr Skeleton: "default"
@@ -747,6 +809,8 @@ Spirit Gorilla: "default"
 Draugr Warper: "default"
 Frost Wraith: "default"
 Draugr Reaver: "default"
+Stalker: "default", "crimson", "frost", "void"
+Crone: "default"
 NPC: "default", "emma", "leo", "isabel", "sanjay", "imara", "enoch", "sara", "carmen"
 Bobino Musculino: "default"
 Capitano Explovissimo: "default"
@@ -789,6 +853,8 @@ Here is the full list of available mob AI states and their parameters:
 | `walking` | The mob is walking in the direction it is facing. | `null` |
 | `runningAway` | The mob is running away from the target lifeform. | `{ targetId: LifeformId }` |
 | `chasing` | The mob is chasing the target lifeform. | `{ targetId: LifeformId }` |
+| `turningBeforeCharging` | A charge-attack mob is stood still, rotating at its `turnRate` until it faces the target,<br>at which point it captures the target's current position and transitions to `charging`. | `{ targetId: LifeformId }` |
+| `charging` | A charge-attack mob is dashing straight at the position of the target captured when it<br>entered the state, ignoring the target's live position mid-dash (so the charge is dodgeable). | `{ targetId: LifeformId }` |
 | `following` | The mob is following the target lifeform.<br>It will stop if it is within the `minFollowingDistance` (mob setting) of the target,<br>and teleport to the target if it is outside the `maxFollowingDistance` (mob setting) of the target. | `{ targetId: LifeformId }` |
 | `watching` | The mob is stood still looking at the target. | `{ targetId: LifeformId }` |
 | `walkingToPosition` | The mob is walking towards the position.<br>It will stop if it is within the `stoppingRadius` (mob setting) of the position. | `{ pos: Pos }` |

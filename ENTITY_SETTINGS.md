@@ -80,7 +80,7 @@ Here is the full list of available entity settings:
 
 **Default:** `false`
 
- 
+
 
 Whether the entity can attack other entities, ignored if the targeted entity is invincible
 
@@ -94,7 +94,7 @@ Whether the entity can attack other entities, ignored if the targeted entity is 
 
 **Default:** `true`
 
- 
+
 
 Whether the entity can be seen by the relevant player
 
@@ -108,7 +108,7 @@ Whether the entity can be seen by the relevant player
 
 **Default:** `""`
 
- 
+
 
 The colour of the player in the lobby leaderboard.
 
@@ -122,7 +122,7 @@ The colour of the player in the lobby leaderboard.
 
 **Default:** `false`
 
- 
+
 
 Whether the player has a priority name tag
 
@@ -136,9 +136,23 @@ Whether the player has a priority name tag
 
 **Default:** `""`
 
- 
+
 
 The colour of kills in the killfeed. Defaults to blue for themselves and red for everyone else.
+
+ 
+
+
+
+## lobbyLeaderboardTags
+
+**Type:** `ChatTags`
+
+**Default:** `null`
+
+
+
+The tags to the left of a player's name in the lobby leaderboard.
 
  
 
@@ -150,7 +164,7 @@ The colour of kills in the killfeed. Defaults to blue for themselves and red for
 
 **Default:** `{}`
 
- 
+
 
 The values of the leaderboard.
 
@@ -164,9 +178,31 @@ The values of the leaderboard.
 
 **Default:** `{}`
 
- 
+
 
 Scaling of mesh nodes, see api.scalePlayerMeshNodes
+
+ 
+
+
+
+## multilineTextBox
+
+**Type:** `MultilineTextBox`
+
+**Default:** `null`
+
+
+
+Multiline text info for displaying text next to entities:
+
+ ```ts
+ {
+     content: (CustomTextStyling[number] | RankInfo)[]    // Array of text content
+     backgroundColor?: string                             // Background color
+     animateIn?: boolean                                  // Whether text should animate in character-by-character
+ }
+ ```
 
  
 
@@ -178,7 +214,7 @@ Scaling of mesh nodes, see api.scalePlayerMeshNodes
 
 **Default:** `"default"`
 
- 
+
 
 The colour of the entity's name.
 
@@ -192,23 +228,21 @@ The colour of the entity's name.
 
 **Default:** `null`
 
- 
+
 
 The name tag info of the player:
 
+ ```ts
  {
-
      backgroundColor?: string
-
      content?: StyledText[]
-
      subtitle?: StyledText[]
-
      subtitleBackgroundColor?: string
-
      minLighting?: number
-
+     healthbar?: { display?: "always" | "never" | "onDamage"; height?: FontSize; backgroundColour?: string; foregroundColour?: string | { healthFraction: number; colour: string }[] }
+     border?: { colour: string; style?: "solid" | "glow" | "double"; width?: FontSize; applyTo?: "both" | "nametag" | "healthbar" }
  }
+ ```
 
  
 
@@ -220,7 +254,7 @@ The name tag info of the player:
 
 **Default:** `1`
 
- 
+
 
 Opacity of the entity
 
@@ -238,7 +272,7 @@ Opacity of the entity
 
 **Default:** `null`
 
- 
+
 
 Applies a colour tint to the entity when set, like the red tint when an entity gets hurt.
 
@@ -252,7 +286,7 @@ Applies a colour tint to the entity when set, like the red tint when an entity g
 
 **Default:** `true`
 
- 
+
 
 Whether you can see damage amounts when shooting the entity
 
@@ -266,7 +300,7 @@ Whether you can see damage amounts when shooting the entity
 
 **Default:** `0`
 
- 
+
 
 Rendering order of the entity, higher zIndex renders on top of lower ones.
 

@@ -50,7 +50,7 @@ Here is the full list of available client options:
 
 **Default:** `1`
 
- 
+
 
 Amount of acceleration to apply to airborne players.
 
@@ -72,7 +72,7 @@ Amount of acceleration to apply to airborne players.
 
 **Default:** `1`
 
- 
+
 
 Amount of friction to apply to airborne players.
 
@@ -94,7 +94,7 @@ Amount of friction to apply to airborne players.
 
 **Default:** `0`
 
- 
+
 
 Amount of air jumps the player has
 
@@ -108,7 +108,7 @@ Amount of air jumps the player has
 
 **Default:** `false`
 
- 
+
 
 Whether to allow the player to strafe and conserve momentum while airborne.
 
@@ -130,7 +130,7 @@ Whether to allow the player to strafe and conserve momentum while airborne.
 
 **Default:** `null`
 
- 
+
 
 Ambient (absence of sky light) colour override - hex string e.g. #ffffff.
 
@@ -144,7 +144,7 @@ Ambient (absence of sky light) colour override - hex string e.g. #ffffff.
 
 **Default:** `6000`
 
- 
+
 
 Duration of arrow potion effects
 
@@ -158,7 +158,7 @@ Duration of arrow potion effects
 
 **Default:** `100`
 
- 
+
 
 How much Aura XP is required per level.
 
@@ -172,7 +172,7 @@ How much Aura XP is required per level.
 
 **Default:** `false`
 
- 
+
 
 If true, player will respawn automatically after secsToRespawn seconds
 
@@ -186,7 +186,7 @@ If true, player will respawn automatically after secsToRespawn seconds
 
 **Default:** `0`
 
- 
+
 
 How much the player bounces off of solid blocks.
 
@@ -202,9 +202,23 @@ How much the player bounces off of solid blocks.
 
 **Default:** `1.3`
 
- 
+
 
 Maximum multiplier for jump height when bunnyhopping
+
+ 
+
+
+
+## cameraPositionOffset
+
+**Type:** `[number, number, number]`
+
+**Default:** `[0, 0, 0]`
+
+
+
+Offsets the third-person camera from it's origin by [x, y, z] world units
 
  
 
@@ -216,7 +230,7 @@ Maximum multiplier for jump height when bunnyhopping
 
 **Default:** `0`
 
- 
+
 
 Roll angle of the camera in radians. Useful for disorientation effects, death effects, etc.
 
@@ -230,11 +244,25 @@ Roll angle of the camera in radians. Useful for disorientation effects, death ef
 
 **Default:** `0`
 
- 
+
 
 Duration in ms to animate/transition to the camera roll angle (when you change cameraRoll). 0 = instant.
 
  Useful for smooth camera roll transitions.
+
+ 
+
+
+
+## cameraRotationOffset
+
+**Type:** `[number, number, number]`
+
+**Default:** `[0, 0, 0]`
+
+
+
+Rotates the third-person camera around it's origin by [x, y, z] radians
 
  
 
@@ -246,7 +274,7 @@ Duration in ms to animate/transition to the camera roll angle (when you change c
 
 **Default:** `null`
 
- 
+
 
 RGBA array [r, g, b, a] for camera screen tint effect. Values fall between 0 and 1.
 
@@ -260,7 +288,7 @@ RGBA array [r, g, b, a] for camera screen tint effect. Values fall between 0 and
 
 **Default:** `true`
 
- 
+
 
 Whether the player can use the alt action key (right click on PC)
 
@@ -274,7 +302,7 @@ Whether the player can use the alt action key (right click on PC)
 
 **Default:** `true`
 
- 
+
 
 Whether the player can change blocks
 
@@ -288,7 +316,7 @@ Whether the player can change blocks
 
 **Default:** `false`
 
- 
+
 
 Whether the player can climb walls
 
@@ -302,7 +330,7 @@ Whether the player can climb walls
 
 **Default:** `true`
 
- 
+
 
 Whether to allow the player to craft items
 
@@ -318,7 +346,7 @@ Whether to allow the player to craft items
 
 **Default:** `true`
 
- 
+
 
 Whether the player can crouch
 
@@ -332,7 +360,7 @@ Whether the player can crouch
 
 **Default:** `true`
 
- 
+
 
 Whether the player can customise their character
 
@@ -346,7 +374,7 @@ Whether the player can customise their character
 
 **Default:** `true`
 
- 
+
 
 Whether the player can pick blocks (middle mouse click on PC), ignored if creative is false
 
@@ -360,7 +388,7 @@ Whether the player can pick blocks (middle mouse click on PC), ignored if creati
 
 **Default:** `true`
 
- 
+
 
 Whether to allow the player to pick up items
 
@@ -374,7 +402,7 @@ Whether to allow the player to pick up items
 
 **Default:** `true`
 
- 
+
 
 Whether the player can see name tags through walls
 
@@ -388,7 +416,7 @@ Whether the player can see name tags through walls
 
 **Default:** `null`
 
- 
+
 
 Error message for when the player fails to break a block
 
@@ -402,7 +430,7 @@ Error message for when the player fails to break a block
 
 **Default:** `null`
 
- 
+
 
 Error message for when the player fails to place a block
 
@@ -416,7 +444,7 @@ Error message for when the player fails to place a block
 
 **Default:** `"You cannot modify this block"`
 
- 
+
 
 Error message for when the player fails to change a block
 
@@ -430,7 +458,7 @@ Error message for when the player fails to change a block
 
 **Default:** `true`
 
- 
+
 
 Whether the player can use the zoom key
 
@@ -444,7 +472,7 @@ Whether the player can use the zoom key
 
 **Default:** `null`
 
- 
+
 
 Allows player to select a channel that is passed as argument to onPlayerChat. See engineGameplayTypes.ts for expected format
 
@@ -458,7 +486,7 @@ Allows player to select a channel that is passed as argument to onPlayerChat. Se
 
 **Default:** `[0, 0, 0]`
 
- 
+
 
 The target the compass will point towards
 
@@ -472,7 +500,7 @@ The target the compass will point towards
 
 **Default:** `false`
 
- 
+
 
 Whether the player is in creative mode
 
@@ -486,7 +514,7 @@ Whether the player is in creative mode
 
 **Default:** `""`
 
- 
+
 
 Text to display by the crosshair
 
@@ -500,7 +528,7 @@ Text to display by the crosshair
 
 **Default:** `2`
 
- 
+
 
 Speed multiplier for the player when crouching.
 
@@ -520,7 +548,7 @@ Speed multiplier for the player when crouching.
 
 **Default:** `2`
 
- 
+
 
 Mult for the radius within which mobs can detect the player when crouching.
 
@@ -536,7 +564,7 @@ Mult for the radius within which mobs can detect the player when crouching.
 
 **Default:** `1`
 
- 
+
 
 Mult for when the player hits neither a leg or a head. Only applies to guns
 
@@ -550,7 +578,7 @@ Mult for when the player hits neither a leg or a head. Only applies to guns
 
 **Default:** `1.75`
 
- 
+
 
 Damage multiplier for when the player hits a head. Only applies to guns
 
@@ -564,7 +592,7 @@ Damage multiplier for when the player hits a head. Only applies to guns
 
 **Default:** `1`
 
- 
+
 
 Damage multiplier for when the player hits a leg. Only applies to guns
 
@@ -578,7 +606,7 @@ Damage multiplier for when the player hits a leg. Only applies to guns
 
 **Default:** `1`
 
- 
+
 
 Damage multiplier for all types of damage
 
@@ -592,7 +620,7 @@ Damage multiplier for all types of damage
 
 **Default:** `"Block of Gold"`
 
- 
+
 
 The default block the player can change blocks to, used if canChange is true but useInventory is false
 
@@ -606,7 +634,7 @@ The default block the player can change blocks to, used if canChange is true but
 
 **Default:** `1`
 
- 
+
 
 Scale factor to use for dropped item meshes
 
@@ -620,7 +648,7 @@ Scale factor to use for dropped item meshes
 
 **Default:** `8000`
 
- 
+
 
 Duration of the +damage effect from plum
 
@@ -634,7 +662,7 @@ Duration of the +damage effect from plum
 
 **Default:** `13000`
 
- 
+
 
 Duration of +damage reduction effect from pear
 
@@ -648,7 +676,7 @@ Duration of +damage reduction effect from pear
 
 **Default:** `5000`
 
- 
+
 
 Duration of +health regen effect from cherry
 
@@ -662,7 +690,7 @@ Duration of +health regen effect from cherry
 
 **Default:** `8000`
 
- 
+
 
 Duration of +speed effect from cracked coconut
 
@@ -676,7 +704,7 @@ Duration of +speed effect from cracked coconut
 
 **Default:** `false`
 
- 
+
 
 Whether to deal damage to the player when they fall
 
@@ -690,7 +718,7 @@ Whether to deal damage to the player when they fall
 
 **Default:** `1.5`
 
- 
+
 
 Multiplier for the flying speed in creative mode
 
@@ -704,7 +732,7 @@ Multiplier for the flying speed in creative mode
 
 **Default:** `null`
 
- 
+
 
 Fog distance which overrides graphic settings. Uses graphic settings if null.
 
@@ -718,7 +746,7 @@ Fog distance which overrides graphic settings. Uses graphic settings if null.
 
 **Default:** `null`
 
- 
+
 
 RGB string for fog colour override. e.g. #ffffff
 
@@ -732,7 +760,7 @@ RGB string for fog colour override. e.g. #ffffff
 
 **Default:** `null`
 
- 
+
 
 Force the camera to look in a specific direction [x, y, z]. Set to null to allow free camera movement.
 
@@ -746,11 +774,27 @@ Force the camera to look in a specific direction [x, y, z]. Set to null to allow
 
 **Default:** `0`
 
- 
+
 
 Duration in ms to animate/transition to the forced camera direction (when you change forcedCameraDirection). 0 = instant.
 
  Useful for smooth camera movements.
+
+ 
+
+
+
+## gravityMultiplier
+
+**Type:** `number`
+
+**Default:** `1`
+
+
+
+Multiplier applied to gravity during normal movement.
+
+ Set to 1 for default gravity.
 
  
 
@@ -762,7 +806,7 @@ Duration in ms to animate/transition to the forced camera direction (when you ch
 
 **Default:** `null`
 
- 
+
 
 Renders a terrain-following strip of animated chevron arrows on the ground from this player to the target position.
 
@@ -782,7 +826,7 @@ Renders a terrain-following strip of animated chevron arrows on the ground from 
 
 **Default:** `1`
 
- 
+
 
 Amount of friction to apply to grounded players.
 
@@ -798,13 +842,49 @@ Amount of friction to apply to grounded players.
 
 
 
+## gunshotOrigin
+
+**Type:** `GunshotOrigin`
+
+**Default:** `"default"`
+
+
+
+Where gunshots originate from.
+
+ -"default" preserves classic bloxd behavior (casts originate from the camera in third person).
+
+ -"head" always spawns raycasts from the player's head. Useful for certain camera perspectives.
+
+ 
+
+
+
+## headerChips
+
+**Type:** `HeaderChip[]`
+
+**Default:** `[]`
+
+
+
+A row of compact chips shown in the top-left HUD strip, concatenated immediately after the FPS counter,
+
+ coordinates and room name. Each chip is bare text or a TextWithDisplayOptions wrapper to toggle its
+
+ background panel.
+
+ 
+
+
+
 ## healthRegenAmount
 
 **Type:** `number`
 
 **Default:** `0.05`
 
- 
+
 
 Fraction of max health that regens each regen tick
 
@@ -818,7 +898,7 @@ Fraction of max health that regens each regen tick
 
 **Default:** `4000`
 
- 
+
 
 How often health regen is ticked
 
@@ -832,7 +912,7 @@ How often health regen is ticked
 
 **Default:** `5000`
 
- 
+
 
 How long after a player receives damage to start regen again
 
@@ -846,9 +926,37 @@ How long after a player receives damage to start regen again
 
 **Default:** `null`
 
- 
+
 
 Held item light colour override - hex colour string e.g. #ffffff. Applied regardless of any held item.
+
+ 
+
+
+
+## heldLightConeAngleOverride
+
+**Type:** `number`
+
+**Default:** `null`
+
+
+
+Held item light cone angle override. Angle is measured in degrees. Larger number = wider beam.
+
+ 
+
+
+
+## heldLightRangeOverride
+
+**Type:** `number`
+
+**Default:** `null`
+
+
+
+Held item light range override. Distance is measured in blocks.
 
  
 
@@ -860,7 +968,7 @@ Held item light colour override - hex colour string e.g. #ffffff. Applied regard
 
 **Default:** `false`
 
- 
+
 
 When true, hides world and chunk coordinates regardless of the player's setting.
 
@@ -874,7 +982,7 @@ When true, hides world and chunk coordinates regardless of the player's setting.
 
 **Default:** `1`
 
- 
+
 
 Multiplier for horizontal knockback when dealing damage
 
@@ -888,7 +996,7 @@ Multiplier for horizontal knockback when dealing damage
 
 **Default:** `100`
 
- 
+
 
 Health upon joining or respawning. Can be null for the player to not have health
 
@@ -902,7 +1010,7 @@ Health upon joining or respawning. Can be null for the player to not have health
 
 **Default:** `0`
 
- 
+
 
 Shield upon joining or respawning
 
@@ -916,7 +1024,7 @@ Shield upon joining or respawning
 
 **Default:** `true`
 
- 
+
 
 Whether the player can move items in their inventory, only applicable if useInventory is true
 
@@ -930,9 +1038,23 @@ Whether the player can move items in their inventory, only applicable if useInve
 
 **Default:** `false`
 
- 
+
 
 Whether the player is invincible
+
+ 
+
+
+
+## isReceivingDamageCooldownGlobal
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+
+
+When the player is attacked, a short cooldown prevents further damage from the same attack type. If true, all attackers share that cooldown. If false, each attacker has their own.
 
  
 
@@ -944,7 +1066,7 @@ Whether the player is invincible
 
 **Default:** `8`
 
- 
+
 
 Amount of jump power the player has
 
@@ -958,7 +1080,7 @@ Amount of jump power the player has
 
 **Default:** `200000000`
 
- 
+
 
 Duration before a killstreak expires. (defaults to never expiring)
 
@@ -972,7 +1094,7 @@ Duration before a killstreak expires. (defaults to never expiring)
 
 **Default:** `null`
 
- 
+
 
 When null, just use the player's graphics setting. When set, forces lighting on (true) or off (false).
 
@@ -994,7 +1116,7 @@ When null, just use the player's graphics setting. When set, forces lighting on 
 }
 ```
 
- 
+
 
 Columns of the lobby leaderboard
 
@@ -1008,7 +1130,7 @@ Columns of the lobby leaderboard
 
 **Default:** `0`
 
- 
+
 
 The maximum Aura Level attainable - Set to 0 to disable Aura XP
 
@@ -1022,7 +1144,7 @@ The maximum Aura Level attainable - Set to 0 to disable Aura XP
 
 **Default:** `100`
 
- 
+
 
 Maximum health the player can have
 
@@ -1036,7 +1158,7 @@ Maximum health the player can have
 
 **Default:** `15`
 
- 
+
 
 Maximum camera zoom level for the player
 
@@ -1050,7 +1172,7 @@ Maximum camera zoom level for the player
 
 **Default:** `100`
 
- 
+
 
 Maximum shield the player can have
 
@@ -1060,11 +1182,11 @@ Maximum shield the player can have
 
 ## middleTextLower
 
-**Type:** `string | CustomTextStyling`
+**Type:** `string | CustomTextStyling | TextWithDisplayOptions`
 
 **Default:** `""`
 
- 
+
 
 Small text to display in the middle of the screen
 
@@ -1072,13 +1194,29 @@ Small text to display in the middle of the screen
 
 
 
-## middleTextUpper
+## middleTextTop
 
-**Type:** `string | CustomTextStyling`
+**Type:** `string | CustomTextStyling | TextWithDisplayOptions`
 
 **Default:** `""`
 
+
+
+Text to display centred at the very top of the screen, in line with the FPS counter, coordinates and room name.
+
+ Drops to immediately below that strip when a centred placement would not fit without overlapping it.
+
  
+
+
+
+## middleTextUpper
+
+**Type:** `string | CustomTextStyling | TextWithDisplayOptions`
+
+**Default:** `""`
+
+
 
 Large text to display in the middle of the screen
 
@@ -1092,7 +1230,7 @@ Large text to display in the middle of the screen
 
 **Default:** `[2, 2]`
 
- 
+
 
 Minimum size of region around player where chunks are loaded.
 
@@ -1118,7 +1256,7 @@ Minimum size of region around player where chunks are loaded.
 
 **Default:** `1`
 
- 
+
 
 Amount that player camera is affected by movement based fov
 
@@ -1132,7 +1270,7 @@ Amount that player camera is affected by movement based fov
 
 **Default:** `null`
 
- 
+
 
 The music track to play in the background
 
@@ -1146,7 +1284,7 @@ The music track to play in the background
 
 **Default:** `0.6`
 
- 
+
 
 Volume level for the music
 
@@ -1160,7 +1298,7 @@ Volume level for the music
 
 **Default:** `null`
 
- 
+
 
 If set, clients will only be able to see the closest x players (good for client perf in games with many players)
 
@@ -1174,7 +1312,7 @@ If set, clients will only be able to see the closest x players (good for client 
 
 **Default:** `0`
 
- 
+
 
 Default camera zoom level for the player
 
@@ -1188,7 +1326,7 @@ Default camera zoom level for the player
 
 **Default:** `12000`
 
- 
+
 
 Duration of potion effects
 
@@ -1202,7 +1340,7 @@ Duration of potion effects
 
 **Default:** `0.625`
 
- 
+
 
 Distance in blocks over which we reduce the opacity of entities as they approach the camera.
 
@@ -1216,7 +1354,7 @@ Distance in blocks over which we reduce the opacity of entities as they approach
 
 **Default:** `0.5`
 
- 
+
 
 Minimum opacity multiplier reachable when fading entities based on camera proximity.
 
@@ -1232,7 +1370,7 @@ Minimum opacity multiplier reachable when fading entities based on camera proxim
 
 **Default:** `1`
 
- 
+
 
 Damage multiplier for all types of incoming damage
 
@@ -1246,7 +1384,7 @@ Damage multiplier for all types of incoming damage
 
 **Default:** `"general:respawn"`
 
- 
+
 
 Text to show on respawn button. (E.g. "Spectate")
 
@@ -1256,11 +1394,11 @@ Text to show on respawn button. (E.g. "Spectate")
 
 ## RightInfoText
 
-**Type:** `string | CustomTextStyling`
+**Type:** `string | CustomTextStyling | TextWithDisplayOptions`
 
 **Default:** `""`
 
- 
+
 
 Text to display in the right info box
 
@@ -1274,7 +1412,7 @@ Text to display in the right info box
 
 **Default:** `7`
 
- 
+
 
 Running speed for the player.
 
@@ -1304,7 +1442,7 @@ Running speed for the player.
 
 **Default:** `5`
 
- 
+
 
 After dying the player can respawn after this many seconds
 
@@ -1318,9 +1456,23 @@ After dying the player can respawn after this many seconds
 
 **Default:** `true`
 
- 
+
 
 Whether to show basic movement controls
+
+ 
+
+
+
+## showChatBubbles
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+
+
+Whether the viewer renders speech bubbles above other players when they send chat messages. Off by default.
 
  
 
@@ -1332,7 +1484,7 @@ Whether to show basic movement controls
 
 **Default:** `true`
 
- 
+
 
 Whether to show the killfeed
 
@@ -1346,7 +1498,7 @@ Whether to show the killfeed
 
 **Default:** `false`
 
- 
+
 
 Whether to show the player in unloaded chunks
 
@@ -1360,7 +1512,7 @@ Whether to show the player in unloaded chunks
 
 **Default:** `false`
 
- 
+
 
 Whether to show the progress bar
 
@@ -1374,7 +1526,7 @@ Whether to show the progress bar
 
 **Default:** `"default"`
 
- 
+
 
 Not recommended to use anything other than "default" as client FPS can drop while loading the skybox
 
@@ -1388,7 +1540,7 @@ Not recommended to use anything other than "default" as client FPS can drop whil
 
 **Default:** `null`
 
- 
+
 
 Sky light colour override - hex string e.g. #ffffff.
 
@@ -1402,7 +1554,7 @@ Sky light colour override - hex string e.g. #ffffff.
 
 **Default:** `1`
 
- 
+
 
 Speed multiplier for the player.
 
@@ -1422,7 +1574,7 @@ Speed multiplier for the player.
 
 **Default:** `8000`
 
- 
+
 
 Duration of splash potion effects
 
@@ -1436,7 +1588,7 @@ Duration of splash potion effects
 
 **Default:** `0`
 
- 
+
 
 Mult for the damage done by "stomping" on a lifeform, i.e.: falling on them wearing Spiked Boots.
 
@@ -1450,7 +1602,7 @@ Mult for the damage done by "stomping" on a lifeform, i.e.: falling on them wear
 
 **Default:** `0`
 
- 
+
 
 Radius around the player that will be affected by the stomp damage.
 
@@ -1464,7 +1616,7 @@ Radius around the player that will be affected by the stomp damage.
 
 **Default:** `true`
 
- 
+
 
 Whether a player can place fluid when canChange is false
 
@@ -1478,7 +1630,7 @@ Whether a player can place fluid when canChange is false
 
 **Default:** `null`
 
- 
+
 
 The contents of the action button. Supports custom text styling. onTouchscreenActionButton will be called when button pressed.
 
@@ -1492,7 +1644,7 @@ The contents of the action button. Supports custom text styling. onTouchscreenAc
 
 **Default:** `1`
 
- 
+
 
 Multiplier for the time to break any block
 
@@ -1506,7 +1658,7 @@ Multiplier for the time to break any block
 
 **Default:** `true`
 
- 
+
 
 For now just enables the UI of the full inventory
 
@@ -1520,7 +1672,7 @@ For now just enables the UI of the full inventory
 
 **Default:** `true`
 
- 
+
 
 Whether to allow the player to use the inventory
 
@@ -1536,9 +1688,23 @@ Whether to allow the player to use the inventory
 
 **Default:** `false`
 
- 
+
 
 When player is dead, also show a play again button to matchmake player into a new lobby. Mostly useful for sessionBased games
+
+ 
+
+
+
+## useRespawnButton
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+
+
+Whether the player can use the respawn button. Otherwise forces either play again or exit
 
  
 
@@ -1550,7 +1716,7 @@ When player is dead, also show a play again button to matchmake player into a ne
 
 **Default:** `1`
 
- 
+
 
 Multiplier for vertical knockback when dealing damage
 
@@ -1564,7 +1730,7 @@ Multiplier for vertical knockback when dealing damage
 
 **Default:** `4`
 
- 
+
 
 Walking speed for the player.
 
@@ -1594,7 +1760,7 @@ Walking speed for the player.
 
 **Default:** `3`
 
- 
+
 
 Distance to zoom the camera out to
 
