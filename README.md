@@ -22,10 +22,10 @@ Please use [our discord](https://discord.gg/playbloxd) to report any issues you 
 
 - Global variables `myId` and `playerId` store the player ID of who is running the code.
 - Global variable `thisPos` stores the position of the currently executing code block or press to code board.
-- `myId`, `playerId`, `thisPos` and `ownerDbId` are all defined on `api`
+- `myId`, `playerId`, `thisPos` and `ownerDbId` are all defined on `api`.
 - You can use `api.log` or `console.log` for printing and debugging (they do the same thing).
 - You can use `Date.now()` instead of `api.now()` if you prefer, both return the time in milliseconds.
-- Comments like `/* comment */` work, but comments like `// comment` don't work right now.
+- Comment with `/* comment */` and `// comment`.
 
 ## Examples
 
