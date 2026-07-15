@@ -33,7 +33,7 @@ Sand
 Clay
 Gravel
 Snow
-Maple Log [TB]
+Oak Log [TB]
 Pine Log [TB]
 Plum Log [TB]
 Cedar Log [TB]
