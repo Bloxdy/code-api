@@ -41,7 +41,7 @@ api.addQTE(playerId, {
         canFail: false,
         description: [{ str: "Click repeatedly to complete!" }],
         clickIcon: "fa-solid fa-computer-mouse",
-        scale: 1,
+        scale: 3,
         rotation: 15,
     },
 })
@@ -75,7 +75,7 @@ api.addQTE(playerId, {
         icon: "fa-solid fa-computer-mouse",
         label: [{ str: "Click to complete the QTE!" }],
         showTimer: true,
-        scale: 1,
+        scale: 3,
         rotation: 15,
         breatheCenter: false,
     },

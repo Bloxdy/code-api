@@ -7,6 +7,7 @@ These are the strings you can give to functions that take a particle effect `tex
 `critical_hit`
 `drift`
 `effect_5`
+`fishingFishSilhouette`
 `generic_2`
 `glint`
 `heart`
@@ -148,6 +149,8 @@ Here is a list of the presetIds you can use:
 `instantDamageOuter`
 `healthRegenInner`
 `healthRegenOuter`
+`healingPulseInner`
+`healingPulseOuter`
 `instantHealthInner`
 `instantHealthOuter`
 `hasteInner`
@@ -182,3 +185,7 @@ Here is a list of the presetIds you can use:
 `blindnessOuter`
 `poopyInner`
 `poopyOuter`
+`glowingInner`
+`glowingOuter`
+`nightVisionInner`
+`nightVisionOuter`

@@ -1,112 +1,50 @@
-# Code API
+# Getting started
 
-You can run javascript when right clicking code blocks and press to code boards.
-This is only available to owners of worlds lobbies.
-The javascript can interact with the Bloxd.io game api.
+There are three places to write JavaScript in Bloxd: code blocks, code boards and World Code. Code in any of them controls the game through `api`, in custom games and worlds. Only players who can edit code (the `canEditCode` client option) can write it, but anyone can run a code block or board.
 
-Please use [our discord](https://discord.gg/playbloxd) to report any issues you come across or features you'd like to see added.
+Please use [our Discord](https://discord.gg/playbloxd) to report problems or suggest features.
 
 ## Code Blocks
 
-- World owners can find these by searching in the creative menu
-- No need to add `press to code`, this text is only needed for code boards, and will automatically be removed
-- If you want to run code without opening the code editor, you can trigger the code block by right clicking an adjacent `press to code` board instead
+- Find the Code Block by searching in the creative menu.
+- Clicking a code block runs its code, unless you are crouching. Players who can edit code open its code by right clicking it.
+- Running a code block or board also runs the code blocks and boards touching it, so clicking a `press to code` board next to a code block runs it without opening the code editor.
+- A code block doesn't need a `press to code` line, and removes one if you add it.
 
 ## Boards
 
-- You can begin a board with `press to code` to run javascript when you right click it.
-- Normally you can't edit a code board after placing it, but you can currently work around this by putting a space before `press to code`.
-- Boards only allow for a small amount of text, we recommend you use Code Blocks instead, or you can work around this by using multiple boards
+- A board whose text starts with `press to code` on its own line runs the code below that line when someone clicks it.
+- Boards only hold a little text: use a code block for anything longer, or split the code across several boards.
 
-## Notes
+## World Code
 
-- Global variables `myId` and `playerId` store the player ID of who is running the code.
-- Global variable `thisPos` stores the position of the currently executing code block or press to code board.
-- `myId`, `playerId`, `thisPos` and `ownerDbId` are all defined on `api`
-- You can use `api.log` or `console.log` for printing and debugging (they do the same thing).
-- You can use `Date.now()` instead of `api.now()` if you prefer, both return the time in milliseconds.
-- Comments like `/* comment */` work, but comments like `// comment` don't work right now.
+World Code runs for the whole world instead of when someone clicks. Open it with F8. It defines [Callbacks](#callbacks), such as `tick` and `onPlayerJoin`, which the game calls when things happen. The [How-Tos](#howTo) build whole games with it.
 
-## Examples
+## Globals
 
-Code Block to make the player jump:
+| Name | Value |
+|------|-------|
+| `api` | The game API: every method in the [API Reference](#apiReference) |
+| `myId` | The ID of the player running the code, or `null` when nobody is, as in most World Code |
+| `playerId` | The same as `myId` |
+| `thisPos` | The position of the code block or board running the code, as `[x, y, z]` |
+| `api.ownerDbId` | The database ID of the world's owner, or `null` if it has none |
 
-```js
-f = api.setVelocity(myId, 0, 9, 0)
-```
+## Logs and results
 
-Push the player:
+- `api.log` and `console.log` do the same thing: each shows its values in chat as a `Log:` message.
+- When the last line of a code block or board has a value, the player who ran it sees that value as a `Result:` message.
 
-```js
-api.applyImpulse(myId, 9, 0, 9)
-```
+## Next steps
 
-Send an orange message to yourself:
-
-```js
-api.sendMessage(myId, "text", { color: "orange" })
-```
-
-Create flying text:
-
-```js
-const speed = 100
-api.sendFlyingMiddleMessage(myId, ["Message to display"], speed)
-```
-
-Send a message to all players:
-
-```js
-api.broadcastMessage("announcement", { color: "red" })
-```
-
-Set player health to 99, and print the old health:
-
-```js
-const oldHealth = api.getHealth(myId)
-api.setHealth(myId, 99)
-api.log("Old Health:", oldHealth)
-```
-
-Define a function to get the player IDs excluding your own ID:
-
-```js
-getOtherIds = () => {
-    const ids = api.getPlayerIds()
-    const otherIds = []
-    for (const id of ids) {
-        if (id !== myId) {
-            otherIds.push(id)
-        }
-    }
-    return otherIds
-}
-```
-
-Use the function above to make other players look like zombies:
-
-```js
-for (const otherId of getOtherIds()) {
-    api.setPlayerPose(otherId, "zombie")
-    api.changePlayerIntoSkin(otherId, "head", "zombie")
-}
-```
-
-Make all players look like floating wizards:
-
-```js
-for (const playerId of api.getPlayerIds()) {
-    api.setPlayerPose(playerId, "driving")
-    api.changePlayerIntoSkin(playerId, "head", "wizard")
-}
-```
+[Snippets](#snippets) has short pieces of code to copy into a code block and change.
 
 ## Glossary of Referenced Types
 
 These 'types' can't be referenced by your code, but they help explain some of the parameters in the API.
 
 ```ts
-type CustomTextStyling = (string | EntityName | TranslatedText | StyledIcon | StyledText | ProgressBar)[]
+type CustomTextStyling = (string | EntityName | TranslatedText | StyledIcon | StyledText | ProgressBar | StyledKeyBinding)[]
 
 type EntityMeshScalingMap = {
     [key in "TorsoNode" | "HeadMesh" | "ArmRightMesh" | "ArmLeftMesh" | "LegLeftMesh" | "LegRightMesh"]?: number[]
@@ -120,7 +58,7 @@ type EntityName = {
     }
 }
 
-type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Blindness" | "Pickpocketer" | "Lifesteal" | "Bounciness" | "Air Walk" | "Wall Climbing" | "Thorns" | "Poopy" | "Draugr Knight Head" | "Draugr Warper Head" | "Magma Golem Head" | "Mystery Fish" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Self Yield" | "Friends" | "Riding Speed" | "Feed Aura" | "Double Poop" | "Mob Slayer" | "Rainbow Wool" | "Pack Leader" | "Max Health" | "Poison Claws" | "Mob Yield" | "Antlers Bonus" | "Health" | "HealthShield" | "Cross" | "Friendship" | "Dotted Friendship" | "Hunger" | "Empty Hunger" | "Pixelated Heart" | "Question Mark" | "Trader Black" | "Trader Blue" | "Trader Piggy"
+type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Healing Pulse" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Blindness" | "Pickpocketer" | "Lifesteal" | "Bounciness" | "Air Walk" | "Wall Climbing" | "Thorns" | "Poopy" | "Glowing" | "Night Vision" | "Irradiated" | "Draugr Knight Head" | "Draugr Warper Head" | "Magma Golem Head" | "Mystery Fish" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Self Yield" | "Friends" | "Riding Speed" | "Feed Aura" | "Double Poop" | "Mob Slayer" | "Rainbow Wool" | "Pack Leader" | "Max Health" | "Poison Claws" | "Mob Yield" | "Antlers Bonus" | "Health" | "HealthShield" | "Cross" | "Friendship" | "Dotted Friendship" | "Hunger" | "Empty Hunger" | "Pixelated Heart" | "Question Mark" | "Trader Black" | "Trader Blue" | "Trader Piggy"
 
 enum ParticleSystemBlendMode {
     // Source color is added to the destination color without alpha affecting the result
@@ -135,7 +73,7 @@ enum ParticleSystemBlendMode {
     MultiplyAdd,
 }
 
-type RecipesForItem = 
+type RecipesForItem =
     {
         requires: { items: ItemName[]; amt: number }[]
         produces: number
@@ -204,7 +142,11 @@ enum WalkThroughType {
 }
 
 type WorldBlockChangedInfo = {
-    cause: PNull<"Paintball" | "FloorCreator" | "Sapling" | "StemFruit" | "MeltingIce" | "Explosion">
+    cause: PNull<"Paintball" | "FloorCreator" | "Sapling" | "StemFruit" | "MeltingIce" | "Explosion" | "AutoShape">
+}
+
+type DamageInfo = {
+    cause: PNull<"Melee" | "Projectile" | "Gun" | "Explosion" | "Spikes" | "Fall" | "Stomp" | "Thorns" | "Effect">
 }
 
 type EarthSkyBox = {
@@ -319,6 +261,7 @@ type MeshEntityOpts = {
         textures?: Partial<Cosmetics>
         pose?: PlayerPose
     }
+    Leaderboard: LeaderboardMeshOpts
     ParticleEmitter: MeshParticleSystemOpts
 }
 
@@ -450,4 +393,13 @@ export type BlockbenchLerpModeSchema = "linear" | "catmullrom"
 type TimestampString = string
 
 type Point = Vec3
+
+type CustomButtonType = {
+    id: string // Identifier for the button. Used in the callbacks onPlayerPressedButton and onPlayerReleasedButton.
+    icon: string // Icon to display for the button. Can be a font awesome icon such as "house" or a bloxd icon such as "Dirt".
+    keycode: string // Key to trigger the button. Use a keycode like "KeyR" for the letter R. Allowed keys are alphanumeric and arrow keys.
+    description?: string // Optional description for the button explaining what it does.
+}
+
+type CustomButtonsType = CustomButtonType[]
 ```

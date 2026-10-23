@@ -13,11 +13,12 @@ Mesh entities are server-created 3D objects whose position is synced with all cl
 
 ### Mesh Types
 
-There are four mesh types, each with different options:
+The following mesh types are available, each with different options:
 
 - **`Box`**
 - **`BloxdBlock`**
 - **`Person`**
+- **`Leaderboard`**
 - **`ParticleEmitter`**
 
 #### `Box`
@@ -67,6 +68,23 @@ type PersonOpts = {
 }
 ```
 
+#### `Leaderboard`
+
+```ts
+type LeaderboardOpts = {
+    hideDist?: number
+    meshOffset?: number[]
+    autoRotate?: boolean
+    lineToEId?: EntityId // EntityId to connect to using a line
+    leaderboard: string
+    title?: string
+    scoreLabel?: string
+    size?: number // Uniform scale of the 2.5 by 3.75 block board. Defaults to 1.
+    width?: number // Absolute width in blocks, overriding the width derived from size.
+    height?: number // Absolute height in blocks, overriding the height derived from size.
+}
+```
+
 #### `ParticleEmitter`
 
 ```ts
@@ -90,6 +108,8 @@ type ParticleEmitterOpts = {
     width: number
     depth: number
     emitRate: number
+    followTargetMeshOffset?: boolean // Include the followed lifeform's visual offset, including its vehicle seat.
+    emitterShape?: "box" | "ring" // Ring emits radially from the perimeter; width/depth set its diameters, height its thickness.
     dir1?: number[]
     dir2?: number[]
 }
@@ -306,7 +326,7 @@ api.updateEntityNodeMeshAttachment(
     playerId,
     "ArmRightMesh",
     "BloxdBlock",
-    { blockName: "Diamond Block", size: 0.3 },
+    { blockName: "Block of Diamond", size: 0.3 },
     [0, -0.5, 0],  // offset
     [0, 0, 0],     // rotation
 )
@@ -360,6 +380,7 @@ type MeshEntityOpts = {
         textures?: Partial<Cosmetics>
         pose?: PlayerPose
     }
+    Leaderboard: LeaderboardMeshOpts
     ParticleEmitter: MeshParticleSystemOpts
 }
 ```
@@ -398,6 +419,10 @@ type MeshParticleSystemOpts = ParticleSystemOpts &
         width: number
         depth: number
         emitRate: number
+        /** Include the followed lifeform's visual offset, including its vehicle seat. */
+        followTargetMeshOffset?: boolean
+        /** Ring emits radially from the perimeter; width/depth set its diameters, height its thickness. */
+        emitterShape?: "box" | "ring"
         dir1?: number[]
         dir2?: number[]
     }

@@ -1,4 +1,4 @@
-# Item Names (1044 items)
+# Item Names (1439 items)
 
 Wood Pickaxe
 Stone Pickaxe
@@ -54,6 +54,11 @@ Wood Gauntlets
 Iron Gauntlets
 Gold Gauntlets
 Diamond Gauntlets
+Military Helmet
+Military Chestplate
+Military Gauntlets
+Military Leggings
+Military Boots
 White Wood Helmet
 White Wood Chestplate
 White Wood Leggings
@@ -155,6 +160,8 @@ Half Full Bowl of Cranberries
 Nearly Full Bowl of Cranberries
 Bowl of Cranberries
 Mushroom Soup
+Glowing Soup
+Night Vision Soup
 Cotton
 Gold Crop
 Bucket
@@ -176,10 +183,44 @@ Diamond Hang Glider
 INTERNAL_MESH_Diamond Hang Glider
 Hovercraft
 INTERNAL_MESH_Hovercraft
+Yellow Kart
+White Kart
 Red Kart
-INTERNAL_MESH_Kart
+Purple Kart
+Pink Kart
+Orange Kart
+Magenta Kart
+Lime Kart
+Light Gray Kart
+Light Blue Kart
+Green Kart
+Gray Kart
+Cyan Kart
+Brown Kart
+Blue Kart
+Black Kart
+INTERNAL_MESH_Yellow Kart
+INTERNAL_MESH_White Kart
+INTERNAL_MESH_Red Kart
+INTERNAL_MESH_Purple Kart
+INTERNAL_MESH_Pink Kart
+INTERNAL_MESH_Orange Kart
+INTERNAL_MESH_Magenta Kart
+INTERNAL_MESH_Lime Kart
+INTERNAL_MESH_Light Gray Kart
+INTERNAL_MESH_Light Blue Kart
+INTERNAL_MESH_Green Kart
+INTERNAL_MESH_Gray Kart
+INTERNAL_MESH_Cyan Kart
+INTERNAL_MESH_Brown Kart
+INTERNAL_MESH_Blue Kart
+INTERNAL_MESH_Black Kart
 Off Roader
 INTERNAL_MESH_Off Roader
+Gold Mining Drill
+INTERNAL_MESH_Gold Mining Drill
+Light Blue Car
+INTERNAL_MESH_Car
 Snowball
 Snowball Launcher
 Pebble
@@ -280,6 +321,7 @@ Cornbread
 Chili Pepper
 Mango
 Carrot
+Gold Carrot
 Raw Potato
 Baked Potato
 Beetroot
@@ -301,6 +343,15 @@ Spirit Saddle
 Fur
 Golem Eye
 Knight Heart
+Teleport Heart
+Frost Shard
+Molten Cog
+Choir Bell
+Siege Core
+Flywheel
+Radiant Spark
+Brood Sac
+Bandolier
 Name Tag
 Book
 Empty Bottle
@@ -393,6 +444,7 @@ Brain Rot Potion
 Splash Brain Rot Potion
 Arrow of Brain Rot
 Chaos Potion
+Teleportation Potion
 Ammo
 AK-47
 AK-47|RequiresAmmo
@@ -437,6 +489,8 @@ Floor Creator
 Moonstone Remote Explosive
 Moonstone Remote
 Ice Bridge
+Maple Planks Bridge
+Messy Stone Bridge
 Yellow Balloon
 White Balloon
 Red Balloon
@@ -665,6 +719,11 @@ Pig Spawn Orb
 Cow Spawn Orb
 Sheep Spawn Orb
 Horse Spawn Orb
+Camel Spawn Orb
+Iron Goofy Golem Spawn Orb
+Gold Goofy Golem Spawn Orb
+Diamond Goofy Golem Spawn Orb
+Moonstone Goofy Golem Spawn Orb
 Deer Spawn Orb
 Slime Spawn Orb
 Wolf Spawn Orb
@@ -692,6 +751,11 @@ Frost Wraith Spawn Orb
 Draugr Reaver Spawn Orb
 Stalker Spawn Orb
 Crone Spawn Orb
+Iron Guardian Spawn Orb
+Gold Guardian Spawn Orb
+Diamond Guardian Spawn Orb
+Moonstone Guardian Spawn Orb
+Tiki Terror Spawn Orb
 Mob Catcher
 Caught Mob Pig Default
 Caught Mob Cow Default
@@ -716,6 +780,32 @@ Caught Mob Horse Default
 Caught Mob Horse Black
 Caught Mob Horse Brown
 Caught Mob Horse Cream
+Caught Mob Camel Default
+Caught Mob Camel Brown
+Caught Mob Iron_Goofy_Golem Default
+Caught Mob Iron_Goofy_Golem Flaking
+Caught Mob Iron_Goofy_Golem Patchy
+Caught Mob Iron_Goofy_Golem Shedding
+Caught Mob Iron_Goofy_Golem Bare
+Caught Mob Iron_Goofy_Golem Stone
+Caught Mob Gold_Goofy_Golem Default
+Caught Mob Gold_Goofy_Golem Flaking
+Caught Mob Gold_Goofy_Golem Patchy
+Caught Mob Gold_Goofy_Golem Shedding
+Caught Mob Gold_Goofy_Golem Bare
+Caught Mob Gold_Goofy_Golem Stone
+Caught Mob Diamond_Goofy_Golem Default
+Caught Mob Diamond_Goofy_Golem Flaking
+Caught Mob Diamond_Goofy_Golem Patchy
+Caught Mob Diamond_Goofy_Golem Shedding
+Caught Mob Diamond_Goofy_Golem Bare
+Caught Mob Diamond_Goofy_Golem Stone
+Caught Mob Moonstone_Goofy_Golem Default
+Caught Mob Moonstone_Goofy_Golem Flaking
+Caught Mob Moonstone_Goofy_Golem Patchy
+Caught Mob Moonstone_Goofy_Golem Shedding
+Caught Mob Moonstone_Goofy_Golem Bare
+Caught Mob Moonstone_Goofy_Golem Stone
 Caught Mob Deer Default
 Caught Mob Slime Default
 Caught Mob Wolf Default
@@ -741,10 +831,18 @@ Caught Mob Gold_Watermelon_Stag Default
 Caught Mob Gorilla Default
 Caught Mob Cave_Golem Default
 Caught Mob Cave_Golem Iron
+Caught Mob Cave_Golem Corrupted
 Caught Mob Draugr_Zombie Default
 Caught Mob Draugr_Zombie Longhairchestplate
 Caught Mob Draugr_Zombie Longhairclothed
 Caught Mob Draugr_Zombie Shorthairclothed
+Caught Mob Draugr_Zombie Flower
+Caught Mob Draugr_Zombie Flower2
+Caught Mob Draugr_Zombie Mushroom
+Caught Mob Draugr_Zombie Vine
+Caught Mob Draugr_Zombie Vine2
+Caught Mob Draugr_Zombie Corrupted
+Caught Mob Draugr_Zombie Corrupted2
 Caught Mob Draugr_Skeleton Default
 Caught Mob Frost_Golem Default
 Caught Mob Frost_Zombie Default
@@ -757,12 +855,23 @@ Caught Mob Draugr_Huntress Chainmail
 Caught Mob Magma_Golem Default
 Caught Mob Draugr_Warper Default
 Caught Mob Frost_Wraith Default
+Caught Mob Frost_Wraith Tattered
+Caught Mob Frost_Wraith Frostking
+Caught Mob Frost_Wraith Accursed
 Caught Mob Draugr_Reaver Default
 Caught Mob Stalker Default
 Caught Mob Stalker Crimson
 Caught Mob Stalker Frost
 Caught Mob Stalker Void
 Caught Mob Crone Default
+Caught Mob Iron_Guardian Default
+Caught Mob Gold_Guardian Default
+Caught Mob Diamond_Guardian Default
+Caught Mob Moonstone_Guardian Default
+Caught Mob Tiki_Terror Default
+Caught Mob Tiki_Terror Titan
+Caught Mob Tiki_Terror Tormentor
+Caught Mob Tiki_Terror Tyrant
 Caught Mob NPC Default
 Caught Mob NPC Emma
 Caught Mob NPC Leo
@@ -772,6 +881,7 @@ Caught Mob NPC Imara
 Caught Mob NPC Enoch
 Caught Mob NPC Sara
 Caught Mob NPC Carmen
+Caught Mob NPC Chef
 Caught Mob 67 Default
 Caught Mob Bobino_Musculino Default
 Caught Mob Capitano_Explovissimo Default
@@ -968,6 +1078,8 @@ Truffle
 Truffle Oil
 Oats
 Porridge
+Dates
+Date Pudding
 Poop
 Fertiliser
 Medkit
@@ -1044,3 +1156,286 @@ Gold Clock|meta|early_day
 Gold Clock|meta|late_day
 Gold Clock|meta|sunset
 Gold Clock|meta|early_night
+Lucky Sword Upgrade
+Lucky Armour Upgrade
+Lucky Tools Upgrade
+Lucky Clover
+Void Net
+Lucky Bomb
+Unlucky Bomb
+Swap Orb
+Golden Lucky Clover
+Amethite
+Amethite Fragment
+Amethite Pickaxe
+Amethite Axe
+Amethite Spade
+Amethite Sword
+Amethite Hoe
+Amethite Helmet
+Amethite Chestplate
+Amethite Leggings
+Amethite Boots
+Amethite Gauntlets
+Amethite Bow
+Amethite Bow|meta|charging2
+Amethite Bow|meta|charging3
+Amethite Bow|meta|charging4
+Amethite Crossbow
+Amethite Crossbow|meta|charging2
+Amethite Crossbow|meta|charging3
+Amethite Crossbow|meta|charging4
+Amethite Crossbow Charged
+Amethite Spear
+Amethite Dagger
+Amethite Boomerang
+Amethite Club
+Amethite Mace
+Amethite Whip
+Magmasteel
+Magmasteel Fragment
+Magmasteel Pickaxe
+Magmasteel Axe
+Magmasteel Spade
+Magmasteel Sword
+Magmasteel Hoe
+Magmasteel Helmet
+Magmasteel Chestplate
+Magmasteel Leggings
+Magmasteel Boots
+Magmasteel Gauntlets
+Magmasteel Bow
+Magmasteel Bow|meta|charging2
+Magmasteel Bow|meta|charging3
+Magmasteel Bow|meta|charging4
+Magmasteel Crossbow
+Magmasteel Crossbow|meta|charging2
+Magmasteel Crossbow|meta|charging3
+Magmasteel Crossbow|meta|charging4
+Magmasteel Crossbow Charged
+Magmasteel Spear
+Magmasteel Dagger
+Magmasteel Boomerang
+Magmasteel Club
+Magmasteel Mace
+Magmasteel Whip
+Rubellite
+Rubellite Fragment
+Rubellite Pickaxe
+Rubellite Axe
+Rubellite Spade
+Rubellite Sword
+Rubellite Hoe
+Rubellite Helmet
+Rubellite Chestplate
+Rubellite Leggings
+Rubellite Boots
+Rubellite Gauntlets
+Rubellite Bow
+Rubellite Bow|meta|charging2
+Rubellite Bow|meta|charging3
+Rubellite Bow|meta|charging4
+Rubellite Crossbow
+Rubellite Crossbow|meta|charging2
+Rubellite Crossbow|meta|charging3
+Rubellite Crossbow|meta|charging4
+Rubellite Crossbow Charged
+Rubellite Spear
+Rubellite Dagger
+Rubellite Boomerang
+Rubellite Club
+Rubellite Mace
+Rubellite Whip
+Serpentite
+Serpentite Fragment
+Serpentite Pickaxe
+Serpentite Axe
+Serpentite Spade
+Serpentite Sword
+Serpentite Hoe
+Serpentite Helmet
+Serpentite Chestplate
+Serpentite Leggings
+Serpentite Boots
+Serpentite Gauntlets
+Serpentite Bow
+Serpentite Bow|meta|charging2
+Serpentite Bow|meta|charging3
+Serpentite Bow|meta|charging4
+Serpentite Crossbow
+Serpentite Crossbow|meta|charging2
+Serpentite Crossbow|meta|charging3
+Serpentite Crossbow|meta|charging4
+Serpentite Crossbow Charged
+Serpentite Spear
+Serpentite Dagger
+Serpentite Boomerang
+Serpentite Club
+Serpentite Mace
+Serpentite Whip
+Cursemetal Helmet
+Cursemetal Chestplate
+Cursemetal Gauntlets
+Cursemetal Leggings
+Cursemetal Boots
+Kingly Amethite Helmet
+Kingly Amethite Chestplate
+Kingly Amethite Gauntlets
+Kingly Amethite Leggings
+Kingly Amethite Boots
+Kingly Diamond Helmet
+Kingly Diamond Chestplate
+Kingly Diamond Gauntlets
+Kingly Diamond Leggings
+Kingly Diamond Boots
+Sanguine Shard
+Sanguine Sword
+Sanguine Bow
+Sanguine Bow|meta|charging2
+Sanguine Bow|meta|charging3
+Sanguine Bow|meta|charging4
+Sanguine Crossbow
+Sanguine Crossbow|meta|charging2
+Sanguine Crossbow|meta|charging3
+Sanguine Crossbow|meta|charging4
+Sanguine Crossbow Charged
+Sanguine Spear
+Sanguine Dagger
+Sanguine Club
+Sanguine Mace
+Sanguine Whip
+Sanguine Staff
+Sanguine Helmet
+Sanguine Chestplate
+Sanguine Gauntlets
+Sanguine Leggings
+Sanguine Boots
+Spectral Shard
+Spectral Sword
+Spectral Bow
+Spectral Bow|meta|charging2
+Spectral Bow|meta|charging3
+Spectral Bow|meta|charging4
+Spectral Crossbow
+Spectral Crossbow|meta|charging2
+Spectral Crossbow|meta|charging3
+Spectral Crossbow|meta|charging4
+Spectral Crossbow Charged
+Spectral Spear
+Spectral Dagger
+Spectral Club
+Spectral Mace
+Spectral Whip
+Spectral Staff
+Spectral Helmet
+Spectral Chestplate
+Spectral Gauntlets
+Spectral Leggings
+Spectral Boots
+Geo Shard
+Geo Sword
+Geo Bow
+Geo Bow|meta|charging2
+Geo Bow|meta|charging3
+Geo Bow|meta|charging4
+Geo Crossbow
+Geo Crossbow|meta|charging2
+Geo Crossbow|meta|charging3
+Geo Crossbow|meta|charging4
+Geo Crossbow Charged
+Geo Spear
+Geo Dagger
+Geo Club
+Geo Mace
+Geo Whip
+Geo Staff
+Geo Helmet
+Geo Chestplate
+Geo Gauntlets
+Geo Leggings
+Geo Boots
+Astral Shard
+Astral Sword
+Astral Bow
+Astral Bow|meta|charging2
+Astral Bow|meta|charging3
+Astral Bow|meta|charging4
+Astral Crossbow
+Astral Crossbow|meta|charging2
+Astral Crossbow|meta|charging3
+Astral Crossbow|meta|charging4
+Astral Crossbow Charged
+Astral Spear
+Astral Dagger
+Astral Club
+Astral Mace
+Astral Whip
+Astral Staff
+Astral Helmet
+Astral Chestplate
+Astral Gauntlets
+Astral Leggings
+Astral Boots
+Wooden Key
+Stone Key
+Iron Key
+Gold Key
+Diamond Key
+Cracked Rubellite Pickaxe
+Goldheart Engine
+Deepbite Drill Tip
+Empty Fuel Cell
+Blackfire Fuel Cell
+Raw Copper
+Copper Bar
+Iron Grit
+Gold Grit
+Copper Grit
+Charcoal
+Recall Beacon
+Iron Hammer
+Iron Plate
+Copper Wire
+Motor
+Machine Parts
+Relay Coil
+Deposit Seed (Copper)
+Deposit Seed (Gold)
+Deposit Seed (Voltite)
+Deposit Seed (Coal)
+Deposit Seed (Iron)
+Deposit Seed (Stone)
+Steel Bar
+Gold Plate
+Logic Board
+Machine Hull
+Raw Voltite
+Power Coupler
+Ore Lens
+Homing Beacon
+Pull Charm
+Vein Breaker
+Voltite Dust
+Voltite Cell
+Sky Pack
+Dusk Moss
+Star Alloy
+Moonstone Dust
+Comet Shard
+Comet Core
+Starbore Drill
+Core Tier 2
+Core Tier 3
+Core Tier 4
+Core Tier 5
+Core Tier 6
+Core Tier 7
+Core Tier 8
+Core Tier 9
+Core Tier 10
+Arc Caster
+Voltplate Helmet
+Voltplate Chestplate
+Voltplate Gauntlets
+Voltplate Leggings
+Voltplate Boots

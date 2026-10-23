@@ -17,12 +17,12 @@ Add a custom killfeed message to the killfeed
  
 
 ## addFollowingEntityToPlayer
-Add following entity to player
+Add following entity to an entity
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| playerId | `PlayerId` |  |
+| playerId | `EntityId` |  |
 | eId | `EntityId` |  |
 | offset | `number[]` |  |
 | followsPlayerRotation | `boolean` |  |
@@ -52,6 +52,86 @@ Handle the result via the onPlayerFinishQTE engine callback.
  
 
 an id that can be passed to deleteQTE
+
+ 
+
+## addUiRequest
+Add a request for the player to answer in the top right corner. E.g. accepting or denying a tprequest.
+
+
+
+Use onUiRequestResponded to handle the response.
+
+
+
+Example Usage:
+
+```js
+const myRequestId = api.addUiRequest(playerId, {
+  type: "standard",
+  title: "Do you want to join the game?",
+}, 5000)
+
+onUiRequestResponded = (playerId, uiRequestId, response) => {
+  if (uiRequestId === myRequestId) {
+    api.log(response)
+  }
+}
+```
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The ID of the player to add the request to. |
+| parameters | `UiRequestClientParameters` | The parameters of the request. |
+| timeoutAfterMs | `number` | The timeout after which the request will be automatically deleted. A response will not be given and onUiRequestResponded will not be called. |
+
+
+
+### Returns:
+`UiRequestId`
+
+ 
+
+The ID of the request. Pass into deleteUiRequest or cross-reference with onUiRequestResponded.
+
+ 
+
+## addUiRequestPopup
+Add a request for the player to answer in the form of a popup. This blocks the player from doing anything else until they respond.
+
+
+
+Use onUiRequestResponded to handle the response.
+
+
+
+Example Usage:
+
+```js
+const myRequestId = api.addUiRequestPopup(playerId, "Do you want to join the game?")
+
+onUiRequestResponded = (playerId, uiRequestId, response) => {
+  if (uiRequestId === myRequestId) {
+    api.log(response)
+  }
+}
+```
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The ID of the player to add the request to. |
+| requestText | `string` | The text of the request. |
+
+
+
+### Returns:
+`PNull<UiRequestId>`
+
+ 
+
+The ID of the request, or null if the request was rate limited. Pass into deleteUiRequest or cross-reference with onUiRequestResponded.
 
  
 
@@ -195,7 +275,7 @@ It is recommended to self-inflict damage when the game code wants to apply damag
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| { eId, hitEId, attemptedDmgAmt, withItem, bodyPartHit = undefined, attackDir = undefined, showCritParticles = false, reduceVerticalKbVelocity = true, horizontalKbMultiplier = 1, verticalKbMultiplier = 1, broadcastEntityHurt = true, attackCooldownSettings = null, hittingSoundOverride = null, ignoreOtherEntitySettingCanAttack = false, isTrueDamage = false, damagerDbId = null, } | `PlayerAttemptDamageOtherPlayerOpts` |  |
+| { eId, hitEId, attemptedDmgAmt, withItem, bodyPartHit = undefined, attackDir = undefined, showCritParticles = false, reduceVerticalKbVelocity = true, horizontalKbMultiplier = 1, verticalKbMultiplier = 1, broadcastEntityHurt = true, attackCooldownSettings = null, hittingSoundOverride = null, ignoreOtherEntitySettingCanAttack = false, isTrueDamage = false, damagerDbId = null, damageCause = null, } | `PlayerAttemptDamageOtherPlayerOpts` |  |
 
 
 
@@ -328,10 +408,39 @@ of players in the lobby, or if the area is protected e.g. by spawn area protecti
 
  
 
+## attemptSpawnVehicle
+Try to spawn a rideable vehicle, which players can mount with an alt action.
+
+There is a limit to the number of mesh entities with physics that can be created.
+
+WARNING: Either the "onPlayerAttemptSpawnVehicle" or the "onWorldAttemptSpawnVehicle" game callback will be called
+
+depending on whether "spawnerId" is provided. Calling this function inside those callbacks risks infinite recursion.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| vehicleType | `MeshEntityVehicleType` |  |
+| x | `number` |  |
+| y | `number` |  |
+| z | `number` |  |
+| opts | `VehicleSpawnOpts` | Includes: - spawnerId The ID of the player who spawned the vehicle. The vehicle faces away from them. |
+
+
+
+### Returns:
+`PNull<EntityId>`
+
+ 
+
+null if the vehicle could not be spawned, otherwise the entity ID of the vehicle.
+
+ 
+
 ## attemptWorldChangeBlock
 Initiate a block change "by the world".
 
-This ends up calling the onWorldChangeBlock and only makes the change if not prevented by game/plugins.
+Calls onWorldAttemptChangeBlock, then onWorldChangeBlock if allowed.
 
 initiatorDbId is null if the change was initiated by the game code.
 
@@ -442,7 +551,7 @@ See documentation for api.playSound
 | soundName | `string` |  |
 | volume | `number` |  |
 | rate | `number` |  |
-| posSettings | ` { playerIdOrPos: PlayerId \| number[] maxHearDist?: number refDistance?: number } ` |  |
+| posSettings | ` { playerIdOrPos: EntityId \| number[] maxHearDist?: number refDistance?: number } ` |  |
 | exceptPlayerId | `PlayerId` |  |
 
 
@@ -709,7 +818,7 @@ Create a dropped item.
 | amount | `PNull<number>` | The amount of the item in the drop. Defaults to 1 when omitted. Use 0 for a collect-only trigger that does not add to inventory (fires onPlayerPickedUpItem with itemAmount 0). |
 | mergeItems | `boolean` | Whether to merge the item into a nearby item of same type, if one exists. Defaults to false. |
 | attributes | `ItemAttributes` | Attributes of the item being dropped |
-| timeTillDespawn | `number` | Time till the item automatically despawns in milliseconds. Max of 5 mins. |
+| timeTillDespawn | `number` | Time till the item automatically despawns in milliseconds. Defaults to 5 mins, max of 1 hour. |
 | dropperId | `PNull<LifeformId>` | Who dropped the item. |
 | options | `ItemDropOptions` | Additional options, such as doPhysics and size. |
 
@@ -794,7 +903,7 @@ Deletes all database values that are saved per lobby.
  
 
 ## deleteAllPlayerDbValues
-Deletes all database values that are saved per player.
+Deletes all database values that are saved per player, including persisted currencies.
 
 ### Parameters:
 | Parameter | Type | Description |
@@ -818,6 +927,40 @@ Delete an audio entity by its entity ID (returned by attemptCreateAudioEntity).
 
 
 
+
+ 
+
+## deleteCurrency
+Delete a currency from a player. This will make the currency unknown to the player.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| currencyId | `string` |  |
+
+
+
+
+
+ 
+
+## deleteEntity
+Delete any non-player entity (mesh entity, mob, audio entity, item drop, throwable, etc.) and dispose of their state.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| eId | `EntityId` |  |
+
+
+
+### Returns:
+`boolean`
+
+ 
+
+whether the entity's replicated state existed and was deleted
 
  
 
@@ -936,6 +1079,21 @@ true if the entity was deleted, false if it was not a throwable entity
 
  
 
+## deleteUiRequest
+Delete a request for a player.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| id | `UiRequestId` | Returned from the addUiRequest call you want to cancel |
+
+
+
+
+
+ 
+
 ## despawnMob
 Dispose of a mob's state and remove them from the world without triggering "on death" flows.
 
@@ -952,6 +1110,22 @@ Always succeeds.
 
  
 
+## despawnVehicle
+Dispose of a vehicle's state and remove them from the world.
+
+Always succeeds.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| vehicleId | `EntityId` |  |
+
+
+
+
+
+ 
+
 ## editItemCraftingRecipes
 Edit the crafting recipes for a player.
 
@@ -961,6 +1135,22 @@ Edit the crafting recipes for a player.
 | playerId | `PlayerId` |  |
 | itemName | `ItemName` |  |
 | recipesForItem | `RecipesForItem` |  |
+
+
+
+
+
+ 
+
+## exitPlayerVehicle
+Take a player off whatever they are riding, dropping them where it is. Does nothing if they are
+
+not riding anything.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
 
 
 
@@ -1064,18 +1254,18 @@ Get the name of a block.
  
 
 ## getBlockCoordinatesPlayerStandingOn
-Get the co-ordinates of the blocks the player is standing on as a list. For example, if the center of the player is at 0,0,0
+Get the co-ordinates of the blocks the entity is standing on as a list. For example, if the centre of the entity is at 0,0,0
 
 this function will return [[0, -1, 0], [-1, -1, 0], [0, -1, -1], [-1, -1, -1]]
 
-If the player is just standing on one block, the function would return e.g. [[0, 0, 0]]
+If the entity is just standing on one block, the function would return e.g. [[0, 0, 0]]
 
-If the player is middair then returns an empty list [].
+If the entity is midair or has no physics body, returns an empty list [].
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| playerId | `PlayerId` |  |
+| playerId | `EntityId` |  |
 
 
 
@@ -1162,14 +1352,16 @@ Will be true if the block is unloaded.
  
 
 ## getBlockTypesPlayerStandingOn
-Get the types of block the player is standing on
+Get the types of block the entity is standing on
 
-For example, if a player is standing on 4 dirt blocks, this will return ["Dirt", "Dirt", "Dirt", "Dirt"]
+For example, if an entity is standing on 4 dirt blocks, this will return ["Dirt", "Dirt", "Dirt", "Dirt"]
+
+Returns an empty list if the entity is midair or has no physics body.
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| playerId | `PlayerId` |  |
+| playerId | `EntityId` |  |
 
 
 
@@ -1179,34 +1371,6 @@ For example, if a player is standing on 4 dirt blocks, this will return ["Dirt",
  
 
 
-
- 
-
-## getChunk
-Only use this instead of getBlock if you REALLY need the performance (i.e. you are iterating over tens of thousands of blocks)
-
-ReturnedObject.blockData is a 32x32x32 ndarray of block ids
-
-(see https://www.npmjs.com/package/ndarray)
-
-Each block id is a 16-bit number
-
-The ndarray should only be read from, writing to it will result in desync between the server and client
-
-### Parameters:
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| pos | `number[]` | The returned chunk contains pos |
-
-
-
-### Returns:
-`PNull<GameChunk>`
-
- 
-
-null if the chunk is not loaded in a persisted world. ReturnedObject.blockData is an ndarray that can be accessed
-(but modifications have to be saved with resetChunk).
 
  
 
@@ -1248,6 +1412,26 @@ per-player overrides set via `editItemCraftingRecipes` / `removeItemCraftingReci
  
 
 
+
+ 
+
+## getCurrencyAmount
+Get the amount of a given currency a player has.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| currencyId | `string` |  |
+
+
+
+### Returns:
+`PNull<number>`
+
+ 
+
+The amount of the currency, or null if the currency is not defined.
 
  
 
@@ -1539,6 +1723,25 @@ Returns 0 if the player has none, and a negative number if infinite.
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
 | itemName | `ItemName` |  |
+
+
+
+### Returns:
+`number`
+
+ 
+
+number
+
+ 
+
+## getItemAmount
+Get the amount of an item in an item entity
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| itemId | `EntityId` |  |
 
 
 
@@ -2148,6 +2351,27 @@ NOT_IN_QUEUE, WAITING_TO_RUN, or CURRENTLY_RUNNING.
 
  
 
+## getSchematicDimensions
+Get a project schematic's stored dimensions as [x, y, z], including selection padding.
+
+Uses the active project snapshot. Missing schematic paths throw an error.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| schematicPath | `string` | Project-relative path, including .bloxdschem. |
+
+
+
+### Returns:
+`[number, number, number]`
+
+ 
+
+
+
+ 
+
 ## getSelectedInventorySlotI
 Get a player's currently selected inventory slot
 
@@ -2269,14 +2493,14 @@ Get the item at a chest slot. Null if empty otherwise format {name: itemName, am
  
 
 ## getUnitCoordinatesLifeformWithin
-Get the up to 12 unit co-ordinates the lifeform is located within
+Get the up to 12 unit co-ordinates the entity is located within
 
-(A lifeform is modelled as having four corners and can be in up to 3 blocks vertically)
+(Samples the four horizontal corners at up to three vertical levels)
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| lifeformId | `LifeformId` |  |
+| lifeformId | `EntityId` |  |
 
 
 
@@ -2286,6 +2510,82 @@ Get the up to 12 unit co-ordinates the lifeform is located within
  
 
 List of x, y, z positions e.g. [[-1, 0, 0], [-1, 1, 0], [-1, 2, 0]]
+
+ 
+
+## getVariation
+Get the current sub-variation name.
+
+Returns `"default"` when there is no named sub-variation.
+
+### Returns:
+`string`
+
+ 
+
+
+
+ 
+
+## getVehicleSeats
+The seat layout for a vehicle entity - at minimum one driver seat (index 0), optionally more
+
+passenger seats after it. Resolved from the spawned vehicle's def (`VehicleMeshEntityDef.seats`,
+
+falling back to a single driver seat at the physics type/tier's own `riderOffset` default) or a
+
+rideable mob's override (`getMobVehicleSeats`, falling back to its `rideHeight`). Throws if
+
+`vehicleEId` is not a vehicle.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| vehicleEId | `EntityId` |  |
+
+
+
+### Returns:
+`VehicleSeat[]`
+
+ 
+
+
+
+ 
+
+## getVehicleSetting
+The current value of a physics setting for a specific vehicle entity: the value set via
+
+`setVehicleSetting` if overridden, otherwise (when `returnDefaultIfNotOverridden`) the type/tier
+
+default from the vehicle's physics state. Mirrors `getMobSetting`.
+
+
+
+The one default not read from the type/tier is a mob's `riderOffset`, which comes from its ride height.
+
+
+
+A per-block setting (e.g. `"IceCanAutoStep"`) is `undefined` when that block is unlisted, which means
+
+the block does not change the setting rather than that the setting is off.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| vehicleEId | `EntityId` |  |
+| setting | `TSetting` |  |
+| returnDefaultIfNotOverridden | `boolean` |  |
+
+
+
+### Returns:
+`SettableVehicleSettingValue<TSetting>`
+
+ 
+
+
 
  
 
@@ -2305,6 +2605,22 @@ Will return [0, 0, 0] if the entity doesn't have a physics body
 `[number, number, number]`
 
  
+
+
+
+ 
+
+## giveCurrencyAmount
+Give a player an amount of currency. Can be negative to remove money.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| currencyId | `string` |  |
+| amount | `number` |  |
+
+
 
 
 
@@ -2645,7 +2961,9 @@ Tell a player to disconnect from the current lobby and join a new one.
 
 To connect to a specific variation, format is `gamename_variation`.
 
-For Custom Games, this will be `classic_playerSchematic|XXXXXXXXXX`.
+For Custom Games, this will be `classic_playerSchematic|XXXXXXXXXX` or
+
+`classic_playerSchematic|XXXXXXXXXX|<varname>` for a named sub-variation.
 
 
 
@@ -2657,6 +2975,23 @@ NOTE: Players won't disconnect immediately (they may play an ad before being red
 | playerId | `PlayerId` |  |
 | game | `string` | Defaults to the current game. |
 | lobbyName | `string` | Defaults to "Quick Play" |
+
+
+
+
+
+ 
+
+## matchmakeToVariation
+Matchmake a player into a sub-variation of the current custom game.
+
+Pass `"default"` for the default variation.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The player to matchmake |
+| varname | `string` | Sub-variation name (`[A-Za-z0-9_-]`, 1-32 chars), or `"default"` |
 
 
 
@@ -2704,7 +3039,7 @@ Open the shop UI for a player
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
-| toggle | `boolean` | Whether to close the shop if it's already open |
+| toggle | `boolean` | Whether to close the shop if it's already open. Leave this off when opening from an interaction: holding the interact button re-fires the alt action every ~50-150ms, so a toggle would flicker the shop open and closed until release. |
 | forceCategoryKey | `PNull<ShopCategoryKey>` | If set, will change the shop to this category |
 | onlyIfNonEmpty | `boolean` | If true, will only open the shop if the category (or shop, if no category is provided) is non-empty |
 
@@ -2740,8 +3075,8 @@ See documentation for api.playSound
 | soundName | `string` |  |
 | volume | `number` |  |
 | rate | `number` |  |
-| posSettings | ` { playerIdOrPos: PlayerId \| number[] maxHearDist?: number refDistance?: number } ` |  |
-| predictedBy | `PlayerId` |  |
+| posSettings | ` { playerIdOrPos: EntityId \| number[] maxHearDist?: number refDistance?: number } ` |  |
+| predictedBy | `EntityId` |  |
 
 
 
@@ -2794,7 +3129,7 @@ Play particle effect on all clients, or only on some clients if clientPredictedB
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | opts | `TempParticleSystemOpts \| ParticlePresetOpts` |  |
-| clientPredictedBy | `PlayerId` | Play only on clients where client with playerId clientPredictedBy is not invisible, transparent, or themselves |
+| clientPredictedBy | `EntityId` | Play only on clients where the entity clientPredictedBy is visible and not the viewing player |
 
 
 
@@ -2812,7 +3147,7 @@ Play particle effect on all clients, or only on some clients if clientPredictedB
 | soundName | `string` | Can also be a prefix. If so, a random sound with that prefix will be played |
 | volume | `number` | 0-1. If it's too quiet and volume is 1, normalise your sound in audacity |
 | rate | `number` | The speed of playback. Also affects pitch. 0.5-4. Lower playback = lower pitch Good for varying the sound. E.g. item pickup sound has a random rate between 1 and 1.5. |
-| posSettings | ` { playerIdOrPos: PlayerId \| number[] maxHearDist?: number refDistance?: number } ` | : PlayerId \| number[], maxHearDist: number, refDistance: number} playerIdOrPos: The player the sound originates from, or the position of the sound maxHearDist: sound is not played if player is further than this. Default 15 refDistance: higher means the sound decreases less in volume with distance. Default 3. Hitting is 4. Guns are 10 |
+| posSettings | ` { playerIdOrPos: EntityId \| number[] maxHearDist?: number refDistance?: number } ` | : EntityId \| number[], maxHearDist: number, refDistance: number} playerIdOrPos: The entity the sound originates from, or the position of the sound maxHearDist: sound is not played if player is further than this. Default 15 refDistance: higher means the sound decreases less in volume with distance. Default 3. Hitting is 4. Guns are 10 |
 
 
 
@@ -2985,12 +3320,12 @@ Remove an effect from a lifeform.
  
 
 ## removeFollowingEntityFromPlayer
-Remove following entity from player
+Remove following entity from an entity
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| playerId | `PlayerId` |  |
+| playerId | `EntityId` |  |
 | entityEId | `EntityId` |  |
 
 
@@ -3176,14 +3511,16 @@ This method does nothing if the overrides don't exist or are defined internally 
  
 
 ## scalePlayerMeshNodes
-Scale node of a player's mesh by 3d vector.
+Set an entity's meshScaling setting by 3d vector. Model node scaling is applied to lifeforms;
+
+for mesh entities, this setting affects nametag placement and interaction reach, not the model's nodes.
 
 State from prior calls to this api is lost so if you want to have multiple nodes scaled, pass in all the scales at once.
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| playerId | `PlayerId` |  |
+| playerId | `EntityId` |  |
 | nodeScales | `EntityMeshScalingMap` |  |
 
 
@@ -3554,6 +3891,26 @@ Prevent a player from picking up an item. itemId returned by createItemDrop
 
  
 
+## setChunkAsSchematic
+Replace a world chunk with a chunk from a project schematic, including air and block data.
+
+Both positions are block coordinates selecting their containing 32-block chunk.
+
+Add schematics in the Code Editor. Missing paths or source chunks throw an error.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| schematicPath | `string` | Project-relative path, including .bloxdschem. |
+| srcCoords | `[number, number, number]` | Block coordinates in the schematic's chunk grid (including selection padding). |
+| destCoords | `[number, number, number]` | Block coordinates in the world. Existing blocks are replaced without break drops. |
+
+
+
+
+
+ 
+
 ## setClientOption
 Modify a client option at runtime and send to the client if it changed
 
@@ -3593,6 +3950,51 @@ Sets a client option to its default value. This will be the value stored in your
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
 | option | `ClientOption` |  |
+
+
+
+
+
+ 
+
+## setCurrency
+Dynamically define a currency for a player and show it on the HUD.
+
+Amounts will persist between sessions if `persistent` is set to true.
+
+Persistent currencies count towards db length limits.
+
+
+
+Example usage:
+
+```js
+api.setCurrency(myId, "myCurrency", { amount: 100, icon: "coins", iconColour: "blue", persistent: true })
+```
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| currencyId | `string` |  |
+| info | `UgcCurrencyInfo` |  |
+
+
+
+
+
+ 
+
+## setCurrencyAmount
+Set the amount of a currency a player has. For persistent currencies, amount/subtext count towards db length limits.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| currencyId | `string` |  |
+| amount | `number` |  |
+| subtext | `string \| CustomTextStyling` |  |
 
 
 
@@ -3678,7 +4080,7 @@ Set the rotation for a server-auth entity.
  
 
 ## setEveryoneSettingForPlayer
-Set a player's other-entity setting for every lifeform in the game.
+Set a player's other-entity setting for every player, mob and Person mesh in the game.
 
 includeNewJoiners=true means that the player will have the setting applied to new joiners.
 
@@ -3760,6 +4162,14 @@ Set a stat attribute for a block or item
 
 
 NOTE: Only a subset of stats are customisable this way.
+
+afterEatenItem requires an unstackable food.
+
+minChargeStateToUse must be within the item's chargeStages and set on the base item, applying to all its charging variants.
+
+fishingRodInfo adjusts existing rods; drops names the replacement mining drop.
+
+Example: setItemStat(playerId, "Iron Dagger", "comboInfo", { comboWindowMs: 1000, comboMultipliers: [1, 1.5, 2] })
 
 ### Parameters:
 | Parameter | Type | Description |
@@ -3940,7 +4350,9 @@ Reset a player's other-entity setting for a specific entity to the game's defaul
  
 
 ## setPlayerDbValue
-Sets a database value that is saved per player. This persists between sessions and between lobbies for custom games.
+Sets a database value that is saved per player. For custom games this persists between sessions and
+
+between lobbies, and is shared across all of the game's variations (e.g. a hub and its sub-modes).
 
 ### Parameters:
 | Parameter | Type | Description |
@@ -3971,14 +4383,14 @@ Set the gamemode of a player. This is persistent across lobbies for custom games
  
 
 ## setPlayerOpacity
-Set a player's opacity
+Set an entity's opacity
 
 A simple helper that calls setTargetedPlayerSettingForEveryone
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| playerId | `PlayerId` |  |
+| playerId | `EntityId` |  |
 | opacity | `number` |  |
 
 
@@ -3988,7 +4400,7 @@ A simple helper that calls setTargetedPlayerSettingForEveryone
  
 
 ## setPlayerOpacityForOnePlayer
-Set the level of viewable opacity by one player on another player
+Set the opacity of an entity for one player
 
 A simple helper that calls setOtherEntitySetting
 
@@ -3996,7 +4408,7 @@ A simple helper that calls setOtherEntitySetting
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | playerIdWhoViewsOpacityPlayer | `PlayerId` | The player who sees that with opacity |
-| playerIdOfOpacityPlayer | `PlayerId` | The player/player model who is given opacity |
+| playerIdOfOpacityPlayer | `EntityId` | The entity whose opacity is changed |
 | opacity | `number` |  |
 
 
@@ -4036,6 +4448,24 @@ Set the pose of the player
 | playerId | `PlayerId` |  |
 | pose | `PlayerPose` |  |
 | poseOffset | `[number, number, number]` |  |
+
+
+
+
+
+ 
+
+## setPlayerVehicle
+Seat a player in a vehicle. Seat 0 drives; other seats follow the vehicle without movement control.
+
+The player leaves their current vehicle and replaces anyone occupying the requested seat.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| vehicleEId | `EntityId` | A spawned vehicle or a rideable mob. |
+| seatIndex | `number` | Seat index (default 0). |
 
 
 
@@ -4110,14 +4540,14 @@ Set the current shield of a lifeform.
  
 
 ## setTargetedPlayerSettingForEveryone
-Set every player's other-entity setting to a specific value for a particular player.
+Set every player's other-entity setting to a specific value for a particular entity.
 
 includeNewJoiners=true means that new players joining the game will also have this other player setting applied.
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| targetedPlayerId | `PlayerId` |  |
+| targetedPlayerId | `EntityId` |  |
 | settingName | `Setting` |  |
 | settingValue | `OtherEntitySettings[Setting]` |  |
 | includeNewJoiners | `boolean` |  |
@@ -4136,6 +4566,34 @@ Sets the total aura for a player. Will not go over max level or under 0
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
 | totalAura | `number` |  |
+
+
+
+
+
+ 
+
+## setVehicleSetting
+Override a physics setting for a specific vehicle entity, replacing the type/tier default for that
+
+vehicle's rider. The override is stored on the shared Bloxd and, when the vehicle currently has a
+
+rider, replicated to that rider's client. Mirrors `setMobSetting`.
+
+
+
+A setting can also be overridden for one block by naming the block first, e.g.
+
+`setVehicleSetting(boatId, "IceCanAutoStep", true)`. That is stored as an entry of the matching
+
+`<setting>ByBlock` record, which the physics tick reads as a precomputed block lookup.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| vehicleEId | `EntityId` |  |
+| setting | `TSetting` |  |
+| value | `SettableVehicleSettingValue<TSetting>` |  |
 
 
 
@@ -4169,6 +4627,12 @@ For blocks that are normally solid and not seethrough, the player will experienc
 
 You could set both pos1 and pos2 to [0, 0, 0] to make only 0, 0, 0 walkthrough, for example.
 
+
+
+A player standing inside a voxel that turns solid for them is lifted onto it if there is room above, including onto a CANT_WALK_THROUGH rect.
+
+To let them stay where they are, remove the block before removing its exemption.
+
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -4185,6 +4649,10 @@ You could set both pos1 and pos2 to [0, 0, 0] to make only 0, 0, 0 walkthrough, 
 
 ## setWalkThroughType
 Allow a player to walk through a type of block. For blocks that are normally solid and not seethrough, the player will experience slight visual glitches while inside the block.
+
+
+
+A player standing inside a block that turns solid for them is lifted onto it if there is room above. To let them stay where they are, remove the block before making its type solid again.
 
 ### Parameters:
 | Parameter | Type | Description |

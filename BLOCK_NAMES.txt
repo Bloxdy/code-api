@@ -1,4 +1,4 @@
-# Block Names (1179 blocks)
+# Block Names (1446 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -8,7 +8,7 @@
 # META VARIANTS: If a block has codes in brackets, you can append suffixes to get variants:
 #   R  = rotation    -> BlockName|meta|rot1 through |meta|rot4
 #   O  = open/closed -> BlockName|meta|rot1|open or |closed (combine with R)
-#   H  = halfblockPlacement -> BlockName|meta|rot1|top or |bot or |side (combine with R)
+#   H  = halfblockPlacement -> BlockName|meta|rot1|top or |bot or |side (combine with R; stairs have no |side)
 #   G  = growing     -> BlockName|Growing
 #   TB = treeBase    -> BlockName|TreeBase|<WoodType> (e.g. Maple Log|TreeBase|Maple)
 #   TC = treeCanopy  -> BlockName|TreeCanopy
@@ -20,6 +20,7 @@
 #   GR = grassRoots  -> BlockName|GrassRoots (dirt with grass roots)
 #   BK = breaking    -> BlockName|Breaking (breaking animation state)
 #   FL = flashing    -> BlockName|Flashing (flashing animation state)
+#   SC = stairsCorner -> BlockName|meta|rot1|bot|innerLeft, innerRight, outerLeft or outerRight (combine with R and H)
 #
 # Examples:
 #   Stone           -> Just use "Stone" (no brackets = no variants, root block only)
@@ -1205,3 +1206,270 @@ Lunite Auto Harvester
 Bowling Alley Floor
 Crone Spawner Block
 Slime Spawner Block
+Iron Guardian Spawner Block
+Gold Guardian Spawner Block
+Diamond Guardian Spawner Block
+Moonstone Guardian Spawner Block
+Dry Grass Block
+Overgrown Dry Grass Block
+Dead Bush
+Dry Grass Slab [H,R]
+Lantern [H,R]
+Lily Pad [R]
+Camel Spawner Block
+_Hump Day Top Left [R]
+_Hump Day Top Right [R]
+Hump Day [R]
+_Hump Day Bottom Right [R]
+Rare Lucky Block
+Super Lucky Block
+Rare Weapon Lucky Block
+Super Weapon Lucky Block
+Building Lucky Block
+Rare Building Lucky Block
+Super Building Lucky Block
+Armour Lucky Block
+Rare Armour Lucky Block
+Super Armour Lucky Block
+Tools Lucky Block
+Rare Tools Lucky Block
+Super Tools Lucky Block
+Food Lucky Block
+Rare Food Lucky Block
+Super Food Lucky Block
+Potion Lucky Block
+Rare Potion Lucky Block
+Super Potion Lucky Block
+Block Destroyer TNT
+Maple Stairs [H,R,SC]
+Pine Stairs [H,R,SC]
+Plum Stairs [H,R,SC]
+Cedar Stairs [H,R,SC]
+Aspen Stairs [H,R,SC]
+Jungle Stairs [H,R,SC]
+Palm Stairs [H,R,SC]
+Pear Stairs [H,R,SC]
+Cherry Stairs [H,R,SC]
+Spectral Stairs [H,R,SC]
+Mango Stairs [H,R,SC]
+Messy Stone Stairs [H,R,SC]
+Stone Stairs [H,R,SC]
+Smooth Stone Stairs [H,R,SC]
+Engraved Stone Stairs [H,R,SC]
+Stone Bricks Stairs [H,R,SC]
+Mossy Stone Stairs [H,R,SC]
+Mossy Stone Bricks Stairs [H,R,SC]
+Andesite Stairs [H,R,SC]
+Smooth Andesite Stairs [H,R,SC]
+Engraved Andesite Stairs [H,R,SC]
+Andesite Bricks Stairs [H,R,SC]
+Diorite Stairs [H,R,SC]
+Smooth Diorite Stairs [H,R,SC]
+Engraved Diorite Stairs [H,R,SC]
+Diorite Bricks Stairs [H,R,SC]
+Granite Stairs [H,R,SC]
+Smooth Granite Stairs [H,R,SC]
+Engraved Granite Stairs [H,R,SC]
+Granite Bricks Stairs [H,R,SC]
+Sandstone Stairs [H,R,SC]
+Smooth Sandstone Stairs [H,R,SC]
+Engraved Sandstone Stairs [H,R,SC]
+Marked Sandstone Stairs [H,R,SC]
+Sandstone Bricks Stairs [H,R,SC]
+Red Sandstone Stairs [H,R,SC]
+Smooth Red Sandstone Stairs [H,R,SC]
+Engraved Red Sandstone Stairs [H,R,SC]
+Marked Red Sandstone Stairs [H,R,SC]
+Red Sandstone Bricks Stairs [H,R,SC]
+Bricks Stairs [H,R,SC]
+Ice Bricks Stairs [H,R,SC]
+Yellow Concrete Stairs [H,R,SC]
+White Concrete Stairs [H,R,SC]
+Red Concrete Stairs [H,R,SC]
+Purple Concrete Stairs [H,R,SC]
+Pink Concrete Stairs [H,R,SC]
+Orange Concrete Stairs [H,R,SC]
+Magenta Concrete Stairs [H,R,SC]
+Lime Concrete Stairs [H,R,SC]
+Light Gray Concrete Stairs [H,R,SC]
+Light Blue Concrete Stairs [H,R,SC]
+Green Concrete Stairs [H,R,SC]
+Gray Concrete Stairs [H,R,SC]
+Cyan Concrete Stairs [H,R,SC]
+Brown Concrete Stairs [H,R,SC]
+Blue Concrete Stairs [H,R,SC]
+Black Concrete Stairs [H,R,SC]
+Yellow Chalk Stairs [H,R,SC]
+White Chalk Stairs [H,R,SC]
+Red Chalk Stairs [H,R,SC]
+Purple Chalk Stairs [H,R,SC]
+Pink Chalk Stairs [H,R,SC]
+Orange Chalk Stairs [H,R,SC]
+Magenta Chalk Stairs [H,R,SC]
+Lime Chalk Stairs [H,R,SC]
+Light Gray Chalk Stairs [H,R,SC]
+Light Blue Chalk Stairs [H,R,SC]
+Green Chalk Stairs [H,R,SC]
+Gray Chalk Stairs [H,R,SC]
+Cyan Chalk Stairs [H,R,SC]
+Brown Chalk Stairs [H,R,SC]
+Blue Chalk Stairs [H,R,SC]
+Black Chalk Stairs [H,R,SC]
+Yellow Chalk Bricks Stairs [H,R,SC]
+White Chalk Bricks Stairs [H,R,SC]
+Red Chalk Bricks Stairs [H,R,SC]
+Purple Chalk Bricks Stairs [H,R,SC]
+Pink Chalk Bricks Stairs [H,R,SC]
+Orange Chalk Bricks Stairs [H,R,SC]
+Magenta Chalk Bricks Stairs [H,R,SC]
+Lime Chalk Bricks Stairs [H,R,SC]
+Light Gray Chalk Bricks Stairs [H,R,SC]
+Light Blue Chalk Bricks Stairs [H,R,SC]
+Green Chalk Bricks Stairs [H,R,SC]
+Gray Chalk Bricks Stairs [H,R,SC]
+Cyan Chalk Bricks Stairs [H,R,SC]
+Brown Chalk Bricks Stairs [H,R,SC]
+Blue Chalk Bricks Stairs [H,R,SC]
+Black Chalk Bricks Stairs [H,R,SC]
+Toxic Waste Barrel
+Toxic Waste
+Ancient Maple Log
+Evil Lucky Block
+INTERNAL_MESH_Small Twin Icicle
+INTERNAL_MESH_Medium Icicle
+INTERNAL_MESH_Large Icicle
+INTERNAL_MESH_Large Twin Icicle
+Noticeboard Standing [R]
+Noticeboard Standing Top [R]
+Noticeboard Standing Bottom [R]
+Noticeboard Standing Left [R]
+Noticeboard Standing Right [R]
+Noticeboard Standing Top Left [R]
+Noticeboard Standing Top Right [R]
+Noticeboard Standing Bottom Left [R]
+Noticeboard Standing Bottom Right [R]
+Noticeboard Standing Leg [R]
+Noticeboard Wall [R]
+Noticeboard Wall Top [R]
+Noticeboard Wall Bottom [R]
+Noticeboard Wall Left [R]
+Noticeboard Wall Right [R]
+Noticeboard Wall Top Left [R]
+Noticeboard Wall Top Right [R]
+Noticeboard Wall Bottom Left [R]
+Noticeboard Wall Bottom Right [R]
+Tiki Terror Spawner Block
+Maple Fence
+_Maple Fence Top
+Pine Fence
+_Pine Fence Top
+Plum Fence
+_Plum Fence Top
+Cedar Fence
+_Cedar Fence Top
+Aspen Fence
+_Aspen Fence Top
+Jungle Fence
+_Jungle Fence Top
+Palm Fence
+_Palm Fence Top
+Pear Fence
+_Pear Fence Top
+Cherry Fence
+_Cherry Fence Top
+Spectral Fence
+_Spectral Fence Top
+Mango Fence
+_Mango Fence Top
+Noticeboard [R]
+Standing Noticeboard [R]
+Pure Coal Ore
+Pure Iron Ore
+Pure Gold Ore
+Pure Diamond Ore
+Pure Moonstone Ore
+Maple Fence Gate [O,R]
+_Maple Fence Gate Top [O,R]
+Pine Fence Gate [O,R]
+_Pine Fence Gate Top [O,R]
+Plum Fence Gate [O,R]
+_Plum Fence Gate Top [O,R]
+Cedar Fence Gate [O,R]
+_Cedar Fence Gate Top [O,R]
+Aspen Fence Gate [O,R]
+_Aspen Fence Gate Top [O,R]
+Jungle Fence Gate [O,R]
+_Jungle Fence Gate Top [O,R]
+Palm Fence Gate [O,R]
+_Palm Fence Gate Top [O,R]
+Pear Fence Gate [O,R]
+_Pear Fence Gate Top [O,R]
+Cherry Fence Gate [O,R]
+_Cherry Fence Gate Top [O,R]
+Spectral Fence Gate [O,R]
+_Spectral Fence Gate Top [O,R]
+Mango Fence Gate [O,R]
+_Mango Fence Gate Top [O,R]
+Iron Goofy Golem Spawner Block
+Gold Goofy Golem Spawner Block
+Diamond Goofy Golem Spawner Block
+Moonstone Goofy Golem Spawner Block
+Cannon [R]
+_Cannon Bottom Front [R]
+_Cannon Barrel Back [R]
+_Cannon Barrel Front [R]
+_Cannon Top Back [R]
+_Cannon Top Front [R]
+Crystal Block
+Rope Block
+Ash
+Coal Deposit
+Iron Deposit
+Stone Deposit
+Copper Deposit
+Gold Deposit
+Homestead Core
+Drop Pad
+Copper Ore
+Burner Drill [R]
+Crusher [R]
+Smelter [R]
+Generator [R]
+Press [R]
+Wire Mill [R]
+Conveyor Belt [R]
+Splitter [R]
+Voltite Ore
+Alloy Kiln [R]
+Electric Drill [R]
+Assembler [R]
+Sorting Gate [R]
+Belt Loader [R]
+Storage Silo
+Charge Vault
+Machine Bench
+Parts Bench
+Tool Bench
+_Homestead Core Mid
+_Homestead Core Top
+Tree Cutter [R]
+Voltite Deposit
+Volt Engine [R]
+Deep Drill [R]
+Shatter Mill [R]
+Sky Tap [R]
+Fast Belt [R]
+Charging Pad
+Crystal Vat [R]
+Starframe
+Forge Hopper
+Comet Ore
+Comet Heart
+_Starframe Spire
+Recycler [R]
+Belt Lift
+Belt Drop
+Crop Harvester [R]
+Belt Tunnel [R]
+Pure Copper Ore
+Pure Voltite Ore

@@ -6,10 +6,10 @@ These API methods allow you to modify entity settings:
 
 ```js
 /**
- * Set every player's other-entity setting to a specific value for a particular player.
+ * Set every player's other-entity setting to a specific value for a particular entity.
  * includeNewJoiners=true means that new players joining the game will also have this other player setting applied.
  *
- * @param {PlayerId} targetedPlayerId
+ * @param {EntityId} targetedPlayerId
  * @param {Setting} settingName
  * @param {OtherEntitySettings[Setting]} settingValue
  * @param {boolean} [includeNewJoiners]
@@ -18,7 +18,7 @@ These API methods allow you to modify entity settings:
 setTargetedPlayerSettingForEveryone(targetedPlayerId, settingName, settingValue, includeNewJoiners)
 
 /**
- * Set a player's other-entity setting for every lifeform in the game.
+ * Set a player's other-entity setting for every player, mob and Person mesh in the game.
  * includeNewJoiners=true means that the player will have the setting applied to new joiners.
  *
  * @param {PlayerId} playerId
@@ -74,15 +74,25 @@ setOtherEntitySettingToDefault(relevantPlayerId, targetedEntityId, settingName)
 Here is the full list of available entity settings:
 
 
+## alwaysInInterest
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+Keep sending this entity to the player at any distance, for markers or objectives they follow from afar, once players are sent only the entities near them
+
+ 
+
+
+
 ## canAttack
 
 **Type:** `boolean`
 
 **Default:** `false`
 
-
-
-Whether the entity can attack other entities, ignored if the targeted entity is invincible
+Whether the relevant player can attack this entity, ignored if the entity is invincible. Also makes the entity pickable, so the player's aim lands on it - as does interactable, which is the setting to use for an entity that should be aimed at without being a valid target.
 
  
 
@@ -93,8 +103,6 @@ Whether the entity can attack other entities, ignored if the targeted entity is 
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether the entity can be seen by the relevant player
 
@@ -108,8 +116,6 @@ Whether the entity can be seen by the relevant player
 
 **Default:** `""`
 
-
-
 The colour of the player in the lobby leaderboard.
 
  
@@ -122,9 +128,35 @@ The colour of the player in the lobby leaderboard.
 
 **Default:** `false`
 
-
-
 Whether the player has a priority name tag
+
+ 
+
+
+
+## interactable
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+Whether alt actioning this entity (right click / the interact bind / a mobile tap) counts as interacting with it. When true the alt action is consumed, so a held block isn't placed through the entity and a held throwable isn't used, and onPlayerAltAction fires with it as the target. Leave false on decorative entities, or they will swallow player input.
+
+ Also makes the entity pickable, so an entity can be interactable without canAttack: the player's aim lands on it, but swinging or shooting at it does nothing.
+
+ Works on mobs too, taking priority over held items and native harvesting, riding and pet actions. Native action packets are also rejected by the server for interactable entities.
+
+ 
+
+
+
+## interactionPrompt
+
+**Type:** `string | CustomTextStyling`
+
+**Default:** `null`
+
+Replaces the label in the interaction prompt shown by the crosshair while the relevant player is looking at this entity, e.g. "Open Shop". Left null, the prompt reads "Interact". The engine draws the player's interact key next to it, so write what interacting does rather than which button to press. Only used on entities that have interactable set, and not shown on touchscreens, where there is no key to show.
 
  
 
@@ -135,8 +167,6 @@ Whether the player has a priority name tag
 **Type:** `string`
 
 **Default:** `""`
-
-
 
 The colour of kills in the killfeed. Defaults to blue for themselves and red for everyone else.
 
@@ -150,8 +180,6 @@ The colour of kills in the killfeed. Defaults to blue for themselves and red for
 
 **Default:** `null`
 
-
-
 The tags to the left of a player's name in the lobby leaderboard.
 
  
@@ -163,8 +191,6 @@ The tags to the left of a player's name in the lobby leaderboard.
 **Type:** `LobbyLeaderboardValues`
 
 **Default:** `{}`
-
-
 
 The values of the leaderboard.
 
@@ -178,8 +204,6 @@ The values of the leaderboard.
 
 **Default:** `{}`
 
-
-
 Scaling of mesh nodes, see api.scalePlayerMeshNodes
 
  
@@ -192,8 +216,6 @@ Scaling of mesh nodes, see api.scalePlayerMeshNodes
 
 **Default:** `null`
 
-
-
 Multiline text info for displaying text next to entities:
 
  ```ts
@@ -201,8 +223,13 @@ Multiline text info for displaying text next to entities:
      content: (CustomTextStyling[number] | RankInfo)[]    // Array of text content
      backgroundColor?: string                             // Background color
      animateIn?: boolean                                  // Whether text should animate in character-by-character
+     visibleThroughWalls?: boolean                        // Overrides canSeeNametagsThroughWalls for this text: true draws it over blocks and entities, false lets them hide it
  }
  ```
+
+ 
+
+ Hidden whenever the entity's own mesh is, so a mesh entity's hideDist applies to its text too.
 
  
 
@@ -213,8 +240,6 @@ Multiline text info for displaying text next to entities:
 **Type:** `"default" | "yellow" | "lime" | "green" | "aqua" | "cyan" | "blue" | "purple" | "pink" | "red" | "orange"`
 
 **Default:** `"default"`
-
-
 
 The colour of the entity's name.
 
@@ -227,8 +252,6 @@ The colour of the entity's name.
 **Type:** `NameTagInfo`
 
 **Default:** `null`
-
-
 
 The name tag info of the player:
 
@@ -254,8 +277,6 @@ The name tag info of the player:
 
 **Default:** `1`
 
-
-
 Opacity of the entity
 
  Fractional values will use dithering
@@ -272,8 +293,6 @@ Opacity of the entity
 
 **Default:** `null`
 
-
-
 Applies a colour tint to the entity when set, like the red tint when an entity gets hurt.
 
  
@@ -286,8 +305,6 @@ Applies a colour tint to the entity when set, like the red tint when an entity g
 
 **Default:** `true`
 
-
-
 Whether you can see damage amounts when shooting the entity
 
  
@@ -299,8 +316,6 @@ Whether you can see damage amounts when shooting the entity
 **Type:** `0 | 1`
 
 **Default:** `0`
-
-
 
 Rendering order of the entity, higher zIndex renders on top of lower ones.
 

@@ -4,26 +4,30 @@ Players can use World Code in custom worlds get functions they've written to run
 
 ```text
 tick onClose onPlayerJoin onPlayerLeave onPlayerJump onRespawnRequest
-playerCommand onPlayerChat onPlayerChangeBlock onPlayerDropItem
-onPlayerPickedUpItem onPlayerSelectInventorySlot onBlockStand
-onBlockStandStart onBlockStandStop onPlayerAttemptCraft onPlayerCraft
-onPlayerAttemptOpenChest onPlayerOpenedChest onPlayerMoveItemOutOfInventory
-onPlayerMoveInvenItem onPlayerMoveItemIntoIdxs onPlayerSwapInvenSlots
-onPlayerMoveInvenItemWithAmt onPlayerAttemptAltAction onPlayerAltAction
-onPlayerClick onPlayerClickUp onClientOptionUpdated onMobSettingUpdated
-onInventoryUpdated onChestUpdated onWorldChangeBlock onCreateBloxdMeshEntity
+playerCommand onPlayerChat onPlayerAttemptChangeBlock onPlayerChangeBlock
+onPlayerDropItem onPlayerPickedUpItem onPlayerSelectInventorySlot
+onBlockStand onBlockStandStart onBlockStandStop onPlayerAttemptCraft
+onPlayerCraft onPlayerAttemptOpenChest onPlayerOpenedChest
+onPlayerMoveItemOutOfInventory onPlayerMoveInvenItem onPlayerMoveItemIntoIdxs
+onPlayerSwapInvenSlots onPlayerMoveInvenItemWithAmt onPlayerAttemptAltAction
+onPlayerAltAction onPlayerClick onPlayerClickUp onClientOptionUpdated
+onMobSettingUpdated onInventoryUpdated onChestUpdated
+onWorldAttemptChangeBlock onWorldChangeBlock onCreateBloxdMeshEntity
 onEntityCollision onPlayerAttemptSpawnMob onWorldAttemptSpawnMob
 onPlayerSpawnMob onWorldSpawnMob onWorldAttemptDespawnMob onMobDespawned
-onPlayerAttack onPlayerDamagingOtherPlayer onPlayerDamagingMob
-onMobDamagingPlayer onMobDamagingOtherMob onAttemptKillPlayer
-onPlayerKilledOtherPlayer onMobKilledPlayer onPlayerKilledMob
-onMobKilledOtherMob onPlayerPotionEffect onPlayerDamagingMeshEntity
-onPlayerBreakMeshEntity onPlayerUsedThrowable onPlayerThrowableHitTerrain
-onTouchscreenActionButton onTaskClaimed onChunkLoaded onPlayerRequestChunk
-onItemDropCreated onPlayerStartChargingItem onPlayerFinishChargingItem
-onPlayerFinishQTE onPlayerToggledShopMenu onPlayerPlayedEmote
-onPlayerEnteredVehicle onPlayerExitedVehicle onPlayerBoughtShopItem
-doPeriodicSave
+onPlayerAttemptSpawnVehicle onWorldAttemptSpawnVehicle onPlayerSpawnVehicle
+onWorldSpawnVehicle onVehicleDespawned onEntityDeleted onPlayerAttack
+onPlayerDamagingOtherPlayer onPlayerDamagingMob onMobDamagingPlayer
+onMobDamagingOtherMob onAttemptKillPlayer onPlayerKilledOtherPlayer
+onMobKilledPlayer onPlayerKilledMob onMobKilledOtherMob onPlayerPotionEffect
+onPlayerDamagingMeshEntity onPlayerBreakMeshEntity onPlayerUsedThrowable
+onPlayerThrowableHitTerrain onTouchscreenActionButton onTaskClaimed
+onChunkLoaded onPlayerRequestChunk onItemDropCreated
+onPlayerStartChargingItem onPlayerFinishChargingItem onPlayerAttemptFish
+onPlayerSucceededFishCatch onPlayerFailedFishCatch onPlayerFinishQTE
+onPlayerToggledShopMenu onPlayerPlayedEmote onPlayerEnteredVehicle
+onPlayerExitedVehicle onPlayerBoughtShopItem onPlayerPressedButton
+onPlayerReleasedButton onUiRequestResponded doPeriodicSave
 
 To use a callback, just assign a function to it in the world code!
 tick = () => {}			 or			 function tick() {}
@@ -46,9 +50,9 @@ but this helps prevent large data-loss on non-graceful shutdowns.
 
 
 
-    
 
- 
+
+
 
 
 
@@ -67,14 +71,13 @@ Return "preventDeath" to prevent the player from being killed
 ### Returns:
 `void \| "preventDeath"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -91,9 +94,9 @@ Called when a player stands on a block
 | blockName | `BlockName` | The name of the block that was stood on |
 
 
-    
 
- 
+
+
 
 
 
@@ -110,9 +113,9 @@ Called when a player enters a block. Only called once per block until the player
 | blockName | `BlockName` | The name of the block that was entered |
 
 
-    
 
- 
+
+
 
 
 
@@ -129,9 +132,9 @@ Called when a player leaves a block.
 | blockName | `BlockName` | The name of the block that was left |
 
 
-    
 
- 
+
+
 
 
 
@@ -150,9 +153,9 @@ x, y, z, will be null if isMoonstoneChest is true
 | z | `number \| null` | The z coordinate of the chest |
 
 
-    
 
- 
+
+
 
 
 
@@ -175,9 +178,9 @@ For most use cases, consider using another callback e.g. tick.
 | wasPersistedChunk | `boolean` | Whether the chunk was persisted |
 
 
-    
 
- 
+
+
 
 
 
@@ -192,9 +195,9 @@ Called when a client option is updated
 | value | `any` | The new value of the option, always null for custom code |
 
 
-    
 
- 
+
+
 
 
 
@@ -207,9 +210,9 @@ Called when the lobby is shutting down
 | serverIsShuttingDown | `boolean` | Whether the server is shutting down |
 
 
-    
 
- 
+
+
 
 
 
@@ -224,9 +227,9 @@ Called when a mesh entity is created
 | initiatorId | `EntityId \| null` | The id of the entity that created the mesh entity, if any |
 
 
-    
 
- 
+
+
 
 
 
@@ -240,9 +243,27 @@ Called when a entity collides with another entity
 | otherEId | `EntityId` | The id of the other entity |
 
 
-    
 
- 
+
+
+
+
+
+## onEntityDeleted
+Called when any non-player entity is deleted, after any type specific callback such as "onMobDespawned".
+
+Not called when an item drop is picked up or expires, or when a throwable expires or hits something.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| eId | `EntityId` | The id of the entity deleted |
+| entityType | `EntityType` | The type of the entity deleted |
+
+
+
+
+
 
 
 
@@ -255,9 +276,9 @@ Called when a player's inventory is updated
 | playerId | `PlayerId` | The id of the player whose inventory was updated |
 
 
-    
 
- 
+
+
 
 
 
@@ -275,9 +296,9 @@ Called when an item drop is created
 | z | `number` | The z coordinate of the item drop |
 
 
-    
 
- 
+
+
 
 
 
@@ -295,19 +316,19 @@ Return number to change damage dealt to that amount
 | damagedMob | `MobId` | the id of the mob being damaged |
 | damageDealt | `number` | the amount of damage dealt |
 | withItem | `string` | the item used to attack |
+| damageInfo | `DamageInfo` | what dealt the hit: a melee swing, an explosion, a projectile, etc. |
 
 
 ### Returns:
 `number \| void \| "preventDamage"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -325,19 +346,19 @@ Return number to change damage dealt to that amount
 | damagedPlayer | `PlayerId` | the id of the player being damaged |
 | damageDealt | `number` | the amount of damage dealt |
 | withItem | `string` | the item used to attack |
+| damageInfo | `DamageInfo` | what dealt the hit: a melee swing, an explosion, a projectile, etc. |
 
 
 ### Returns:
 `number \| void \| "preventDamage"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -350,9 +371,9 @@ Called when a mob is despawned
 | mobId | `MobId` | The id of the mob despawned |
 
 
-    
 
- 
+
+
 
 
 
@@ -373,14 +394,13 @@ Return "preventDrop" to prevent the mob from dropping items
 ### Returns:
 `void \| "preventDrop"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -401,14 +421,13 @@ Return "keepInventory" to not drop the player's inventory
 ### Returns:
 `void \| "keepInventory"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -423,14 +442,16 @@ Called when a mob setting is updated
 | value | `any` | The new value of the setting |
 
 
-    
 
- 
+
+
 
 
 
 ## onPlayerAltAction
-Called when player completes an alt action (right click on pc).
+Called when player completes an alt action. Right click, the interact bind (E by default) and a mobile tap all arrive here; a left click does not, so this is the callback to use for anything a player should have to choose to do rather than trigger by swinging.
+
+Keeps firing while the input is held, roughly every 50-150ms. That is harmless for anything idempotent, but an interaction that grants an item, charges a currency or advances a conversation has to swallow the repeats itself - open shops with toggle off, and debounce the rest per player.
 
 The co-ordinates will be undefined if there is no targeted block (and block will be "Air")
 
@@ -445,9 +466,9 @@ The co-ordinates will be undefined if there is no targeted block (and block will
 | targetEId | `EntityId \| null` | The id of the targeted entity |
 
 
-    
 
- 
+
+
 
 
 
@@ -460,9 +481,9 @@ Called when a player attacks another player
 | playerId | `string` | The id of the player attacking |
 
 
-    
 
- 
+
+
 
 
 
@@ -491,14 +512,49 @@ test it to see if it works for your use case, feel free to report any broken one
 ### Returns:
 `void \| "preventAction"`
 
- 
 
 
 
 
-    
 
- 
+
+
+
+
+
+## onPlayerAttemptChangeBlock
+Called before a player changes a block.
+
+Return "preventChange" to stop it. Then onPlayerChangeBlock will not run.
+
+Growing EZ placements validate at request time and again at completion; keep validation free of rewards or charges.
+
+When placing, fromBlock is Air, or the slab a matching slab completes. When breaking, toBlock is Air.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The player trying to change the block |
+| x | `number` | The block's x coordinate |
+| y | `number` | The block's y coordinate |
+| z | `number` | The block's z coordinate |
+| fromBlock | `BlockName` | The current block |
+| toBlock | `BlockName` | The proposed block |
+| droppedItem | `BlockName \| null` | The item that would drop |
+| fromBlockInfo | `MultiBlockInfo` | The current multiblock info |
+| toBlockInfo | `MultiBlockInfo` | The proposed multiblock info |
+
+
+### Returns:
+`void \| "preventChange"`
+
+
+
+
+
+
+
+
 
 
 
@@ -519,14 +575,45 @@ Return "preventCraft" to prevent a craft from happening
 ### Returns:
 `void \| "preventCraft"`
 
- 
 
 
 
 
-    
 
- 
+
+
+
+
+
+## onPlayerAttemptFish
+Called once when a fishing hook first enters water. Coordinates are the bob's position at water entry.
+
+Return "preventFish" to cancel, or { caughtItemName?, biteDelayMs?, qte? } to select the fish and override the rod's bite delay
+
+and nine-second timed-click QTE. Default delays are Rusty 7–9 seconds, Sturdy 5–7, and Carbon/other rods 2–4.
+
+The selected fish is fixed for the attempt; omitting caughtItemName uses the engine's default fish selection.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| rodName | `string` |  |
+| x | `number` |  |
+| y | `number` |  |
+| z | `number` |  |
+
+
+### Returns:
+`void \| FishingAttemptOptions \| "preventFish"`
+
+
+
+
+
+
+
+
 
 
 
@@ -549,14 +636,13 @@ Return "preventOpen" to prevent the player from opening the chest
 ### Returns:
 `void \| "preventOpen"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -578,14 +664,41 @@ Return "preventSpawn" to prevent the mob from spawning.
 ### Returns:
 `void \| "preventSpawn"`
 
- 
 
 
 
 
-    
 
- 
+
+
+
+
+
+## onPlayerAttemptSpawnVehicle
+Called when a vehicle is spawned on a player's behalf.
+
+Return "preventSpawn" to prevent the vehicle from spawning.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player |
+| vehicleType | `MeshEntityVehicleType` | The type of vehicle |
+| x | `number` | The potential x coordinate of the vehicle |
+| y | `number` | The potential y coordinate of the vehicle |
+| z | `number` | The potential z coordinate of the vehicle |
+
+
+### Returns:
+`void \| "preventSpawn"`
+
+
+
+
+
+
+
+
 
 
 
@@ -602,9 +715,9 @@ Called after a player successfully buys a shop item
 | userInput | `string` | The user input provided, if the item has a userInput config |
 
 
-    
 
- 
+
+
 
 
 
@@ -618,24 +731,32 @@ Called when a player breaks a mesh entity
 | entityId | `EntityId` | The id of the mesh entity being broken |
 
 
-    
 
- 
+
+
 
 
 
 ## onPlayerChangeBlock
-Called when a player changes a block
+In World Code, called once after all attempt callbacks allow a player block change, before the block is set.
 
-Return "preventChange" to prevent the change.
+The current block and its data are still available. Return "preventChange" to cancel the request.
 
-If player places block, fromBlock will be Air (and toBlock the block).
+Return "preventDrop" to stop the engine item drop, or [x, y, z] to set its position.
 
-If a player breaks a block, toBlock will be Air.
+Drop returns do not skip built-in validation or change notifications; any "preventDrop" takes precedence over a position.
 
-Return "preventDrop" to prevent a block item from dropping.
+A block written here with api.setBlock is preserved, with normal drops/inventory charges unless the request is cancelled.
 
-Return an array to set the dropped item position.
+Cancellation does not undo your own script effects. Built-in change effects run after this callback.
+
+For growing EZ placements this runs at request time only; completion validates again without repeating this callback.
+
+Writing the target yourself completes that EZ request immediately, without delayed growth or a growth refund.
+
+Native games/plugins receive uninterrupted before-commit notifications and must veto in onPlayerAttemptChangeBlock.
+
+When placing, fromBlock is Air, or the slab a matching slab completes. When breaking, toBlock is Air.
 
 ### Parameters:
 | Parameter | Type | Description |
@@ -649,19 +770,19 @@ Return an array to set the dropped item position.
 | droppedItem | `BlockName \| null` | The item that was dropped |
 | fromBlockInfo | `MultiBlockInfo` | The info of the old block that was replaced |
 | toBlockInfo | `MultiBlockInfo` | The info of the new block that was placed |
+| dropsPrevented | `boolean` | Whether earlier notifications prevented drops; false during World Code validation |
 
 
 ### Returns:
 `void \| "preventChange" \| "preventDrop" \| [number, number, number]`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -695,14 +816,13 @@ World code is not permitted to specify chatContent, it will be ignored.
 ### Returns:
 `boolean \| void \| ChatTags \| OnPlayerChatObjectResponse`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -725,9 +845,9 @@ as it'll always be false for touchscreen players.
 | targetEId | `EntityId \| null` |  |
 
 
-    
 
- 
+
+
 
 
 
@@ -750,9 +870,9 @@ Keep in mind wasAltClick will always be false for touchscreen players.
 | targetEId | `EntityId \| null` |  |
 
 
-    
 
- 
+
+
 
 
 
@@ -769,9 +889,9 @@ Called when a player crafts an item
 | craftTimes | `number` | The number of times the craft recipe is used at once (e.g. shift held while crafting) |
 
 
-    
 
- 
+
+
 
 
 
@@ -787,9 +907,9 @@ Called when a player is damaging a mesh entity
 | withItem | `string` | The item used to attack |
 
 
-    
 
- 
+
+
 
 
 
@@ -808,19 +928,19 @@ Return number to change damage dealt to that amount
 | damageDealt | `number` | The amount of damage dealt |
 | withItem | `string` | The item used to attack |
 | damagerDbId | `PlayerDbId` | The database id of the player attacking |
+| damageInfo | `DamageInfo` | What dealt the hit: a melee swing, an explosion, a projectile, etc. |
 
 
 ### Returns:
 `number \| void \| "preventDamage"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -846,19 +966,19 @@ but we pass damagerDbId for use cases where it's important.
 | withItem | `string` | The item used to attack |
 | bodyPartHit | `LifeformBodyPart` | The body part hit |
 | damagerDbId | `PlayerDbId` | The database id of the player attacking |
+| damageInfo | `DamageInfo` | What dealt the hit: a melee swing, an explosion, a projectile, etc. |
 
 
 ### Returns:
 `number \| void \| "preventDamage"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -884,14 +1004,13 @@ Return "allowButNoDroppedItemCreated" to allow discarding items without dropping
 ### Returns:
 `void \| "preventDrop" \| "allowButNoDroppedItemCreated"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -906,9 +1025,9 @@ Called when a player enters a vehicle
 | vehicleEId | `EntityId` | The id of the vehicle |
 
 
-    
 
- 
+
+
 
 
 
@@ -923,9 +1042,33 @@ Called when a player exits a vehicle
 | vehicleEId | `EntityId` | The id of the vehicle |
 
 
-    
 
- 
+
+
+
+
+
+## onPlayerFailedFishCatch
+Called after the fishing QTE fails or its time window expires, after removing the bob/session.
+
+Coordinates are the fishing position captured at water entry. Retracting, switching rods, dying, and leaving cancel silently.
+
+caughtItemName is the item selected for the failed attempt; no reward is given.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| rodName | `string` |  |
+| x | `number` |  |
+| y | `number` |  |
+| z | `number` |  |
+| caughtItemName | `ItemName` |  |
+
+
+
+
+
 
 
 
@@ -941,9 +1084,9 @@ Called when a player finishes charging an item
 | duration | `number` | The duration of the charge |
 
 
-    
 
- 
+
+
 
 
 
@@ -958,9 +1101,9 @@ Called when a player finishes charging an item
 | result | `boolean` |  |
 
 
-    
 
- 
+
+
 
 
 
@@ -974,9 +1117,9 @@ Called when a player joins the lobby
 | fromGameReset | `boolean` | Whether this call is from a game reset (used by SessionBasedGame) |
 
 
-    
 
- 
+
+
 
 
 
@@ -989,9 +1132,9 @@ Called when a player jumps
 | playerId | `string` | The id of the player that jumped |
 
 
-    
 
- 
+
+
 
 
 
@@ -1012,14 +1155,13 @@ Return "preventDrop" to prevent the mob from dropping items
 ### Returns:
 `void \| "preventDrop"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1040,14 +1182,13 @@ Return "keepInventory" to not drop the player's inventory
 ### Returns:
 `void \| "keepInventory"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1061,9 +1202,9 @@ Called when a player leaves the lobby
 | serverIsShuttingDown | `boolean` | Whether the server is shutting down |
 
 
-    
 
- 
+
+
 
 
 
@@ -1091,14 +1232,13 @@ Return "preventChange" to prevent item movement.
 ### Returns:
 `void \| "preventChange"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1117,14 +1257,13 @@ Return "preventChange" to prevent the movement
 ### Returns:
 `void \| "preventChange"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1146,14 +1285,13 @@ Return "preventChange" to prevent the movement
 ### Returns:
 `void \| "preventChange"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1175,14 +1313,13 @@ Return "preventChange" to prevent the movement
 ### Returns:
 `void \| "preventChange"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1200,9 +1337,9 @@ Called when a player opens a chest
 | isIronChest | `boolean` | Whether the chest is an iron chest |
 
 
-    
 
- 
+
+
 
 
 
@@ -1218,9 +1355,9 @@ Called when a player picks up an item
 | itemEntityId | `EntityId` | The entityId of the item that was picked up |
 
 
-    
 
- 
+
+
 
 
 
@@ -1234,9 +1371,9 @@ Called when a player picks up an item
 | emoteId | `string` |  |
 
 
-    
 
- 
+
+
 
 
 
@@ -1248,20 +1385,51 @@ Called when a player is affected by a new potion effect
 |-----------|------|-------------|
 | initiatorId | `string` | The id of the player who initiated the potion effect |
 | targetId | `string` | The id of the player who has started being affected |
-| effectName | `"Damage" \| "Speed" \| "Damage Reduction" \| "Invisible" \| "Jump Boost" \| "Knockback" \| "Poisoned" \| "Slowness" \| "Weakness" \| "Cleansed" \| "Instant Damage" \| "Health Regen" \| "Instant Health" \| "Haste" \| "Shield" \| "Double Jump" \| "Heat Resistance" \| "Thief" \| "X-Ray Vision" \| "Mining Yield" \| "Brain Rot" \| "Aura" \| "Wall Climbing" \| "Air Walk" \| "Pickpocketer" \| "Lifesteal" \| "Bounciness" \| "Blindness" \| "Poopy"` | The name of the potion effect |
+| effectName | `"Damage" \| "Speed" \| "Damage Reduction" \| "Invisible" \| "Jump Boost" \| "Knockback" \| "Poisoned" \| "Slowness" \| "Weakness" \| "Cleansed" \| "Instant Damage" \| "Health Regen" \| "Healing Pulse" \| "Instant Health" \| "Haste" \| "Shield" \| "Double Jump" \| "Heat Resistance" \| "Thief" \| "X-Ray Vision" \| "Mining Yield" \| "Brain Rot" \| "Aura" \| "Wall Climbing" \| "Air Walk" \| "Pickpocketer" \| "Lifesteal" \| "Bounciness" \| "Blindness" \| "Poopy" \| "Glowing" \| "Night Vision"` | The name of the potion effect |
 
 
 ### Returns:
 `void \| "preventEffect"`
 
- 
 
 
 
 
-    
 
- 
+
+
+
+
+
+## onPlayerPressedButton
+Called when a player presses a custom button
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player pressing the button |
+| buttonId | `string` | The id of the button pressed |
+
+
+
+
+
+
+
+
+## onPlayerReleasedButton
+Called when a player releases a custom button
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player releasing the button |
+| buttonId | `string` | The id of the button released |
+
+
+
+
+
 
 
 
@@ -1278,9 +1446,9 @@ Called when a player requests a chunk
 | chunkId | `string` | The id of the chunk being requested |
 
 
-    
 
- 
+
+
 
 
 
@@ -1298,9 +1466,9 @@ api.setSelectedInventorySlotI so be careful not to cause an infinite loop doing 
 | slotIndex | `number` | The index of the inventory slot that was selected |
 
 
-    
 
- 
+
+
 
 
 
@@ -1320,9 +1488,29 @@ Called when a mob is spawned by a player
 | playSoundOnSpawn | `boolean` | Whether to play a sound on spawn |
 
 
-    
 
- 
+
+
+
+
+
+## onPlayerSpawnVehicle
+Called when a vehicle is spawned by a player, e.g. by placing a boat
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player who spawned the vehicle |
+| vehicleEId | `EntityId` | The id of the vehicle |
+| vehicleType | `MeshEntityVehicleType` | The type of vehicle |
+| x | `number` | The x coordinate of the vehicle |
+| y | `number` | The y coordinate of the vehicle |
+| z | `number` | The z coordinate of the vehicle |
+
+
+
+
+
 
 
 
@@ -1339,14 +1527,48 @@ Called when a player starts charging an item
 ### Returns:
 `void \| "preventCharge"`
 
- 
 
 
 
 
-    
 
- 
+
+
+
+
+
+## onPlayerSucceededFishCatch
+Called after the fishing QTE succeeds and the bob/session have been removed.
+
+Coordinates are the fishing position captured at water entry. caughtItemName is the item selected for the attempt.
+
+Returning nothing gives one of that item, or drops it if the inventory is full.
+
+Return "preventDrop" to suppress the default reward and award custom catches here instead.
+
+Return "preventItemGrant" to deliver the item yourself while keeping the default catch effects.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| rodName | `string` |  |
+| x | `number` |  |
+| y | `number` |  |
+| z | `number` |  |
+| caughtItemName | `ItemName` |  |
+
+
+### Returns:
+`void \| "preventDrop" \| "preventItemGrant"`
+
+
+
+
+
+
+
+
 
 
 
@@ -1364,14 +1586,13 @@ Return "preventChange" to prevent the swap
 ### Returns:
 `void \| "preventChange"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1386,9 +1607,9 @@ Called when a player's thrown projectile hits the terrain
 | thrownEntityId | `EntityId` | The id of the entity which hit the terrain |
 
 
-    
 
- 
+
+
 
 
 
@@ -1402,9 +1623,9 @@ Called when a player opens or closes the shop menu
 | isOpen | `boolean` | Whether the shop menu is now open |
 
 
-    
 
- 
+
+
 
 
 
@@ -1419,9 +1640,9 @@ Called when a player uses a throwable item
 | thrownEntityId | `EntityId` | The id of the projectile created by the player |
 
 
-    
 
- 
+
+
 
 
 
@@ -1445,14 +1666,13 @@ as they could pick up their old items or hit the player they were fighting).
 ### Returns:
 `true \| void \| number[]`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1471,14 +1691,13 @@ Called when a player claims a task
 ### Returns:
 `any`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1496,9 +1715,74 @@ Called for both touchDown and touchUp
 | touchDown | `boolean` | Whether the touchscreen action button was pressed or released |
 
 
-    
 
- 
+
+
+
+
+
+## onUiRequestResponded
+Called when a player responds to a UI request.
+
+
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player responding to the UI request. |
+| id | `UiRequestId` | The id of the UI request. |
+| response | `boolean` | The response to the UI request. |
+
+
+
+
+
+
+
+
+## onVehicleDespawned
+Called when a vehicle is despawned
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| vehicleEId | `EntityId` | The id of the vehicle despawned |
+| vehicleType | `MeshEntityVehicleType` | The type of vehicle despawned |
+
+
+
+
+
+
+
+
+## onWorldAttemptChangeBlock
+Called before the world changes a block.
+
+Return "preventChange" to stop it. Then onWorldChangeBlock will not run.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| x | `number` | The block's x coordinate |
+| y | `number` | The block's y coordinate |
+| z | `number` | The block's z coordinate |
+| fromBlock | `BlockName` | The current block |
+| toBlock | `BlockName` | The proposed block |
+| initiatorDbId | `string \| null` | The player who caused the change, or null for game code |
+| extraInfo | `WorldBlockChangedInfo` | More information about the change |
+
+
+### Returns:
+`void \| "preventChange"`
+
+
+
+
+
+
+
+
 
 
 
@@ -1516,14 +1800,13 @@ Return "preventDespawn" to prevent the mob from despawning.
 ### Returns:
 `void \| "preventDespawn"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1544,25 +1827,55 @@ Return "preventSpawn" to prevent the mob from spawning.
 ### Returns:
 `void \| "preventSpawn"`
 
- 
 
 
 
 
-    
 
- 
+
+
+
+
+
+## onWorldAttemptSpawnVehicle
+Called when the world attempts to spawn a vehicle.
+
+Return "preventSpawn" to prevent the vehicle from spawning.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| vehicleType | `MeshEntityVehicleType` | The type of vehicle |
+| x | `number` | The potential x coordinate of the vehicle |
+| y | `number` | The potential y coordinate of the vehicle |
+| z | `number` | The potential z coordinate of the vehicle |
+
+
+### Returns:
+`void \| "preventSpawn"`
+
+
+
+
+
+
+
+
 
 
 
 ## onWorldChangeBlock
-Called when a block is changed in the world
+In World Code, called after all attempt callbacks allow a world block change, before the block is set.
 
-initiatorDbId is null if updated by game code e.g. when a sapling grows
+Read the old block/data here; return "preventChange" to cancel the request, or "preventDrop" to stop its engine item drop.
 
-Return "preventChange" to prevent change
+Drop prevention does not skip built-in validation or change notifications.
 
-Return "preventDrop" to prevent a block item from dropping
+Blocks/data written here are preserved. Cancelling the original request does not undo your script effects.
+
+Native games/plugins receive uninterrupted before-commit notifications and must veto in onWorldAttemptChangeBlock.
+
+initiatorDbId is null for game code, such as a growing sapling.
 
 ### Parameters:
 | Parameter | Type | Description |
@@ -1574,19 +1887,19 @@ Return "preventDrop" to prevent a block item from dropping
 | toBlock | `BlockName` | The new block that was placed |
 | initiatorDbId | `string \| null` | The id of the player who updated the block |
 | extraInfo | `WorldBlockChangedInfo` | Extra info about the block change |
+| dropsPrevented | `boolean` | Whether earlier notifications prevented drops; false during World Code validation |
 
 
 ### Returns:
 `void \| "preventChange" \| "preventDrop"`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1605,9 +1918,28 @@ Called when a mob is spawned by the world
 | playSoundOnSpawn | `boolean` | Whether to play a sound on spawn |
 
 
-    
 
- 
+
+
+
+
+
+## onWorldSpawnVehicle
+Called when a vehicle is spawned by the world
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| vehicleEId | `EntityId` | The id of the vehicle |
+| vehicleType | `MeshEntityVehicleType` | The type of vehicle |
+| x | `number` | The x coordinate of the vehicle |
+| y | `number` | The y coordinate of the vehicle |
+| z | `number` | The z coordinate of the vehicle |
+
+
+
+
+
 
 
 
@@ -1624,14 +1956,13 @@ Called when a player sends a command
 ### Returns:
 `boolean`
 
- 
 
 
 
 
-    
 
- 
+
+
 
 
 
@@ -1644,7 +1975,7 @@ Called every tick, 20 times per second
 | ms | `number` | The fixed timestep, can be used as "milliseconds since last tick" |
 
 
-    
 
- 
+
+
 

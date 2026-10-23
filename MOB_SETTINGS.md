@@ -54,16 +54,15 @@ Here is the full list of available mob settings:
 **Example:**
 ```ts
 {
-  "Helmet": {
-    itemName: "Diamond Helmet",
-    enchantmentTier: "Tier 5",
-  },
-  "Boots": {
-    itemName: "Iron Boots",
-  },
+	"Helmet": {
+		itemName: "Diamond Helmet",
+		enchantmentTier: "Tier 5",
+	},
+	"Boots": {
+		itemName: "Iron Boots",
+	},
 }
 ```
-
 
 
 
@@ -75,15 +74,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## attackEffectDuration
 
 **Type:** `number`
 
 **Example:** `0`
-
-
 
 
 
@@ -95,15 +90,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## attackImpulse
 
 **Type:** `number`
 
 **Example:** `0`
-
-
 
 
 
@@ -115,15 +106,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## attackItemName
 
 **Type:** `string`
 
 **Example:** `null`
-
-
 
 
 
@@ -135,15 +122,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## attackSound
 
 **Type:** `string`
 
 **Example:** `null`
-
-
 
 
 
@@ -155,15 +138,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## baseJumpImpulseY
 
 **Type:** `number`
 
 **Example:** `0`
-
-
 
 
 
@@ -175,8 +154,6 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## baseWalkingSpeed
 
 **Type:** `number`
@@ -184,6 +161,21 @@ Here is the full list of available mob settings:
 **Example:** `3.5`
 
 
+
+## bridgeInfo
+
+**Type:** `MobBridgeInfo`
+
+**Example:**
+```ts
+{
+	blockToPlace: "Grass",
+	mustBeGrounded: false,
+	yOffset: -1,
+}
+```
+
+Makes the mob lay blocks into the world as it moves. If msToDecay is set to a number, and a |Decaying variant exists for `blockToPlace`, the trail/bridge will turn into air after `msToDecay` milliseconds.
 
 
 
@@ -195,8 +187,6 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## chargeSpecialAttackInfo
 
 **Type:** `MobChargeSpecialAttackInfo`
@@ -205,15 +195,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## chaseRadius
 
 **Type:** `number`
 
 **Example:** `0`
-
-
 
 
 
@@ -240,8 +226,6 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## evadeInfo
 
 **Type:** `MobEvadeInfo`
@@ -258,15 +242,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## healthRegen
 
 **Type:** ` { amount: number; interval: number; startAfter: number; } `
 
 **Example:** `null`
-
-
 
 
 
@@ -278,15 +258,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## heldItemName
 
 **Type:** `string`
 
 **Example:** `null`
-
-
 
 
 
@@ -298,15 +274,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## hurtSound
 
 **Type:** `string`
 
 **Example:** `"pigHurt"`
-
-
 
 
 
@@ -318,15 +290,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## initialHealth
 
 **Type:** `number`
 
 **Example:** `75`
-
-
 
 
 
@@ -338,15 +306,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## isRideable
 
 **Type:** `boolean`
 
 **Example:** `false`
-
-
 
 
 
@@ -358,15 +322,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## jumpMultiplier
 
 **Type:** `number`
 
 **Example:** `1`
-
-
 
 
 
@@ -378,15 +338,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## maxFollowingRadius
 
 **Type:** `number`
 
 **Example:** `12`
-
-
 
 
 
@@ -398,15 +354,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## metaInfo
 
 **Type:** `string`
 
 **Example:** `""`
-
-
 
 
 
@@ -418,15 +370,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## name
 
 **Type:** `string`
 
 **Example:** `""`
-
-
 
 
 
@@ -438,11 +386,9 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## onDeathItemDrops
 
-**Type:** ` { itemName: string; probabilityOfDrop: number; dropMinAmount: number; dropMaxAmount: number; applyBurstImpulseToDrop?: boolean; }[] `
+**Type:** ` { itemName: string; probabilityOfDrop?: number; dropMinAmount?: number; dropMaxAmount?: number; applyBurstImpulseToDrop?: boolean; }[] `
 
 **Example:** 
 ```ts
@@ -458,15 +404,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## onDeathParticleTexture
 
 **Type:** `string`
 
 **Example:** `"critical_hit"`
-
-
 
 
 
@@ -478,15 +420,11 @@ Here is the full list of available mob settings:
 
 
 
-
-
 ## ownerDbId
 
 **Type:** `string`
 
 **Example:** `null`
-
-
 
 
 
@@ -508,15 +446,11 @@ bonusesGained: [],
 
 
 
-
-
 ## rangedAttackInaccuracy
 
 **Type:** `number`
 
 **Example:** `0`
-
-
 
 
 
@@ -528,8 +462,6 @@ bonusesGained: [],
 
 
 
-
-
 ## runAwayRadius
 
 **Type:** `number`
@@ -537,6 +469,53 @@ bonusesGained: [],
 **Example:** `0`
 
 
+
+## runningJumpInfo
+
+**Type:** `MobJumpLocomotionInfo`
+
+**Example:** 
+```ts
+{
+	// Combat / following: hop toward the target on a rested cadence (no slides, base speed 0).
+	intervalBounds: { min: 600, max: 1_000 },
+}
+```
+
+
+
+## runningRandomFacingInfo
+
+**Type:** `MobRandomFacingInfo`
+
+**Example:**
+```ts
+{
+	// Cosmetic only (via baseRenderHeading): jitter +-30 degrees, each equally likely, so it's harder to tell which way it's heading.
+	offsets: [
+		{ offset: Math.PI / 6, weight: 0.5 },
+		{ offset: -Math.PI / 6, weight: 0.5 },
+	],
+	intervalBounds: { min: 1_000, max: 2_500 },
+}
+```
+
+
+
+## runningSlideInfo
+
+**Type:** `MobSlideLocomotionInfo`
+
+**Example:**
+```ts
+{
+	// A combat dash to close on a target: initial speed = impulse / mass.
+	impulse: 8,
+	friction: 0.1,
+	durationBounds: { min: 500, max: 900 },
+	intervalBounds: { min: 1_000, max: 2_000 },
+}
+```
 
 
 
@@ -548,15 +527,11 @@ bonusesGained: [],
 
 
 
-
-
 ## secondaryAttackDamage
 
 **Type:** `number`
 
 **Example:** `0`
-
-
 
 
 
@@ -568,15 +543,11 @@ bonusesGained: [],
 
 
 
-
-
 ## secondaryAttackItemName
 
 **Type:** `string`
 
 **Example:** `null`
-
-
 
 
 
@@ -588,15 +559,11 @@ bonusesGained: [],
 
 
 
-
-
 ## secondaryAttackSound
 
 **Type:** `string`
 
 **Example:** `null`
-
-
 
 
 
@@ -608,15 +575,11 @@ bonusesGained: [],
 
 
 
-
-
 ## stoppingRadius
 
 **Type:** `number`
 
 **Example:** `0.5`
-
-
 
 
 
@@ -628,15 +591,11 @@ bonusesGained: [],
 
 
 
-
-
 ## swingArmOnSecondaryAttack
 
 **Type:** `boolean`
 
 **Example:** `true`
-
-
 
 
 
@@ -710,14 +669,11 @@ Taming configuration for this mob type. Includes tame items, probability, saddle
 
 
 
-
 ## territoryRadius
 
 **Type:** `number`
 
 **Example:** `0`
-
-
 
 
 
@@ -729,6 +685,56 @@ Taming configuration for this mob type. Includes tame items, probability, saddle
 
 
 
+## walkingJumpInfo
+
+**Type:** `MobJumpLocomotionInfo`
+
+**Example:** 
+```ts
+{
+	// Wander hops; paired with walkingSlideInfo below for a lively mix of hops and slower slides.
+	intervalBounds: { min: 600, max: 1_500 },
+}
+```
+
+
+
+## walkingRandomFacingInfo
+
+**Type:** `MobRandomFacingInfo`
+
+**Example:** 
+```ts
+{
+	// Cosmetic only (via baseRenderHeading): face mostly backwards, sometimes sideways, occasionally forwards.
+	offsets: [
+		{ offset: Math.PI, weight: 0.5 },
+		{ offset: Math.PI / 2, weight: 0.15 },
+		{ offset: (3 * Math.PI) / 2, weight: 0.15 },
+		{ offset: 0, weight: 0.2 },
+	],
+	intervalBounds: { min: 2_000, max: 5_000 },
+}
+```
+
+
+
+## walkingSlideInfo
+
+**Type:** `MobSlideLocomotionInfo`
+
+**Example:** 
+```ts
+{
+	// Initial slide speed = impulse / mass; friction (far below the default mob 1.5) governs the coast.
+	impulse: 6,
+	friction: 0.1,
+	durationBounds: { min: 850, max: 1_500 },
+	// Longer interval bounds for sliding than hopping makes hopping the dominant behaviour.
+	intervalBounds: { min: 1_500, max: 3_000 },
+}
+```
+
 
 
 ## walkingSpeedMultiplier
@@ -736,8 +742,6 @@ Taming configuration for this mob type. Includes tame items, probability, saddle
 **Type:** `number`
 
 **Example:** `1`
-
-
 
 
 
@@ -772,8 +776,6 @@ Taming configuration for this mob type. Includes tame items, probability, saddle
 
 
 
-
-
 ## Mob Variations
 
 Some mob types support variations other than just `"default"`:
@@ -784,9 +786,10 @@ Pig: "default"
 Cow: "default", "cream"
 Sheep: "default", "black", "red", "orange", "pink", "purple", "yellow", "blue", "brown", "cyan", "gray", "green", "lightBlue", "lightGray", "lime", "magenta"
 Horse: "default", "black", "brown", "cream"
+Camel: "default", "brown"
 Slime: "default"
-Cave Golem: "default", "iron"
-Draugr Zombie: "default", "longHairChestplate", "longHairClothed", "shortHairClothed"
+Cave Golem: "default", "iron", "corrupted"
+Draugr Zombie: "default", "longHairChestplate", "longHairClothed", "shortHairClothed", "flower", "flower2", "mushroom", "vine", "vine2", "corrupted", "corrupted2"
 Draugr Skeleton: "default"
 Frost Golem: "default"
 Frost Zombie: "default", "longHairChestplate", "shortHairClothed"
@@ -807,11 +810,20 @@ Spirit Bear: "default"
 Spirit Stag: "default"
 Spirit Gorilla: "default"
 Draugr Warper: "default"
-Frost Wraith: "default"
+Frost Wraith: "default", "tattered", "frostKing", "accursed"
 Draugr Reaver: "default"
 Stalker: "default", "crimson", "frost", "void"
 Crone: "default"
-NPC: "default", "emma", "leo", "isabel", "sanjay", "imara", "enoch", "sara", "carmen"
+Iron Guardian: "default"
+Gold Guardian: "default"
+Diamond Guardian: "default"
+Moonstone Guardian: "default"
+Iron Goofy Golem: "default", "flaking", "patchy", "shedding", "bare", "stone"
+Gold Goofy Golem: "default", "flaking", "patchy", "shedding", "bare", "stone"
+Diamond Goofy Golem: "default", "flaking", "patchy", "shedding", "bare", "stone"
+Moonstone Goofy Golem: "default", "flaking", "patchy", "shedding", "bare", "stone"
+Tiki Terror: "default", "titan", "tormentor", "tyrant"
+NPC: "default", "emma", "leo", "isabel", "sanjay", "imara", "enoch", "sara", "carmen", "chef"
 Bobino Musculino: "default"
 Capitano Explovissimo: "default"
 ```

@@ -9,9 +9,9 @@ api.sendMessage(playerId, [{ icon: "fa-solid fa-star", style: { color: "gold" } 
 
 > **Prefer Bloxd-native icons:** For the best visual consistency with Bloxd's theme, use **item names** (see ITEM_NAMES.txt), **block names** (see BLOCK_NAMES.txt), or **ingame icons** (below) wherever possible. These are designed specifically for Bloxd and will look more cohesive. Only fall back to Font Awesome icons when no Bloxd-native option fits your use case.
 
-## Ingame Icons (89 icons)
+## Ingame Icons (93 icons)
 
-See the `IngameIconName` type in the Glossary.
+These are the values of the `IngameIconName` type.
 
 ```
 Damage
@@ -27,6 +27,7 @@ Poisoned
 Slowness
 Weakness
 Health Regen
+Healing Pulse
 Haste
 Double Jump
 Heat Resistance
@@ -54,6 +55,9 @@ Air Walk
 Wall Climbing
 Thorns
 Poopy
+Glowing
+Night Vision
+Irradiated
 Draugr Knight Head
 Draugr Warper Head
 Magma Golem Head
@@ -107,7 +111,7 @@ Trader Piggy
 
 ---
 
-## Font Awesome Icons (196 icons)
+## Font Awesome Icons (208 icons)
 
 Use with `fa-solid`, `fa-regular`, or `fa-duotone` prefix. Only use these when no Bloxd-native icon fits.
 
@@ -117,6 +121,7 @@ fa-solid fa-angle-double-up
 fa-solid fa-angle-down
 fa-solid fa-angle-up
 fa-solid fa-angles-up
+fa-solid fa-arrow-left
 fa-solid fa-arrow-up
 fa-solid fa-arrow-up-right-from-square
 fa-solid fa-arrows
@@ -128,10 +133,12 @@ fa-solid fa-award
 fa-solid fa-backpack
 fa-solid fa-bars
 fa-solid fa-bee
+fa-solid fa-bell
 fa-solid fa-block-question
 fa-solid fa-bolt
 fa-solid fa-boot
 fa-solid fa-calendar
+fa-solid fa-caret-down
 fa-solid fa-caret-up
 fa-solid fa-cart-shopping
 fa-solid fa-check
@@ -141,6 +148,7 @@ fa-solid fa-child-reaching
 fa-solid fa-circle-check
 fa-solid fa-circle-info
 fa-solid fa-circle-plus
+fa-solid fa-circle-question
 fa-solid fa-circle-xmark
 fa-solid fa-clock-rotate-left
 fa-solid fa-cog
@@ -205,12 +213,14 @@ fa-solid fa-history
 fa-solid fa-hourglass
 fa-solid fa-hourglass-clock
 fa-solid fa-hourglass-empty
+fa-solid fa-house
 fa-solid fa-icons
 fa-solid fa-image
 fa-solid fa-image-slash
 fa-solid fa-info-circle
 fa-solid fa-joystick
 fa-solid fa-layer-group
+fa-solid fa-left-from-bracket
 fa-solid fa-lightbulb
 fa-solid fa-list
 fa-solid fa-list-squares
@@ -233,6 +243,7 @@ fa-solid fa-palette
 fa-solid fa-pants
 fa-solid fa-party-horn
 fa-solid fa-paste
+fa-solid fa-pause
 fa-solid fa-pen
 fa-solid fa-pen-field
 fa-solid fa-pen-to-square
@@ -246,6 +257,7 @@ fa-solid fa-play
 fa-solid fa-plus
 fa-solid fa-plus-circle
 fa-solid fa-power-off
+fa-solid fa-ranking-star
 fa-solid fa-recycle
 fa-solid fa-redo-alt
 fa-solid fa-refresh
@@ -263,11 +275,14 @@ fa-solid fa-shirt
 fa-solid fa-shoe
 fa-solid fa-shopping-cart
 fa-solid fa-sign-out-alt
+fa-solid fa-skull
 fa-solid fa-smile
 fa-solid fa-snowflake
+fa-solid fa-sparkle
 fa-solid fa-square-dashed
 fa-solid fa-square-minus
 fa-solid fa-star
+fa-solid fa-star-christmas
 fa-solid fa-store
 fa-solid fa-subtract
 fa-solid fa-swords
@@ -285,6 +300,7 @@ fa-solid fa-up-from-bracket
 fa-solid fa-upload
 fa-solid fa-user
 fa-solid fa-user-astronaut
+fa-solid fa-user-check
 fa-solid fa-user-friends
 fa-solid fa-user-group
 fa-solid fa-user-group-crown
@@ -310,7 +326,7 @@ fa-solid fa-xmark
 fa-solid fa-zap
 ```
 
-## Brand Icons (9 icons)
+## Brand Icons (10 icons)
 
 ```
 fa-solid fa-brands fa-apple
@@ -319,6 +335,7 @@ fa-solid fa-brands fa-google-play
 fa-solid fa-brands fa-instagram
 fa-solid fa-brands fa-reddit-alien
 fa-solid fa-brands fa-tiktok
+fa-solid fa-brands fa-twitch
 fa-solid fa-brands fa-windows
 fa-solid fa-brands fa-x-twitter
 fa-solid fa-brands fa-youtube

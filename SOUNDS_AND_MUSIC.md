@@ -22,11 +22,11 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 - `soundName`: One of the sound names listed below
 - `volume`: 0.0 to 1.0
 - `rate`: Playback rate (1.0 = normal speed, 0.5 = half speed, 2.0 = double speed)
-- `posSettings` (optional): `{ playerIdOrPos: PlayerId | number[], maxHearDist?: number, refDistance?: number }`
+- `posSettings` (optional): `{ playerIdOrPos: EntityId | number[], maxHearDist?: number, refDistance?: number }`
 
 **Tip:** If you want a random similar sound, remove the number suffix from the sound name (e.g., use `"grass"` instead of `"grass1"`).
 
-### Available Sounds (346 total)
+### Available Sounds (397 total)
 
 #### crowd
 `crowdAmbience`
@@ -700,6 +700,112 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
  
 
+#### rpg
+`rpgBeltCloth1`
+
+`rpgBeltCloth2`
+
+`rpgBeltHandle1`
+
+`rpgBeltHandle2`
+
+`rpgBookClose`
+
+`rpgBookFlip1`
+
+`rpgBookFlip2`
+
+`rpgBookFlip3`
+
+`rpgBookOpen`
+
+`rpgBookPlace1`
+
+`rpgBookPlace2`
+
+`rpgBookPlace3`
+
+`rpgChop`
+
+`rpgCloth1`
+
+`rpgCloth2`
+
+`rpgCloth3`
+
+`rpgCloth4`
+
+`rpgCreak1`
+
+`rpgCreak2`
+
+`rpgCreak3`
+
+`rpgDoorClose1`
+
+`rpgDoorClose2`
+
+`rpgDoorClose3`
+
+`rpgDoorClose4`
+
+`rpgDoorOpen1`
+
+`rpgDoorOpen2`
+
+`rpgDrawKnife1`
+
+`rpgDrawKnife2`
+
+`rpgDrawKnife3`
+
+`rpgDropLeather`
+
+`rpgFootstep00`
+
+`rpgFootstep01`
+
+`rpgFootstep02`
+
+`rpgFootstep03`
+
+`rpgFootstep04`
+
+`rpgFootstep05`
+
+`rpgFootstep06`
+
+`rpgFootstep07`
+
+`rpgFootstep08`
+
+`rpgFootstep09`
+
+`rpgHandleCoins1`
+
+`rpgHandleCoins2`
+
+`rpgHandleSmallLeather1`
+
+`rpgHandleSmallLeather2`
+
+`rpgKnifeSlice1`
+
+`rpgKnifeSlice2`
+
+`rpgMetalClick`
+
+`rpgMetalLatch`
+
+`rpgMetalPot1`
+
+`rpgMetalPot2`
+
+`rpgMetalPot3`
+
+
+ 
+
 #### step
 `hit1`
 
@@ -800,7 +906,7 @@ api.setClientOption(playerId, "music", null)
 
 **Note:** Unlike sound effects, songs are played via client options, not the `playSound` API. Only one song plays at a time per player; setting a new song replaces the current one.
 
-### Available Songs (44 total)
+### Available Songs (45 total)
 
 | Song Name | Duration |
 |-----------|----------|
@@ -848,3 +954,4 @@ api.setClientOption(playerId, "music", null)
 | `Epic2` | 2:23 |
 | `Emotional Epic` | 1:52 |
 | `Enemy Marked` | 1:29 |
+| `spooky` | 2:07 |

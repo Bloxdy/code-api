@@ -44,7 +44,7 @@ The following skin parts can be customised: `skin`, `hat`, `head`, `eyebrows`, `
 
 ---
 
-## NPC Skins (12 skins)
+## NPC Skins (14 skins)
 
 These are special full-body skins typically used for NPCs. Apply them via the `head` part:
 
@@ -56,10 +56,12 @@ api.changePlayerIntoSkin(playerId, "head", "wizard")
 chef
 farmer
 farmer_gill
+general
 monster_hunter_lorenzo
 painter_spencer
 piggy_banker
 portal_mage
+tentacle_guy
 trader
 trader_black
 trader_blue
@@ -101,9 +103,9 @@ zombie
 
 `legs_0_0, legs_0_1, legs_0_2, legs_0_3, legs_0_4, legs_1_0, legs_1_1, legs_1_2, legs_1_3, legs_1_4, legs_2_0, legs_2_1, legs_2_2, legs_2_3, legs_2_4`
 
-## Shoes (9 skins)
+## Shoes (10 skins)
 
-`shoes_0_0, shoes_0_1, shoes_0_2, shoes_1_0, shoes_1_1, shoes_1_2, shoes_2_0, shoes_2_1, shoes_2_2`
+`shoes_none, shoes_0_0, shoes_0_1, shoes_0_2, shoes_1_0, shoes_1_1, shoes_1_2, shoes_2_0, shoes_2_1, shoes_2_2`
 
 ---
 
@@ -111,4 +113,4 @@ zombie
 
 - Skin names ending with `_none` are internal variants and cannot be used via the API.
 - Skin variants follow the pattern `{part}_{style}_{colour}` (e.g., `body_0_0`, `head_1_2`).
-- NPC skins apply a complete character appearance and override individual part selections.
+- NPC skins apply a complete character appearance through the head part. Person mesh entities also apply the skin's configured default layers; explicit `textures` slots override those defaults.

@@ -50,8 +50,6 @@ Here is the full list of available client options:
 
 **Default:** `1`
 
-
-
 Amount of acceleration to apply to airborne players.
 
  Only change if absolutely necessary i.e. Rocket Obby uses 0.25.
@@ -71,8 +69,6 @@ Amount of acceleration to apply to airborne players.
 **Type:** `number`
 
 **Default:** `1`
-
-
 
 Amount of friction to apply to airborne players.
 
@@ -94,8 +90,6 @@ Amount of friction to apply to airborne players.
 
 **Default:** `0`
 
-
-
 Amount of air jumps the player has
 
  
@@ -107,8 +101,6 @@ Amount of air jumps the player has
 **Type:** `boolean`
 
 **Default:** `false`
-
-
 
 Whether to allow the player to strafe and conserve momentum while airborne.
 
@@ -130,8 +122,6 @@ Whether to allow the player to strafe and conserve momentum while airborne.
 
 **Default:** `null`
 
-
-
 Ambient (absence of sky light) colour override - hex string e.g. #ffffff.
 
  
@@ -143,8 +133,6 @@ Ambient (absence of sky light) colour override - hex string e.g. #ffffff.
 **Type:** `number`
 
 **Default:** `6000`
-
-
 
 Duration of arrow potion effects
 
@@ -158,8 +146,6 @@ Duration of arrow potion effects
 
 **Default:** `100`
 
-
-
 How much Aura XP is required per level.
 
  
@@ -172,8 +158,6 @@ How much Aura XP is required per level.
 
 **Default:** `false`
 
-
-
 If true, player will respawn automatically after secsToRespawn seconds
 
  
@@ -185,8 +169,6 @@ If true, player will respawn automatically after secsToRespawn seconds
 **Type:** `number`
 
 **Default:** `0`
-
-
 
 How much the player bounces off of solid blocks.
 
@@ -202,8 +184,6 @@ How much the player bounces off of solid blocks.
 
 **Default:** `1.3`
 
-
-
 Maximum multiplier for jump height when bunnyhopping
 
  
@@ -215,8 +195,6 @@ Maximum multiplier for jump height when bunnyhopping
 **Type:** `[number, number, number]`
 
 **Default:** `[0, 0, 0]`
-
-
 
 Offsets the third-person camera from it's origin by [x, y, z] world units
 
@@ -230,8 +208,6 @@ Offsets the third-person camera from it's origin by [x, y, z] world units
 
 **Default:** `0`
 
-
-
 Roll angle of the camera in radians. Useful for disorientation effects, death effects, etc.
 
  
@@ -243,8 +219,6 @@ Roll angle of the camera in radians. Useful for disorientation effects, death ef
 **Type:** `number`
 
 **Default:** `0`
-
-
 
 Duration in ms to animate/transition to the camera roll angle (when you change cameraRoll). 0 = instant.
 
@@ -260,8 +234,6 @@ Duration in ms to animate/transition to the camera roll angle (when you change c
 
 **Default:** `[0, 0, 0]`
 
-
-
 Rotates the third-person camera around it's origin by [x, y, z] radians
 
  
@@ -273,8 +245,6 @@ Rotates the third-person camera around it's origin by [x, y, z] radians
 **Type:** `[number, number, number, number]`
 
 **Default:** `null`
-
-
 
 RGBA array [r, g, b, a] for camera screen tint effect. Values fall between 0 and 1.
 
@@ -288,8 +258,6 @@ RGBA array [r, g, b, a] for camera screen tint effect. Values fall between 0 and
 
 **Default:** `true`
 
-
-
 Whether the player can use the alt action key (right click on PC)
 
  
@@ -301,8 +269,6 @@ Whether the player can use the alt action key (right click on PC)
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether the player can change blocks
 
@@ -316,8 +282,6 @@ Whether the player can change blocks
 
 **Default:** `false`
 
-
-
 Whether the player can climb walls
 
  
@@ -329,8 +293,6 @@ Whether the player can climb walls
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether to allow the player to craft items
 
@@ -346,8 +308,6 @@ Whether to allow the player to craft items
 
 **Default:** `true`
 
-
-
 Whether the player can crouch
 
  
@@ -360,9 +320,23 @@ Whether the player can crouch
 
 **Default:** `true`
 
-
-
 Whether the player can customise their character
+
+ 
+
+
+
+## canFish
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+Whether to allow players to fish with the default
+
+ fishing gameplay in Bloxd. Disable this if you want
+
+ to write custom (non-QTE) fishing mechanics
 
  
 
@@ -373,8 +347,6 @@ Whether the player can customise their character
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether the player can pick blocks (middle mouse click on PC), ignored if creative is false
 
@@ -388,9 +360,19 @@ Whether the player can pick blocks (middle mouse click on PC), ignored if creati
 
 **Default:** `true`
 
-
-
 Whether to allow the player to pick up items
+
+ 
+
+
+
+## canRecordReplays
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+When false, players can't record replays or save clips. Turning it off mid-game discards any recording in progress. Set it for the whole game, not per area: chunks load before players reach them, and turning it back on lets new clips include every loaded chunk.
 
  
 
@@ -401,8 +383,6 @@ Whether to allow the player to pick up items
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether the player can see name tags through walls
 
@@ -416,8 +396,6 @@ Whether the player can see name tags through walls
 
 **Default:** `null`
 
-
-
 Error message for when the player fails to break a block
 
  
@@ -429,8 +407,6 @@ Error message for when the player fails to break a block
 **Type:** `string | CustomTextStyling`
 
 **Default:** `null`
-
-
 
 Error message for when the player fails to place a block
 
@@ -444,8 +420,6 @@ Error message for when the player fails to place a block
 
 **Default:** `"You cannot modify this block"`
 
-
-
 Error message for when the player fails to change a block
 
  
@@ -457,8 +431,6 @@ Error message for when the player fails to change a block
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether the player can use the zoom key
 
@@ -472,8 +444,6 @@ Whether the player can use the zoom key
 
 **Default:** `null`
 
-
-
 Allows player to select a channel that is passed as argument to onPlayerChat. See engineGameplayTypes.ts for expected format
 
  
@@ -485,8 +455,6 @@ Allows player to select a channel that is passed as argument to onPlayerChat. Se
 **Type:** `string | number | number[]`
 
 **Default:** `[0, 0, 0]`
-
-
 
 The target the compass will point towards
 
@@ -500,8 +468,6 @@ The target the compass will point towards
 
 **Default:** `false`
 
-
-
 Whether the player is in creative mode
 
  
@@ -514,8 +480,6 @@ Whether the player is in creative mode
 
 **Default:** `""`
 
-
-
 Text to display by the crosshair
 
  
@@ -527,8 +491,6 @@ Text to display by the crosshair
 **Type:** `number`
 
 **Default:** `2`
-
-
 
 Speed multiplier for the player when crouching.
 
@@ -548,11 +510,33 @@ Speed multiplier for the player when crouching.
 
 **Default:** `2`
 
-
-
 Mult for the radius within which mobs can detect the player when crouching.
 
  If a player's mult is 2, then mobs will think they are twice as far away.
+
+ 
+
+
+
+## customButtons
+
+**Type:** `CustomButtonsType`
+
+**Default:** `null`
+
+Custom buttons to show in game
+
+ 
+
+
+
+## customVariationTitle
+
+**Type:** `string`
+
+**Default:** `""`
+
+Overridden subtitle after the game name in the top-left header.
 
  
 
@@ -563,8 +547,6 @@ Mult for the radius within which mobs can detect the player when crouching.
 **Type:** `number`
 
 **Default:** `1`
-
-
 
 Mult for when the player hits neither a leg or a head. Only applies to guns
 
@@ -578,8 +560,6 @@ Mult for when the player hits neither a leg or a head. Only applies to guns
 
 **Default:** `1.75`
 
-
-
 Damage multiplier for when the player hits a head. Only applies to guns
 
  
@@ -591,8 +571,6 @@ Damage multiplier for when the player hits a head. Only applies to guns
 **Type:** `number`
 
 **Default:** `1`
-
-
 
 Damage multiplier for when the player hits a leg. Only applies to guns
 
@@ -606,8 +584,6 @@ Damage multiplier for when the player hits a leg. Only applies to guns
 
 **Default:** `1`
 
-
-
 Damage multiplier for all types of damage
 
  
@@ -620,9 +596,34 @@ Damage multiplier for all types of damage
 
 **Default:** `"Block of Gold"`
 
-
-
 The default block the player can change blocks to, used if canChange is true but useInventory is false
+
+ 
+
+
+
+## dialogue
+
+**Type:** ` { line: DialogueText; speakerName?: string | CustomTextStyling; voice?: SpeechVoice; animateIn?: boolean; } `
+
+**Default:** `null`
+
+A line of dialogue in the panel below the crosshair, revealed word by word with a blip in its voice per syllable.
+
+ Each new value is a new line, which replays its reveal; null hides the panel.
+
+ A line stays up until it is replaced or hidden, so World Code can use `sayDialogue` from `@plugins/dialogue` to hide it after a while.
+
+ The voice presets are "soft", "regular", "dark", "high-pitched", "gruff", "lively", "posh" and "mechanical".
+
+ ```ts
+ {
+     line: string | TranslatedText                 // `[[Item Name]]` shows the item's icon inline
+     speakerName?: string | CustomTextStyling      // Shown above the line, such as a portrait icon and a name
+     voice?: SpeechVoicePreset | SpeechSynth       // A preset such as "regular" or "soft", or every synth parameter. Omit for a silent line
+     animateIn?: boolean                           // False shows the line whole, without its reveal or voice
+ }
+ ```
 
  
 
@@ -633,8 +634,6 @@ The default block the player can change blocks to, used if canChange is true but
 **Type:** `number`
 
 **Default:** `1`
-
-
 
 Scale factor to use for dropped item meshes
 
@@ -648,8 +647,6 @@ Scale factor to use for dropped item meshes
 
 **Default:** `8000`
 
-
-
 Duration of the +damage effect from plum
 
  
@@ -661,8 +658,6 @@ Duration of the +damage effect from plum
 **Type:** `number`
 
 **Default:** `13000`
-
-
 
 Duration of +damage reduction effect from pear
 
@@ -676,8 +671,6 @@ Duration of +damage reduction effect from pear
 
 **Default:** `5000`
 
-
-
 Duration of +health regen effect from cherry
 
  
@@ -690,9 +683,83 @@ Duration of +health regen effect from cherry
 
 **Default:** `8000`
 
-
-
 Duration of +speed effect from cracked coconut
+
+ 
+
+
+
+## ezBridging
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+Assisted bridging. When on, the player can place a block off the edge of the block they are
+
+ standing on without aiming back at it, but that block grows in place and only becomes solid
+
+ when finished - nothing can be placed off it until then.
+
+ 
+
+ A block takes 900ms to finish, making assisted bridging 1.11 blocks/s: slower than crouch
+
+ bridging and far slower than speed bridging, so the skill ceiling is preserved. A growing
+
+ cell is never valid support, and the assist stops at one rather than looking past it, so
+
+ bridging out along a single aim is paced one block at a time. In creative the block is
+
+ placed instantly, as there is nothing to pace. `ezBridgingGrowMs` changes the growth time.
+
+ 
+
+
+
+## ezBridgingGrowMs
+
+**Type:** `number`
+
+**Default:** `null`
+
+How long, in whole milliseconds (0 to 60000), an ez bridging block takes to grow before it becomes
+
+ solid. 0 places it instantly. Applies in creative too when set. Null uses the default: 900ms, or
+
+ instant in creative.
+
+ 
+
+
+
+## ezTowering
+
+**Type:** `boolean`
+
+**Default:** `true`
+
+Assisted towering: a player standing still, or in the air with no movement or jump input, can
+
+ place a block on the one beneath them - into their own feet - where it grows for `ezToweringGrowMs`
+
+ and then lifts them onto it. Only blocks ez bridging can place can be towered with.
+
+ 
+
+
+
+## ezToweringGrowMs
+
+**Type:** `number`
+
+**Default:** `null`
+
+How long, in whole milliseconds (0 to 60000), an ez towering block takes to grow before it becomes
+
+ solid. 0 places it instantly. Applies in creative too when set. Null uses the default: 900ms, or
+
+ instant in creative.
 
  
 
@@ -704,9 +771,19 @@ Duration of +speed effect from cracked coconut
 
 **Default:** `false`
 
-
-
 Whether to deal damage to the player when they fall
+
+ 
+
+
+
+## fillBrokenBlocksWithWater
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+Whether a block the player breaks becomes Water when water touches it from the side or above, rather than Air.
 
  
 
@@ -717,8 +794,6 @@ Whether to deal damage to the player when they fall
 **Type:** `number`
 
 **Default:** `1.5`
-
-
 
 Multiplier for the flying speed in creative mode
 
@@ -732,8 +807,6 @@ Multiplier for the flying speed in creative mode
 
 **Default:** `null`
 
-
-
 Fog distance which overrides graphic settings. Uses graphic settings if null.
 
  
@@ -746,9 +819,19 @@ Fog distance which overrides graphic settings. Uses graphic settings if null.
 
 **Default:** `null`
 
-
-
 RGB string for fog colour override. e.g. #ffffff
+
+ 
+
+
+
+## fogOnSkybox
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+Applies fog to the skybox, which is otherwise unaffected by fog.
 
  
 
@@ -759,8 +842,6 @@ RGB string for fog colour override. e.g. #ffffff
 **Type:** `[number, number, number]`
 
 **Default:** `null`
-
-
 
 Force the camera to look in a specific direction [x, y, z]. Set to null to allow free camera movement.
 
@@ -773,8 +854,6 @@ Force the camera to look in a specific direction [x, y, z]. Set to null to allow
 **Type:** `number`
 
 **Default:** `0`
-
-
 
 Duration in ms to animate/transition to the forced camera direction (when you change forcedCameraDirection). 0 = instant.
 
@@ -790,8 +869,6 @@ Duration in ms to animate/transition to the forced camera direction (when you ch
 
 **Default:** `1`
 
-
-
 Multiplier applied to gravity during normal movement.
 
  Set to 1 for default gravity.
@@ -806,15 +883,13 @@ Multiplier applied to gravity during normal movement.
 
 **Default:** `null`
 
-
-
 Renders a terrain-following strip of animated chevron arrows on the ground from this player to the target position.
 
  The arrow path is not visible to other players.
 
  Configure a target position with `target: [x, y, z]` to show, or null to hide.
 
- Optional `colour` is a hex string like #ffaa00 (default is white).
+ Optional `colour` is any CSS colour string (e.g. "red", "#ffaa00", "rgb(255,0,0)"), or null for default white.
 
  
 
@@ -825,8 +900,6 @@ Renders a terrain-following strip of animated chevron arrows on the ground from 
 **Type:** `number`
 
 **Default:** `1`
-
-
 
 Amount of friction to apply to grounded players.
 
@@ -848,8 +921,6 @@ Amount of friction to apply to grounded players.
 
 **Default:** `"default"`
 
-
-
 Where gunshots originate from.
 
  -"default" preserves classic bloxd behavior (casts originate from the camera in third person).
@@ -865,8 +936,6 @@ Where gunshots originate from.
 **Type:** `HeaderChip[]`
 
 **Default:** `[]`
-
-
 
 A row of compact chips shown in the top-left HUD strip, concatenated immediately after the FPS counter,
 
@@ -884,8 +953,6 @@ A row of compact chips shown in the top-left HUD strip, concatenated immediately
 
 **Default:** `0.05`
 
-
-
 Fraction of max health that regens each regen tick
 
  
@@ -897,8 +964,6 @@ Fraction of max health that regens each regen tick
 **Type:** `number`
 
 **Default:** `4000`
-
-
 
 How often health regen is ticked
 
@@ -912,8 +977,6 @@ How often health regen is ticked
 
 **Default:** `5000`
 
-
-
 How long after a player receives damage to start regen again
 
  
@@ -925,8 +988,6 @@ How long after a player receives damage to start regen again
 **Type:** `string`
 
 **Default:** `null`
-
-
 
 Held item light colour override - hex colour string e.g. #ffffff. Applied regardless of any held item.
 
@@ -940,8 +1001,6 @@ Held item light colour override - hex colour string e.g. #ffffff. Applied regard
 
 **Default:** `null`
 
-
-
 Held item light cone angle override. Angle is measured in degrees. Larger number = wider beam.
 
  
@@ -953,8 +1012,6 @@ Held item light cone angle override. Angle is measured in degrees. Larger number
 **Type:** `number`
 
 **Default:** `null`
-
-
 
 Held item light range override. Distance is measured in blocks.
 
@@ -968,8 +1025,6 @@ Held item light range override. Distance is measured in blocks.
 
 **Default:** `false`
 
-
-
 When true, hides world and chunk coordinates regardless of the player's setting.
 
  
@@ -981,8 +1036,6 @@ When true, hides world and chunk coordinates regardless of the player's setting.
 **Type:** `number`
 
 **Default:** `1`
-
-
 
 Multiplier for horizontal knockback when dealing damage
 
@@ -996,8 +1049,6 @@ Multiplier for horizontal knockback when dealing damage
 
 **Default:** `100`
 
-
-
 Health upon joining or respawning. Can be null for the player to not have health
 
  
@@ -1010,9 +1061,23 @@ Health upon joining or respawning. Can be null for the player to not have health
 
 **Default:** `0`
 
-
-
 Shield upon joining or respawning
+
+ 
+
+
+
+## inventoryColourOverride
+
+**Type:** `string`
+
+**Default:** `null`
+
+Background colour of the hotbar, inventory and crafting panels, as a hex string e.g. "#682323".
+
+ Slot colours are derived from it. Chests and crafting stations keep their own colours.
+
+ null uses the default colours.
 
  
 
@@ -1023,8 +1088,6 @@ Shield upon joining or respawning
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether the player can move items in their inventory, only applicable if useInventory is true
 
@@ -1038,8 +1101,6 @@ Whether the player can move items in their inventory, only applicable if useInve
 
 **Default:** `false`
 
-
-
 Whether the player is invincible
 
  
@@ -1051,8 +1112,6 @@ Whether the player is invincible
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 When the player is attacked, a short cooldown prevents further damage from the same attack type. If true, all attackers share that cooldown. If false, each attacker has their own.
 
@@ -1066,8 +1125,6 @@ When the player is attacked, a short cooldown prevents further damage from the s
 
 **Default:** `8`
 
-
-
 Amount of jump power the player has
 
  
@@ -1080,8 +1137,6 @@ Amount of jump power the player has
 
 **Default:** `200000000`
 
-
-
 Duration before a killstreak expires. (defaults to never expiring)
 
  
@@ -1093,8 +1148,6 @@ Duration before a killstreak expires. (defaults to never expiring)
 **Type:** `boolean`
 
 **Default:** `null`
-
-
 
 When null, just use the player's graphics setting. When set, forces lighting on (true) or off (false).
 
@@ -1109,14 +1162,12 @@ When null, just use the player's graphics setting. When set, forces lighting on 
 **Default:** 
 ```ts
 {
-	name: {
-		displayName: "Name",
-		sortPriority: 0,
-	},
-}
+name: {
+	displayName: "Name",
+	sortPriority: 0,
+},
+	}
 ```
-
-
 
 Columns of the lobby leaderboard
 
@@ -1130,8 +1181,6 @@ Columns of the lobby leaderboard
 
 **Default:** `0`
 
-
-
 The maximum Aura Level attainable - Set to 0 to disable Aura XP
 
  
@@ -1143,8 +1192,6 @@ The maximum Aura Level attainable - Set to 0 to disable Aura XP
 **Type:** `number`
 
 **Default:** `100`
-
-
 
 Maximum health the player can have
 
@@ -1158,8 +1205,6 @@ Maximum health the player can have
 
 **Default:** `15`
 
-
-
 Maximum camera zoom level for the player
 
  
@@ -1171,8 +1216,6 @@ Maximum camera zoom level for the player
 **Type:** `number`
 
 **Default:** `100`
-
-
 
 Maximum shield the player can have
 
@@ -1186,8 +1229,6 @@ Maximum shield the player can have
 
 **Default:** `""`
 
-
-
 Small text to display in the middle of the screen
 
  
@@ -1199,8 +1240,6 @@ Small text to display in the middle of the screen
 **Type:** `string | CustomTextStyling | TextWithDisplayOptions`
 
 **Default:** `""`
-
-
 
 Text to display centred at the very top of the screen, in line with the FPS counter, coordinates and room name.
 
@@ -1216,8 +1255,6 @@ Text to display centred at the very top of the screen, in line with the FPS coun
 
 **Default:** `""`
 
-
-
 Large text to display in the middle of the screen
 
  
@@ -1229,8 +1266,6 @@ Large text to display in the middle of the screen
 **Type:** `[number, number]`
 
 **Default:** `[2, 2]`
-
-
 
 Minimum size of region around player where chunks are loaded.
 
@@ -1256,8 +1291,6 @@ Minimum size of region around player where chunks are loaded.
 
 **Default:** `1`
 
-
-
 Amount that player camera is affected by movement based fov
 
  
@@ -1269,8 +1302,6 @@ Amount that player camera is affected by movement based fov
 **Type:** `Song`
 
 **Default:** `null`
-
-
 
 The music track to play in the background
 
@@ -1284,8 +1315,6 @@ The music track to play in the background
 
 **Default:** `0.6`
 
-
-
 Volume level for the music
 
  
@@ -1297,8 +1326,6 @@ Volume level for the music
 **Type:** `number`
 
 **Default:** `null`
-
-
 
 If set, clients will only be able to see the closest x players (good for client perf in games with many players)
 
@@ -1312,8 +1339,6 @@ If set, clients will only be able to see the closest x players (good for client 
 
 **Default:** `0`
 
-
-
 Default camera zoom level for the player
 
  
@@ -1326,9 +1351,19 @@ Default camera zoom level for the player
 
 **Default:** `12000`
 
-
-
 Duration of potion effects
+
+ 
+
+
+
+## preserveProtectedFluidSources
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+Whether empty buckets can collect protected water/lava without removing the source block.
 
  
 
@@ -1339,8 +1374,6 @@ Duration of potion effects
 **Type:** `number`
 
 **Default:** `0.625`
-
-
 
 Distance in blocks over which we reduce the opacity of entities as they approach the camera.
 
@@ -1353,8 +1386,6 @@ Distance in blocks over which we reduce the opacity of entities as they approach
 **Type:** `number`
 
 **Default:** `0.5`
-
-
 
 Minimum opacity multiplier reachable when fading entities based on camera proximity.
 
@@ -1370,8 +1401,6 @@ Minimum opacity multiplier reachable when fading entities based on camera proxim
 
 **Default:** `1`
 
-
-
 Damage multiplier for all types of incoming damage
 
  
@@ -1383,8 +1412,6 @@ Damage multiplier for all types of incoming damage
 **Type:** `string`
 
 **Default:** `"general:respawn"`
-
-
 
 Text to show on respawn button. (E.g. "Spectate")
 
@@ -1398,8 +1425,6 @@ Text to show on respawn button. (E.g. "Spectate")
 
 **Default:** `""`
 
-
-
 Text to display in the right info box
 
  
@@ -1411,8 +1436,6 @@ Text to display in the right info box
 **Type:** `number`
 
 **Default:** `7`
-
-
 
 Running speed for the player.
 
@@ -1442,8 +1465,6 @@ Running speed for the player.
 
 **Default:** `5`
 
-
-
 After dying the player can respawn after this many seconds
 
  
@@ -1455,8 +1476,6 @@ After dying the player can respawn after this many seconds
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether to show basic movement controls
 
@@ -1470,8 +1489,6 @@ Whether to show basic movement controls
 
 **Default:** `false`
 
-
-
 Whether the viewer renders speech bubbles above other players when they send chat messages. Off by default.
 
  
@@ -1483,8 +1500,6 @@ Whether the viewer renders speech bubbles above other players when they send cha
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether to show the killfeed
 
@@ -1498,8 +1513,6 @@ Whether to show the killfeed
 
 **Default:** `false`
 
-
-
 Whether to show the player in unloaded chunks
 
  
@@ -1511,8 +1524,6 @@ Whether to show the player in unloaded chunks
 **Type:** `boolean`
 
 **Default:** `false`
-
-
 
 Whether to show the progress bar
 
@@ -1526,8 +1537,6 @@ Whether to show the progress bar
 
 **Default:** `"default"`
 
-
-
 Not recommended to use anything other than "default" as client FPS can drop while loading the skybox
 
  
@@ -1540,8 +1549,6 @@ Not recommended to use anything other than "default" as client FPS can drop whil
 
 **Default:** `null`
 
-
-
 Sky light colour override - hex string e.g. #ffffff.
 
  
@@ -1553,8 +1560,6 @@ Sky light colour override - hex string e.g. #ffffff.
 **Type:** `number`
 
 **Default:** `1`
-
-
 
 Speed multiplier for the player.
 
@@ -1574,8 +1579,6 @@ Speed multiplier for the player.
 
 **Default:** `8000`
 
-
-
 Duration of splash potion effects
 
  
@@ -1587,8 +1590,6 @@ Duration of splash potion effects
 **Type:** `number`
 
 **Default:** `0`
-
-
 
 Mult for the damage done by "stomping" on a lifeform, i.e.: falling on them wearing Spiked Boots.
 
@@ -1602,8 +1603,6 @@ Mult for the damage done by "stomping" on a lifeform, i.e.: falling on them wear
 
 **Default:** `0`
 
-
-
 Radius around the player that will be affected by the stomp damage.
 
  
@@ -1615,8 +1614,6 @@ Radius around the player that will be affected by the stomp damage.
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether a player can place fluid when canChange is false
 
@@ -1630,8 +1627,6 @@ Whether a player can place fluid when canChange is false
 
 **Default:** `null`
 
-
-
 The contents of the action button. Supports custom text styling. onTouchscreenActionButton will be called when button pressed.
 
  
@@ -1643,8 +1638,6 @@ The contents of the action button. Supports custom text styling. onTouchscreenAc
 **Type:** `number`
 
 **Default:** `1`
-
-
 
 Multiplier for the time to break any block
 
@@ -1658,8 +1651,6 @@ Multiplier for the time to break any block
 
 **Default:** `true`
 
-
-
 For now just enables the UI of the full inventory
 
  
@@ -1671,8 +1662,6 @@ For now just enables the UI of the full inventory
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether to allow the player to use the inventory
 
@@ -1688,8 +1677,6 @@ Whether to allow the player to use the inventory
 
 **Default:** `false`
 
-
-
 When player is dead, also show a play again button to matchmake player into a new lobby. Mostly useful for sessionBased games
 
  
@@ -1701,8 +1688,6 @@ When player is dead, also show a play again button to matchmake player into a ne
 **Type:** `boolean`
 
 **Default:** `true`
-
-
 
 Whether the player can use the respawn button. Otherwise forces either play again or exit
 
@@ -1716,9 +1701,21 @@ Whether the player can use the respawn button. Otherwise forces either play agai
 
 **Default:** `1`
 
-
-
 Multiplier for vertical knockback when dealing damage
+
+ 
+
+
+
+## visionMinLightColour
+
+**Type:** `string`
+
+**Default:** `null`
+
+The dimmest light the player can see by - hex string e.g. #ffffff. Anywhere darker is lifted
+
+ to it, e.g. caves and night, after the sky/ambient colour overrides. Used by Night Vision.
 
  
 
@@ -1729,8 +1726,6 @@ Multiplier for vertical knockback when dealing damage
 **Type:** `number`
 
 **Default:** `4`
-
-
 
 Walking speed for the player.
 
@@ -1759,8 +1754,6 @@ Walking speed for the player.
 **Type:** `number`
 
 **Default:** `3`
-
-
 
 Distance to zoom the camera out to
 
