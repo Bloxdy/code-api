@@ -601,7 +601,7 @@ bonusesGained: [],
 
 ## tameInfo
 
-**Type:** `PNull<MobTameInfo>`
+**Type:** `MobTameInfo | null`
 
 **Example:**
 ```ts
@@ -826,6 +826,20 @@ Tiki Terror: "default", "titan", "tormentor", "tyrant"
 NPC: "default", "emma", "leo", "isabel", "sanjay", "imara", "enoch", "sara", "carmen", "chef"
 Bobino Musculino: "default"
 Capitano Explovissimo: "default"
+Desert Fennec: "default"
+Armour Collector: "default"
+Furnace Knight: "default"
+Lil Knight: "default"
+Glass Gremlin: "default"
+Glass Bro: "default"
+Lord Vulcan: "default"
+Zombie: "default"
+Skeleton: "default"
+Mummy: "default"
+Scorpion: "default"
+Vulcanite: "default"
+Evil Tome: "default"
+Magma Toad: "default"
 ```
 
 ## Mob AI
@@ -844,13 +858,16 @@ getMobAiState(mobId)
 /**
  * Sets the current AI state for the given mob.
  * Some AI states will require context such as the ID of the lifeform being chased.
+ * The mob's AI normally moves on by itself after a few seconds, or when a player comes near.
+ * Pass `{ hold: true }` to keep it in this state until you set another one.
  *
  * @param {MobId} mobId
  * @param {TState} state
  * @param {MobAiStateParams<TState>} params
+ * @param {MobAiStateOptions} [opts] - hold: never time out, ignore nearby players and don't fight back when hit. The mob still leaves the state if its target leaves the game or turns invisible, or if it is tamed.
  * @returns {void}
  */
-setMobAiState(mobId, state, params)
+setMobAiState(mobId, state, params, opts)
 ```
 
 Here is the full list of available mob AI states and their parameters:

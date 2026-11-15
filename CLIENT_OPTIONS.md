@@ -164,6 +164,18 @@ If true, player will respawn automatically after secsToRespawn seconds
 
 
 
+## blockReach
+
+**Type:** `number`
+
+**Default:** `6`
+
+How far, in blocks from the eye, the player can break, place and use blocks. 0 to 20.
+
+ 
+
+
+
 ## bounciness
 
 **Type:** `number`
@@ -801,6 +813,20 @@ Multiplier for the flying speed in creative mode
 
 
 
+## fogBlockDistanceOverride
+
+**Type:** `number`
+
+**Default:** `null`
+
+Blocks from the eye at which fog turns solid, thickening all the way out from the eye. Overrides
+
+ fogChunkDistanceOverride and graphic settings when set.
+
+ 
+
+
+
 ## fogChunkDistanceOverride
 
 **Type:** `number`
@@ -858,6 +884,70 @@ Force the camera to look in a specific direction [x, y, z]. Set to null to allow
 Duration in ms to animate/transition to the forced camera direction (when you change forcedCameraDirection). 0 = instant.
 
  Useful for smooth camera movements.
+
+ 
+
+
+
+## gameCamera
+
+**Type:** `CameraSettings`
+
+**Default:** `{ mode: "default" }`
+
+Takes over the player's camera. `mode` picks the kind of camera:
+
+ - `"default"`: the player's own first or third person camera.
+
+ - `"fixed"`: stands at `position`, looking at `lookAt` (a position or entity id, the player if left out) or along `lookDirection`.
+
+ - `"follow"`: moves with `target` (the player if left out), `offset` blocks away; `offsetSpace: "target"` turns the offset with the target, +z ahead of it. Good for top-down, side-on and chase cameras. Set `avoidTerrain: true` to move in rather than go through terrain between the camera and the target.
+
+ - `"path"`: flies through `keyframes`, each with a `timeMs` and a `position`, and optionally `lookAt`, `lookDirection`, `fov` and `easing`. It stays on the last keyframe at the end, or set `loop: true` to go round again.
+
+ - `"frame"`: keeps every one of `targets` (up to 64 positions or entity ids) in view, looking down `viewElevation` degrees (45 if left out) towards `viewHeading` (0, along +z), with `padding` blocks around them, between `closestDistance` and `furthestDistance` blocks away. Good for board game overviews, arenas and boss fights.
+
+ `blendInMs` glides from the current view to the new camera over that many ms, or cuts straight to it at 0.
+
+ Every mode, `"default"` included, also takes:
+
+ - `transition: { colour, outMs, holdMs, inMs }`: fades through a colour instead of blending. The screen fades out to `colour` (`"#rrggbb"`, black if left out) over `outMs`. The view cuts to the new camera once the colour covers the screen, and a path's clock starts there. The colour holds for `holdMs` (0 if left out), then fades back in over `inMs`. Each fade takes 200 to 5000 ms, and the hold up to 5000 ms. To spare players flashing, a fade turns between going out and coming in at most once every 333 ms; until then it goes on as it was. A fade already showing keeps its colour until the screen clears. The colour covers the world and the HUD, including chat history and the chat button on touch screens. It doesn't cover menus, the chat being typed in, dialogue, the respawn and sleeping screens, QTEs, UI requests, touch controls or the settings button on touch screens. The HUD under the colour can still be clicked unless `hideHud` hides it. Until the cut, the camera on screen stays. Setting that camera again cancels the transition, even with a different `transition`, `letterbox` or `hideHud`. A change to the camera on its way in must repeat `transition`, or it cuts in at once.
+
+ - `letterbox: true`: black bars across the top and bottom of the screen, for cutscenes. They slide in and out as it changes, or switch under the colour of a transition. A `"frame"` camera fits its targets between them. Presses on the bars do nothing in the world, and dragging on them doesn't turn the camera.
+
+ - `hideHud: true`: hides the HUD while the camera is set, from the cut of a transition. What the player still needs stays: nametags, dialogue, the chat while they type, the respawn and sleeping screens, QTEs, UI requests, touch controls, menus, and the settings button on touch screens.
+
+ The other modes also take `fov` in degrees, and `playerLook: { maxYaw, maxPitch }` to let the mouse look that many degrees either side of where the camera aims. Leave one out to lock that axis, as in `{ maxYaw: 180 }`.
+
+ `playerFacing: "movement"` (the default) turns the player to face where they walk, `"camera"` to face where the camera looks, and `"cursor"` to face what is under the mouse cursor (or the last tap), which they mine, build, hit and shoot at, for top-down and isometric games. Walking is always relative to the camera.
+
+ Setting the camera the player already has does nothing, so to replay a path from the start, set another camera first (in the same tick is fine).
+
+ The player only sees the world and other entities near them, so keep cameras and their targets within their view distance.
+
+ ```js
+ // Top-down camera following the player, who aims with the mouse cursor
+ api.setClientOption(playerId, "gameCamera", { mode: "follow", offset: [0, 20, 5], playerFacing: "cursor" })
+ // Fly over the map for 8 seconds, looking at its centre
+ api.setClientOption(playerId, "gameCamera", {
+     mode: "path",
+     keyframes: [
+         { timeMs: 0, position: [0, 80, 0], lookAt: [50, 60, 50] },
+         { timeMs: 8000, position: [100, 80, 0], lookAt: [50, 60, 50] },
+     ],
+ })
+ // Spectate another player from behind
+ api.setClientOption(playerId, "gameCamera", { mode: "follow", target: otherPlayerId, offset: [0, 3, -6], offsetSpace: "target", avoidTerrain: true })
+ // Keep every player in view from above, easing out as they spread apart (up to 64 targets)
+ api.setClientOption(playerId, "gameCamera", { mode: "frame", targets: api.getPlayerIds().slice(0, 64), viewElevation: 60 })
+ // Back to the player's own camera, gliding there over half a second
+ api.setClientOption(playerId, "gameCamera", { mode: "default", blendInMs: 500 })
+ // A cutscene: fade through black into a path, with letterbox bars and no HUD
+ const transition = { outMs: 500, holdMs: 250, inMs: 600 }
+ api.setClientOption(playerId, "gameCamera", { mode: "path", keyframes, transition, letterbox: true, hideHud: true })
+ // ...and when it ends, fade back to the player's own camera
+ api.setClientOption(playerId, "gameCamera", { mode: "default", transition })
+ ```
 
  
 
@@ -1126,6 +1216,32 @@ When the player is attacked, a short cooldown prevents further damage from the s
 **Default:** `8`
 
 Amount of jump power the player has
+
+ 
+
+
+
+## jumpHoldThrust
+
+**Type:** ` { maxUpSpeed: number; force: number; } `
+
+**Default:** `null`
+
+Jetpack-style lift while the player holds jump in the air: `{ maxUpSpeed, force }`, or null for off.
+
+ Pushes up with `force` (blocks/s per second, 0 to 45; gravity is 20 times `gravityMultiplier`) until the player's vertical speed nears `maxUpSpeed` (blocks/s, -20 to 20).
+
+ With `force` above gravity the player climbs at about `maxUpSpeed - gravity / force`, e.g. `{ maxUpSpeed: 8, force: 36 }` climbs at about 7.4 blocks/s.
+
+ A negative `maxUpSpeed` slows a fall instead, e.g. `{ maxUpSpeed: -3, force: 36 }` glides down at about 3.6 blocks/s.
+
+ With `force` at or below gravity it only weakens gravity by `force`: the player never reaches `maxUpSpeed` and a fall keeps speeding up.
+
+ No effect on the ground, in water, on ladders or climbable walls, in cobwebs, while flying, in vehicles, or with a glider or other held vehicle selected.
+
+ Separate from the jump itself: a `jumpAmount` or jump multiplier of 0 doesn't turn it off.
+
+ It still pushes while the player is knocked back, so a held jump can soften or extend a hit.
 
  
 

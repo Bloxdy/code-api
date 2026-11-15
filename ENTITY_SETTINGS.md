@@ -156,7 +156,7 @@ Whether alt actioning this entity (right click / the interact bind / a mobile ta
 
 **Default:** `null`
 
-Replaces the label in the interaction prompt shown by the crosshair while the relevant player is looking at this entity, e.g. "Open Shop". Left null, the prompt reads "Interact". The engine draws the player's interact key next to it, so write what interacting does rather than which button to press. Only used on entities that have interactable set, and not shown on touchscreens, where there is no key to show.
+Replaces the label in the interaction prompt shown by the crosshair while the relevant player is looking at this entity, e.g. "Open Shop". Left null, the prompt reads "Interact". The engine draws the player's interact key next to it, so write what interacting does rather than which button to press. Only used on entities that have interactable set. On touchscreens it labels the touch controls' interact button instead, which a tap presses.
 
  
 
@@ -193,6 +193,20 @@ The tags to the left of a player's name in the lobby leaderboard.
 **Default:** `{}`
 
 The values of the leaderboard.
+
+ 
+
+
+
+## lockHeadToBody
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+Whether the entity turns as one piece, so api.setEntityRotation sets where its whole body faces. Otherwise a mob or player-shaped entity turns its head first, and its body only follows once the head is turned past a limit.
+
+ Turning stays smooth. Works on mobs, players and Person mesh entities.
 
  
 

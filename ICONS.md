@@ -9,7 +9,7 @@ api.sendMessage(playerId, [{ icon: "fa-solid fa-star", style: { color: "gold" } 
 
 > **Prefer Bloxd-native icons:** For the best visual consistency with Bloxd's theme, use **item names** (see ITEM_NAMES.txt), **block names** (see BLOCK_NAMES.txt), or **ingame icons** (below) wherever possible. These are designed specifically for Bloxd and will look more cohesive. Only fall back to Font Awesome icons when no Bloxd-native option fits your use case.
 
-## Ingame Icons (93 icons)
+## Ingame Icons (96 icons)
 
 These are the values of the `IngameIconName` type.
 
@@ -83,6 +83,9 @@ Lumber Aura Enchantment
 Farming Aura Enchantment
 Vertical Knockback Enchantment
 Horizontal Knockback Enchantment
+Firecracker Cooldown Enchantment
+Firecracker Boost Enchantment
+Gliding Speed Enchantment
 Self Yield
 Friends
 Riding Speed
@@ -111,7 +114,7 @@ Trader Piggy
 
 ---
 
-## Font Awesome Icons (208 icons)
+## Font Awesome Icons (220 icons)
 
 Use with `fa-solid`, `fa-regular`, or `fa-duotone` prefix. Only use these when no Bloxd-native icon fits.
 
@@ -121,8 +124,10 @@ fa-solid fa-angle-double-up
 fa-solid fa-angle-down
 fa-solid fa-angle-up
 fa-solid fa-angles-up
+fa-solid fa-arrow-down-to-line
 fa-solid fa-arrow-left
 fa-solid fa-arrow-up
+fa-solid fa-arrow-up-from-line
 fa-solid fa-arrow-up-right-from-square
 fa-solid fa-arrows
 fa-solid fa-arrows-h
@@ -131,6 +136,7 @@ fa-solid fa-arrows-rotate
 fa-solid fa-arrows-up-down-left-right
 fa-solid fa-award
 fa-solid fa-backpack
+fa-solid fa-ban
 fa-solid fa-bars
 fa-solid fa-bee
 fa-solid fa-bell
@@ -139,6 +145,8 @@ fa-solid fa-bolt
 fa-solid fa-boot
 fa-solid fa-calendar
 fa-solid fa-caret-down
+fa-solid fa-caret-left
+fa-solid fa-caret-right
 fa-solid fa-caret-up
 fa-solid fa-cart-shopping
 fa-solid fa-check
@@ -193,7 +201,10 @@ fa-solid fa-film
 fa-solid fa-fire
 fa-solid fa-fist-raised
 fa-solid fa-flag
+fa-solid fa-folder
 fa-solid fa-folder-image
+fa-solid fa-folder-open
+fa-solid fa-gamepad
 fa-solid fa-gauge-high
 fa-solid fa-gear
 fa-solid fa-gem
@@ -222,6 +233,7 @@ fa-solid fa-joystick
 fa-solid fa-layer-group
 fa-solid fa-left-from-bracket
 fa-solid fa-lightbulb
+fa-solid fa-link
 fa-solid fa-list
 fa-solid fa-list-squares
 fa-solid fa-location-check
@@ -235,6 +247,7 @@ fa-solid fa-map-marker-times
 fa-solid fa-map-marker-xmark
 fa-solid fa-minus
 fa-solid fa-minus-square
+fa-solid fa-moon
 fa-solid fa-mouse
 fa-solid fa-music
 fa-solid fa-music-slash
@@ -285,6 +298,7 @@ fa-solid fa-star
 fa-solid fa-star-christmas
 fa-solid fa-store
 fa-solid fa-subtract
+fa-solid fa-sun-bright
 fa-solid fa-swords
 fa-solid fa-sync
 fa-solid fa-t-shirt
@@ -301,6 +315,7 @@ fa-solid fa-upload
 fa-solid fa-user
 fa-solid fa-user-astronaut
 fa-solid fa-user-check
+fa-solid fa-user-clock
 fa-solid fa-user-friends
 fa-solid fa-user-group
 fa-solid fa-user-group-crown
@@ -326,10 +341,11 @@ fa-solid fa-xmark
 fa-solid fa-zap
 ```
 
-## Brand Icons (10 icons)
+## Brand Icons (11 icons)
 
 ```
 fa-solid fa-brands fa-apple
+fa-solid fa-brands fa-chrome
 fa-solid fa-brands fa-discord
 fa-solid fa-brands fa-google-play
 fa-solid fa-brands fa-instagram

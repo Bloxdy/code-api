@@ -4,8 +4,8 @@ Mesh entities are server-created 3D objects whose position is synced with all cl
 
 ## Limits
 
-- There is a limit to the number of mesh entities and throwables that can be created. `attemptCreateMeshEntity` returns `null` when the limit is reached instead of throwing.
-- There are two separate limits: one for mesh entities without physics and one for mesh entities with physics (which is a lot smaller).
+- `attemptCreateMeshEntity` returns `null` instead of throwing once the lobby reaches the limit for the entity it would create: 400 without physics (audio entities count too), 100 with physics (throwables count too).
+- Separately, each player sees only the nearest 100 mesh entities of one kind (the mesh type, or the block name for a `BloxdBlock`); farther ones are hidden.
 
 ---
 
@@ -51,6 +51,7 @@ type BloxdBlockOpts = {
     lineToEId?: EntityId // EntityId to connect to using a line
     blockName: BlockNameOrId
     size: number | [number, number, number]
+    enchantmentTier?: EnchantmentTier // Enchantment sheen, drawn only when attached to an entity node, as a worn glider is.
 }
 ```
 
@@ -121,14 +122,15 @@ type ParticleEmitterOpts = {
 /**
  * Try to create a mesh entity. This creates an entity whose mesh position is synced with clients.
  * Set entity position using setPosition
- * There is a limit to the number of mesh entities and throwables that can be created, with an even smaller limit for mesh entities with physics.
+ * There is a limit to the number of mesh entities that can be created: 400 without physics (audio entities count too), 100 with physics (throwables count too).
+ * Separately, each player sees only the nearest 100 mesh entities of one kind (the mesh type, or the block name for a BloxdBlock); farther ones are hidden.
  *
  * @param {MeshType} type
  * @param {MeshEntityOpts[MeshType]} opts
  * @param {string} [name] - The default name for the nametag
  * @param {MeshEntityPhysicsOpts} [physicsOptions] - Physics Options
  * @param {EntityId} [initiatorId] - The entity that initiated the creation of the mesh entity.
- * @returns {PNull<EntityId>} - null if the entity creation failed, otherwise the entity ID.
+ * @returns {EntityId | null} - null if the entity creation failed, otherwise the entity ID.
  */
 attemptCreateMeshEntity(type, opts, name, physicsOptions, initiatorId)
 ```
@@ -297,7 +299,7 @@ Attach or detach a mesh to a specific node ("bone") of an entity. This is useful
  *
  * @param {EntityId} eId
  * @param {EntityNamedNode} node - node to attach to
- * @param {PNull<MeshType>} type - if null, detaches mesh from this node
+ * @param {MeshType | null} type - if null, detaches mesh from this node
  * @param {MeshEntityOpts[MeshType]} [opts]
  * @param {[number, number, number]} [offset]
  * @param {[number, number, number]} [rotation]
@@ -374,6 +376,8 @@ type MeshEntityOpts = {
     BloxdBlock: CommonMeshEntityOpts & {
         blockName: BlockNameOrId
         size: number | [number, number, number]
+        /** Enchantment sheen, drawn only when attached to an entity node, as a worn glider is. */
+        enchantmentTier?: EnchantmentTier
     }
     Person: CommonMeshEntityOpts & {
         size?: number
@@ -448,6 +452,8 @@ type ParticleSystemOpts = {
 
 ### `TimeColorGradient`
 
+Colours are [r, g, b, a]: RGB 0-255, alpha 0-1.
+
 ```ts
 type TimeColorGradient = {
     timeFraction: number
@@ -457,6 +463,8 @@ type TimeColorGradient = {
 ```
 
 ### `RandomColorGradient`
+
+Colour is [r, g, b]: RGB 0-255.
 
 ```ts
 type RandomColorGradient = {

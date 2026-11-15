@@ -44,7 +44,7 @@ The following skin parts can be customised: `skin`, `hat`, `head`, `eyebrows`, `
 
 ---
 
-## NPC Skins (14 skins)
+## NPC Skins (15 skins)
 
 These are special full-body skins typically used for NPCs. Apply them via the `head` part:
 
@@ -61,6 +61,7 @@ monster_hunter_lorenzo
 painter_spencer
 piggy_banker
 portal_mage
+tentacle_girl
 tentacle_guy
 trader
 trader_black

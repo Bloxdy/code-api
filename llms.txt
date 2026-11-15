@@ -1,0 +1,28 @@
+# Bloxd Code API
+
+> JavaScript that runs inside Bloxd, in code blocks, boards and World Code. Each link is a whole page of the docs as Markdown.
+
+The same docs, with long pages also split into parts that fit a small context window: https://bloxd.io/docs/llms.txt
+
+## Docs
+
+- [API Reference](https://raw.githubusercontent.com/Bloxdy/code-api/main/API_REFERENCE.md)
+- [Callbacks](https://raw.githubusercontent.com/Bloxdy/code-api/main/CALLBACKS.md)
+- [Changelog](https://raw.githubusercontent.com/Bloxdy/code-api/main/CHANGELOG.md)
+- [Client Options](https://raw.githubusercontent.com/Bloxdy/code-api/main/CLIENT_OPTIONS.md)
+- [How-Tos](https://raw.githubusercontent.com/Bloxdy/code-api/main/HOW_TO.md)
+- [Getting started](https://raw.githubusercontent.com/Bloxdy/code-api/main/README.md)
+- [Snippets](https://raw.githubusercontent.com/Bloxdy/code-api/main/SNIPPETS.md)
+- [Welcome to the Bloxd Code API](https://raw.githubusercontent.com/Bloxdy/code-api/main/WELCOME.md)
+- [Block Names (1522 blocks)](https://raw.githubusercontent.com/Bloxdy/code-api/main/BLOCK_NAMES.txt)
+- [Dialogue Voices](https://raw.githubusercontent.com/Bloxdy/code-api/main/DIALOGUE_VOICES.md)
+- [Entity Settings](https://raw.githubusercontent.com/Bloxdy/code-api/main/ENTITY_SETTINGS.md)
+- [Icons](https://raw.githubusercontent.com/Bloxdy/code-api/main/ICONS.md)
+- [Item Names (1532 items)](https://raw.githubusercontent.com/Bloxdy/code-api/main/ITEM_NAMES.txt)
+- [Mesh Entities, Throwables & Node Mesh Attachment](https://raw.githubusercontent.com/Bloxdy/code-api/main/MESH_ENTITY_DOCS.md)
+- [Mob Settings](https://raw.githubusercontent.com/Bloxdy/code-api/main/MOB_SETTINGS.md)
+- [Particles](https://raw.githubusercontent.com/Bloxdy/code-api/main/PARTICLES.md)
+- [Quick Time Events (QTEs)](https://raw.githubusercontent.com/Bloxdy/code-api/main/QTE_DOCS.md)
+- [Skins and Poses](https://raw.githubusercontent.com/Bloxdy/code-api/main/SKINS_AND_POSES.md)
+- [Sounds and Songs](https://raw.githubusercontent.com/Bloxdy/code-api/main/SOUNDS_AND_MUSIC.md)
+- [Vehicle Settings](https://raw.githubusercontent.com/Bloxdy/code-api/main/VEHICLE_SETTINGS.md)

@@ -1,4 +1,4 @@
-# Block Names (1446 blocks)
+# Block Names (1522 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -1473,3 +1473,79 @@ Crop Harvester [R]
 Belt Tunnel [R]
 Pure Copper Ore
 Pure Voltite Ore
+Darkstone
+Darkstone Bricks
+Cracked Darkstone Bricks
+Molten Darkstone Bricks
+Engraved Darkstone
+Smooth Darkstone
+INTERNAL_MESH_Floor Quarters
+Scorpion Eggs Block
+INTERNAL_MESH_Boss Target
+INTERNAL_MESH_Rune Sigil
+INTERNAL_MESH_Eclipse Dial
+INTERNAL_MESH_Beam Arm
+INTERNAL_MESH_Beam Arm Mirrored
+INTERNAL_MESH_Mortar
+Trading Terminal [R]
+Stone Generator
+Wheat Helper
+Carrot Helper
+Melon Helper
+Showcase
+Pine Item Pedestal
+Plum Item Pedestal
+Cedar Item Pedestal
+Aspen Item Pedestal
+Jungle Item Pedestal
+Palm Item Pedestal
+Pear Item Pedestal
+Cherry Item Pedestal
+Spectral Item Pedestal
+Mango Item Pedestal
+Uranium Ore
+Uranium Deposit
+Sky Spring
+Atomic Bench
+Pump [R]
+Condenser [R]
+Centrifuge [R]
+Synthesizer [R]
+Mob Farm [R]
+Fluid Tank [R]
+Reactor Controller [R]
+Reactor Frame [R]
+Reactor Casing
+Reactor Glass [R]
+Reactor Port [R]
+Fuel Rod [R]
+Graphite Block
+Coolant Channel [R]
+Reactor Slag
+Atomic Bomb
+Battery Controller [R]
+Battery Casing
+Battery Cell [R]
+Collider [R]
+_Collider Focus [R]
+_Collider Output [R]
+Laser [R]
+Wireless Terminal [R]
+Dense Silo
+Express Belt [R]
+Fast Loader [R]
+Uranium Glass
+Glow Lamp
+_Jetpack Back
+_Atomic Spire
+Isotope Comet Ore
+Isotope Comet Heart
+Fluid Pipe
+Coolant Mixer [R]
+Coolant Pipe
+Scaffolding
+Nova Trophy [R]
+Uranium Block
+Pure Uranium Ore
+Copper Block
+Voltite Block

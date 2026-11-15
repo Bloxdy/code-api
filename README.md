@@ -58,7 +58,7 @@ type EntityName = {
     }
 }
 
-type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Healing Pulse" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Blindness" | "Pickpocketer" | "Lifesteal" | "Bounciness" | "Air Walk" | "Wall Climbing" | "Thorns" | "Poopy" | "Glowing" | "Night Vision" | "Irradiated" | "Draugr Knight Head" | "Draugr Warper Head" | "Magma Golem Head" | "Mystery Fish" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Self Yield" | "Friends" | "Riding Speed" | "Feed Aura" | "Double Poop" | "Mob Slayer" | "Rainbow Wool" | "Pack Leader" | "Max Health" | "Poison Claws" | "Mob Yield" | "Antlers Bonus" | "Health" | "HealthShield" | "Cross" | "Friendship" | "Dotted Friendship" | "Hunger" | "Empty Hunger" | "Pixelated Heart" | "Question Mark" | "Trader Black" | "Trader Blue" | "Trader Piggy"
+type IngameIconName = "Damage" | "Damage Reduction" | "Speed" | "VoidJump" | "Fist" | "Frozen" | "Hydrated" | "Invisible" | "Jump Boost" | "Poisoned" | "Slowness" | "Weakness" | "Health Regen" | "Healing Pulse" | "Haste" | "Double Jump" | "Heat Resistance" | "Gliding" | "Boating" | "Obsidian Boating" | "Riding" | "Bunny Hop" | "FallDamage" | "Feather Falling" | "Thief" | "X-Ray Vision" | "Mining Yield" | "Brain Rot" | "Rested Damage" | "Rested Haste" | "Rested Speed" | "Rested Farming Yield" | "Rested Aura" | "Blindness" | "Pickpocketer" | "Lifesteal" | "Bounciness" | "Air Walk" | "Wall Climbing" | "Thorns" | "Poopy" | "Glowing" | "Night Vision" | "Irradiated" | "Draugr Knight Head" | "Draugr Warper Head" | "Magma Golem Head" | "Mystery Fish" | "Damage Enchantment" | "Critical Damage Enchantment" | "Attack Speed Enchantment" | "Protection Enchantment" | "Health Enchantment" | "Health Regen Enchantment" | "Stomp Damage Enchantment" | "Knockback Resist Enchantment" | "Arrow Speed Enchantment" | "Arrow Damage Enchantment" | "Quick Charge Enchantment" | "Break Speed Enchantment" | "Momentum Enchantment" | "Mining Yield Enchantment" | "Farming Yield Enchantment" | "Mining Aura Enchantment" | "Digging Aura Enchantment" | "Lumber Aura Enchantment" | "Farming Aura Enchantment" | "Vertical Knockback Enchantment" | "Horizontal Knockback Enchantment" | "Firecracker Cooldown Enchantment" | "Firecracker Boost Enchantment" | "Gliding Speed Enchantment" | "Self Yield" | "Friends" | "Riding Speed" | "Feed Aura" | "Double Poop" | "Mob Slayer" | "Rainbow Wool" | "Pack Leader" | "Max Health" | "Poison Claws" | "Mob Yield" | "Antlers Bonus" | "Health" | "HealthShield" | "Cross" | "Friendship" | "Dotted Friendship" | "Hunger" | "Empty Hunger" | "Pixelated Heart" | "Question Mark" | "Trader Black" | "Trader Blue" | "Trader Piggy"
 
 enum ParticleSystemBlendMode {
     // Source color is added to the destination color without alpha affecting the result
@@ -133,7 +133,12 @@ type TranslatedText = {
     params?: Record<string, string | number | boolean | EntityName>
 }
 
-type ItemAttributes = { customDisplayName?: string; customDescription?: string; customAttributes?: Record<string, any> }
+type ItemAttributes = {
+    customDisplayName?: string
+    customDescription?: string
+    /** Free-form data kept with the item. `bar: { fraction, colour? }` (0 to 1, hex colour) draws a bar under the item's slot. */
+    customAttributes?: Record<string, any>
+}
 
 enum WalkThroughType {
     CANT_WALK_THROUGH = 0,
@@ -142,11 +147,11 @@ enum WalkThroughType {
 }
 
 type WorldBlockChangedInfo = {
-    cause: PNull<"Paintball" | "FloorCreator" | "Sapling" | "StemFruit" | "MeltingIce" | "Explosion" | "AutoShape">
+    cause: "Paintball" | "FloorCreator" | "Sapling" | "StemFruit" | "MeltingIce" | "Explosion" | "AutoShape" | null
 }
 
 type DamageInfo = {
-    cause: PNull<"Melee" | "Projectile" | "Gun" | "Explosion" | "Spikes" | "Fall" | "Stomp" | "Thorns" | "Effect">
+    cause: "Melee" | "Projectile" | "Gun" | "Explosion" | "Spikes" | "Fall" | "Stomp" | "Thorns" | "Effect" | null
 }
 
 type EarthSkyBox = {
@@ -255,6 +260,8 @@ type MeshEntityOpts = {
     BloxdBlock: CommonMeshEntityOpts & {
         blockName: BlockNameOrId
         size: number | [number, number, number]
+        /** Enchantment sheen, drawn only when attached to an entity node, as a worn glider is. */
+        enchantmentTier?: EnchantmentTier
     }
     Person: CommonMeshEntityOpts & {
         size?: number
@@ -397,7 +404,7 @@ type Point = Vec3
 type CustomButtonType = {
     id: string // Identifier for the button. Used in the callbacks onPlayerPressedButton and onPlayerReleasedButton.
     icon: string // Icon to display for the button. Can be a font awesome icon such as "house" or a bloxd icon such as "Dirt".
-    keycode: string // Key to trigger the button. Use a keycode like "KeyR" for the letter R. Allowed keys are alphanumeric and arrow keys.
+    keycode: string // Key to trigger the button. Use a keycode like "KeyR" for the letter R. Allowed keys are letters ("KeyA" to "KeyZ"), the number row ("Digit0" to "Digit9"), arrow keys ("ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight") and "Space", shown as "_" next to the button. A key keeps its usual action too, so Space also jumps for players who have not changed their jump key.
     description?: string // Optional description for the button explaining what it does.
 }
 

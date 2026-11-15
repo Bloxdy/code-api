@@ -120,7 +120,7 @@ Called when a player enters a block. Only called once per block until the player
 
 
 ## onBlockStandStop
-Called when a player leaves a block.
+Called when a player leaves a block. Stepping from one block onto another calls onBlockStandStart for the new block first and onBlockStandStop for the old one after it, so check blockName (or x, y, z) before undoing what onBlockStandStart did, or stepping onto the block you care about cancels it at once.
 
 ### Parameters:
 | Parameter | Type | Description |
@@ -258,7 +258,7 @@ Not called when an item drop is picked up or expires, or when a throwable expire
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | eId | `EntityId` | The id of the entity deleted |
-| entityType | `EntityType` | The type of the entity deleted |
+| entityType | `EntityType` | What the entity was: for a mob, its mob type (e.g. "Draugr Zombie"), never "mob"; "Item" for an item drop |
 
 
 
@@ -363,7 +363,7 @@ Return number to change damage dealt to that amount
 
 
 ## onMobDespawned
-Called when a mob is despawned
+Called when a mob is gone for any reason: killed, despawned by the world, or removed by code. Use it to know when mobs you spawned are dead.
 
 ### Parameters:
 | Parameter | Type | Description |
@@ -795,15 +795,17 @@ Return a string or CustomTextStyling to add a prefix to message.
 
 Return for most flexibility: an object where keys are playerIds -
 
-the value for a playerId being false means that player won't receive the message.
+the value for a playerId being false means that player won't receive the message. Every player needs a key: one left out doesn't receive it either, so give the players who should see it {} (or a prefixContent).
 
 Otherwise playerId values should be an object with (optional) keys
 
 prefixContent and chatContent to modify the prefix and the chat.
 
-CustomTextStyling[] prefixContent is expected, e.g. [["prefix"]] or [[{ str: "prefix" }]].
+CustomTextStyling[] prefixContent is expected, e.g. [["prefix"]] or [[{ str: "prefix" }]]. A colour goes inside style: [[{ str: "[Red]", style: { color: "red" } }]]; any other key makes the whole return value invalid, and the message goes to everyone.
 
 World code is not permitted to specify chatContent, it will be ignored.
+
+A message world code sends while handling the chat that shows the player's name and their message, e.g. "Bob: hi" or "hi there - Bob", counts as their chat: players who ignore them don't get it, and others can report it. Text of two or more words and 8+ characters can sit anywhere in it; shorter text must end it, straight after the name.
 
 ### Parameters:
 | Parameter | Type | Description |
@@ -1787,7 +1789,7 @@ Return "preventChange" to stop it. Then onWorldChangeBlock will not run.
 
 
 ## onWorldAttemptDespawnMob
-Called when a mob is despawned by the world.
+Called when the world tries to despawn a mob, e.g. one far from every player. Not called when a mob is killed: use onMobDespawned for that.
 
 Return "preventDespawn" to prevent the mob from despawning.
 
@@ -1945,6 +1947,8 @@ Called when a vehicle is spawned by the world
 
 ## playerCommand
 Called when a player sends a command
+
+A message world code sends while handling the command that ends with the player's name and then the command, its arguments or what follows its first argument, e.g. "[Whisper] Bob: hi" for "msg Alice hi", counts as their chat, as for onPlayerChat. So does one holding their name and, anywhere, what follows the first argument when that is two or more words and 8+ characters, e.g. "hi there - Bob".
 
 ### Parameters:
 | Parameter | Type | Description |

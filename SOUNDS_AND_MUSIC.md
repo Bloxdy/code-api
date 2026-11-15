@@ -26,7 +26,13 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 **Tip:** If you want a random similar sound, remove the number suffix from the sound name (e.g., use `"grass"` instead of `"grass1"`).
 
-### Available Sounds (397 total)
+### Available Sounds (402 total)
+
+#### ambient
+`lavaFlow`
+
+
+ 
 
 #### crowd
 `crowdAmbience`
@@ -39,6 +45,8 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
  
 
 #### customGame_horror
+`cryptWhoosh`
+
 `doorKnock`
 
 `futureStrangePulse`
@@ -442,6 +450,12 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `dogHurt1`
 
 `dogHurt2`
+
+`fennecYip1`
+
+`fennecYip2`
+
+`fennecYip3`
 
 `golemGrunt1`
 
@@ -906,7 +920,7 @@ api.setClientOption(playerId, "music", null)
 
 **Note:** Unlike sound effects, songs are played via client options, not the `playSound` API. Only one song plays at a time per player; setting a new song replaces the current one.
 
-### Available Songs (45 total)
+### Available Songs (49 total)
 
 | Song Name | Duration |
 |-----------|----------|
@@ -955,3 +969,7 @@ api.setClientOption(playerId, "music", null)
 | `Emotional Epic` | 1:52 |
 | `Enemy Marked` | 1:29 |
 | `spooky` | 2:07 |
+| `Shuffling Crypt` | 3:44 |
+| `Tower of Doom` | 2:33 |
+| `Wild Infernos` | 5:09 |
+| `Molten Rift` | 3:06 |

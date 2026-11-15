@@ -1,4 +1,4 @@
-# Item Names (1439 items)
+# Item Names (1532 items)
 
 Wood Pickaxe
 Stone Pickaxe
@@ -218,7 +218,15 @@ INTERNAL_MESH_Black Kart
 Off Roader
 INTERNAL_MESH_Off Roader
 Gold Mining Drill
+Iron Mining Drill
+Diamond Mining Drill
+Moonstone Mining Drill
+Armored Car
 INTERNAL_MESH_Gold Mining Drill
+INTERNAL_MESH_Iron Mining Drill
+INTERNAL_MESH_Diamond Mining Drill
+INTERNAL_MESH_Moonstone Mining Drill
+INTERNAL_MESH_Armored Car
 Light Blue Car
 INTERNAL_MESH_Car
 Snowball
@@ -885,6 +893,20 @@ Caught Mob NPC Chef
 Caught Mob 67 Default
 Caught Mob Bobino_Musculino Default
 Caught Mob Capitano_Explovissimo Default
+Caught Mob Desert_Fennec Default
+Caught Mob Armour_Collector Default
+Caught Mob Furnace_Knight Default
+Caught Mob Lil_Knight Default
+Caught Mob Glass_Gremlin Default
+Caught Mob Glass_Bro Default
+Caught Mob Lord_Vulcan Default
+Caught Mob Zombie Default
+Caught Mob Skeleton Default
+Caught Mob Mummy Default
+Caught Mob Scorpion Default
+Caught Mob Vulcanite Default
+Caught Mob Evil_Tome Default
+Caught Mob Magma_Toad Default
 Timed Spike Bomb
 Timed Spike Bomb|meta|charging2
 Timed Spike Bomb|meta|charging3
@@ -1386,6 +1408,8 @@ Goldheart Engine
 Deepbite Drill Tip
 Empty Fuel Cell
 Blackfire Fuel Cell
+Doom Rivet
+Doom Crest
 Raw Copper
 Copper Bar
 Iron Grit
@@ -1439,3 +1463,72 @@ Voltplate Chestplate
 Voltplate Gauntlets
 Voltplate Leggings
 Voltplate Boots
+Wood Blade
+Wood Guard
+Wood Handle
+Stone Blade
+Stone Guard
+Stone Handle
+Iron Blade
+Iron Guard
+Iron Handle
+Gold Blade
+Gold Guard
+Gold Handle
+Diamond Blade
+Diamond Guard
+Diamond Handle
+Moonstone Blade
+Moonstone Guard
+Moonstone Handle
+Magmasteel Blade
+Magmasteel Guard
+Magmasteel Handle
+Sanguine Blade
+Sanguine Guard
+Sanguine Handle
+Astral Blade
+Astral Guard
+Astral Handle
+Moonstone Sword
+Magmaward Fuel
+Raw Uranium
+Uranium Grit
+Uranium Pellet
+Plutonium Pellet
+Spent Pellet
+Glow Dust
+Biomass
+Graphite
+Containment Plate
+Heat Exchanger
+Focus Lens
+Nova Matter
+Deposit Seed (Uranium)
+Reactor Blueprint
+Wrench
+Advanced Coupler
+Nova Coupler
+Core Tier 11
+Core Tier 12
+Core Tier 13
+Core Tier 14
+Core Tier 15
+Jet Chestplate
+Nova Jet Chestplate
+Nova Helmet
+Nova Chestplate
+Nova Gauntlets
+Nova Leggings
+Nova Boots
+Nova Blade
+Mob Cage
+Caged Pig
+Caged Cow
+Caged Sheep
+Caged Deer
+Caged Stag
+Nova Multitool
+Pocket Terminal
+Comet Beacon
+Nova Wrench
