@@ -23,7 +23,7 @@ These API methods spawn vehicles and change how a player moves:
  *
  * @param {PlayerId} playerId
  * @param {PlayerPhysicsState<PhysicsType>} physicsState
- * @param {[number, number, number]} [positionOffset] - Optional offset to adjust the player's collision box
+ * @param {[number, number, number]} [positionOffset] - Optional offset to adjust the player's collision box, which is at most 25 blocks wide and 90 tall
  * @returns {void}
  */
 setPlayerPhysicsState(playerId, physicsState, positionOffset)
@@ -93,6 +93,8 @@ getVehicleSetting(vehicleEId, setting, returnDefaultIfNotOverridden)
  * A setting can also be overridden for one block by naming the block first, e.g.
  * `setVehicleSetting(boatId, "IceCanAutoStep", true)`. That is stored as an entry of the matching
  * `<setting>ByBlock` record, which the physics tick reads as a precomputed block lookup.
+ *
+ * The rider's body is at most 25 blocks wide and 90 tall: a larger `width` or `height` acts as that.
  *
  * @param {EntityId} vehicleEId
  * @param {TSetting} setting

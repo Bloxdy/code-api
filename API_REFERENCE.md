@@ -349,7 +349,7 @@ Separately, each player sees only the nearest 100 mesh entities of one kind (the
 | type | `MeshType` |  |
 | opts | `MeshEntityOpts[MeshType]` |  |
 | name | `string` | The default name for the nametag |
-| physicsOptions | `MeshEntityPhysicsOpts` | Physics Options |
+| physicsOptions | `MeshEntityPhysicsOpts` | Physics Options. With doPhysics, the physics body is at most 25 blocks across, however big the mesh; the entity collision box is the body grown by widthExpandAmt and heightExpandAmt. |
 | initiatorId | `EntityId` | The entity that initiated the creation of the mesh entity. |
 
 
@@ -409,7 +409,7 @@ depending on whether "spawnerId" is provided. Calling this function inside those
 | x | `number` |  |
 | y | `number` |  |
 | z | `number` |  |
-| opts | `MobSpawnOpts<TMobType>` | Includes: - mobHerdId The ID of this mob's herd. (A mob herd represents a collection of mobs that move together.) - spawnerId The ID of the player who tried to spawn this mob. - mobDbId A persistent ID for the mob. This can be useful when loading mob data from the database. If the DB ID is already taken, null will be returned. - name If set, gives the mob a name that will be displayed as a nametag above their head. - playSoundOnSpawn - variation - physicsOpts { width: number; height: number; collidesEntities: boolean } |
+| opts | `MobSpawnOpts<TMobType>` | Includes: - mobHerdId The ID of this mob's herd. (A mob herd represents a collection of mobs that move together.) - spawnerId The ID of the player who tried to spawn this mob. - mobDbId A persistent ID for the mob. This can be useful when loading mob data from the database. If the DB ID is already taken, null will be returned. - name If set, gives the mob a name that will be displayed as a nametag above their head. - playSoundOnSpawn - variation - physicsOpts { width: number; height: number; collidesEntities: boolean }. The body is at most 25 blocks wide and 90 tall. |
 
 
 
@@ -468,7 +468,7 @@ initiatorDbId is null if the change was initiated by the game code.
 | y | `number` |  |
 | z | `number` |  |
 | blockName | `BlockName` |  |
-| extraInfo | `WorldBlockChangedInfo` |  |
+| extraInfo | `WorldBlockChangedInfo \| null` |  |
 
 
 
@@ -568,7 +568,7 @@ See documentation for api.playSound
 | volume | `number` |  |
 | rate | `number` |  |
 | posSettings | ` { playerIdOrPos: EntityId \| number[] maxHearDist?: number refDistance?: number } ` |  |
-| exceptPlayerId | `PlayerId` |  |
+| exceptPlayerId | `PlayerId \| null` |  |
 
 
 
@@ -836,7 +836,7 @@ Create a dropped item.
 | attributes | `ItemAttributes` | Attributes of the item being dropped |
 | timeTillDespawn | `number` | Time till the item automatically despawns in milliseconds. Defaults to 5 mins, max of 1 hour. |
 | dropperId | `LifeformId \| null` | Who dropped the item. |
-| options | `ItemDropOptions` | Additional options, such as doPhysics and size. |
+| options | `ItemDropOptions` | Additional options, such as doPhysics and size. With doPhysics, the physics body is at most 25 blocks across. |
 
 
 
@@ -2656,7 +2656,7 @@ Returns the amount of item added to the users inventory.
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
 | itemName | `ItemName` |  |
-| itemAmount | `number` |  |
+| itemAmount | `number \| null` |  |
 | attributes | `ItemAttributes` | An optional object for certain types of item. For guns this can contain the shotsLeft field which is the amount of ammo the gun currently has. |
 
 
@@ -3178,7 +3178,7 @@ Play particle effect on all clients, or only on some clients if clientPredictedB
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | opts | `TempParticleSystemOpts \| ParticlePresetOpts` |  |
-| clientPredictedBy | `EntityId` | Play only on clients where the entity clientPredictedBy is visible and not the viewing player |
+| clientPredictedBy | `EntityId \| null` | Play only on clients where the entity clientPredictedBy is visible and not the viewing player |
 
 
 
@@ -4288,6 +4288,8 @@ Example: setItemStat(playerId, "Iron Dagger", "comboInfo", { comboWindowMs: 1000
 ## setLifeformScale
 Set the visual + physical scale of a lifeform. A scale of 1 is the default size.
 
+Bodies stop growing at 25 blocks wide and 90 tall (a player's at scale 50); past that only the model grows.
+
 getLifeformScale returns the scale rounded to 32-bit precision (0.7 reads back as 0.699999988079071).
 
 ### Parameters:
@@ -4398,7 +4400,7 @@ Moonstone chests are a type of chest where a player accesses the same contents n
 | playerId | `PlayerId` |  |
 | idx | `number` | 0-indexed |
 | itemName | `ItemName` | Can be 'Air', in which case itemAmount will be ignored and the slot will be cleared. |
-| itemAmount | `number` | -1 for infinity. Should not be set, or null, for items that are not stackable. |
+| itemAmount | `number \| null` | -1 for infinity. Should not be set, or null, for items that are not stackable. |
 | metadata | `ItemAttributes` | An optional object for certain types of item. For guns this can contain the shotsLeft field which is the amount of ammo the gun currently has. |
 
 
@@ -4538,7 +4540,7 @@ tier (0). Types without tiers (e.g. DEFAULT) must be given a `null` tier.
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
 | physicsState | `PlayerPhysicsState<PhysicsType>` |  |
-| positionOffset | `[number, number, number]` | Optional offset to adjust the player's collision box |
+| positionOffset | `[number, number, number]` | Optional offset to adjust the player's collision box, which is at most 25 blocks wide and 90 tall |
 
 
 
@@ -4636,7 +4638,7 @@ Set the current shield of a lifeform.
 | chestPos | `number[]` |  |
 | idx | `number` | 0-indexed |
 | itemName | `ItemName` | Can be 'Air', in which case itemAmount will be ignored and the slot will be cleared. |
-| itemAmount | `number` | -1 for infinity. Should not be set, or null, for items that are not stackable. |
+| itemAmount | `number \| null` | -1 for infinity. Should not be set, or null, for items that are not stackable. |
 | playerId | `PlayerId` | The player who is interacting with the chest. |
 | attributes | `ItemAttributes` | An optional object for certain types of item. For guns this can contain the shotsLeft field which is the amount of ammo the gun currently has. |
 
@@ -4694,6 +4696,10 @@ A setting can also be overridden for one block by naming the block first, e.g.
 `setVehicleSetting(boatId, "IceCanAutoStep", true)`. That is stored as an entry of the matching
 
 `<setting>ByBlock` record, which the physics tick reads as a precomputed block lookup.
+
+
+
+The rider's body is at most 25 blocks wide and 90 tall: a larger `width` or `height` acts as that.
 
 ### Parameters:
 | Parameter | Type | Description |

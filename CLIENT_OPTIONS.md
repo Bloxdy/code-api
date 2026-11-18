@@ -1121,6 +1121,20 @@ When true, hides world and chunk coordinates regardless of the player's setting.
 
 
 
+## highlightedHotbarSlots
+
+**Type:** `number[]`
+
+**Default:** `[]`
+
+Hotbar slots (0-based) that pulse to draw the player's eye, e.g. to the item a tutorial wants them to use.
+
+ [] for none.
+
+ 
+
+
+
 ## horizontalKnockbackMultiplier
 
 **Type:** `number`
@@ -1468,6 +1482,22 @@ Default camera zoom level for the player
 **Default:** `12000`
 
 Duration of potion effects
+
+ 
+
+
+
+## predictDroppedItems
+
+**Type:** `boolean`
+
+**Default:** `false`
+
+Whether an item the player drops, and the item a block they break drops, shows at once on their screen, moving as the
+
+ server will move it, rather than a round trip later. Only for games whose onPlayerDropItem and onPlayerChangeBlock
+
+ leave drops alone: a drop the game prevents or replaces shows for a moment.
 
  
 

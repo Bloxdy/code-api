@@ -128,7 +128,7 @@ type ParticleEmitterOpts = {
  * @param {MeshType} type
  * @param {MeshEntityOpts[MeshType]} opts
  * @param {string} [name] - The default name for the nametag
- * @param {MeshEntityPhysicsOpts} [physicsOptions] - Physics Options
+ * @param {MeshEntityPhysicsOpts} [physicsOptions] - Physics Options. With doPhysics, the physics body is at most 25 blocks across, however big the mesh; the entity collision box is the body grown by widthExpandAmt and heightExpandAmt.
  * @param {EntityId} [initiatorId] - The entity that initiated the creation of the mesh entity.
  * @returns {EntityId | null} - null if the entity creation failed, otherwise the entity ID.
  */

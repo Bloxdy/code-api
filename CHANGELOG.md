@@ -2,6 +2,12 @@
 
 Here you can discover the latest changes to the API.
 
+### 17th November 2026
+- Added the [`highlightedHotbarSlots`](#clientOptions-highlightedHotbarSlots) client option, to make hotbar slots pulse and show a player which item to use, e.g. `api.setClientOption(playerId, "highlightedHotbarSlots", [0])`. Set it to `[]` to stop.
+
+### 15th November 2026
+- Physics bodies now stop growing at 25 blocks wide and 90 tall, so a huge one can no longer freeze a world. [`api.setLifeformScale`](#apiReference-setLifeformScale) still grows the model by any scale, but past that size only the model grows: a player's body stops at scale 50. The same limit applies to a vehicle's `width` and `height` in [`api.setVehicleSetting`](#apiReference-setVehicleSetting), a collision box offset in [`api.setPlayerPhysicsState`](#apiReference-setPlayerPhysicsState), `physicsOpts` in [`api.attemptSpawnMob`](#apiReference-attemptSpawnMob), and the body of a mesh entity or item drop with physics. A mesh entity's collision box follows its body, so use `widthExpandAmt` and `heightExpandAmt` to make it bigger. Your code's log shows a warning the first time a value is capped.
+
 ### 7th November 2026
 - A gun's `fireRate` is now the rate it fires at, and a `fireRate` gun stat override fires the gun at that rate. `api.getItemStat(null, gunName, "fireRate")` now gives TAR-21 128, Double Barrel 150, Striker-12 185, VSR 450 and FMR 450.
 - New `cadenceMs` gun stat: how fast spread recovers and shot sounds and the equip delay are paced, in ms; most guns use their fire interval, e.g. `{ fireRate: 300, cadenceMs: 150 }`.

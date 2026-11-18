@@ -1,4 +1,4 @@
-# Block Names (1522 blocks)
+# Block Names (1523 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -1549,3 +1549,4 @@ Uranium Block
 Pure Uranium Ore
 Copper Block
 Voltite Block
+Nova Bomb
