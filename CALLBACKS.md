@@ -1110,7 +1110,7 @@ Called when a player finishes charging an item
 
 
 ## onPlayerJoin
-Called when a player joins the lobby
+Called when a player joins the lobby. A player shown an ad as they join holds their place in the lobby during it, but only joins, and is only in getPlayerIds, once it ends, unless the game turns that off (api.setJoinsWaitForAds)
 
 ### Parameters:
 | Parameter | Type | Description |

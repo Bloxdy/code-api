@@ -4,6 +4,7 @@ Here you can discover the latest changes to the API.
 
 ### 17th November 2026
 - Added the [`highlightedHotbarSlots`](#clientOptions-highlightedHotbarSlots) client option, to make hotbar slots pulse and show a player which item to use, e.g. `api.setClientOption(playerId, "highlightedHotbarSlots", [0])`. Set it to `[]` to stop.
+- A player who joins while an ad plays now enters the world only once the ad ends, so nothing can hurt them while they can't play. Turn this off in a round-based game with [`api.setJoinsWaitForAds(false)`](#apiReference-setJoinsWaitForAds), so a party's players are all in the lobby when a round starts. Games using the `@plugins/sessionBasedGame` plugin do this already.
 
 ### 15th November 2026
 - Physics bodies now stop growing at 25 blocks wide and 90 tall, so a huge one can no longer freeze a world. [`api.setLifeformScale`](#apiReference-setLifeformScale) still grows the model by any scale, but past that size only the model grows: a player's body stops at scale 50. The same limit applies to a vehicle's `width` and `height` in [`api.setVehicleSetting`](#apiReference-setVehicleSetting), a collision box offset in [`api.setPlayerPhysicsState`](#apiReference-setPlayerPhysicsState), `physicsOpts` in [`api.attemptSpawnMob`](#apiReference-attemptSpawnMob), and the body of a mesh entity or item drop with physics. A mesh entity's collision box follows its body, so use `widthExpandAmt` and `heightExpandAmt` to make it bigger. Your code's log shows a warning the first time a value is capped.

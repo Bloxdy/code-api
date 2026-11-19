@@ -207,6 +207,7 @@ type ShopItem = {
     sell?: boolean // Optional, defaults to false. If true, the sign of "cost" is flipped. So a "cost" of -25 would give the player 25 currency AND be displayed as "25" (instead of -25)
     sortPriority?: number // Descending, bigger number means closer to the top
     hidden?: boolean
+    smp?: SmpShopItemMeta // Set by the SMP marketplace plugin only, for its own shop screens
 }
 
 type ShopItemUserInput =
@@ -229,6 +230,7 @@ type ShopCategoryConfig = Partial<{
     forceRemoveRedDot: boolean
     sortPriority: number
     description: string | CustomTextStyling
+    smp: SmpShopCategoryKind // Set by the SMP marketplace plugin with its dedicatedUi option only: clients draw this category's body with the marketplace's own screens
 }>
 
 type MobSpawnOpts<TMobType extends MobType> = Partial<{

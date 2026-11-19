@@ -26,10 +26,40 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 **Tip:** If you want a random similar sound, remove the number suffix from the sound name (e.g., use `"grass"` instead of `"grass1"`).
 
-### Available Sounds (402 total)
+### Available Sounds (443 total)
 
 #### ambient
 `lavaFlow`
+
+
+ 
+
+#### cars
+`carCrash`
+
+`carDoorClose`
+
+`carDoorOpen`
+
+`carDriveLoop`
+
+`carEngineStart`
+
+`carHorn`
+
+`carIdleLoop`
+
+`carLockChirp`
+
+`indicatorTick`
+
+`reverseBeep`
+
+`seatbeltClick`
+
+`tyreScreech`
+
+`vanIdleLoop`
 
 
  
@@ -142,6 +172,18 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `wood3`
 
 `wood4`
+
+
+ 
+
+#### fire
+`extinguisherSpray`
+
+`fireAlarmBell`
+
+`fireCrackle`
+
+`fireTruckHorn`
 
 
  
@@ -622,6 +664,48 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
  
 
+#### phoneAndMoney
+`cameraShutter`
+
+`coinsDrop`
+
+`jobComplete`
+
+`messageReceive`
+
+`phoneNotify`
+
+`phoneTap`
+
+`phoneVibrate`
+
+`tillPurchase`
+
+
+ 
+
+#### police
+`handcuffsLock`
+
+`radioBeep`
+
+`radioChatter`
+
+`runningSteps`
+
+`sirenChirp`
+
+`sirenWail`
+
+`sirenYelp`
+
+`stunZap`
+
+`whistle`
+
+
+ 
+
 #### random
 `beep`
 
@@ -900,6 +984,24 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 #### survivalFactory
 `rocketEngineLoop`
+
+
+ 
+
+#### town
+`crowdMurmur`
+
+`doorbell`
+
+`gateCreak`
+
+`keysJingle`
+
+`kidsPlaying`
+
+`parkBirds`
+
+`shopDoorbell`
 
 
 ---

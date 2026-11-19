@@ -4285,6 +4285,24 @@ Example: setItemStat(playerId, "Iron Dagger", "comboInfo", { comboWindowMs: 1000
 
  
 
+## setJoinsWaitForAds
+Set whether a player who joins while an ad plays enters the world only once the ad ends, so nothing can hurt them
+
+while they can't play. On by default. Turn it off in a round-based game, so a party's players are all in the lobby
+
+when a round starts. Games using the `@plugins/sessionBasedGame` plugin have it off already.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| joinsWait | `boolean` |  |
+
+
+
+
+
+ 
+
 ## setLifeformScale
 Set the visual + physical scale of a lifeform. A scale of 1 is the default size.
 
