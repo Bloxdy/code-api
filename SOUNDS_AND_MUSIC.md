@@ -424,7 +424,7 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
  
 
-#### mob
+#### mobBear
 `bearRoar1`
 
 `bearRoar2`
@@ -435,6 +435,10 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `bearRoar5`
 
+
+ 
+
+#### mobCat
 `catHiss1`
 
 `catHiss2`
@@ -459,6 +463,10 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `catMeow5`
 
+
+ 
+
+#### mobCow
 `cowHurt1`
 
 `cowMoo1`
@@ -467,16 +475,28 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `cowMoo3`
 
+
+ 
+
+#### mobCrone
 `croneAttack1`
 
 `croneHurt1`
 
 `croneIdle1`
 
+
+ 
+
+#### mobDeer
 `deerGrunt1`
 
 `deerHurt1`
 
+
+ 
+
+#### mobDog
 `dogBark1`
 
 `dogBark2`
@@ -493,16 +513,28 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `dogHurt2`
 
+
+ 
+
+#### mobFennec
 `fennecYip1`
 
 `fennecYip2`
 
 `fennecYip3`
 
+
+ 
+
+#### mobGolem
 `golemGrunt1`
 
 `golemGrunt2`
 
+
+ 
+
+#### mobGorilla
 `gorillaIdle1`
 
 `gorillaIdle2`
@@ -513,6 +545,10 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `gorillaRoar1`
 
+
+ 
+
+#### mobHorse
 `horseHurt1`
 
 `horseHurt2`
@@ -523,12 +559,20 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `horseIdle3`
 
+
+ 
+
+#### mobKnight
 `knightGrunt1`
 
 `knightGrunt2`
 
 `knightGrunt3`
 
+
+ 
+
+#### mobPig
 `pigHurt1`
 
 `pigHurt2`
@@ -545,6 +589,10 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `pigOink5`
 
+
+ 
+
+#### mobReaver
 `reaverAttack1`
 
 `reaverAttack2`
@@ -557,6 +605,10 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `reaverGrunt3`
 
+
+ 
+
+#### mobSheep
 `sheepBaa1`
 
 `sheepBaa2`
@@ -567,6 +619,10 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `sheepHurt1`
 
+
+ 
+
+#### mobSkeleton
 `skeletonRattle1`
 
 `skeletonRattle2`
@@ -575,14 +631,26 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `skeletonRattle4`
 
+
+ 
+
+#### mobStag
 `stagGrunt1`
 
 `stagHurt1`
 
+
+ 
+
+#### mobStalker
 `stalkerAttack1`
 
 `stalkerIdle1`
 
+
+ 
+
+#### mobWarper
 `warperGrunt1`
 
 `warperGrunt2`
@@ -597,12 +665,20 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `warperPhase2`
 
+
+ 
+
+#### mobWraith
 `wraithGrunt1`
 
 `wraithGrunt2`
 
 `wraithHurt`
 
+
+ 
+
+#### mobZombie
 `ZombieGrunt1`
 
 `ZombieGrunt2`
@@ -706,9 +782,61 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
  
 
-#### random
+#### randomBeep
 `beep`
 
+
+ 
+
+#### randomCannon
+`cannonFire1`
+
+`cannonFire2`
+
+`cannonFire3`
+
+
+ 
+
+#### randomCash
+`cashRegister`
+
+
+ 
+
+#### randomExp
+`exp_collect`
+
+`exp_levelup`
+
+
+ 
+
+#### randomFallsmall
+`fallsmall`
+
+
+ 
+
+#### randomFire
+`fireBurn`
+
+
+ 
+
+#### randomFirecracker
+`firecracker1`
+
+`firecracker2`
+
+`firecracker3`
+
+`firecracker4`
+
+
+ 
+
+#### randomItems
 `bow`
 
 `bucketEmpty1`
@@ -724,14 +852,6 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 `bucketFill3`
 
 `burp`
-
-`cannonFire1`
-
-`cannonFire2`
-
-`cannonFire3`
-
-`cashRegister`
 
 `chestClose`
 
@@ -751,22 +871,6 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `equip_leather1`
 
-`exp_collect`
-
-`exp_levelup`
-
-`fallsmall`
-
-`fireBurn`
-
-`firecracker1`
-
-`firecracker2`
-
-`firecracker3`
-
-`firecracker4`
-
 `hoeTill1`
 
 `hoeTill2`
@@ -775,12 +879,24 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `hoeTill4`
 
+`successfulBowHit`
+
+`trapdoorOpen`
+
+
+ 
+
+#### randomLaugh
 `laugh1`
 
 `laugh2`
 
 `laugh3`
 
+
+ 
+
+#### randomMagic
 `magicAccent1`
 
 `magicAccent2`
@@ -789,11 +905,11 @@ api.broadcastSound(soundName, volume, rate, posSettings?, exceptPlayerId?)
 
 `magicAccent4`
 
+
+ 
+
+#### randomSplash
 `splash1`
-
-`successfulBowHit`
-
-`trapdoorOpen`
 
 
  

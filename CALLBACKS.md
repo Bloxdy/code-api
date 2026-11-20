@@ -1948,6 +1948,8 @@ Called when a vehicle is spawned by the world
 ## playerCommand
 Called when a player sends a command
 
+Return true when the command was handled. Return nothing for any other: any value, false too, stops the game's own commands (e.g. /spawn) running.
+
 A message world code sends while handling the command that ends with the player's name and then the command, its arguments or what follows its first argument, e.g. "[Whisper] Bob: hi" for "msg Alice hi", counts as their chat, as for onPlayerChat. So does one holding their name and, anywhere, what follows the first argument when that is two or more words and 8+ characters, e.g. "hi there - Bob".
 
 ### Parameters:

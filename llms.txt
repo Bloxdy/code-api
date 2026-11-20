@@ -14,7 +14,7 @@ The same docs, with long pages also split into parts that fit a small context wi
 - [Getting started](https://raw.githubusercontent.com/Bloxdy/code-api/main/README.md)
 - [Snippets](https://raw.githubusercontent.com/Bloxdy/code-api/main/SNIPPETS.md)
 - [Welcome to the Bloxd Code API](https://raw.githubusercontent.com/Bloxdy/code-api/main/WELCOME.md)
-- [Block Names (1523 blocks)](https://raw.githubusercontent.com/Bloxdy/code-api/main/BLOCK_NAMES.txt)
+- [Block Names (1533 blocks)](https://raw.githubusercontent.com/Bloxdy/code-api/main/BLOCK_NAMES.txt)
 - [Dialogue Voices](https://raw.githubusercontent.com/Bloxdy/code-api/main/DIALOGUE_VOICES.md)
 - [Entity Settings](https://raw.githubusercontent.com/Bloxdy/code-api/main/ENTITY_SETTINGS.md)
 - [Icons](https://raw.githubusercontent.com/Bloxdy/code-api/main/ICONS.md)

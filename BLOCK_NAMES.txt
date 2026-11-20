@@ -1,4 +1,4 @@
-# Block Names (1523 blocks)
+# Block Names (1533 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -1550,3 +1550,13 @@ Pure Uranium Ore
 Copper Block
 Voltite Block
 Nova Bomb
+INTERNAL_MESH_White Directional Arrow
+INTERNAL_MESH_Light Grey Directional Arrow
+INTERNAL_MESH_Light Blue Directional Arrow
+INTERNAL_MESH_Cyan Directional Arrow
+INTERNAL_MESH_Green Directional Arrow
+INTERNAL_MESH_Lime Directional Arrow
+INTERNAL_MESH_Yellow Directional Arrow
+INTERNAL_MESH_Orange Directional Arrow
+INTERNAL_MESH_Magenta Directional Arrow
+INTERNAL_MESH_Red Directional Arrow
