@@ -1,0 +1,31 @@
+# Effect Names (29 effects)
+
+Damage
+Speed
+Damage Reduction
+Invisible
+Jump Boost
+Knockback
+Poisoned
+Slowness
+Weakness
+Cleansed
+Instant Damage
+Health Regen
+Instant Health
+Haste 
+Shield
+Double Jump
+Heat Resistance
+Thief
+X-Ray Vision
+Mining Yield
+Brain Rot
+Aura
+Wall Climbing
+Air Walk
+Pickpocketer
+Lifesteal
+Bounciness
+Blindness
+Poopy
